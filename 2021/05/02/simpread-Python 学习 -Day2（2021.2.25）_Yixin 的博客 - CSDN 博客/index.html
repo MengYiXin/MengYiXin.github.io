@@ -9,7 +9,7 @@
     
     <title>
         
-            Hello World |
+            Python Day2 |
         
         Yixin Blogs
     </title>
@@ -118,7 +118,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">Hello World</span>
+            <span class="title-hover-animation">Python Day2</span>
         </div>
 
         
@@ -136,9 +136,20 @@
                     <div class="meta-info">
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
-        <i class="fas fa-edit"></i>&nbsp;2021-05-02 13:20:13
+        <i class="fas fa-edit"></i>&nbsp;2021-05-02 15:11:21
     </span>
     
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/Python/">Python</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
     
 
     
@@ -153,19 +164,10 @@
         
 
         <div class="article-content markdown-body">
-            <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+            <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"># 标准数据类型</span><br><span class="line">import math</span><br><span class="line"> </span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line">Number(数字)</span><br><span class="line">String(字符串)</span><br><span class="line">List(列表)</span><br><span class="line">Tuple(元组)</span><br><span class="line">Set(集合)</span><br><span class="line">Dictionary(字典)</span><br><span class="line">可变数据（3个）：List(列表)，Dictionary(字典)，Set(集合)</span><br><span class="line">代码风格整理： Ctrl + Alt +l</span><br><span class="line">&quot;&quot;&quot;</span><br><span class="line"> </span><br><span class="line">a, b, c, d &#x3D; 20, 5.5, True, 4 + 3j</span><br><span class="line"> </span><br><span class="line">print(type(a)), print(type(b)), print(type(c)), print(type(d))</span><br><span class="line"># # ------------------------------------------------------------------------#</span><br><span class="line"># # 此外还可以用 isinstance 来判断：</span><br><span class="line"># a &#x3D; 111</span><br><span class="line"># isinstance(a, int)</span><br><span class="line">#</span><br><span class="line"># # isinstance 和 type 的区别在于：</span><br><span class="line"># &#39;&#39;&#39;</span><br><span class="line"># type()不会认为子类是一种父类类型。</span><br><span class="line"># isinstance()会认为子类是一种父类类型。</span><br><span class="line"># &#39;&#39;&#39;</span><br><span class="line">#</span><br><span class="line">#</span><br><span class="line"># class A:</span><br><span class="line">#     pass</span><br><span class="line">#</span><br><span class="line">#</span><br><span class="line"># class B(A):</span><br><span class="line">#     pass</span><br><span class="line">#</span><br><span class="line">#</span><br><span class="line"># isinstance(A(), A)</span><br><span class="line">#</span><br><span class="line"># type(A()) &#x3D;&#x3D; A</span><br><span class="line">#</span><br><span class="line"># isinstance(B(), A)</span><br><span class="line">#</span><br><span class="line"># type(B()) &#x3D;&#x3D; A</span><br><span class="line"># ------------------------------------------------------------------------#</span><br><span class="line"> </span><br><span class="line"># 数值运算：</span><br><span class="line"> </span><br><span class="line">5 + 4  # 加法</span><br><span class="line"> </span><br><span class="line">4.3 - 2  # 减法</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<p><img src="https://img-blog.csdnimg.cn/20210225233251521.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2NjUwNTQ2,size_16,color_FFFFFF,t_70"></p>
+<p><img src="https://img-blog.csdnimg.cn/20210225233313685.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM2NjUwNTQ2,size_16,color_FFFFFF,t_70"></p>
 
         </div>
 
@@ -177,18 +179,33 @@
                     <div class="article-prev">
                         <a class="prev"
                            rel="prev"
-                           href="/2021/05/02/simpread-%E6%96%B0%E5%B9%B4%E6%9C%9F%E6%9C%9B_Yixin%20%E7%9A%84%E5%8D%9A%E5%AE%A2%20-%20CSDN%20%E5%8D%9A%E5%AE%A2/"
+                           href="/2021/05/02/simpread-Python%20%E5%AD%A6%E4%B9%A0%20-Day4%EF%BC%882021.3.1%EF%BC%89_Yixin%20%E7%9A%84%E5%8D%9A%E5%AE%A2%20-%20CSDN%20%E5%8D%9A%E5%AE%A2/"
                         >
                             <span class="left arrow-icon flex-center">
                               <i class="fas fa-chevron-left"></i>
                             </span>
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">新年期望</span>
+                                <span class="post-nav-title-item">Python Day4</span>
                                 <span class="post-nav-item">Prev posts</span>
                             </span>
                         </a>
                     </div>
                 
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2021/05/02/simpread-Python%20%E5%AD%A6%E4%B9%A0%20-Day5%EF%BC%882021.3.2%EF%BC%89_Yixin%20%E7%9A%84%E5%8D%9A%E5%AE%A2%20-%20CSDN%20%E5%8D%9A%E5%AE%A2/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">Python Day5</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
                 
             </div>
         
