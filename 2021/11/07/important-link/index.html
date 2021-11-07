@@ -9,7 +9,7 @@
     
     <title>
         
-            从0开始装VSAN |
+            important-link |
         
         Yixin blog
     </title>
@@ -155,7 +155,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">从0开始装VSAN</span>
+            <span class="title-hover-animation">important-link</span>
         </div>
 
         
@@ -173,7 +173,7 @@
                     <div class="meta-info">
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
-        <i class="fas fa-edit"></i>&nbsp;2021-05-02 17:07:21
+        <i class="fas fa-edit"></i>&nbsp;2021-11-07 17:04:21
     </span>
     
     
@@ -201,23 +201,8 @@
         
 
         <div class="article-content markdown-body">
-            <ol>
-<li>请务必格式化好全部的硬盘，否则可能会出现配置好了但是不能使用的问题。  </li>
-<li>安装 VCSA 可能会卡 80% 参考网上解决。（有可能实际上是等待不够久，并不会出现进度条不会动的情况）  </li>
-<li>注意好安装环境的物理网络情况，确保过程中的通信。  </li>
-<li>EVC 开启的话选择最新的 CPU 微架构</li>
-</ol>
-<p>Partition1 - install ESXi<br>进入 xcc 选择 ESXi 镜像，挂载，重启。根据 installer 提示完成 ESXi 安装（在本次实验环境下</p>
-<p>Partition2 - deploy VCSA onto new vSAN cluster<br>打开安装镜像，选择对应的安装程序，在选择 datastore 的时候选择安装在一个新的 vSAN 群集里，剩下的按照需求配置好</p>
-<p>Parition3 - 修理剩下的错误</p>
-<ul>
-<li>  将其余的 vSAN 主机添加到群集中。</li>
-<li>  在每个主机上配置专用的 vSAN vmkernel。</li>
-<li>  将磁盘从其他主机添加到 vSAN 磁盘组。</li>
-<li>  一切正常运行后，确保运行了 vSAN Health Check，并且不要忽略任何错误！</li>
-</ul>
-<p><a class="link"   target="_blank" rel="noopener" href="https://thewificable.com/2018/04/26/deploy-vcsa-6-7-onto-new-vsan-6-7-cluster/" >UPGRADING TO VCENTER 7.0 VIA CLI<i class="fas fa-external-link-alt"></i></a><br><a class="link"   target="_blank" rel="noopener" href="https://kb.vmware.com/s/article/2151610?lang=zh_cn" >将 vSAN 群集从一个 vCenter Server 移至另一个 vCenter Server (2151610)<i class="fas fa-external-link-alt"></i></a></p>
-<p><a class="link"   target="_blank" rel="noopener" href="https://kb.vmware.com/s/article/1013111" >如果 vCenter Server 虚拟机属于同一群集，如何启用 EVC（1013111）<i class="fas fa-external-link-alt"></i></a></p>
+            <p>link:</p>
+<p>VMware不同版本的对比：<a class="link"   target="_blank" rel="noopener" href="https://www.vmware.com/products/vsphere.html" >https://www.vmware.com/products/vsphere.html<i class="fas fa-external-link-alt"></i></a><br>VMware iso lenovo OEM下载地址：<a class="link"   target="_blank" rel="noopener" href="https://vmware.lenovo.com/content/custom_iso/" >https://vmware.lenovo.com/content/custom_iso/<i class="fas fa-external-link-alt"></i></a><br>VMware版本KB：<a class="link"   target="_blank" rel="noopener" href="https://kb.vmware.com/s/article/2143838" >https://kb.vmware.com/s/article/2143838<i class="fas fa-external-link-alt"></i></a> （vcenter）<br><a class="link"   target="_blank" rel="noopener" href="https://kb.vmware.com/s/article/2143832%EF%BC%88ESXi%EF%BC%89" >https://kb.vmware.com/s/article/2143832（ESXi）<i class="fas fa-external-link-alt"></i></a><br>VMware vcenter下载：需要vmware官网账号<br>联想机型兼容性查询：<a class="link"   target="_blank" rel="noopener" href="https://lenovopress.com/osig" >https://lenovopress.com/osig<i class="fas fa-external-link-alt"></i></a><br>VMware兼容性列表查询：<a class="link"   target="_blank" rel="noopener" href="http://partnerweb.vmware.com/comp_guide2/search.php?action=base&amp;deviceCategory=io" >http://partnerweb.vmware.com/comp_guide2/search.php?action=base&amp;deviceCategory=io<i class="fas fa-external-link-alt"></i></a><br>Lenovo固件下载地址：<a class="link"   target="_blank" rel="noopener" href="https://datacentersupport.lenovo.com/cn/en/" >https://datacentersupport.lenovo.com/cn/en/<i class="fas fa-external-link-alt"></i></a></p>
 
         </div>
 
@@ -225,11 +210,11 @@
             <div class="post-copyright-info">
                 <div class="article-copyright-info-container">
     <ul>
-        <li>Post title：从0开始装VSAN</li>
+        <li>Post title：important-link</li>
         <li>Post author：Yixin</li>
-        <li>Create time：2021-05-02 17:07:21</li>
+        <li>Create time：2021-11-07 17:04:21</li>
         <li>
-            Post link：https://keep.xpoet.cn/2021/05/02/simpread-从 0 开始安装 VSAN 遇到的一些问题和解决办法_Yixin 的博客 - CSDN 博客_vsan 安装教程/
+            Post link：https://keep.xpoet.cn/2021/11/07/important-link/
         </li>
         <li>
             Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
@@ -246,13 +231,13 @@
                     <div class="article-prev">
                         <a class="prev"
                            rel="prev"
-                           href="/2021/05/02/simpread-%E6%AF%94%E8%BE%83%E5%A5%BD%E7%9C%8B%E7%9A%84%E5%87%A0%E4%B8%AA%20CSDN%20%E7%9A%84%E8%83%8C%E6%99%AF%E5%9B%BE_Yixin%20%E7%9A%84%E5%8D%9A%E5%AE%A2%20-%20CSDN%20%E5%8D%9A%E5%AE%A2_csdn%20%E7%9A%84%E8%83%8C%E6%99%AF%E5%9B%BE/"
+                           href="/2021/11/08/%E5%A6%82%E4%BD%95%E8%AF%86%E5%88%AB%E8%8B%B1%E7%89%B9%E5%B0%94%20%C2%AE%20%E5%A4%84%E7%90%86%E5%99%A8/"
                         >
                             <span class="left arrow-icon flex-center">
                               <i class="fas fa-chevron-left"></i>
                             </span>
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">好看的几个CSDN背景图</span>
+                                <span class="post-nav-title-item">演示如何确定英特尔 ® 处理器的数量</span>
                                 <span class="post-nav-item">Prev posts</span>
                             </span>
                         </a>
@@ -262,10 +247,10 @@
                     <div class="article-next">
                         <a class="next"
                            rel="next"
-                           href="/2021/05/02/simpread-VSAN%20%E7%9A%84%E5%AE%89%E8%A3%85_Yixin%20%E7%9A%84%E5%8D%9A%E5%AE%A2%20-%20CSDN%20%E5%8D%9A%E5%AE%A2/"
+                           href="/2021/05/04/Linux/"
                         >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">VMWare VSAN 的安装</span>
+                                <span class="post-nav-title-item">Linux的学习</span>
                                 <span class="post-nav-item">Next posts</span>
                             </span>
                             <span class="right arrow-icon flex-center">
