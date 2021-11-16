@@ -9,7 +9,7 @@
     
     <title>
         
-            Python Day6 |
+            全面讲解 Vlan、三层交换机、网关、DNS、子网掩码、MAC 地址等网络知识 |
         
         Yixin blog
     </title>
@@ -155,7 +155,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">Python Day6</span>
+            <span class="title-hover-animation">全面讲解 Vlan、三层交换机、网关、DNS、子网掩码、MAC 地址等网络知识</span>
         </div>
 
         
@@ -173,7 +173,7 @@
                     <div class="meta-info">
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
-        <i class="fas fa-edit"></i>&nbsp;2021-05-02 15:17:21
+        <i class="fas fa-edit"></i>&nbsp;2021-11-16 19:17:21
     </span>
     
     
@@ -182,7 +182,7 @@
             <ul>
                 
                     <li>
-                        <a href="/tags/Python/">Python</a>&nbsp;
+                        <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>&nbsp;
                     </li>
                 
             </ul>
@@ -205,19 +205,90 @@
         
 
         <div class="article-content markdown-body">
-            <p>函数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"># 函数</span><br><span class="line"># 函数是可重复调用的代码段，能提高代码的复用率。</span><br><span class="line"> </span><br><span class="line"># 无参数</span><br><span class="line">def print_hello():</span><br><span class="line">    print (&quot;hello&quot;)</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">print_hello()</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"># 带参数</span><br><span class="line">def print_str(s):</span><br><span class="line">    print(s)</span><br><span class="line">    return s * 2</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">print_str(&quot;fuck&quot;)</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"># 带默认参数</span><br><span class="line">def print_default(s&#x3D;&quot;hello&quot;):</span><br><span class="line">    print(s)</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">print_default()</span><br><span class="line">print_default(&quot;default&quot;)</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"># 不定长参数</span><br><span class="line">def print_args(s, *arg):</span><br><span class="line">    print(s)</span><br><span class="line">    for a in arg:</span><br><span class="line">        print(a)</span><br><span class="line">    return</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">print_args(&quot;hello&quot;)</span><br><span class="line">print_args(&quot;hello&quot;, &quot;world&quot;, &quot;1&quot;)</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line"># 参数次序可以变</span><br><span class="line">def print_two(a, b):</span><br><span class="line">    print(a, b)</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">print_two(a&#x3D;&quot;a&quot;, b&#x3D;&quot;b&quot;)</span><br><span class="line">print_two(b&#x3D;&quot;b&quot;, a&#x3D;&quot;a&quot;)</span><br></pre></td></tr></table></figure>
+            <p>我们现在做的弱电工程，经常用到网络知识，比如 vlan、三层交换机、网关、DNS、子网掩码、MAC 地址等方面的知识，作为从业人员，我们对这些知识了解并熟知的。</p>
+<p><strong>一、什么是 VLAN</strong></p>
+<p>VLAN 中文是 “虚拟局域网”。LAN 可以是由少数几台家用计算机构成的网络，也可以是数以百计的计算机构成的企业网络。VLAN 所指的 LAN 特指使用路由器分割的网络——也就是广播域。</p>
+<p>听上面的概念，肯定有不少朋友是一头雾水的，什么是虚拟局域网？好好的，为什么要划分 vlan？</p>
+<p><strong>这里举个例：通俗的了解</strong></p>
+<p>一所高中，新学期高一招了 800 个学生，这 800 个学生，如果放在一个班里，那肯定是管理不过来，面对 800 个人，老师看了也头疼，这边在授课，那边完全听不到，老师布置什么任务，也会有一些传达不到，老师要是想找某个学生的信息，要从 800 份信息中去找，极其麻烦，浪费时间；</p>
+<p>而实际中，也是一样，电脑 A 要想要与电脑 B 通信，于是电脑 A 就需要发送 arp 请求，而网络中电脑众多，最终 ARP 请求会被转发到同一网络中的所有电脑，才能找到电脑 B，如此一来，为了找到电脑 B，消耗了网络整体的带宽，收到广播信息的计算机还要消耗一部分 CPU 时间来对它进行处理。造成了网络带宽和 CPU 运算能力的大量无谓消耗。</p>
+<p><strong>那么怎么办呢？</strong></p>
+<p>学校就针对这 800 个学生，分成了 10 个班，每个班 80 人，分别命名为高一（1）班，高一（2）班、、、、高一（10）班，每个人都会获得一个班级编号。</p>
+<p>1101 表示一班 01 号学生。</p>
+<p>1102 表示一班 02 号学生。</p>
+<p>1201 表示 2 班 01 号学生。</p>
+<p>同一个班的学生编号尾数不同，其它的都相同。</p>
+<p>那么这样老师再管理起来就轻松多了，可以把一班这 80 人管理的妥妥的，隔壁 2 班与 3 班乱成一锅粥也不管一班的事，我就要这一班 80 人好好上课就行。</p>
+<p>这就是 vlan，每个班就相当于一个 vlan，而每个班名称，就相当于 vlan 的名称，而每个学生的编号就是 ip 地址；同班同学（同一个 vlan 的 ip），因为同一个教室，朝夕相处，且可以相互通信，不同班的同学，若不做其它工作，很难往来通信。</p>
+<p>所以同一个 vlan 间，可以相互通信；不同 vlan，若不做配置，不能相互通信。</p>
+<p>那么不同 vlan 如何通通信呢？就需要单臂路由与三层交换机。</p>
+<p><strong>二、单臂路由与三层交换机</strong></p>
+<p>我们知道要实现不同 vlan 间通信，就必须需要有路由功能，不同 VLAN 之间相互通信的两种方式（单臂路由、三层交换机）。</p>
+<p><strong>什么是单臂路由？</strong></p>
+<p>单臂路由的实现方式，其实就是普通二层交换机加路由器，从而实现不同 vlan 间的可以互相通信。</p>
+<p><img src="https://pic1.zhimg.com/v2-0ae780c0f23c6731af84644e6de61218_r.jpg"></p>
+<p><strong>那什么是三层交换机呢？</strong></p>
+<p>对于小型的网络，单臂路由可以应付，但随着 VLAN 之间流量的不断增加，很可能导致路由器成为整个网络的瓶颈，出现掉包、或者通信堵塞。</p>
+<p>为了解决上述问题，三层交换机应运而生。三层交换机，本质上就是 “带有路由功能的（二层）交换机”。路由属于 OSI 参照模型中第三层网络层的功能，因此带有第三层路由功能的交换机才被称为 “三层交换机”。</p>
+<p>关于三层交换机的内部结构，可以参照下面的简图。</p>
+<p><img src="https://pic3.zhimg.com/v2-08a3a0a1184a7fa9c64a16f3fe496afa_r.jpg"></p>
+<p>在一台本体内，分别设置了交换机模块和路由器模块；而内置的路由模块与交换模块相同，使用 ASIC 硬件处理路由。因此，与传统的路由器相比，可以实现高速路由。并且，路由与交换模块是汇聚链接的，由于是内部连接，可以确保相当大的带宽，所以对于正规的项目，需要使用三层交换机来实现网网络间的通信。</p>
+<p><strong>三、什么是网关</strong></p>
+<p>在了解了 vlan 与三层交换机后，能不能通信，还需要看网关是否正确。</p>
+<p><strong>什么是网关</strong></p>
+<p>网关 (Gateway) 又称网间连接器、协议转换器。网关在传输层上以实现网络互连，是最复杂的网络互连设备，仅用于两个高层协议不同的网络互连。</p>
+<p><strong>如何来理解网关</strong></p>
+<p>大家都知道，从一个房间走到另一个房间，必然要经过<strong>一扇门</strong>。同样，从一个网络向另一个网络发送信息，也必须经过一道 “关口”，这道关口就是网关。顾名思义，网关(Gateway) 就是一个网络连接到另一个网络的“<strong>关口</strong>”。</p>
+<p>按照不同的分类标准，网关也有很多种。TCP/IP 协议里的网关是最常用的，在这里我们所讲的 “网关” 均指 TCP/IP 协议下的网关。</p>
+<p><strong>网关的 ip 地址</strong></p>
+<p><strong>那么网关到底是什么呢？</strong></p>
+<p>网关实质上是一个网络通向其他网络的 IP 地址，网关在网段内的可用 <strong>ip 中选一个</strong>，不过，一般用的是<strong>第 1 个和最后一个</strong>。</p>
+<p><strong>例如</strong></p>
+<p>比如有网络 A 和网络 B，</p>
+<p><strong>网络 A：</strong>的 IP 地址范围为 “192.168.1.1~192. 168.1.254”，子网掩 255.255.255.0；</p>
+<p>如果需要与其它网段通信，那么它的网关可以设置为 192.168.1.1，当然也可以设置为<strong>网段内</strong>其它的一个 ip 地址。</p>
+<p><strong>网络 B：</strong>的 IP 地址范为 “192.168.2.1~192.168.2.254”，子网掩码 255.255.255.0。</p>
+<p>如果需要与其它网段通信，那么它的网关可以设置为 192.168.2.1，当然也可以设置为<strong>网段内</strong>其它的一个 ip 地址。</p>
+<p><img src="https://pic1.zhimg.com/80/v2-bf05dea8d274daf01a4714dc5741ec9c_1440w.jpg"></p>
+<p><strong>网关是如何实现通信？</strong></p>
+<p>在没有<strong>路由器</strong>的情况下，不同的两个网络之间是<strong>不能</strong>进行 TCP/IP 通信的，即使是两个网络连接在同一台交换机 (或集线器) 上，TCP/IP 协议也会根据子网掩码 (255.255.255.0) 判定两个网络中的主机处在不同的网络里。而要实现这两个网络之间的通信，则<strong>必须通过网关</strong>。</p>
+<p>如果<strong>网络 A</strong> 中的主机发现<strong>数据包</strong>的目的主机<strong>不在</strong>本地网络中，就把数据包转发给它<strong>自己的网关</strong>，再由网关转发给网络 B 的网关，网络 B 的网关再转发给网络 B 的某个主机 (如附图所示)。网络 B 向网络 A 转发数据包的过程。</p>
+<p>所以说，只有设置好网关的 <strong>IP 地址</strong>，TCP/IP 协议才能实现不同网络之间的相互通信。</p>
+<p><strong>什么是默认网关？</strong></p>
+<p>　　如果搞清了什么是网关，默认网关也就好理解了。就好像一个房间可以有多扇门一样，一台主机可以有多个网关。<strong>默认网关</strong>的意思是一台主机如果找不到可用的网关，就把数据包发给默认<strong>指定的网关</strong>，由这个网关来处理数据包。现在<strong>主机</strong>使用的网关，一般指的是默认网关。</p>
+<p><strong>四、什么是 DNS</strong></p>
+<p>DNS 是域名解析服务器（Domain Name System），是把网址变成 IP 地址的服务器。</p>
+<p>DNS 说白了是把域名翻译成 IP 地址用的，这里面<strong>举个例子</strong>，大家就很容易清楚了。</p>
+<p>例如我们在浏览器里面输入 <a class="link"   href="https://link.zhihu.com/?target=http://www.baidu.com" >http://www.baidu.com<i class="fas fa-external-link-alt"></i></a> 的时候，机器要跟百度这个网站进行<strong>通信</strong>，机器要往外面<strong>发送</strong>数据包，数据包里面要写百度这台服务器的 <strong>IP 地址</strong>，我们不知道 IP 地址是多少，那么就需要主机<strong>问 DNS 服务器</strong>，DNS 服务器就自动帮我们把 <a class="link"   href="https://link.zhihu.com/?target=http://www.baidu.com" >http://www.baidu.com<i class="fas fa-external-link-alt"></i></a> 这个域名<strong>翻译成</strong>了 IP 地址 61.135.169.105。然后写到了数据包的目的 IP 地址里面就可以进行通信。</p>
+<p>就跟我们写信一样，你得写个收信人的<strong>地址</strong>邮局才能给你发送吧，你给国外写信，你写中文地址邮局不认识，需要这个一个人帮你翻译成英语。这就是 DNS 的作用，所以你的在本地连接里面写 DNS 才可以正常浏览网页，如果不设置 DNS，是无法正常访问网页的。</p>
+<p><strong>五、MAC 地址</strong></p>
+<p>讲到 MAC 地址，就不得不提 ip 地址，这里顺便把 ip 地址也说下。</p>
+<p><strong>IP 与 MAC</strong></p>
+<p>虽然现在已经 ipv6 了，但我们基本用的大多数还是 ipv4 协议，所谓 ip 就是你电脑整个<strong>网络的编号</strong>。其他电脑想访问电脑就得需要这个编号。但是这个编号很多情况下是一直在<strong>变化</strong>的。唯一不变的是你的 MAC 地址：<strong>物理地址</strong>。</p>
+<p>MAC 是网络中用来标识网卡设备的唯一网络地址。由相关硬件制造商统一分配，每台电脑的 MAC 地址都是<strong>唯一</strong>的。</p>
+<p>做个比喻，你经常搬家，你没搬一次家都有一个地址，XX 小区 XX 单元 XX 号，这个就是 IP。但是你的名字不变，这个就是 MAC，不同的是我们的 <strong>MAC 不允许重名。</strong></p>
+<p><img src="https://pic3.zhimg.com/v2-c87c057f08147d3154d24815c4272f22_r.jpg"></p>
+<p><strong>我们的 IP 分为两个部分：</strong>如上图分为<strong>网络部分</strong>和<strong>主机部分</strong>。网络部分好比就是你在 XX 省 XX 市 XX 镇，这个是国家固定下来了的。但是 XX 小区 XX 单元 XX 号是开发商自己定的。两个编号<strong>加起来</strong>就是你的 ip 了。不同的是在现实中两个编号的长度是固定的，在网络上 A、B、C、D 的 ip 地址却是变化的，这个在前天有详细讲到。</p>
+<p><strong>六、子网掩码</strong></p>
+<p>子网掩码是为了区分网络位和主机位，上面我们说到过，一个 ip 地址是由<strong>网络部分</strong>和<strong>主机部分。</strong>正如一个人的名字由姓与名组成。</p>
+<p>那么我们可以把 IP 地址比作一个人的名字，那么子网掩码就像是一份名单，可以快速的知道那些人同姓，那些人不同姓，把同姓的人分在一组，让他们之前可以互相交流。</p>
+<p><strong>举个例子</strong></p>
+<p><strong>有一个网段</strong>是 192.168.1.0-192.1.254，这个网段就像一个村子一样，就称它为<strong>安防村</strong>，此这网段有个 ip 地址是 192.168.1.1，我们就叫他安防一，另外一个人叫安防二，它的 ip 地址为 192.168.1.2，我们一看他们，就知道他们是同村的。</p>
+<p><strong>另外有一个网段，</strong>是 192.168.0.0——192.168.255.254，我们叫它<strong>安村</strong>，村里有个同样有两个 ip 地址为 92.168.1.1 与 192.168.1.2，也叫安防一，安防二，那么问题来了？这个时候，如何区分他们是属于那个村的？</p>
+<p>这个时候就需要<strong>子网掩码</strong>了来判断他们是属于那个网段的，需要把安防一、安防二带到村里去认下，就知道他们是属于那个村了，<strong>安防村</strong>的网段是 255.255.255.0，<strong>安村</strong>的网段是 255.255.0.0。</p>
+<p>网络中也会出现类似于 “同名”“同姓” 的 ip 地址，如何区分他们到底是属于那个网段，就需要依靠子网掩码了。</p>
+
         </div>
 
         
             <div class="post-copyright-info">
                 <div class="article-copyright-info-container">
     <ul>
-        <li>本文标题：Python Day6</li>
+        <li>本文标题：全面讲解 Vlan、三层交换机、网关、DNS、子网掩码、MAC 地址等网络知识</li>
         <li>本文作者：Yixin</li>
-        <li>创建时间：2021-05-02 15:17:21</li>
+        <li>创建时间：2021-11-16 19:17:21</li>
         <li>
-            本文链接：https://keep.xpoet.cn/2021/05/02/simpread-Python 学习 -Day6（2021.3.3）_Yixin 的博客 - CSDN 博客/
+            本文链接：https://keep.xpoet.cn/2021/11/16/simpread-全面讲解 Vlan、三层交换机、网关、DNS、子网掩码、MAC 地址等网络知识，值得收藏学习！/
         </li>
         <li>
             版权声明：本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -231,29 +302,14 @@
         
             <div class="article-nav">
                 
-                    <div class="article-prev">
-                        <a class="prev"
-                           rel="prev"
-                           href="/2021/05/02/simpread-Python%20%E5%AD%A6%E4%B9%A0%20-Day7%EF%BC%882021.3.4%EF%BC%89_Yixin%20%E7%9A%84%E5%8D%9A%E5%AE%A2%20-%20CSDN%20%E5%8D%9A%E5%AE%A2/"
-                        >
-                            <span class="left arrow-icon flex-center">
-                              <i class="fas fa-chevron-left"></i>
-                            </span>
-                            <span class="title flex-center">
-                                <span class="post-nav-title-item">Python Day7</span>
-                                <span class="post-nav-item">上一篇</span>
-                            </span>
-                        </a>
-                    </div>
-                
                 
                     <div class="article-next">
                         <a class="next"
                            rel="next"
-                           href="/2021/05/02/simpread-Python%20%E5%AD%A6%E4%B9%A0%20-Day5%EF%BC%882021.3.2%EF%BC%89_Yixin%20%E7%9A%84%E5%8D%9A%E5%AE%A2%20-%20CSDN%20%E5%8D%9A%E5%AE%A2/"
+                           href="/2021/11/16/simpread-%E9%9D%99%E6%80%81%20ip%20%E5%8A%A8%E6%80%81%20ip%20%E6%B5%AE%E5%8A%A8%20ip%20%E8%99%9A%E6%8B%9F%20ip%20%E7%9A%84%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F/"
                         >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">Python Day5</span>
+                                <span class="post-nav-title-item">静态IP 动态IP 浮动IP 虚拟IP 区别是什么？</span>
                                 <span class="post-nav-item">下一篇</span>
                             </span>
                             <span class="right arrow-icon flex-center">

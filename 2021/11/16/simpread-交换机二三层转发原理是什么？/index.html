@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Yixin">
+    
+    <title>
+        
+            交换机二三层转发原理 |
+        
+        Yixin blog
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo.svg">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/css/font-awesome.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"example.com","root":"/","language":"zh","path":"search.json"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.svg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"不要熬夜哟！"},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":true}}},"local_search":{"enable":true,"preload":true},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":true},"lazyload":{"enable":false},"version":"3.4.3"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fas fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                Yixin blog
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">交换机二三层转发原理</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar.svg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">Yixin</span>
+                        
+                            <span class="author-label">Lv4</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;2021-11-16 17:17:21
+    </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <h3 id="二层转发原理"><a href="#二层转发原理" class="headerlink" title="二层转发原理"></a>二层转发原理</h3><p>交换机有多个网络端口，它通过识别数据帧的<strong>目标 MAC 地址</strong>，根据 <strong>MAC 地址表</strong>决定从哪个端口发送数据。MAC 地址表不需要在交换机上手工设置，而是可以自动生成的。</p>
+<p><img src="https://pic4.zhimg.com/v2-2e9606f05c1c778ac23df0ae3ac699ec_r.jpg?source=1940ef5c">交换机是如何添加、更新、删除 MAC 地址表条目的？  </p>
+<p>在初始状态下，交换机的 MAC 地址表是空的，不包含任何条目。当交换机的某个端口接收到一个数据帧时，它就会将这个数据帧的源 MAC 地址、接收数据帧的端口号作为一个条目保存在自己的 MAC 地址表中，同时在接收到这个数据帧时重置这个条目的老化计时器时间。这就是交换机自动添加 MAC 地址表条目的方式。</p>
+<p><img src="https://pic1.zhimg.com/v2-94c4fdb3a308f405a7b6cc7d7b02ca33_r.jpg?source=1940ef5c"></p>
+<p>在新增这一条 MAC 地址条目后，如果交换机再次从同一个端口收到相同 MAC 地址为源 MAC 地址的数据帧时，交换机就会<strong>更新</strong>这个条目的老化计时器，确保活跃的的条目不会老化。但是如果在老化时间内都没收到匹配这个条目的数据帧，交换机就会将这个老化的条目从自己的 MAC 地址表中<strong>删除</strong>。</p>
+<p><img src="https://pic1.zhimg.com/v2-182787b10366b2981075f003c4b1f6f1_r.jpg?source=1940ef5c"></p>
+<p>还可以手动在交换机的 MAC 地址表中添加<strong>静态条目</strong>。静态添加的 MAC 地址条目优先动态学习的条目进行转发，而且静态条目没有老化时间，会一直保存在交换机的 MAC 地址表中。</p>
+<p>如何使用 MAC 地址表条目进行转发？  </p>
+<p>当交换机的某个端口收到一个单播数据帧时，它会查看这个数据帧的二层头部信息，并进行两个操作。一个操作是根据源 MAC 地址和端口信息添加或更新 MAC 地址表。另一个操作是查看数据帧的目的 MAC 地址，并根据数据帧的目的 MAC 地址查找自己的 MAC 地址表。在查找 MAC 地址表后，交换机会根据查找结果对数据帧进行处理，这里有 3 中情况：</p>
+<ol>
+<li> 交换机没有在 MAC 地址表中找到这个数据帧的目的 MAC 地址，因此交换机不知道自己的端口是否有连接这个 MAC 地址的设备。于是，交换机将这个数据帧从除了接收端口之外的所有端口<strong>泛洪</strong>出去。</li>
+</ol>
+<p><img src="https://pic2.zhimg.com/v2-d2152dead545b7b6b2232fb7293a0f72_r.jpg?source=1940ef5c"></p>
+<ol>
+<li> 交换机的 MAC 地址表中有这个数据帧的目的 MAC 地址，且对应端口不是接收到这个数据帧的端口，交换机知道目的设备连接在哪个端口上，因此交换机会根据 MAC 地址表中的条目将数据帧从对应端口单播<strong>转发</strong>出去，而其它与交换机相连的设备则不会收到这个数据帧。</li>
+</ol>
+<p><img src="https://pic3.zhimg.com/v2-5bdf925ac01bdef2d090c1e914c3653c_r.jpg?source=1940ef5c"></p>
+<ol>
+<li> 交换机的 MAC 地址表中有这个数据帧的目的 MAC 地址，且对应端口就是接收到这个数据帧的端口。这种情况下，交换机会认为数据帧的目的地址就在这个端口所连接的范围内，因此目的设备应该已经收到数据帧。这个数据帧与其它端口的设备无关，不会将数据帧从其它端口转发出去。于是，交换机会<strong>丢弃</strong>数据帧。</li>
+</ol>
+<p><img src="https://pica.zhimg.com/v2-90264b0501dff33c72cc6ce16eec8470_r.jpg?source=1940ef5c"></p>
+<p><strong>单播</strong>：主机一对一的发送数据。单播地址是主机的 MAC 地址。 <strong>广播</strong>：向局域网内所有设备发送数据。只有全 1 的 MAC 地址为广播 MAC 地址，即 <code>FF-FF-FF-FF-FF-FF</code> 。 <strong>泛洪</strong>：将某个端口收到的数据从除该端口之外的所有端口发送出去。泛洪操作广播的是普通数据帧而不是广播帧。</p>
+<p><img src="https://pic2.zhimg.com/v2-a24da6313ad461a0d5be1e451c075b84_r.jpg?source=1940ef5c"><img src="https://pic1.zhimg.com/v2-58cc62235600bb40115f969a8776795d_r.jpg?source=1940ef5c"></p>
+<h3 id="三层转发原理"><a href="#三层转发原理" class="headerlink" title="三层转发原理"></a>三层转发原理</h3><p>路由器有多个端口，分别连接不同的数据链路。它通过识别目的 IP 地址的<strong>网络号</strong>，再根据<strong>路由表</strong>进行转发，路由表中有<strong>匹配</strong>的路由条目才会转发，无匹配的路由条目则直接丢弃。路由条目既可以手动设置静态路由，也可以通过路由协议自动生成动态路由。</p>
+<p>路由器如何进行三层转发？  </p>
+<p>当一台路由器收到一个数据包时，会执行如下步骤：</p>
+<ol>
+<li> 对数据包进行<strong>解封装</strong>。</li>
+</ol>
+<p>通过解封装，查看网络层头部信息的<strong>目的 IP 地址</strong>。</p>
+<ol>
+<li> 在路由表中查找匹配的<strong>路由条目</strong>。</li>
+</ol>
+<p>查找匹配的路由条目，就需要将数据包的目的 IP 地址与各个路由条目的网段地址先进行二进制<strong>与（ AND ）运算</strong>，再将运算结果与路由条目的网段地址进行<strong>比较</strong>，若一致则该条目与目的 IP 地址相匹配。最后，与所有路由条目完成运算和比较，可得到一条或多条相匹配的路由条目。也可能没有匹配的路由条目，那么丢弃数据包。</p>
+<p><img src="https://pic1.zhimg.com/v2-6ec2a524c061ae8b2790ef6d5f4ecea9_r.jpg?source=1940ef5c"></p>
+<ol>
+<li> 从多个匹配项中选择<strong>掩码最长</strong>的路由条目。</li>
+</ol>
+<p>如果路由表中有多条路由条目都匹配数据包的目的 IP 地址，则路由器会选择掩码长度最长的路由条目，这种匹配方式称为<strong>最长匹配原则</strong>。</p>
+<p>例如：10.1.3.10 的网络地址与 10.1.3.0/16 和 10.1.3.0/24 两项都匹配，这时应该选择匹配度最长的 10.1.3.0/24 。</p>
+<p><img src="https://pic1.zhimg.com/v2-6cb2b1e3d2670718fe04fe0a32308d34_r.jpg?source=1940ef5c"></p>
+<ol>
+<li> 将数据包按照相应路由条目进行<strong>转发</strong>。</li>
+</ol>
+<p>路由条目中包含<strong>下一跳</strong>和<strong>出接口</strong>。当路由器找到相应的路由条目后，它就会根据对应的下一跳和出接口，将数据包从出接口发送数据给下一跳设备。</p>
+<p><img src="https://pic1.zhimg.com/v2-04d3188c4c2e1323eff102b5ad7a51c6_r.jpg?source=1940ef5c"></p>
+<h3 id="ARP"><a href="#ARP" class="headerlink" title="ARP"></a>ARP</h3><p>只要确定了 IP 地址，就可以向这个目标地址发送 IP 数据报文。但是在进行实际通信时，还要知道每个 IP 地址所对应的 MAC 地址。</p>
+<p>地址解析协议，简称 <strong>ARP</strong> 协议。是根据目的设备的 IP 地址来查询对应 MAC 地址的协议。</p>
+<h3 id="ARP-的工作原理"><a href="#ARP-的工作原理" class="headerlink" title="ARP 的工作原理"></a>ARP 的工作原理</h3><p>当主机 A 向<strong>同一个网段</strong>内的主机 C 发送数据，但是不知道主机 C 的 MAC 地址。</p>
+<p><img src="https://pic2.zhimg.com/v2-37aeac84e9712213b7190e3eeba4d182_r.jpg?source=1940ef5c"></p>
+<ol>
+<li> <strong>ARP 请求</strong>：主机 A 以主机 C 的 IP 地址为目的 IP 地址，以广播 MAC 地址为目的 MAC 地址，在同网段内发送这个广播报文，这个报文就叫 <strong>ARP 请求报文</strong>。</li>
+</ol>
+<p>二层交换机不查看 IP 地址，根据目的 MAC 地址将报文除接收端口外的所有端口发送。</p>
+<p><img src="https://pic3.zhimg.com/v2-c70adbd7b5475c1592a5a7be1b39029b_r.jpg?source=1940ef5c"></p>
+<ol>
+<li> <strong>ARP 响应</strong>：主机 C 发现目的 IP 地址是自己的 IP 地址，于是主机 C 以自己 MAC 地址和 IP 地址作为源 MAC 地址和源 IP 地址，以主机 A 的 MAC 地址和 IP 地址作为目的 MAC 地址和目的 IP 地址，发送响应报文给主机 A ，这个报文就叫 <strong>ARP 响应报文</strong>。其它主机收到主机 A 的 ARP 请求报文，因为目的 IP 地址不是自己的 IP 地址，因此不会进行响应。</li>
+</ol>
+<p>当主机 A 在发送 ARP 广播请求报文时，二层交换机已经有主机 A 的 MAC 地址表条目。当收到主机 C 发送的单播 ARP 响应报文时，二层交换机将报文从相应端口发送出去。并将主机 C 的 MAC 地址和对应端口记录到 MAC 地址表中。</p>
+<p><img src="https://pic3.zhimg.com/v2-cf3fe01d0226b3e51142683f870cc8ea_r.jpg?source=1940ef5c"></p>
+<ol>
+<li> <strong>更新 ARP 缓存表</strong>：主机 A 收到 ARP 响应报文后，将主机 C 的 IP 地址和 MAC 地址记录到 ARP 缓存表中。下次再向主机 C 发送数据时，直接将缓存的目的 MAC 地址进行封装。</li>
+</ol>
+<p><img src="https://pic1.zhimg.com/v2-3321c6c00c0240c0ae17d51285b0f628_r.jpg?source=1940ef5c"></p>
+<p>当主机 A 向<strong>不同网段</strong>的主机 C 发送数据，但是不知道主机 C 的 MAC 地址。</p>
+<p><img src="https://pic1.zhimg.com/v2-b3d81353dc43a4c8e3b909593ce7c2ce_r.jpg?source=1940ef5c"></p>
+<ol>
+<li> 主机 A 使用主机 C 的 IP 地址查询 ARP ，ARP 发现主机 C 不在同一个网段，需要通过<strong>默认网关</strong>（即默认路由的下一跳地址），但是没有网关 MAC 地址；</li>
+</ol>
+<p><img src="https://pica.zhimg.com/v2-79ac25f0a620da7a241dbf8c1149b281_r.jpg?source=1940ef5c"></p>
+<ol>
+<li> 主机 A 先将发送给主机 C 的数据放入缓存中，然后发送 ARP 请求报文，主机 A 以网关 IP 地址为目的 IP 地址发送 <strong>ARP 广播请求报文</strong>；</li>
+</ol>
+<p><img src="https://pic3.zhimg.com/v2-0669e4d3be8d9567b86a0a2e3422733e_r.jpg?source=1940ef5c"></p>
+<ol>
+<li> 路由器收到 ARP 广播请求报文后，将主机 A 的 MAC 地址和对应端口添加到自己的 MAC 表中，然后查看目的 IP 地址发现是请求自己的 MAC 地址，于是单播发送 <strong>ARP 响应报文</strong>；</li>
+</ol>
+<p><img src="https://pic2.zhimg.com/v2-55efd7c1c25f219fa6696bc703a71b53_r.jpg?source=1940ef5c"></p>
+<ol>
+<li> 主机 A 收到 ARP 响应报文后，将发送给主机 C 的数据封装<strong>网关 MAC 地址</strong>为目的 MAC 地址进行发送；</li>
+</ol>
+<p><img src="https://pic2.zhimg.com/v2-48f6c4e4e29e7fad6dc3fb21363abca0_r.jpg?source=1940ef5c"></p>
+<ol>
+<li> 路由器收到报文后，查看目的 IP 地址，是发送给主机 C 的，于是查询路由表从相应端口发送数据。由于没有主机 C 的 MAC 地址，路由器发送 <strong>ARP 请求报文</strong>，源 MAC 地址和源 IP 地址替换为发送端口的 MAC 地址和 IP 地址；</li>
+</ol>
+<p><img src="https://pica.zhimg.com/v2-ad1e82bed0952190f5d3d0613faf1566_r.jpg?source=1940ef5c"></p>
+<ol>
+<li> 主机 C 收到 ARP 请求报文后，添加路由器的端口和 MAC 地址到 MAC 地址表，单播发送 <strong>ARP 响应报文</strong>；</li>
+</ol>
+<p><img src="https://pic1.zhimg.com/v2-b435e0be0d9287ce9271d574d352ff0a_r.jpg?source=1940ef5c"></p>
+<ol>
+<li> 路由器收到主机 C 的 MAC 地址后，将其添加到 MAC 地址表中。将主机 A 发送给主机 C 的报文重新封装，以自己的 MAC 地址为源 MAC 地址，以主机 C 的 MAC 地址为目的 MAC 地址，发送给主机 C ；</li>
+</ol>
+<p><img src="https://pic1.zhimg.com/v2-374c5ac6cd0b4489b30cc94e9e5ebbcc_r.jpg?source=1940ef5c"></p>
+<ol>
+<li> 主机 C 收到主机 A 发送的数据，发送过程结束。</li>
+</ol>
+<p>当主机 C 向主机 A 发送回复报文时，同主机 A 向主机 C 发送数据的步骤一致。</p>
+<p><img src="https://pic3.zhimg.com/28b870d08_xs.jpg?source=1940ef5c">小耸​</p>
+<p>PC1 ————————- 三层交换机 ———————–PC2<br>　192.168.1.2　　192.168.1.1　　192.168.2.1　　192.168.2.2<br>简述 PC1 ping PC2 的完整过程，含报文流程，以及 PC1、PC2、交换机各自的行为。<br><strong>[答:]</strong><br>#1 PC 1 首先检查出目的 IP 地址 192.168.2.2（PC 2）与自己不在同一网段，因此它发出请求网关地址 192.168.1.1(即是交换机的三层接口) 对应 MAC 的 ARP 请求；</p>
+<p>#2 SWITCH 收到 PC<br>1 的 ARP 请求后，检查请求报文发现被请求 IP 是自己的三层接口 IP，因此发送 ARP 应答并将自己的三层接口 MAC（MAC<br>S）包含在其中。同时它还会把 PC 1 的 IP 地址与 MAC 地址对应（192.168.1.2&lt;==&gt;MAC<br>PC1）关系记录到自己的 ARP 表项中去（因为 ARP 请求报文中包含了发送者的 IP 和 MAC）；</p>
+<p>#3 PC 1 得到网关的 ARP 应答后，组装 ICMP 请求报文并发送，报文的目的 MAC＝MAC S、源 MAC＝MAC PC 1、源 IP＝192.168.1.2、目的 IP＝192.168.2.2；</p>
+<p>#4 SWITCH 收到报文后，首先根据报文的源 MAC+VID（即 VLAN ID）更新 MAC 地址表。然后，根据报文的目的 MAC＋VID 查找 MAC 地址表，发现匹配了自己三层接口 MAC 的表项。这里说明一下，三层交换机为 VLAN 配置三层接口 IP 后，会在交换芯片的 MAC 地址表中添加三层接口 MAC＋VID 的表项，并且为表项的三层转发标志 (Route 标志) 置位。当报文的目的 MAC 匹配这样的表项以后，说明需要作三层转发，于是继续查找交换芯片的三层表项；</p>
+<p>#5 交换芯片根据报文的目的 IP 去查找其三层表项，因为交换机当前路由表只有<br>192.168.1.1/32<br>192.168.1.2/32<br>192.168.2.1/32<br>192.168.1.0/24<br>192.168.2.0/24<br>所以 ping request 报文命中 192.168.2.0/24 转发出口是交换机 CPU</p>
+<p>#6 CPU 根据报文的目的 IP 去查找其软件路由表，发现匹配了一个直连网段（PC 2 对应的网段），于是继续查找其软件 ARP 表，仍然查找失败。然后 SWITCH 会在目的网段对应的 VLAN 的所有端口发送请求地址 192.168.2.2 对应 MAC 的 ARP 请求；</p>
+<p>#7 PC<br>2 收到 SWITCH 发送的 ARP 请求后，检查发现被请求 IP 是自己的 IP，因此发送 ARP 应答并将自己的 MAC（MAC PC<br>2）包含在其中。同时，将 SWITCH 的 IP 与 MAC 的对应关系（192.168.2.1&lt;==&gt;MACS）记录到自己的 ARP 表中去；</p>
+<p>#8 SWITCH 收到 PC 2 的 ARP 应答后，将其 IP 和 MAC 对应关系（192.168.2.2&lt;==&gt;MAC<br>PC 2）记录到自己的 ARP 表中去，并将 PC 1 的 ICMP 请求报文发送给 PC 2，报文的目的 MAC 修改为 PC 2 的 MAC（MAC PC<br>2），源 MAC 修改为自己的 MAC（MAC<br>S）。同时，在交换芯片的三层表项中根据刚得到的三层转发信息添加表项（内容包括 IP、MAC、出口 VLAN、出端口），这样后续的 PC 1 发往 PC<br>2 的报文就可以通过该硬件三层表项直接转发了；</p>
+<p>#9 PC 2 收到 SWITCH 转发过来的 ICMP 请求报文以后，回应 ICMP 应答给 PC<br>1。ICMP 应答报文的转发过程与前面类似，只是由于 SWITCH 在之前已经得到 PC<br>1 的 IP 和 MAC 对应关系了，也同时在交换芯片中添加了相关三层表项，因此这个报文直接由交换芯片硬件转发给 PC 1；</p>
+<p>#10 这样，后续的往返报文都经过查 MAC 表 =&gt; 查三层转发表的过程由交换芯片直接进行硬件转发了。</p>
+<p>上面就是简单的三层交换的过程了。</p>
+<p>二层交换就比三层简单多了，同一个 IP 网段内的主机互 ping，如果不知道对方的 MAC 地址，就通过 ARP 协议泛洪，得到了对方的 MAC 地址以后，再发出 ICMP 报文，就可以 ping 通了。</p>
+<p><img src="https://pica.zhimg.com/v2-1b5968078243a87c425788cc06159a61_xs.jpg?source=1940ef5c">sir long</p>
+<p>你可以参考下这个小结，个人认为总结得还是比较到位的。</p>
+<p>首先二层转发是基于 MAC 地址转发，三层转发基于 IP 地址转发，但是这并不意味着仅仅依靠 IP 地址就能转发，三层转发是建立在二层的基础上的，而仅仅依靠 MAC 地址是能够转发的。另外，由于二三层转发基于 MAC 地址、IP 地址、FDB 表（MAC 地址学习、更新、老化、删除等）、ARP 表、路由表、三层转发表、VLAN 端口类型（Access、Trunk、Hybrid）、VLAN 帧格式、ARP 报文格式等需要对此有基本的熟知。以下图为例，总结一下交换机中，基于 VLAN 的二三层转发原理。</p>
+<p><img src="https://pic2.zhimg.com/v2-4a4c9ee509c1b56a6de3850318d17493_r.jpg?source=1940ef5c"></p>
+<p>一、基本概念术语：<br>①MAC 地址：48bit 的硬件地址，单播地址格式为首字节最低位为 1，多播地址格式为首字节最低位为 0，广播地址为全 1（即 FF：FF：FF：FF：FF：FF）。<br>②FDB 表（FordWarding DateBase）：即 MAC 地址映射表，有 MAC 地址、端口、VLAN ID 等信息。<br>③ARP 表：用于记录 IP 和 MAC 映射关系的表。<br>④三层转发表：即基于硬件三层转发的包含目的 IP 地址、VLAN ID、端口和下一跳 MAC 地址等的关系表。<br>⑤路由表：包含默认路由、RIP 等动态路由的路由路径信息的记录表。<br>⑥VLAN 端口：主要是 Access 一般是用于连接主机，其发出的数据帧不带 tag 标签；还有就是 Trunk 用于可连接不同交换机的主干链路，其上发出的数据帧可能会带 tag 标签，用以识别不同 VLAN，如果没带则采用默认的 VLAN （PVID）</p>
+<p>假设最开始所有 PC 和交换机没有任何表项存在（ARP 缓存、FDB 缓存、三层转发表缓存等），且端口均为 Access 模式。</p>
+<p>二、二层转发（同一 VLAN 中主机通信）：<br>以上图中 PC_A ping PC_B 为例来详细分析整个过程。<br>①PC_A（192.168.10.1/24） 要 ping PC_B(192.168.10.2/24)，首先要去检查目标 IP 地址和自己的 IP 地址是否在同一个网段中，经过 IP 和子网掩码进行与运算，得知 PC_A 和 PC_B 属于语同一网段 192.168.10.0 网段。因此进行下一步：ARP 表项查询。<br>②根据目标 IP：192.168.10.2 作为索引，在 ARP 表中查找对应的 MAC 地址，由于 ARP 表最开始是空的，所以没有找到对应 MAC，因此 PC_A 需要发送一个 ARP 广播报文在 VLAN 1 中请求 PC_B（192.168.10.2）的 MAC 地址，PC 封装的 ARP 报文主要内容为（opcode 操作码字段为 0X01 代表这是一个 ARP 请求报文，目标 MAC 由于不知道因此填充为 0，其余包含以太帧头部具体如下图所示）</p>
+<p><img src="https://pic2.zhimg.com/v2-5e13ff74b407544c96ca8e909ee854f2_r.jpg?source=1940ef5c"></p>
+<p>关于 ARP 报文各个字段的含义，用 wireshark 抓一个 ARP 包来查看，如下所示：</p>
+<p><img src="https://pic1.zhimg.com/v2-bb499942583323d698ea39518561b9a5_r.jpg?source=1940ef5c"></p>
+<p>③当交换机从 a 端口收到 PC_A 发出的报文，解析以太头部后发现目标 MAC 是 FF：FF：FF：FF：FF：FF，则知其是一个广播帧，解析源 MAC：MA，由于 FDB 表当前空空如也，因此先将 port a&lt;-&gt;MA&lt;-&gt;VLAN 1 等信息缓存到 FDB 表中。之后根据端口为 Access 模式，加上一个 VLAN tag（主要包含优先级和 VLAN ID=1），使其成为一个 802.1Q 的带有 VLAN tag 的以太帧，在交换机内部开始进行交换。<br>④端口检测后发现 b、c、d 三个端口（其实还有一个 VLAN 接口，暂不提及）归属于 VLAN 1，因此将 tag 剥离并从这三个端口转发出去。<br>⑤当 PC_C、PC_D 收到该广播帧解析内容发现目标 IP 不是自己则丢弃该数据帧，而 PC_B 发现目标 IP 就是自己，则先将 PC_A 的 192.168.10.1&lt;-&gt;MA 的映射信息更新到本地 ARP 表中。然后封装一个 ARP 回应的单播报文，内容主要为：源 IP：192.168.10.2，目标 IP：192.168.10.1，源 MAC：MB，目标 MAC：MA。发送出去，经端口 b 到达交换机。<br>⑥交换机收到来自端口 b 的报文，解析头部获得源 MAC，则先将 port b&lt;-&gt;MB&lt;-&gt;VLAN 1 缓存到 FDB 表中去，由于 FDB 表中已经有了 PC_A 的 MAC 地址缓存，因此根据 ARP 回复报文数据帧头部的目标 MAC 将报文从端口 a 转发出去（该步中当然也存在入口数据帧 tag 的添加与出口数据帧 tag 剥离的操作）。<br>⑦PC_A 接收到从端口 a 发出的 ARP 报文后，解析以太头部进行目标 MAC 匹配判断，匹配后解析报文内容，发现源 IP&lt;-&gt; 源 MAC 的对应关系，因此先缓存 192.168.10.2&lt;-&gt;MB，到 ARP 表中，之后有了 PC_B 的 MAC 地址接可以封装 icmp 报文进行 ping 的后续操作了。<br>⑧交换机收到来自 PC_A 和 PC_B 的 icmp request 与 icmp reply 报文，由于之前有缓存 FDB 表项，因此之后只会更新对应表项的老化标志，长时间没有这俩源 MAC 的报文到交换机则会删除对应表项。</p>
+<p>三、三层转发（跨越不同 VLAN 的主机通信）：<br>以上，以一台交换机上的同一个 VLAN 内的不同主机通信为例，描述了的是二层转发的基本过程，包括 ARP 表查询、ARP 请求、交换机 MAC 地址查询、FDB 表缓存、端口类型检查、VLAN tag 添加与剥离、目标主机 ARP 回复等步骤。而三层交换基本步骤差不多。以 VLAN 1 的 PC_A（192.168.10.1，MA）和 VLAN 2 的 PC_E（192.168.20.1，ME）相互 ping 为例分析（假设 VLAN 1 的网关为 VLAN 1 interface 的 IP：192.168.10.254，VLAN 2 的网关为 VLAN 2 interface 的 IP 为 192.168.20.254），以下过程也有加 VLAN tag 和剥离 VLAN tag 的过程，但与二层基本一致，因此不再赘述：</p>
+<p>①当 PC_A（192.168.10.1/24）要 ping PC_E（192.168.20.1/24）时，依然是检查目标 IP 是不是和自己在同一个网段，发现不在同一网段（一个在 10.0 网段一个在 20.0 网段），则需要经过网关（这里是交换机三层接口）来转发，因此 PC_A 在自己的 ARP 表中寻找网关对应的 MAC 地址，如果有则直接将报文封装为：目标 MAC 为网关 MAC，源 MAC 为 MA，发送端 IP 为 192.168.10.1，接收端 IP 为 192.168.20.1。<br>②由于第一次 PC_A 的 ARP 缓存中不存在网关的 MAC 地址。则先向 VLAN 1 内广播发送一个 ARP 请求，请求网关 192.168.10.254 的 MAC 地址，封装为源 MAC 为 MA，目标 MAC 不可知则为全 0，源 IP 为 192.168.10.1，目标 IP 为 192.168.10.254，到链路层封装的头部为，源 MAC 为 MA，目标 MAC 为全 F 即广播包，“帧类型” 字段则填上 ARP 的协议号 0x0806。<br>③交换机 SW1 收到 PC_A 发送的报文，二层解析头部检查为广播包，则从 VLAN 1 的除源端口外的各个端口转发出去，另外也转发一份到 VLAN 1 的三层接口，由于 PC_A 之前给 PC_B 发送过报文，SW 1 有 PC_A 的 FDB 缓存，则检查匹配后更新老化标志位。此外将 PC_A 的 IP、MAC、对应 port、VLAN ID 等信息记录到交换机的三层转发表中。<br>④VLAN 1 其他主机收到请求对象不是自己的 ARP 请求，丢弃该广播报文，而 SW 1 的三层接口解析到目标 IP 是自己，则封装一个源 MAC 是交换机 VLAN 1 interface 的 MAC，源 IP 是 192.168.10.254，目标 IP 是 192.168.10.1，目标 MAC 是 MA 的 ARP 应答报文，再经过以太头部封装，添加 ARP 单播报文头部，目标 MAC 为 MA。交换机二层收到自三层的报文，解析数据帧头部，根据目标 MAC 地址 MA 在 FDB 表中查找到其出端口是 port a，为 ACCESS 端口，则剥掉 tag（之前请求报文进入 port a 之后会被加上 tag，以致能够区分识别出 VLAN 1 的其他端口与 VLAN 1 interface）转发给 PC_A。<br>⑤PC_A 收到网关的 MAC 地址，则将发给 PC_E 的报文修改目标 MAC 为 VLAN 1 interface 即网关的 MAC 地址，而目标 IP 依旧是 PC_E 的 IP：192.168.20.1，然后封装以太头部以单播形式发送出去。<br>⑥SW 1 在收到这个数据包后，因为 “目的 MAC 地址” 为交换机自己 VLAN 接口的 MAC 地址，而且 “目的 IP 地址” 和“源 IP 地址”不在同一网段，所以直接提交到三层，根据包中的 “目的 IP 地址”(PC_E 的 IP 地址) 在三层硬件转发表中查看有无对应表项，因为是第一次通信，所以结果是查找失败，于是将数据包再转送到 CPU 去进行软件路由处理。<br>⑦ CPU 同样会根据包中的 “目的 IP 地址” 去查找其软件路由表，发现匹配了一个直连网段(PC_E 对应的网段)，于是继续查在 ARP 表中查找对应的 MAC 地址项。同样是由于是第一次查找，所以仍然查找失败。如果在 ARP 表中找到了对应的 MAC 地址，则数据可以直接由软件路由表转发了。<br>⑧如果没查找到则以 PC_E 的目标 IP 为请求对象，在其所在 VLAN 2 的目标网段内发送 ARP 请求广播（目标 MAC 为全 0，目标 IP 为 192.168.20.1，源 MAC 为 VLAN 2 interface 对应 MAC，源 IP 为 VLAN 2 interface 对应 IP，192.168.20.254），PC_E 则先缓存网关的 ARP 表项，然后以 ARP 单播形式回复自己的 MAC 地址 ME 给网关 192.168.20.254，SW 1 的 CPU 则根据回复的报文更新记三层转发表项，记录到 PC_E 的 IP、MAC、出端口、VLAN ID 等信息，此时三层转发表中有了 PC_A 和 PC_E 的转发表项。另外缓存 PC_E 的 ARP 表项与 FDB 表项目。<br>⑨三层交换机的 CPU 根据获取到的目标主机 MAC 和现有的直连路由信息将 PC_A 发来的数据包转发给 PC_E，这就是一次单方向的三层转发过程，其中也大量涉及到了二层转发（PC_A 在 VLAN 1 内广播请求网关 MAC，交换机 CPU 控制在 VLAN2 内广播请求 PC_E 的 MAC 等）。<br>⑩当 PC_E 回复 PC_A 报文时，与 PC_A 步骤相同，只是在 PC_E 上已经存在了网关 ARP 表项、交换机上已经存在了到 PC_A 的三层转发表项、FDB 表项等，所以会更简单些。另外由于三层转发表项的存在，因此 PC_E 回复 PC_A 的报文会直接根据三层转发表进行硬件转发，而不是 CPU 路由软件转发，效率会更快。</p>
+
+        </div>
+
+        
+            <div class="post-copyright-info">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li>本文标题：交换机二三层转发原理</li>
+        <li>本文作者：Yixin</li>
+        <li>创建时间：2021-11-16 17:17:21</li>
+        <li>
+            本文链接：https://keep.xpoet.cn/2021/11/16/simpread-交换机二三层转发原理是什么？/
+        </li>
+        <li>
+            版权声明：本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2021/11/16/simpread-%E9%9D%99%E6%80%81%20ip%20%E5%8A%A8%E6%80%81%20ip%20%E6%B5%AE%E5%8A%A8%20ip%20%E8%99%9A%E6%8B%9F%20ip%20%E7%9A%84%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">静态IP 动态IP 浮动IP 虚拟IP 区别是什么？</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2021/11/16/simpread-%E5%85%B3%E4%BA%8E%20TCP_IP%EF%BC%8C%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A%E7%9A%84%2010%20%E4%B8%AA%E9%97%AE%E9%A2%98/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">TCP_IP，必知必会10问</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+            <div class="comment-container">
+                <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments">&nbsp;评论</i>
+    </div>
+    
+
+        
+            
+    <div class="valine-container">
+        <script data-pjax
+                src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script>
+        <div id="vcomments"></div>
+        <script data-pjax>
+            function loadValine() {
+                new Valine({
+                    el: '#vcomments',
+                    appId: 'nLubyWWoLdhQhY0MFrVEp6TQ-gzGzoHsz',
+                    appKey: 'nKGU6OM4iawauPKsgfATStpK',
+                    meta: ['nick', 'mail', 'link'],
+                    avatar: 'wavatar',
+                    enableQQ: true,
+                    placeholder: '这里可以写评论...',
+                    lang: 'zh'.toLowerCase()
+                });
+
+                function getAuthor(language) {
+                    switch (language) {
+                        case 'en':
+                            return 'Author';
+                        case 'zh-CN':
+                            return '博主';
+                        default:
+                            return 'Master';
+                    }
+                }
+
+                // Add "Author" identify
+                const getValineDomTimer = setInterval(() => {
+                    const vcards = document.querySelectorAll('#vcomments .vcards .vcard');
+                    if (vcards.length > 0) {
+                        let author = 'Yixin';
+
+                        if (author) {
+                            for (let vcard of vcards) {
+                                const vnick_dom = vcard.querySelector('.vhead .vnick');
+                                const vnick = vnick_dom.innerHTML;
+                                if (vnick === author) {
+                                    vnick_dom.innerHTML = `${vnick} <span class="author">${getAuthor(KEEP.hexo_config.language)}</span>`
+                                }
+                            }
+                        }
+                        clearInterval(getValineDomTimer);
+                    } else {
+                        clearInterval(getValineDomTimer);
+                    }
+                }, 2000);
+            }
+
+            if ('true') {
+                const loadValineTimeout = setTimeout(() => {
+                    loadValine();
+                    clearTimeout(loadValineTimeout);
+                }, 1000);
+            } else {
+                window.addEventListener('DOMContentLoaded', loadValine);
+            }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>&nbsp;-&nbsp;
+            
+            2021&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">Yixin</a>
+        </div>
+        
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        访问人数&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        总访问量&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.3</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E5%B1%82%E8%BD%AC%E5%8F%91%E5%8E%9F%E7%90%86"><span class="nav-number">1.</span> <span class="nav-text">二层转发原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E5%B1%82%E8%BD%AC%E5%8F%91%E5%8E%9F%E7%90%86"><span class="nav-number">2.</span> <span class="nav-text">三层转发原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ARP"><span class="nav-number">3.</span> <span class="nav-text">ARP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ARP-%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="nav-number">4.</span> <span class="nav-text">ARP 的工作原理</span></a></li></ol>
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/dark-light-toggle.js"></script>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/code-copy.js"></script>
+
+
+
+
+<div class="post-scripts pjax">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/left-side-toggle.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/libs/anime.min.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/toc.js"></script>
+    
+</div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>
