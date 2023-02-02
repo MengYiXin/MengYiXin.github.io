@@ -9,7 +9,7 @@
     
     <title>
         
-            新年期望 |
+            关于Docker的缺点 |
         
         Yixin blog
     </title>
@@ -155,7 +155,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">新年期望</span>
+            <span class="title-hover-animation">关于Docker的缺点</span>
         </div>
 
         
@@ -173,7 +173,7 @@
                     <div class="meta-info">
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
-        <i class="fas fa-edit"></i>&nbsp;2021-05-02 15:11:21
+        <i class="fas fa-edit"></i>&nbsp;2023-02-02 20:05:21
     </span>
     
     
@@ -182,7 +182,7 @@
             <ul>
                 
                     <li>
-                        <a href="/tags/%E5%AD%A6%E4%B9%A0/">学习</a>&nbsp;
+                        <a href="/tags/%E6%A1%8C%E9%9D%A2%E4%BA%91/">桌面云</a>&nbsp;
                     </li>
                 
             </ul>
@@ -205,15 +205,27 @@
         
 
         <div class="article-content markdown-body">
-            <blockquote>
-<p>本文由 <a class="link"   target="_blank" rel="noopener" href="http://ksria.com/simpread/" >简悦 SimpRead<i class="fas fa-external-link-alt"></i></a> 转码， 原文地址 <a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/qq_36650546/article/details/114121176?spm=1001.2014.3001.5501" >blog.csdn.net<i class="fas fa-external-link-alt"></i></a></p>
+            <p>使用 docker 时候，我惊叹发现 docker 真的是个宝藏，可以秒级开启应用，不用特别繁琐的配置什么配置，可以减轻很多这种重复性的劳动。最近我在学习 docker，然后我就在想它可不可以虚拟化 Windows 的桌面系统呢？</p>
+<p>通过查找资料，我发现 docker 不适合虚拟化桌面，它比较适合 linux 族，Unix 族以及应用程序的虚拟化。</p>
+<p>逻辑是这样的，在操作系统的概念里面，有一个内核，docker 是基于 Linux 内核，它不适用于 Windows 虚拟化，Windows 操作系统有另外一个虚拟技术 Hype-y.</p>
+<p>从哪里可以验证呢？在 docker hub 的网站上面，可以看一下关于 Windows 的镜像，在这里都没有收录 Windows 系列的操作系统镜像，都是一些应用程序。</p>
+<p><a class="link"   href="https://link.zhihu.com/?target=https://hub.docker.com/search?q=Windows&type=image&page=1" >Docker Hub<i class="fas fa-external-link-alt"></i></a></p>
+<p>也就是说它比较适合 Linux 服务器的虚拟化，应用虚拟化。</p>
+<p>在桌面虚拟化的领域，其实只有几家厂商可以做到技术完全自主化，这几家厂商分别是</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Citrix 思杰 占有率46%   技术：XenServer</span><br><span class="line">Vmware      占有率18%   技术：Vmware EXSI</span><br><span class="line">微软        占有率未知  技术：hyper-v</span><br><span class="line">Redhat      占有率未知  技术：LVM</span><br><span class="line">华为        占有率未知  技术：openstack</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>在国内可能更多的听到是阿里云、腾讯云、或者华为云</p>
+<p>我觉得桌面虚拟化更像 IASS 这种状态，虚拟化比较浅，可能只到操作系统这一层，下面是虚拟化几个方向的示意图，这种技术之后可能还得要装一些应用软件，比如 Windows 的 IIS，linux 的 Nginx，或者是 oracle 的数据库。</p>
+<p><img src="https://cdn.staticaly.com/gh/MengYiXin/photo@master/20230202/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE-2023-02-02-163252.7hssufoyglw0.jpg" alt="屏幕截图-2023-02-02-163252"></p>
+<blockquote>
+<p>docker 的目的主要还是用于应用容器, 而不是虚拟系统. 虽然 docker 提供了很多基础系统镜像, 但不是用来搭虚拟机用的, 只是提供一个应用的运行环境而已, 没法当作一个完整的系统. 就比如 docker 里不能运行 docker, 这是特性, 不是bug, 是设计目标与实现方案共同导致的结果.</p>
 </blockquote>
-<p>1， 云原生开发 ： K8S， Docker , DevOps , Jenkins， Prometheus ，Rancher</p>
-<p>2， 微服务架构:    SpringBoot，微服务。</p>
-<p>3， 开发 ：           Vue，Golang , Python 高阶</p>
-<p>4， infra ：          计算机网络（CCNA，IP 规划)</p>
-<p>5,    项目经理：    PMO， PMP</p>
-<p>2021.02.26</p>
+<p>docker核心之一就是在一个系统内核下, 运行多个不同的系统环境, docker容器启动后, 只启动了应用的进程, 不会启动其他系统进程。与虚拟机相比, 这样节约了重复启动多个系统内核的资源开销。</p>
+<p>docker 跟虚拟机的使用场景不同, 要谨慎区分用途。</p>
+<blockquote>
+<p>doker只是自身秒级启动，并不能秒级启动各种镜像。Openstack不提供底层的资源虚拟化 华为的那个叫CNA</p>
+</blockquote>
+<p>查资料的时候发现很多厂商都喜欢扯一些概念，什么 VDI、IDV、VOI、NGD，但是底层的技术实现干货很少。</p>
 
         </div>
 
@@ -221,11 +233,11 @@
             <div class="post-copyright-info">
                 <div class="article-copyright-info-container">
     <ul>
-        <li>本文标题：新年期望</li>
+        <li>本文标题：关于Docker的缺点</li>
         <li>本文作者：Yixin</li>
-        <li>创建时间：2021-05-02 15:11:21</li>
+        <li>创建时间：2023-02-02 20:05:21</li>
         <li>
-            本文链接：https://keep.xpoet.cn/2021/05/02/simpread-新年期望_Yixin 的博客 - CSDN 博客/
+            本文链接：https://keep.xpoet.cn/2023/02/02/simpread-关于 docker 的缺点/
         </li>
         <li>
             版权声明：本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -239,29 +251,14 @@
         
             <div class="article-nav">
                 
-                    <div class="article-prev">
-                        <a class="prev"
-                           rel="prev"
-                           href="/2021/05/02/simpread-%E4%BC%98%E7%A7%80%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6%E6%96%87%E7%AB%A0%E6%B1%87%E9%9B%86_Yixin%20%E7%9A%84%E5%8D%9A%E5%AE%A2%20-%20CSDN%20%E5%8D%9A%E5%AE%A2/"
-                        >
-                            <span class="left arrow-icon flex-center">
-                              <i class="fas fa-chevron-left"></i>
-                            </span>
-                            <span class="title flex-center">
-                                <span class="post-nav-title-item">优秀科学论文</span>
-                                <span class="post-nav-item">上一篇</span>
-                            </span>
-                        </a>
-                    </div>
-                
                 
                     <div class="article-next">
                         <a class="next"
                            rel="next"
-                           href="/2021/05/02/simpread-%E4%B8%BA%E6%9D%BE%E6%B1%9F%E5%8C%BB%E9%99%A2%E5%BC%80%E9%80%9A%E4%B8%A4%E5%8F%B0%E8%99%9A%E6%8B%9F%E6%9C%BA%20Windows%20Server%202016_Yixin%20%E7%9A%84%E5%8D%9A%E5%AE%A2%20-%20CSDN%20%E5%8D%9A%E5%AE%A2/"
+                           href="/2023/02/01/simpread-%E6%9C%80%E5%89%8D%E6%B2%BF%EF%BC%9AMeta%20Learning_Learning%20to%20Learn,%20%E5%88%B0%E5%BA%95%E6%88%91%E4%BB%AC%E8%A6%81%E5%AD%A6%E4%BC%9A%E5%AD%A6%E4%B9%A0%E4%BB%80%E4%B9%88%EF%BC%9F/"
                         >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">为松江医院开两台虚拟机</span>
+                                <span class="post-nav-title-item">最前沿：Meta Learning to Learn, 到底我们要学会学习什么？</span>
                                 <span class="post-nav-item">下一篇</span>
                             </span>
                             <span class="right arrow-icon flex-center">
