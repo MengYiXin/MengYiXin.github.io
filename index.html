@@ -143,7 +143,7 @@
                             <a class="active"
                                href="/"
                             >
-                                首页
+                                HOME
                             </a>
                         </li>
                     
@@ -151,7 +151,7 @@
                             <a class=""
                                href="/archives"
                             >
-                                归档
+                                ARCHIVES
                             </a>
                         </li>
                     
@@ -159,7 +159,7 @@
                             <a class=""
                                href="/tags"
                             >
-                                标签
+                                TAGS
                             </a>
                         </li>
                     
@@ -167,7 +167,7 @@
                             <a class=""
                                href="/about"
                             >
-                                关于
+                                ABOUT
                             </a>
                         </li>
                     
@@ -194,22 +194,22 @@
             
                 <li class="drawer-menu-item flex-center">
                     <a class="active"
-                       href="/">首页</a>
+                       href="/">HOME</a>
                 </li>
             
                 <li class="drawer-menu-item flex-center">
                     <a class=""
-                       href="/archives">归档</a>
+                       href="/archives">ARCHIVES</a>
                 </li>
             
                 <li class="drawer-menu-item flex-center">
                     <a class=""
-                       href="/tags">标签</a>
+                       href="/tags">TAGS</a>
                 </li>
             
                 <li class="drawer-menu-item flex-center">
                     <a class=""
-                       href="/about">关于</a>
+                       href="/about">ABOUT</a>
                 </li>
             
         </ul>
@@ -229,6 +229,91 @@
                 
                     <div class="home-content-container fade-in-down-animation">
     <ul class="home-article-list">
+        
+            <li class="home-article-item">
+
+                
+
+                <h3 class="home-article-title">
+                    <a href="/2023/02/03/%E4%BD%BF%E7%94%A8linux%E7%9A%84iptables%E5%AE%9E%E7%8E%B0%E8%B7%AF%E7%94%B1%E8%BD%AC%E5%8F%91/">
+                        使用Linux的iptables实现路由转发
+                    </a>
+                </h3>
+
+                <div class="home-article-content markdown-body">
+                    
+                        使用linux的iptables实现路由的转发开启ip包转发功能linux默认关闭该功能
+1234vim /etc/sysctl.conf#加入或修改net.ipv4.ip_forward = 1
+重启
+1reboot
+
+开启NAT功能1sudo i...
+                    
+                </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Fri Feb 03 2023 20:05:21 GMT+0800">2023-02-03</span></span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fas fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/Linux/">Linux</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
+        
+    </div>
+
+    <a href="/2023/02/03/%E4%BD%BF%E7%94%A8linux%E7%9A%84iptables%E5%AE%9E%E7%8E%B0%E8%B7%AF%E7%94%B1%E8%BD%AC%E5%8F%91/">Read more&nbsp;<i class="fas fa-angle-right"></i></a>
+</div>
+
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                <h3 class="home-article-title">
+                    <a href="/2023/02/03/%E4%BD%BF%E7%94%A8windows%E7%BD%91%E7%BB%9C%E5%85%B1%E4%BA%AB%E5%AE%9E%E7%8E%B0NAT/">
+                        使用windows网络共享实现NAT
+                    </a>
+                </h3>
+
+                <div class="home-article-content markdown-body">
+                    
+                        使用windows网络共享实现NAT适用范围有一台可以上外网的机器，局域网内其它多台机器无法访问外网，只有一根网线，又没有交换机等等，比如虚拟机集群中，使用vsphere，没有自带的NAT功能，这时候就可以使用本文档的方法实现局域网NAT访问外网。使...
+                    
+                </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Fri Feb 03 2023 20:05:21 GMT+0800">2023-02-03</span></span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fas fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/Linux/">Linux</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
+        
+    </div>
+
+    <a href="/2023/02/03/%E4%BD%BF%E7%94%A8windows%E7%BD%91%E7%BB%9C%E5%85%B1%E4%BA%AB%E5%AE%9E%E7%8E%B0NAT/">Read more&nbsp;<i class="fas fa-angle-right"></i></a>
+</div>
+
+            </li>
         
             <li class="home-article-item">
 
@@ -266,7 +351,7 @@
         
     </div>
 
-    <a href="/2023/02/02/simpread-%E5%85%B3%E4%BA%8E%20docker%20%E7%9A%84%E7%BC%BA%E7%82%B9/">阅读全文&nbsp;<i class="fas fa-angle-right"></i></a>
+    <a href="/2023/02/02/simpread-%E5%85%B3%E4%BA%8E%20docker%20%E7%9A%84%E7%BC%BA%E7%82%B9/">Read more&nbsp;<i class="fas fa-angle-right"></i></a>
 </div>
 
             </li>
@@ -309,7 +394,7 @@ Flood Sung：最前沿：百家争鸣的 Meta L...
         
     </div>
 
-    <a href="/2023/02/01/simpread-%E6%9C%80%E5%89%8D%E6%B2%BF%EF%BC%9AMeta%20Learning_Learning%20to%20Learn,%20%E5%88%B0%E5%BA%95%E6%88%91%E4%BB%AC%E8%A6%81%E5%AD%A6%E4%BC%9A%E5%AD%A6%E4%B9%A0%E4%BB%80%E4%B9%88%EF%BC%9F/">阅读全文&nbsp;<i class="fas fa-angle-right"></i></a>
+    <a href="/2023/02/01/simpread-%E6%9C%80%E5%89%8D%E6%B2%BF%EF%BC%9AMeta%20Learning_Learning%20to%20Learn,%20%E5%88%B0%E5%BA%95%E6%88%91%E4%BB%AC%E8%A6%81%E5%AD%A6%E4%BC%9A%E5%AD%A6%E4%B9%A0%E4%BB%80%E4%B9%88%EF%BC%9F/">Read more&nbsp;<i class="fas fa-angle-right"></i></a>
 </div>
 
             </li>
@@ -350,7 +435,7 @@ Flood Sung：最前沿：百家争鸣的 Meta L...
         
     </div>
 
-    <a href="/2023/02/01/simpread-Meta%20Learning%20%E5%8D%95%E6%8E%92%E5%B0%8F%E6%95%99%E5%AD%A6/">阅读全文&nbsp;<i class="fas fa-angle-right"></i></a>
+    <a href="/2023/02/01/simpread-Meta%20Learning%20%E5%8D%95%E6%8E%92%E5%B0%8F%E6%95%99%E5%AD%A6/">Read more&nbsp;<i class="fas fa-angle-right"></i></a>
 </div>
 
             </li>
@@ -394,7 +479,7 @@ https://paperswithcode.com/sota
         
     </div>
 
-    <a href="/2023/02/01/%E5%BE%88%E5%A5%BD%E7%9A%84%E8%AE%BA%E6%96%87%E7%BD%91%E7%AB%99/">阅读全文&nbsp;<i class="fas fa-angle-right"></i></a>
+    <a href="/2023/02/01/%E5%BE%88%E5%A5%BD%E7%9A%84%E8%AE%BA%E6%96%87%E7%BD%91%E7%AB%99/">Read more&nbsp;<i class="fas fa-angle-right"></i></a>
 </div>
 
             </li>
@@ -440,7 +525,7 @@ https://paperswithcode.com/sota
         
     </div>
 
-    <a href="/2023/01/31/CentOs%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/">阅读全文&nbsp;<i class="fas fa-angle-right"></i></a>
+    <a href="/2023/01/31/CentOs%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE/">Read more&nbsp;<i class="fas fa-angle-right"></i></a>
 </div>
 
             </li>
@@ -482,7 +567,7 @@ https://paperswithcode.com/sota
         
     </div>
 
-    <a href="/2023/01/31/%E9%87%8D%E8%A6%81%E9%93%BE%E6%8E%A5/">阅读全文&nbsp;<i class="fas fa-angle-right"></i></a>
+    <a href="/2023/01/31/%E9%87%8D%E8%A6%81%E9%93%BE%E6%8E%A5/">Read more&nbsp;<i class="fas fa-angle-right"></i></a>
 </div>
 
             </li>
@@ -525,7 +610,7 @@ Hexo Theme Keep
         
     </div>
 
-    <a href="/2023/01/31/simpread-%E7%A7%92%E6%87%82%E4%BA%8C%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA%E7%9A%84%2016%20%E4%B8%AA%E9%97%AE%E9%A2%98%20__%20%20%20%20%20%20%20%20_%20%20%20%20%20%20%20%20Yixin%20blog/">阅读全文&nbsp;<i class="fas fa-angle-right"></i></a>
+    <a href="/2023/01/31/simpread-%E7%A7%92%E6%87%82%E4%BA%8C%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA%E7%9A%84%2016%20%E4%B8%AA%E9%97%AE%E9%A2%98%20__%20%20%20%20%20%20%20%20_%20%20%20%20%20%20%20%20Yixin%20blog/">Read more&nbsp;<i class="fas fa-angle-right"></i></a>
 </div>
 
             </li>
@@ -565,99 +650,7 @@ Hexo Theme Keep
         
     </div>
 
-    <a href="/2023/01/31/simpread-%E6%9C%80%E5%85%A8%E6%95%B4%E5%A5%97%E4%BC%81%E4%B8%9A%E4%BA%91%E6%A1%8C%E9%9D%A2%EF%BC%88Citrix+XenApp&XenDesktop%EF%BC%89%E9%83%A8%E7%BD%B2%E6%89%8B%E5%86%8C/">阅读全文&nbsp;<i class="fas fa-angle-right"></i></a>
-</div>
-
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                <h3 class="home-article-title">
-                    <a href="/2023/01/30/simpread-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%20(%E4%B8%87%E5%AD%97%E7%88%86%E8%82%9D%E6%95%B4%E7%90%86)/">
-                        计算机组成原理（万字爆肝整理）
-                    </a>
-                </h3>
-
-                <div class="home-article-content markdown-body">
-                    
-                        第一章 计算机系统概述“较简单，不做过多赘述，后面会详细学到”
-第一节 计算机系统层次结构
-计算机系统的基本组成：硬件 + 软件
-
-计算机硬件的基本组成：运算器 + 存储器 + 控制器 + 输入设备 + 输出设备
-
-系统软件和应用软件
-
-
-系统软件操...
-                    
-                </div>
-
-                <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Mon Jan 30 2023 20:05:21 GMT+0800">2023-01-30</span></span>
-        
-        
-            <span class="home-article-tag">
-                <i class="fas fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">计算机组成原理</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
-        
-    </div>
-
-    <a href="/2023/01/30/simpread-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%20(%E4%B8%87%E5%AD%97%E7%88%86%E8%82%9D%E6%95%B4%E7%90%86)/">阅读全文&nbsp;<i class="fas fa-angle-right"></i></a>
-</div>
-
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                <h3 class="home-article-title">
-                    <a href="/2023/01/30/simpread-%E6%80%8E%E4%B9%88%E7%90%86%E8%A7%A3%20TCP%20%E7%9A%84%E9%9D%A2%E5%90%91%E8%BF%9E%E6%8E%A5%E5%92%8C%20UDP%20%E7%9A%84%E6%97%A0%E8%BF%9E%E6%8E%A5%EF%BC%88%E4%B8%8D%E9%9D%A2%E5%90%91%E8%BF%9E%E6%8E%A5%EF%BC%89%EF%BC%9F/">
-                        怎么理解TCP的面向连接和UDP的无连接
-                    </a>
-                </h3>
-
-                <div class="home-article-content markdown-body">
-                    
-                        
-初始传输层前面说过，传输层的作用是建立应用程序间的端到端连接，为数据传输提供可靠或不可靠的通信服务。传输层有两个重要协议，分别是 TCP 和 UDP。TCP 是面向连接的可靠传输协议，UDP 是无连接的不可靠传输协议。
-
-一个 IP 地址可以标识一...
-                    
-                </div>
-
-                <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Mon Jan 30 2023 18:05:21 GMT+0800">2023-01-30</span></span>
-        
-        
-            <span class="home-article-tag">
-                <i class="fas fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
-        
-    </div>
-
-    <a href="/2023/01/30/simpread-%E6%80%8E%E4%B9%88%E7%90%86%E8%A7%A3%20TCP%20%E7%9A%84%E9%9D%A2%E5%90%91%E8%BF%9E%E6%8E%A5%E5%92%8C%20UDP%20%E7%9A%84%E6%97%A0%E8%BF%9E%E6%8E%A5%EF%BC%88%E4%B8%8D%E9%9D%A2%E5%90%91%E8%BF%9E%E6%8E%A5%EF%BC%89%EF%BC%9F/">阅读全文&nbsp;<i class="fas fa-angle-right"></i></a>
+    <a href="/2023/01/31/simpread-%E6%9C%80%E5%85%A8%E6%95%B4%E5%A5%97%E4%BC%81%E4%B8%9A%E4%BA%91%E6%A1%8C%E9%9D%A2%EF%BC%88Citrix+XenApp&XenDesktop%EF%BC%89%E9%83%A8%E7%BD%B2%E6%89%8B%E5%86%8C/">Read more&nbsp;<i class="fas fa-angle-right"></i></a>
 </div>
 
             </li>
@@ -671,7 +664,7 @@ Hexo Theme Keep
     
         <a class="next btn"
            href="/page/2/"
-        >下一页</a>
+        >Next</a>
     
 </div>
 
@@ -699,18 +692,18 @@ Hexo Theme Keep
             <div class="website-count info-item">
                 
                     <span id="busuanzi_container_site_uv">
-                        访问人数&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                        Visitor Count&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
                     </span>
                 
                 
                     <span id="busuanzi_container_site_pv">
-                        总访问量&nbsp;<span id="busuanzi_value_site_pv"></span>
+                        Totalview&nbsp;<span id="busuanzi_value_site_pv"></span>
                     </span>
                 
             </div>
         
         <div class="theme-info info-item">
-            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.3</a>
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.3</a>
         </div>
         
     </div>
@@ -783,7 +776,7 @@ Hexo Theme Keep
                 <input autocomplete="off"
                        autocorrect="off"
                        autocapitalize="off"
-                       placeholder="搜索..."
+                       placeholder="Search..."
                        spellcheck="false"
                        type="search"
                        class="search-input"

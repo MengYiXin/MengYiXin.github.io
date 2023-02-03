@@ -9,7 +9,7 @@
     
     <title>
         
-            K8S学习 |
+            使用Linux的iptables实现路由转发 |
         
         Yixin blog
     </title>
@@ -155,7 +155,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">K8S学习</span>
+            <span class="title-hover-animation">使用Linux的iptables实现路由转发</span>
         </div>
 
         
@@ -173,7 +173,7 @@
                     <div class="meta-info">
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
-        <i class="fas fa-edit"></i>&nbsp;2021-05-04 15:17:21
+        <i class="fas fa-edit"></i>&nbsp;2023-02-03 20:05:21
     </span>
     
     
@@ -182,7 +182,7 @@
             <ul>
                 
                     <li>
-                        <a href="/tags/K8S/">K8S</a>&nbsp;
+                        <a href="/tags/Linux/">Linux</a>&nbsp;
                     </li>
                 
             </ul>
@@ -205,43 +205,33 @@
         
 
         <div class="article-content markdown-body">
-            <p>以下是我个人对学习 k8s 的意见，很多资料都涉及网络（自行解决）和英文（google翻译）：</p>
-<ol>
-<li><p>仅以 k8s 官方文档作为参考手册，尽量不看中文博客（具有局限性和滞后性，多数都有错误）官方文档： <a class="link"   target="_blank" rel="noopener" href="https://kubernetes.io/docs/home/" >https://kubernetes.io/docs/home/<i class="fas fa-external-link-alt"></i></a></p>
-</li>
-<li><p>（初步了解它能做什么）先了解基本概念，然后动手实践</p>
-<p>  建议用官方的 tutorial 做实践内容：<a class="link"   target="_blank" rel="noopener" href="https://kubernetes.io/docs/tutorials/" >https://kubernetes.io/docs/tutorials/<i class="fas fa-external-link-alt"></i></a><br>  建议用本地环境做实践环境，可以用 Minikube 或者 Kind, 我建议用kind：<br><a class="link"   target="_blank" rel="noopener" href="https://github.com/kubernetes-sigs/kind" >https://github.com/kubernetes-sigs/kind<i class="fas fa-external-link-alt"></i></a><br>  建议把 <a class="link"   target="_blank" rel="noopener" href="https://www.katacoda.com/" >https://www.katacoda.com/<i class="fas fa-external-link-alt"></i></a> 的实验做一遍</p>
-</li>
-<li><p>进一步了解Kubernetes的架构、理念及组件</p>
-<p>  3.1 部署方案（下面都是针对on-premise方案，如果能用 cloud，建议优先考虑cloud）：   只建议用官方文档推荐的方案</p>
-</li>
-</ol>
-<p><a class="link"   target="_blank" rel="noopener" href="https://kubernetes.io/docs/setup/production-environment/" >https://kubernetes.io/docs/setup/production-environment/<i class="fas fa-external-link-alt"></i></a></p>
-<pre><code>多数情况下我都建议用 kubeadm 做部署         
-</code></pre>
-<p>  如果有兴趣可以看 <a class="link"   target="_blank" rel="noopener" href="https://github.com/kelseyhightower/kubernetes-the-hard-way%EF%BC%8C%E5%8F%AF%E4%BB%A5%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3" >https://github.com/kelseyhightower/kubernetes-the-hard-way，可以深入理解<i class="fas fa-external-link-alt"></i></a> k8s 的组件及组件关系大规模部署交付建议考虑 kubespray</p>
-<pre><code> 3.2 较为系统的了解 k8s 的 concepts、glossary，这些在官方文档中都有，建议自行查找（用于练习文档查阅能力，k8s的CKA认证就是开卷考试，所有内容都可以在官方文档中找到参考）
+            <h1 id="使用linux的iptables实现路由的转发"><a href="#使用linux的iptables实现路由的转发" class="headerlink" title="使用linux的iptables实现路由的转发"></a>使用linux的iptables实现路由的转发</h1><h2 id="开启ip包转发功能"><a href="#开启ip包转发功能" class="headerlink" title="开启ip包转发功能"></a>开启ip包转发功能</h2><p>linux默认关闭该功能</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/sysctl.conf</span><br><span class="line"></span><br><span class="line"><span class="comment">#加入或修改</span></span><br><span class="line">net.ipv4.ip_forward = 1</span><br></pre></td></tr></table></figure>
+<p>重启</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reboot</span><br></pre></td></tr></table></figure>
 
- 3.3 继续多做练习，比如官网的 tasks
-</code></pre>
-<ol start="4">
-<li><p>了解 K8S 的生态，包括 CRI、CNI、CSI、可观测性等，建议通过 CNCF 全景图找感兴趣的部分，具体情况可以找我沟通。 <a class="link"   target="_blank" rel="noopener" href="https://landscape.cncf.io/" >https://landscape.cncf.io/<i class="fas fa-external-link-alt"></i></a></p>
-</li>
-<li><p>多看k8s 博客（<a class="link"   target="_blank" rel="noopener" href="https://kubernetes.io/blog/%EF%BC%89%E5%8F%8Acncf%E5%8D%9A%E5%AE%A2%EF%BC%88" >https://kubernetes.io/blog/）及cncf博客（<i class="fas fa-external-link-alt"></i></a> <a class="link"   target="_blank" rel="noopener" href="https://www.cncf.io/blog/" >https://www.cncf.io/blog/<i class="fas fa-external-link-alt"></i></a> ），都是大厂分享理念和实践</p>
-</li>
-</ol>
+<h2 id="开启NAT功能"><a href="#开启NAT功能" class="headerlink" title="开启NAT功能"></a>开启NAT功能</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo iptables -t nat -A POSTROUTING -o enp0s3 -j MASQUERADE</span><br></pre></td></tr></table></figure>
+<p>将非本机地址的ip包修改源地址后从连网的网口发出去，enp0s3修改为自己的外网网卡<br>重启会发现配置失效。下面有一种方案可以让配置永久生效，但是不是很优雅，但是可以避免使用iptables-services</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iptables-save &gt; /etc/sysconfig/iptables</span><br></pre></td></tr></table></figure>
+<p>然后修改/etc/rc.d/rc.local，可以在启动时自动执行该命令</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#将下面一行加入文件最后</span><br><span class="line">iptables-restore &lt; /etc/sysconfig/iptables</span><br></pre></td></tr></table></figure>
+<p>将该文件设为可执行文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x /etc/sysconfig/iptables</span><br></pre></td></tr></table></figure>
+<p>这样重启时就可以保持该设置了。</p>
+<h2 id="NAT本机网卡设置"><a href="#NAT本机网卡设置" class="headerlink" title="NAT本机网卡设置"></a>NAT本机网卡设置</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将ifcfg-enp0s8网卡配置的下列内容修改为你的信息</span></span><br><span class="line">IPADDR=172.10.1.1</span><br><span class="line">MASK=255.255.0.0</span><br></pre></td></tr></table></figure>
 
+<h2 id="其它机器网卡设置"><a href="#其它机器网卡设置" class="headerlink" title="其它机器网卡设置"></a>其它机器网卡设置</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将网关gateway设置为上边nat主机的地址</span></span><br><span class="line">IPADDR=172.10.1.2</span><br><span class="line">MASK=255.255.0.0</span><br><span class="line">GATEWAY=172.10.1.1</span><br><span class="line">DNS1=114.114.114.114</span><br></pre></td></tr></table></figure>
         </div>
 
         
             <div class="post-copyright-info">
                 <div class="article-copyright-info-container">
     <ul>
-        <li>Post title：K8S学习</li>
+        <li>Post title：使用Linux的iptables实现路由转发</li>
         <li>Post author：Yixin</li>
-        <li>Create time：2021-05-04 15:17:21</li>
+        <li>Create time：2023-02-03 20:05:21</li>
         <li>
-            Post link：https://keep.xpoet.cn/2021/05/04/k8s-纪泽/
+            Post link：https://keep.xpoet.cn/2023/02/03/使用linux的iptables实现路由转发/
         </li>
         <li>
             Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
@@ -255,29 +245,14 @@
         
             <div class="article-nav">
                 
-                    <div class="article-prev">
-                        <a class="prev"
-                           rel="prev"
-                           href="/2021/05/04/Linux/"
-                        >
-                            <span class="left arrow-icon flex-center">
-                              <i class="fas fa-chevron-left"></i>
-                            </span>
-                            <span class="title flex-center">
-                                <span class="post-nav-title-item">Linux的学习</span>
-                                <span class="post-nav-item">Prev posts</span>
-                            </span>
-                        </a>
-                    </div>
-                
                 
                     <div class="article-next">
                         <a class="next"
                            rel="next"
-                           href="/2021/05/04/simpread-Windows%20%E5%86%85%E6%A0%B8%E5%92%8C%20Linux%20%E5%86%85%E6%A0%B8%E8%B0%81%E6%9B%B4%E5%A4%8D%E6%9D%82_/"
+                           href="/2023/02/03/%E4%BD%BF%E7%94%A8windows%E7%BD%91%E7%BB%9C%E5%85%B1%E4%BA%AB%E5%AE%9E%E7%8E%B0NAT/"
                         >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">Windows 内核和 Linux 内核谁更复杂</span>
+                                <span class="post-nav-title-item">使用windows网络共享实现NAT</span>
                                 <span class="post-nav-item">Next posts</span>
                             </span>
                             <span class="right arrow-icon flex-center">
@@ -484,7 +459,7 @@
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8linux%E7%9A%84iptables%E5%AE%9E%E7%8E%B0%E8%B7%AF%E7%94%B1%E7%9A%84%E8%BD%AC%E5%8F%91"><span class="nav-number">1.</span> <span class="nav-text">使用linux的iptables实现路由的转发</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%80%E5%90%AFip%E5%8C%85%E8%BD%AC%E5%8F%91%E5%8A%9F%E8%83%BD"><span class="nav-number">1.1.</span> <span class="nav-text">开启ip包转发功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%80%E5%90%AFNAT%E5%8A%9F%E8%83%BD"><span class="nav-number">1.2.</span> <span class="nav-text">开启NAT功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NAT%E6%9C%AC%E6%9C%BA%E7%BD%91%E5%8D%A1%E8%AE%BE%E7%BD%AE"><span class="nav-number">1.3.</span> <span class="nav-text">NAT本机网卡设置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B6%E5%AE%83%E6%9C%BA%E5%99%A8%E7%BD%91%E5%8D%A1%E8%AE%BE%E7%BD%AE"><span class="nav-number">1.4.</span> <span class="nav-text">其它机器网卡设置</span></a></li></ol></li></ol>
     </div>
 </div>
         </aside>
