@@ -67,7 +67,7 @@
                             <a class=""
                                href="/"
                             >
-                                首页
+                                HOME
                             </a>
                         </li>
                     
@@ -75,7 +75,7 @@
                             <a class=""
                                href="/archives"
                             >
-                                归档
+                                ARCHIVES
                             </a>
                         </li>
                     
@@ -83,7 +83,7 @@
                             <a class=""
                                href="/tags"
                             >
-                                标签
+                                TAGS
                             </a>
                         </li>
                     
@@ -91,7 +91,7 @@
                             <a class=""
                                href="/about"
                             >
-                                关于
+                                ABOUT
                             </a>
                         </li>
                     
@@ -118,22 +118,22 @@
             
                 <li class="drawer-menu-item flex-center">
                     <a class=""
-                       href="/">首页</a>
+                       href="/">HOME</a>
                 </li>
             
                 <li class="drawer-menu-item flex-center">
                     <a class=""
-                       href="/archives">归档</a>
+                       href="/archives">ARCHIVES</a>
                 </li>
             
                 <li class="drawer-menu-item flex-center">
                     <a class=""
-                       href="/tags">标签</a>
+                       href="/tags">TAGS</a>
                 </li>
             
                 <li class="drawer-menu-item flex-center">
                     <a class=""
-                       href="/about">关于</a>
+                       href="/about">ABOUT</a>
                 </li>
             
         </ul>
@@ -217,15 +217,19 @@
 <h2 id="第一种办法"><a href="#第一种办法" class="headerlink" title="第一种办法"></a>第一种办法</h2><ol>
 <li>   最开始我是通过B站视频，进行短暂学习，并且按照步骤搭建了一下环境。比如</li>
 </ol>
+<ol>
+<li> <a class="link"   target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1M5411s7rP/?spm_id_from=333.1007.top_right_bar_window_history.content.click&vd_source=069855d938307b0a82fdde6b3d8ddffa" >centos7下kvm虚拟机的网络配置（桥接网卡模式）<i class="fas fa-external-link-alt"></i></a></li>
+</ol>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span>  /etc/sysconfig/network-scripts/   <span class="comment">#（第一步先到网络目录下）</span></span><br><span class="line">cp  ifcfg-ens192  ifcfg-wangq     <span class="comment">#（先复制物料网卡信息-懒得写。再修改，wangq是随便起的名字）</span></span><br><span class="line">ls                  			<span class="comment"># (发现新增 ifcfg-wangq)</span></span><br><span class="line">vim ifcfg-wangq    			 <span class="comment">#（然后我们编辑一下网桥）</span></span><br><span class="line">  TYPE=Bridge</span><br><span class="line">  NAME不要，UUID不要，注意DEVICE后面一定要跟网桥的名字一样。NAME不要，UUID不要，注意DEVICE后面一定要跟网桥的名字一样。然后保存，退出。</span><br><span class="line"></span><br><span class="line">vim ifcfg-ens192  <span class="comment"># (然后物理网卡要加一句话。)</span></span><br><span class="line">	BRIDGE=<span class="string">&quot;wangq&quot;</span></span><br><span class="line"></span><br><span class="line">/etc/init.d/network restart       <span class="comment">#（重启网卡）</span></span><br><span class="line"></span><br><span class="line">ip a                   			   <span class="comment">#（可以看到网桥配置文件）</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>但是后来发现这样行不通，centos上的网络总是有问题，所以就准备找了其他办法。</p>
 <h2 id="第二种办法"><a href="#第二种办法" class="headerlink" title="第二种办法"></a>第二种办法</h2><ol start="2">
 <li>   另一种办法是通过代码来实现网桥功能，我先修改了下面目录的配置文件（包括物理网卡配置nes192 和 新建的br0）：</li>
 </ol>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/sysconfig/network-scripts/</span><br></pre></td></tr></table></figure>
-<ol>
-<li> <a class="link"   target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1M5411s7rP/?spm_id_from=333.1007.top_right_bar_window_history.content.click&vd_source=069855d938307b0a82fdde6b3d8ddffa" >centos7下kvm虚拟机的网络配置（桥接网卡模式）<i class="fas fa-external-link-alt"></i></a></li>
-</ol>
+
+<p><img src="https://cdn.staticaly.com/gh/MengYiXin/photo@master/20230218/1.1vyy1c8a9bmo.jpg" alt="1"></p>
+<p><img src="https://cdn.staticaly.com/gh/MengYiXin/photo@master/20230218/2.1c7u6m8zegcg.jpg" alt="2"></p>
+<p><img src="https://cdn.staticaly.com/gh/MengYiXin/photo@master/20230218/3.2qegeyma6qg0.jpg" alt="3"></p>
 <p>在此同时，我将之前的ens192的配置文件，也就是我物理网卡配置内容做个备份，以免遗忘。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">TYPE=Ethernet</span><br><span class="line">PROXY_METHOD=none</span><br><span class="line">BROWSER_ONLY=no</span><br><span class="line"></span><br><span class="line">BOOTPROTO=static</span><br><span class="line">PROXY_METHOD=none</span><br><span class="line">BROWSER_ONLY=no</span><br><span class="line"></span><br><span class="line">BOOTPROTO=static</span><br><span class="line">DEFROUTE=yes</span><br><span class="line">IPV4_FAILURE_FATAL=no</span><br><span class="line">IPV6INIT=yes</span><br><span class="line">IPV6_AUTOCONF=yes</span><br><span class="line">IPV6_DEFROUTE=yes</span><br><span class="line">IPV6_FAILURE_FATAL=no</span><br><span class="line">IPV6_ADDR_GEN_MODE=stable-privacy</span><br><span class="line">NAME=ens192</span><br><span class="line">UUID=2c658628-92f9-4c27-9cd6-6fbd2cfd585b</span><br><span class="line"></span><br><span class="line">DEVICE=ens192</span><br><span class="line">ONBOOT=yes</span><br><span class="line">IPADDR=172.10.3.1</span><br><span class="line">NETMASK=255.255.0.0</span><br><span class="line">GATEWAY=172.10.0.1</span><br><span class="line">DNS1=114.114.114.114</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
@@ -246,14 +250,14 @@
             <div class="post-copyright-info">
                 <div class="article-copyright-info-container">
     <ul>
-        <li>本文标题：Linux CentOS创建网桥，实现KVM宿主机与虚拟机通讯</li>
-        <li>本文作者：Yixin</li>
-        <li>创建时间：2023-02-18 20:05:21</li>
+        <li>Post title：Linux CentOS创建网桥，实现KVM宿主机与虚拟机通讯</li>
+        <li>Post author：Yixin</li>
+        <li>Create time：2023-02-18 20:05:21</li>
         <li>
-            本文链接：https://keep.xpoet.cn/2023/02/18/Linux CentOs创建网桥，实现KVM宿主机与虚拟机通讯/
+            Post link：https://keep.xpoet.cn/2023/02/18/Linux CentOs创建网桥，实现KVM宿主机与虚拟机通讯/
         </li>
         <li>
-            版权声明：本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！
+            Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
         </li>
     </ul>
 </div>
@@ -272,7 +276,7 @@
                         >
                             <span class="title flex-center">
                                 <span class="post-nav-title-item">使用Linux的iptables实现路由转发</span>
-                                <span class="post-nav-item">下一篇</span>
+                                <span class="post-nav-item">Next posts</span>
                             </span>
                             <span class="right arrow-icon flex-center">
                               <i class="fas fa-chevron-right"></i>
@@ -288,7 +292,7 @@
                 <div class="comments-container">
     <div id="comment-anchor"></div>
     <div class="comment-area-title">
-        <i class="fas fa-comments">&nbsp;评论</i>
+        <i class="fas fa-comments">&nbsp;Comments</i>
     </div>
     
 
@@ -387,18 +391,18 @@
             <div class="website-count info-item">
                 
                     <span id="busuanzi_container_site_uv">
-                        访问人数&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                        Visitor Count&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
                     </span>
                 
                 
                     <span id="busuanzi_container_site_pv">
-                        总访问量&nbsp;<span id="busuanzi_value_site_pv"></span>
+                        Totalview&nbsp;<span id="busuanzi_value_site_pv"></span>
                     </span>
                 
             </div>
         
         <div class="theme-info info-item">
-            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.3</a>
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.3</a>
         </div>
         
     </div>
@@ -500,7 +504,7 @@
                 <input autocomplete="off"
                        autocorrect="off"
                        autocapitalize="off"
-                       placeholder="搜索..."
+                       placeholder="Search..."
                        spellcheck="false"
                        type="search"
                        class="search-input"
