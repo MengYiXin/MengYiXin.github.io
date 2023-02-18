@@ -9,7 +9,7 @@
     
     <title>
         
-            新年期望 |
+            Linux CentOS创建网桥，实现KVM宿主机与虚拟机通讯 |
         
         Yixin blog
     </title>
@@ -155,7 +155,7 @@
     <div class="article-content-container">
 
         <div class="article-title">
-            <span class="title-hover-animation">新年期望</span>
+            <span class="title-hover-animation">Linux CentOS创建网桥，实现KVM宿主机与虚拟机通讯</span>
         </div>
 
         
@@ -173,7 +173,7 @@
                     <div class="meta-info">
                         <div class="article-meta-info">
     <span class="article-date article-meta-item">
-        <i class="fas fa-edit"></i>&nbsp;2021-05-02 15:11:21
+        <i class="fas fa-edit"></i>&nbsp;2023-02-18 20:05:21
     </span>
     
     
@@ -182,7 +182,7 @@
             <ul>
                 
                     <li>
-                        <a href="/tags/%E5%AD%A6%E4%B9%A0/">学习</a>&nbsp;
+                        <a href="/tags/Linux/">Linux</a>&nbsp;
                     </li>
                 
             </ul>
@@ -205,15 +205,40 @@
         
 
         <div class="article-content markdown-body">
-            <blockquote>
-<p>本文由 <a class="link"   target="_blank" rel="noopener" href="http://ksria.com/simpread/" >简悦 SimpRead<i class="fas fa-external-link-alt"></i></a> 转码， 原文地址 <a class="link"   target="_blank" rel="noopener" href="https://blog.csdn.net/qq_36650546/article/details/114121176?spm=1001.2014.3001.5501" >blog.csdn.net<i class="fas fa-external-link-alt"></i></a></p>
-</blockquote>
-<p>1， 云原生开发 ： K8S， Docker , DevOps , Jenkins， Prometheus ，Rancher</p>
-<p>2， 微服务架构:    SpringBoot，微服务。</p>
-<p>3， 开发 ：           Vue，Golang , Python 高阶</p>
-<p>4， infra ：          计算机网络（CCNA，IP 规划)</p>
-<p>5,    项目经理：    PMO， PMP</p>
-<p>2021.02.26</p>
+            <h1 id="Linux创建网桥，实现KVM宿主机与虚拟机通讯"><a href="#Linux创建网桥，实现KVM宿主机与虚拟机通讯" class="headerlink" title="Linux创建网桥，实现KVM宿主机与虚拟机通讯"></a>Linux创建网桥，实现KVM宿主机与虚拟机通讯</h1><p>由于业务需求，最近开始尝试在Linux(CentOS) 里面装虚拟机，而这个CentOs本身就是在vSphere中的虚拟机。也就是我们常说的，虚机化嵌套，套娃。业务主要涉及以下：</p>
+<ul>
+<li>先在VMware vSphere环境里面起一台CentOS, 然后给其配置网络和SSH。</li>
+<li>然后再给CentOs用命令行安装图形化桌面（使用KVM需要）。</li>
+<li>之后再用网桥的方式，提前后面KVM要启动的虚机（jupiter—Ubuntu魔改）做网络层面的准备，KVM部署网络选项时候需要选自己新创建的网桥。</li>
+<li>注意，可以用Xftp工具为虚拟机（CentOs）内部上传它所需要的镜像，如图。</li>
+</ul>
+<p><img src="https://cdn.staticaly.com/gh/MengYiXin/photo@master/20230218/1.4xvpz1ozk880.jpg" alt="1"></p>
+<p>今天主要记录的是，如何 在centos7下创建网桥，解决KVM宿主机与虚拟机通讯？</p>
+<h2 id="第一种办法"><a href="#第一种办法" class="headerlink" title="第一种办法"></a>第一种办法</h2><ol>
+<li>   最开始我是通过B站视频，进行短暂学习，并且按照步骤搭建了一下环境。比如</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span>  /etc/sysconfig/network-scripts/   <span class="comment">#（第一步先到网络目录下）</span></span><br><span class="line">cp  ifcfg-ens192  ifcfg-wangq     <span class="comment">#（先复制物料网卡信息-懒得写。再修改，wangq是随便起的名字）</span></span><br><span class="line">ls                  			<span class="comment"># (发现新增 ifcfg-wangq)</span></span><br><span class="line">vim ifcfg-wangq    			 <span class="comment">#（然后我们编辑一下网桥）</span></span><br><span class="line">  TYPE=Bridge</span><br><span class="line">  NAME不要，UUID不要，注意DEVICE后面一定要跟网桥的名字一样。NAME不要，UUID不要，注意DEVICE后面一定要跟网桥的名字一样。然后保存，退出。</span><br><span class="line"></span><br><span class="line">vim ifcfg-ens192  <span class="comment"># (然后物理网卡要加一句话。)</span></span><br><span class="line">	BRIDGE=<span class="string">&quot;wangq&quot;</span></span><br><span class="line"></span><br><span class="line">/etc/init.d/network restart       <span class="comment">#（重启网卡）</span></span><br><span class="line"></span><br><span class="line">ip a                   			   <span class="comment">#（可以看到网桥配置文件）</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>但是后来发现这样行不通，centos上的网络总是有问题，所以就准备找了其他办法。</p>
+<h2 id="第二种办法"><a href="#第二种办法" class="headerlink" title="第二种办法"></a>第二种办法</h2><ol start="2">
+<li>   另一种办法是通过代码来实现网桥功能，我先修改了下面目录的配置文件（包括物理网卡配置nes192 和 新建的br0）：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/sysconfig/network-scripts/</span><br></pre></td></tr></table></figure>
+<ol>
+<li> <a class="link"   target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1M5411s7rP/?spm_id_from=333.1007.top_right_bar_window_history.content.click&vd_source=069855d938307b0a82fdde6b3d8ddffa" >centos7下kvm虚拟机的网络配置（桥接网卡模式）<i class="fas fa-external-link-alt"></i></a></li>
+</ol>
+<p>在此同时，我将之前的ens192的配置文件，也就是我物理网卡配置内容做个备份，以免遗忘。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">TYPE=Ethernet</span><br><span class="line">PROXY_METHOD=none</span><br><span class="line">BROWSER_ONLY=no</span><br><span class="line"></span><br><span class="line">BOOTPROTO=static</span><br><span class="line">PROXY_METHOD=none</span><br><span class="line">BROWSER_ONLY=no</span><br><span class="line"></span><br><span class="line">BOOTPROTO=static</span><br><span class="line">DEFROUTE=yes</span><br><span class="line">IPV4_FAILURE_FATAL=no</span><br><span class="line">IPV6INIT=yes</span><br><span class="line">IPV6_AUTOCONF=yes</span><br><span class="line">IPV6_DEFROUTE=yes</span><br><span class="line">IPV6_FAILURE_FATAL=no</span><br><span class="line">IPV6_ADDR_GEN_MODE=stable-privacy</span><br><span class="line">NAME=ens192</span><br><span class="line">UUID=2c658628-92f9-4c27-9cd6-6fbd2cfd585b</span><br><span class="line"></span><br><span class="line">DEVICE=ens192</span><br><span class="line">ONBOOT=yes</span><br><span class="line">IPADDR=172.10.3.1</span><br><span class="line">NETMASK=255.255.0.0</span><br><span class="line">GATEWAY=172.10.0.1</span><br><span class="line">DNS1=114.114.114.114</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>然后再通过下面的博客链接，的第五部分开始，进行相关配置。</p>
+<ol start="2">
+<li> <a class="link"   target="_blank" rel="noopener" href="https://www.cnblogs.com/heyongboke/p/10337447.html" >Linux中KVM桥接的配置<i class="fas fa-external-link-alt"></i></a></li>
+</ol>
+<p>最终再参考这篇文章，最终实现配置网桥的目标。</p>
+<ol start="3">
+<li> <a class="link"   target="_blank" rel="noopener" href="https://blog.51cto.com/cubix/1736750" >Red Hat 7 创建网桥，解决KVM宿主机与虚拟机无法通讯<i class="fas fa-external-link-alt"></i></a></li>
+</ol>
+<p><img src="https://cdn.staticaly.com/gh/MengYiXin/photo@master/20230218/2.kr5t51pm0mo.jpg" alt="2"></p>
+<p>配置完网卡后，重启虚机方能出现效果。</p>
 
         </div>
 
@@ -221,11 +246,11 @@
             <div class="post-copyright-info">
                 <div class="article-copyright-info-container">
     <ul>
-        <li>本文标题：新年期望</li>
+        <li>本文标题：Linux CentOS创建网桥，实现KVM宿主机与虚拟机通讯</li>
         <li>本文作者：Yixin</li>
-        <li>创建时间：2021-05-02 15:11:21</li>
+        <li>创建时间：2023-02-18 20:05:21</li>
         <li>
-            本文链接：https://keep.xpoet.cn/2021/05/02/simpread-新年期望_Yixin 的博客 - CSDN 博客/
+            本文链接：https://keep.xpoet.cn/2023/02/18/Linux CentOs创建网桥，实现KVM宿主机与虚拟机通讯/
         </li>
         <li>
             版权声明：本博客所有文章除特别声明外，均采用 <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -239,29 +264,14 @@
         
             <div class="article-nav">
                 
-                    <div class="article-prev">
-                        <a class="prev"
-                           rel="prev"
-                           href="/2021/05/02/simpread-%E4%BC%98%E7%A7%80%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6%E6%96%87%E7%AB%A0%E6%B1%87%E9%9B%86_Yixin%20%E7%9A%84%E5%8D%9A%E5%AE%A2%20-%20CSDN%20%E5%8D%9A%E5%AE%A2/"
-                        >
-                            <span class="left arrow-icon flex-center">
-                              <i class="fas fa-chevron-left"></i>
-                            </span>
-                            <span class="title flex-center">
-                                <span class="post-nav-title-item">优秀科学论文</span>
-                                <span class="post-nav-item">上一篇</span>
-                            </span>
-                        </a>
-                    </div>
-                
                 
                     <div class="article-next">
                         <a class="next"
                            rel="next"
-                           href="/2021/05/02/simpread-%E4%B8%BA%E6%9D%BE%E6%B1%9F%E5%8C%BB%E9%99%A2%E5%BC%80%E9%80%9A%E4%B8%A4%E5%8F%B0%E8%99%9A%E6%8B%9F%E6%9C%BA%20Windows%20Server%202016_Yixin%20%E7%9A%84%E5%8D%9A%E5%AE%A2%20-%20CSDN%20%E5%8D%9A%E5%AE%A2/"
+                           href="/2023/02/03/%E4%BD%BF%E7%94%A8linux%E7%9A%84iptables%E5%AE%9E%E7%8E%B0%E8%B7%AF%E7%94%B1%E8%BD%AC%E5%8F%91/"
                         >
                             <span class="title flex-center">
-                                <span class="post-nav-title-item">为松江医院开两台虚拟机</span>
+                                <span class="post-nav-title-item">使用Linux的iptables实现路由转发</span>
                                 <span class="post-nav-item">下一篇</span>
                             </span>
                             <span class="right arrow-icon flex-center">
@@ -468,7 +478,7 @@
         <aside class="page-aside">
             <div class="post-toc-wrap">
     <div class="post-toc">
-        
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux%E5%88%9B%E5%BB%BA%E7%BD%91%E6%A1%A5%EF%BC%8C%E5%AE%9E%E7%8E%B0KVM%E5%AE%BF%E4%B8%BB%E6%9C%BA%E4%B8%8E%E8%99%9A%E6%8B%9F%E6%9C%BA%E9%80%9A%E8%AE%AF"><span class="nav-number">1.</span> <span class="nav-text">Linux创建网桥，实现KVM宿主机与虚拟机通讯</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E7%A7%8D%E5%8A%9E%E6%B3%95"><span class="nav-number">1.1.</span> <span class="nav-text">第一种办法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E7%A7%8D%E5%8A%9E%E6%B3%95"><span class="nav-number">1.2.</span> <span class="nav-text">第二种办法</span></a></li></ol></li></ol>
     </div>
 </div>
         </aside>
