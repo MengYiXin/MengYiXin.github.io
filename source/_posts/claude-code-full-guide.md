@@ -1,5 +1,5 @@
 ---
-title: "Claude Code 使用全记录：安装配置、Hermes、gstack与网络修复笔记"
+title: "Claude Code 使用全记录：安装配置、Hermes、gstack 与网络修复笔记"
 date: 2026-05-05 15:00:00
 tags:
   - Claude Code
@@ -10,12 +10,7 @@ tags:
 categories: [技术实战]
 ---
 
-> **⚠️ 声明**：本文记录的是 **Claude Code**（Anthropic 出品的 AI 编程工具）的配置过程，与 Hermes Agent 是两个独立工具。请勿混淆。Claude Code 侧重本地编程辅助，Hermes Agent 侧重远程自主任务执行。
-
----
-
-
-# Claude Code 使用全记录
+ Claude Code 使用全记录
 
 **记录日期：2026-05-05**
 

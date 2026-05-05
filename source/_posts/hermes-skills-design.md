@@ -1,9 +1,14 @@
 ---
-title: "用Skill把日常工作流变成可复用工具：我的经验总结"
-date: 2026-05-05 17:30:00
-tags: [Hermes Agent, Skill, 工作流, 自动化, AI工具]
+title: "Hermes Agent 进阶：用 Skill 把日常工作流变成可复用工具"
+date: 2026-05-05 16:00:00
+tags:
+  - Hermes Agent
+  - Skill
+  - 工作流
+  - 自动化
 categories: [AI工具]
 ---
+
 
 Hermes Agent 有一个我很喜欢的设计：可以把任何重复性的工作流打包成 Skill，之后类似的事情只需要调用 Skill，AI 就会按既定流程执行，不用每次重新描述需求。
 

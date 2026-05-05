@@ -1,9 +1,14 @@
 ---
-title: "我的Hermes Agent使用手记：从安装到打造个人AI工作流"
+title: "Hermes Agent 使用手记：从安装到打造个人AI工作流"
 date: 2026-05-05 16:00:00
-tags: [Hermes Agent, AI工具, 工作流, 笔记]
+tags:
+  - Hermes Agent
+  - AI工具
+  - 工作流
+  - 笔记
 categories: [AI工具]
 ---
+
 
 前阵子把 Hermes Agent 在我的 WSL2 环境里跑起来了，顺便配了一系列 Skill，把日常的信息处理、博客发布、Git 管理都串进了这个 AI 工作流。今天把这段经历整理出来，供想入坑的同学参考。
 

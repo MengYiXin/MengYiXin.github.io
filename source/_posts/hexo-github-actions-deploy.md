@@ -1,9 +1,15 @@
 ---
-title: "Hexo博客的GitHub Actions自动化部署：两分支模式实战"
-date: 2026-05-05 16:30:00
-tags: [Hexo, GitHub Actions, 博客, DevOps]
-categories: [技术实战]
+title: "Hermes Agent 博客实战：Hexo + GitHub Actions 两分支自动化部署"
+date: 2026-05-05 16:00:00
+tags:
+  - Hermes Agent
+  - Hexo
+  - GitHub Actions
+  - 博客
+  - DevOps
+categories: [AI工具]
 ---
+
 
 我的博客 mengyx.com.cn 托管在 GitHub Pages，最初用 Hexo 的 `hexo deploy` 手动发布，后来踩了几个坑之后切成了 GitHub Actions 两分支模式，彻底实现了"写完文章自动上线"。这篇文章记录全过程。
 

@@ -1,9 +1,15 @@
 ---
-title: "WSL下GitHub访问难题：三级自动切换的git代理方案"
-date: 2026-05-05 17:00:00
-tags: [WSL, GitHub, 代理, 网络, 开发环境]
-categories: [技术实战]
+title: "Hermes Agent 环境搭建：WSL 下 GitHub 访问的三级代理方案"
+date: 2026-05-05 16:00:00
+tags:
+  - Hermes Agent
+  - WSL
+  - GitHub
+  - 代理
+  - 网络
+categories: [AI工具]
 ---
+
 
 我的 WSL2 环境一直有个痛点：访问 GitHub 不稳定，有时能 ping 通但 curl https://github.com 超时，有时 git push 报 `Failed to connect to localhost port 7890`。今天彻底把这个问题想明白并解决了。
 

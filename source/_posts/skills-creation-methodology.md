@@ -1,20 +1,15 @@
 ---
-title: "Skills 创作方法论：Claude Code 7个实战Skills详解与设计思路"
+title: "Claude Code Skills 创作方法论：7个实战Skills详解与设计思路"
 date: 2026-05-05 15:00:00
 tags:
   - Claude Code
   - Skill
   - 自动化
   - 工作流
-categories: [AI工具]
+categories: [技术实战]
 ---
 
-> **⚠️ 声明**：本文记录的是 **Claude Code**（Anthropic 出品的 AI 编程工具）的配置过程，与 Hermes Agent 是两个独立工具。请勿混淆。Claude Code 侧重本地编程辅助，Hermes Agent 侧重远程自主任务执行。
-
----
-
-
-# Skills 创作方法论：从重复操作到自动化
+ Skills 创作方法论：从重复操作到自动化
 
 **记录日期：2026-05-05**
 
