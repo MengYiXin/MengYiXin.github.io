@@ -15,6 +15,8 @@ categories: [AI工具]
 
 ## 旧架构的问题
 
+![配图](https://raw.githubusercontent.com/MengYiXin/blog-images/main/02-hexo-github-actions-deploy.svg)
+
 原来的方式是 `hexo deploy` 通过 `.deploy_git/` 往 master 分支推 HTML。问题是：
 
 1. 本地要装 Hexo 环境和部署依赖

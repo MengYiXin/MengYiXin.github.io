@@ -25,6 +25,8 @@ Hermes Agent 有一个我很喜欢的设计：可以把任何重复性的工作�
 
 ## 我目前的Skill体系
 
+![配图](https://raw.githubusercontent.com/MengYiXin/blog-images/main/04-hermes-skills-methodology.svg)
+
 ### blog-deployer — 博客自动部署
 
 ```

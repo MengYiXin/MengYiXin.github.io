@@ -19,6 +19,8 @@ categories: [技术实战]
 
 ## 一、网络配置核心问题
 
+![配图](https://raw.githubusercontent.com/MengYiXin/blog-images/main/07-ai-tools-config-notes.svg)
+
 ### 1.1 GitHub 连接问题
 
 **现象：** git push / clone 失败，Connection reset 或超时

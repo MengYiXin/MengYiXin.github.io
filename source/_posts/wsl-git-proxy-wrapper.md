@@ -15,6 +15,8 @@ categories: [AI工具]
 
 ## 问题诊断
 
+![配图](https://raw.githubusercontent.com/MengYiXin/blog-images/main/03-wsl-git-proxy-flow.svg)
+
 首先搞清楚是哪里出了问题：
 
 ```bash

@@ -46,6 +46,8 @@ Skills 机制让人能够：
 
 ## 二、Skills 创建实战
 
+![配图](https://raw.githubusercontent.com/MengYiXin/blog-images/main/06-skills-creation-methodology.svg)
+
 ### 2.1 01-hermes-install
 
 **触发词：** "install hermes", "reinstall hermes", "hermes broken"

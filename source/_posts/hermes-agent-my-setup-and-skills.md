@@ -32,6 +32,8 @@ Hermes Agent 是 [Nous Research](https://nousresearch.com/) 开发的一个开�
 
 ## 我的环境
 
+![配图](https://raw.githubusercontent.com/MengYiXin/blog-images/main/01-hermes-skills-ecosystem.svg)
+
 - 系统：WSL2（Windows下的Linux子系统）
 - 用户目录：/mnt/f/（文件放F盘，空间大）
 - 博客：Hexo + GitHub Pages，自定义域名 mengyx.com.cn

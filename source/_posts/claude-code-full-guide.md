@@ -30,6 +30,8 @@ categories: [技术实战]
 
 ## 二、Claude Code 安装过程
 
+![配图](https://raw.githubusercontent.com/MengYiXin/blog-images/main/05-claude-code-full-guide.svg)
+
 ### 2.1 环境准备
 
 环境信息：
