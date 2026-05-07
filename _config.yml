@@ -16,12 +16,6 @@ timezone: ''
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
 url: https://mengyx.com.cn
 
-# Theme config (override theme defaults)
-theme_config:
-  base_info:
-    title: Yixin blog
-    author: Yixin
-    url: https://mengyx.com.cn
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:
@@ -108,6 +102,10 @@ ignore:
 theme: keep
 
 theme_config:
+  base_info:
+    title: Yixin blog
+    author: Yixin
+    url: https://mengyx.com.cn
   menu:
     Home: /
     Archives: /archives
