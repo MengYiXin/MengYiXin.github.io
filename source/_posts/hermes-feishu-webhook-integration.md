@@ -1,6 +1,6 @@
 ---
 title: "Hermes Agent 飞书双向通信实战：从诊断到开机自启"
-date: 2026-05-09 11:30:00
+date: 2023-05-09 11:30:00
 tags: [Hermes Agent, 飞书, 自动化, AI工作流, 系统集成]
 categories: [AI工具, 技术折腾]
 ---
