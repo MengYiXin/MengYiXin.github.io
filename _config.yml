@@ -111,6 +111,21 @@ theme_config:
     Archives: /archives
     Tags: /tags
     About: /about
+  first_screen:
+    enable: true
+    background_img: /images/bg.svg
+    description: 不要熬夜哟！
+  scroll:
+    progress_bar:
+      enable: true
+    percent:
+      enable: true
+  website_count:
+    busuanzi_count:
+      enable: true
+      site_uv: true
+      site_pv: true
+      page_pv: true
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
