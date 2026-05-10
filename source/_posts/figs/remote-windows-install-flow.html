@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hermes Remote Install Flow</title>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'JetBrains Mono', monospace;
+      background: #020617;
+      min-height: 100vh;
+      padding: 2rem;
+      color: white;
+    }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .header { margin-bottom: 1.5rem; }
+    .header-row { display: flex; align-items: center; gap: 1rem; margin-bottom: 0.5rem; }
+    .pulse-dot {
+      width: 12px; height: 12px; background: #34d399; border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+    h1 { font-size: 1.25rem; font-weight: 700; letter-spacing: -0.025em; }
+    .subtitle { color: #94a3b8; font-size: 0.8rem; margin-left: 1.75rem; }
+    .diagram-container {
+      background: rgba(15, 23, 42, 0.5);
+      border-radius: 1rem;
+      border: 1px solid #1e293b;
+      padding: 1.5rem;
+      overflow-x: auto;
+    }
+    svg { width: 100%; min-width: 900px; display: block; }
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1.5rem; }
+    .card {
+      background: rgba(15, 23, 42, 0.5);
+      border-radius: 0.75rem;
+      border: 1px solid #1e293b;
+      padding: 1rem;
+    }
+    .card-header { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem; }
+    .card-dot { width: 8px; height: 8px; border-radius: 50%; }
+    .card-dot.amber { background: #fbbf24; }
+    .card-dot.rose { background: #fb7185; }
+    .card-dot.violet { background: #a78bfa; }
+    .card h3 { font-size: 0.8rem; font-weight: 600; }
+    .card ul { list-style: none; color: #94a3b8; font-size: 0.7rem; }
+    .card li { margin-bottom: 0.3rem; }
+    .footer { text-align: center; margin-top: 1.5rem; color: #475569; font-size: 0.7rem; }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <div class="header-row">
+      <div class="pulse-dot"></div>
+      <h1>Hermes Remote Install: Step-by-Step Flow</h1>
+    </div>
+    <p class="subtitle">8 步完成远程 Windows 机器上的 Hermes Agent 全自动安装</p>
+  </div>
+
+  <div class="diagram-container">
+    <svg viewBox="0 0 1000 580">
+      <defs>
+        <marker id="arr" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+          <polygon points="0 0, 10 3.5, 0 7" fill="#64748b" />
+        </marker>
+        <marker id="arr-green" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+          <polygon points="0 0, 10 3.5, 0 7" fill="#34d399" />
+        </marker>
+        <marker id="arr-amber" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+          <polygon points="0 0, 10 3.5, 0 7" fill="#fbbf24" />
+        </marker>
+        <marker id="arr-rose" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+          <polygon points="0 0, 10 3.5, 0 7" fill="#fb7185" />
+        </marker>
+        <marker id="arr-violet" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+          <polygon points="0 0, 10 3.5, 0 7" fill="#a78bfa" />
+        </marker>
+        <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+          <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="0.5"/>
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#grid)" />
+
+      <!-- ======== Step 1 ======== -->
+      <rect x="20" y="40" width="200" height="50" rx="6" fill="rgba(136,19,55,0.3)" stroke="#fb7185" stroke-width="1.5"/>
+      <text x="120" y="62" fill="#fb7185" font-size="10" font-weight="700" text-anchor="middle">Step 1 · 开启 OpenSSH</text>
+      <text x="120" y="78" fill="#94a3b8" font-size="8" text-anchor="middle">PowerShell: Add-WindowsCapability</text>
+
+      <!-- Arrow 1→2 -->
+      <line x1="220" y1="65" x2="245" y2="65" stroke="#fb7185" stroke-width="2" marker-end="url(#arr-rose)"/>
+
+      <!-- ======== Step 2 ======== -->
+      <rect x="250" y="40" width="200" height="50" rx="6" fill="rgba(136,19,55,0.3)" stroke="#fb7185" stroke-width="1.5"/>
+      <text x="350" y="62" fill="#fb7185" font-size="10" font-weight="700" text-anchor="middle">Step 2 · 停止安全服务</text>
+      <text x="350" y="78" fill="#94a3b8" font-size="8" text-anchor="middle">Stop-Service EasiUpdate3Protect</text>
+
+      <!-- Arrow 2→3 -->
+      <line x1="450" y1="65" x2="475" y2="65" stroke="#fb7185" stroke-width="2" marker-end="url(#arr-rose)"/>
+
+      <!-- ======== Step 3 ======== -->
+      <rect x="480" y="40" width="200" height="50" rx="6" fill="rgba(6,78,59,0.3)" stroke="#34d399" stroke-width="1.5"/>
+      <text x="580" y="62" fill="#34d399" font-size="10" font-weight="700" text-anchor="middle">Step 3 · 找 Python 环境</text>
+      <text x="580" y="78" fill="#94a3b8" font-size="8" text-anchor="middle">Downloads 优先 / 注册表 / 新装</text>
+
+      <!-- Arrow 3→4 -->
+      <line x1="680" y1="65" x2="705" y2="65" stroke="#34d399" stroke-width="2" marker-end="url(#arr-green)"/>
+
+      <!-- ======== Step 4 ======== -->
+      <rect x="710" y="40" width="200" height="50" rx="6" fill="rgba(6,78,59,0.3)" stroke="#34d399" stroke-width="1.5"/>
+      <text x="810" y="62" fill="#34d399" font-size="10" font-weight="700" text-anchor="middle">Step 4 · pip install setuptools</text>
+      <text x="810" y="78" fill="#94a3b8" font-size="8" text-anchor="middle">embed 版 / 非完整安装包必做</text>
+
+      <!-- Down arrow to row 2 -->
+      <line x1="470" y1="90" x2="470" y2="140" stroke="#64748b" stroke-width="1.5" marker-end="url(#arr)"/>
+      <line x1="470" y1="140" x2="705" y2="140" stroke="#64748b" stroke-width="1.5" marker-end="url(#arr)"/>
+
+      <!-- ======== Step 5 (row 2 left) ======== -->
+      <rect x="710" y="120" width="200" height="50" rx="6" fill="rgba(6,78,59,0.3)" stroke="#34d399" stroke-width="1.5"/>
+      <text x="810" y="142" fill="#34d399" font-size="10" font-weight="700" text-anchor="middle">Step 5 · git clone + tar.gz</text>
+      <text x="810" y="158" fill="#94a3b8" font-size="8" text-anchor="middle">本机打包 · scp 传到远程</text>
+
+      <!-- Arrow 5→6 -->
+      <line x1="710" y1="145" x2="685" y2="145" stroke="#34d399" stroke-width="2" marker-end="url(#arr-green)"/>
+
+      <!-- ======== Step 6 ======== -->
+      <rect x="480" y="120" width="200" height="50" rx="6" fill="rgba(6,78,59,0.3)" stroke="#34d399" stroke-width="1.5"/>
+      <text x="580" y="142" fill="#34d399" font-size="10" font-weight="700" text-anchor="middle">Step 6 · pip install hermes</text>
+      <text x="580" y="158" fill="#94a3b8" font-size="8" text-anchor="middle">本地源码路径安装</text>
+
+      <!-- Arrow 6→7 -->
+      <line x1="480" y1="145" x2="455" y2="145" stroke="#34d399" stroke-width="2" marker-end="url(#arr-green)"/>
+
+      <!-- ======== Step 7 ======== -->
+      <rect x="250" y="120" width="200" height="50" rx="6" fill="rgba(76,29,149,0.4)" stroke="#a78bfa" stroke-width="1.5"/>
+      <text x="350" y="142" fill="#a78bfa" font-size="10" font-weight="700" text-anchor="middle">Step 7 · 配置 API Key</text>
+      <text x="350" y="158" fill="#94a3b8" font-size="8" text-anchor="middle">机器级环境变量 / setx /M</text>
+
+      <!-- Arrow 7→8 -->
+      <line x1="250" y1="145" x2="225" y2="145" stroke="#a78bfa" stroke-width="2" marker-end="url(#arr-violet)"/>
+
+      <!-- ======== Step 8 ======== -->
+      <rect x="20" y="120" width="200" height="50" rx="6" fill="rgba(76,29,149,0.4)" stroke="#a78bfa" stroke-width="1.5"/>
+      <text x="120" y="142" fill="#a78bfa" font-size="10" font-weight="700" text-anchor="middle">Step 8 · 验证 hermes</text>
+      <text x="120" y="158" fill="#94a3b8" font-size="8" text-anchor="middle">hermes --version 确认成功</text>
+
+      <!-- Down to detail section -->
+      <line x1="470" y1="170" x2="470" y2="200" stroke="#64748b" stroke-width="1.5" marker-end="url(#arr)"/>
+
+      <!-- ======== Detail Box ======== -->
+      <rect x="20" y="205" width="940" height="220" rx="10"
+        fill="rgba(15,23,42,0.6)" stroke="#1e293b" stroke-width="1"/>
+      <text x="40" y="226" fill="#fbbf24" font-size="10" font-weight="700">🔧 详细操作命令 (本机 WSL 执行)</text>
+
+      <!-- Command blocks -->
+      <rect x="30" y="236" width="440" height="70" rx="4" fill="rgba(0,0,0,0.4)" stroke="#334155" stroke-width="1"/>
+      <text x="42" y="253" fill="#64748b" font-size="8"># 1. SSH 连接测试</text>
+      <text x="42" y="266" fill="#34d399" font-size="8">sshpass -p '[REDACTED]' ssh -o StrictHostKeyChecking=no \</text>
+      <text x="42" y="278" fill="#94a3b8" font-size="8">  localadmin@192.168.1.138 "whoami"</text>
+      <text x="42" y="290" fill="#64748b" font-size="8"># 2. 停止安全服务 (远程 PowerShell)</text>
+      <text x="42" y="302" fill="#94a3b8" font-size="8">Stop-Service -Name EasiUpdate3Protect -Force</text>
+
+      <rect x="490" y="236" width="460" height="70" rx="4" fill="rgba(0,0,0,0.4)" stroke="#334155" stroke-width="1"/>
+      <text x="502" y="253" fill="#64748b" font-size="8"># 3. 本机 clone + 打包</text>
+      <text x="502" y="266" fill="#34d399" font-size="8">git clone --depth=1 .../hermes-agent.git</text>
+      <text x="502" y="278" fill="#94a3b8" font-size="8">tar -czf hermes.tar.gz hermes-agent</text>
+      <text x="502" y="290" fill="#64748b" font-size="8">sshpass -p '[REDACTED]' scp hermes.tar.gz ...</text>
+
+      <rect x="30" y="316" width="440" height="50" rx="4" fill="rgba(0,0,0,0.4)" stroke="#334155" stroke-width="1"/>
+      <text x="42" y="333" fill="#64748b" font-size="8"># 4. 远程解压 + pip install</text>
+      <text x="42" y="346" fill="#94a3b8" font-size="8">python -c "import tarfile; tarfile.open('...').extractall('...')"</text>
+      <text x="42" y="358" fill="#94a3b8" font-size="8">python -m pip install .../hermes-agent</text>
+
+      <rect x="490" y="316" width="460" height="50" rx="4" fill="rgba(0,0,0,0.4)" stroke="#334155" stroke-width="1"/>
+      <text x="502" y="333" fill="#64748b" font-size="8"># 5. 配置 API Key (机器级环境变量)</text>
+      <text x="502" y="346" fill="#94a3b8" font-size="8">setx ANTHROPIC_API_KEY "[REDACTED]" /M</text>
+      <text x="502" y="358" fill="#94a3b8" font-size="8">setx ANTHROPIC_BASE_URL "https://api.minimaxi.com/..." /M</text>
+
+      <!-- Warning box -->
+      <rect x="30" y="376" width="920" height="38" rx="4" fill="rgba(251,191,36,0.1)" stroke="#fbbf24" stroke-width="1"/>
+      <text x="50" y="393" fill="#fbbf24" font-size="9">⚠️  关键坑点提醒：</text>
+      <text x="175" y="393" fill="#94a3b8" font-size="9">① auth.json 的 pool 名称必须与 config.yaml 的 model.provider 匹配 (minimax ≠ anthropic)</text>
+      <text x="590" y="393" fill="#94a3b8" font-size="9">② minimax pool 的 base_url 易错配成 .io，应为 .com</text>
+
+      <text x="50" y="407" fill="#94a3b8" font-size="9">③ config.yaml 误删成 0 字节时直接删掉，让 hermes 读 auth.json 即可</text>
+      <text x="400" y="407" fill="#94a3b8" font-size="9">④ 多用户权限：icacls 开目录权限 或 用计划任务启动 hermes</text>
+
+      <!-- Legend -->
+      <text x="760" y="82" fill="white" font-size="9" font-weight="600">Legend</text>
+      <rect x="760" y="96" width="14" height="9" rx="2" fill="rgba(136,19,55,0.3)" stroke="#fb7185" stroke-width="1"/>
+      <text x="780" y="104" fill="#94a3b8" font-size="8">网络/连接</text>
+      <rect x="760" y="112" width="14" height="9" rx="2" fill="rgba(6,78,59,0.3)" stroke="#34d399" stroke-width="1"/>
+      <text x="780" y="120" fill="#94a3b8" font-size="8">Python 环境</text>
+      <rect x="760" y="128" width="14" height="9" rx="2" fill="rgba(76,29,149,0.4)" stroke="#a78bfa" stroke-width="1"/>
+      <text x="780" y="136" fill="#94a3b8" font-size="8">Hermes 配置</text>
+      <rect x="760" y="144" width="14" height="9" rx="2" fill="rgba(251,191,36,0.1)" stroke="#fbbf24" stroke-width="1"/>
+      <text x="780" y="152" fill="#94a3b8" font-size="8">警告/注意</text>
+    </svg>
+  </div>
+
+  <div class="cards">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-dot amber"></div>
+        <h3>本机操作 (WSL)</h3>
+      </div>
+      <ul>
+        <li>• git clone --depth=1</li>
+        <li>• tar -czf 打包</li>
+        <li>• sshpass -p '...' ssh / scp</li>
+        <li>• 编码问题：脚本不穿墙</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <div class="card-dot rose"></div>
+        <h3>Windows 远程操作</h3>
+      </div>
+      <ul>
+        <li>• Stop-Service 停安全软件</li>
+        <li>• 找/装 Python + pip</li>
+        <li>• Python tarfile 解压</li>
+        <li>• pip install 本地源码</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <div class="card-dot violet"></div>
+        <h3>认证踩坑重点</h3>
+      </div>
+      <ul>
+        <li>• auth.json pool 名称匹配</li>
+        <li>• minimax .io ≠ .com</li>
+        <li>• config.yaml 0 字节 → 删</li>
+        <li>• 多用户 → icacls / 计划任务</li>
+      </ul>
+    </div>
+  </div>
+
+  <p class="footer">Hermes Remote Install Flow · 8 Steps · 2026-05-11</p>
+</div>
+</body>
+</html>

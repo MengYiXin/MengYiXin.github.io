@@ -26,6 +26,15 @@ tags:
 
 ---
 
+{% raw %}
+<figure>
+  <figcaption>图1 · 远程连接全貌：本机 WSL → 局域网 SSH → Windows 目标机</figcaption>
+  <iframe src="./figs/remote-windows-ssh-arch.html" width="100%" height="580" style="border:none;border-radius:8px;"></iframe>
+</figure>
+{% endraw %}
+
+---
+
 ## 第一部分：远程连接 Windows
 
 ### 前置条件
@@ -54,7 +63,7 @@ Set-Service -Name sshd -StartupType Automatic
 sshpass -p '你的Windows密码' ssh -o StrictHostKeyChecking=no 用户名@IP "whoami"
 
 # 例如（局域网内）
-sshpass -p 'Dos70001' ssh localadmin@192.168.1.138 "whoami"
+sshpass -p '[REDACTED]' ssh localadmin@192.168.1.138 "whoami"
 # 成功返回：localadmin
 ```
 
@@ -79,16 +88,16 @@ sshpass -p '密码' ssh -o StrictHostKeyChecking=no localadmin@IP "cmd /c dir C:
 
 ```bash
 # 写好 .ps1 脚本 → scp传过去 → 远程执行
-sshpass -p 'Dos70001' scp /tmp/check_disk.ps1 localadmin@192.168.1.138:C:/Users/localadmin/
-sshpass -p 'Dos70001' ssh localadmin@192.168.1.138 "powershell -ExecutionPolicy Bypass -File C:\Users\localadmin\check_disk.ps1"
+sshpass -p '[REDACTED]' scp /tmp/check_disk.ps1 localadmin@192.168.1.138:C:/Users/localadmin/
+sshpass -p '[REDACTED]' ssh localadmin@192.168.1.138 "powershell -ExecutionPolicy Bypass -File C:\Users\localadmin\check_disk.ps1"
 ```
 
 **方式 C：Python 脚本（跨平台，最可靠）**
 
 ```bash
 # 写好 .py 脚本 → scp传过去 → 远程执行
-sshpass -p 'Dos70001' scp /tmp/fix_auth.py localadmin@192.168.1.138:C:/Users/localadmin/
-sshpass -p 'Dos70001' ssh localadmin@192.168.1.138 "python C:\Users\localadmin\fix_auth.py"
+sshpass -p '[REDACTED]' scp /tmp/fix_auth.py localadmin@192.168.1.138:C:/Users/localadmin/
+sshpass -p '[REDACTED]' ssh localadmin@192.168.1.138 "python C:\Users\localadmin\fix_auth.py"
 ```
 
 > **重要经验：Windows SSH 中文编码问题**
@@ -104,7 +113,7 @@ sshpass -p 'Dos70001' ssh localadmin@192.168.1.138 "python C:\Users\localadmin\f
 #### 2.1 第一步：确认连通性和 Python 环境
 
 ```bash
-sshpass -p 'Dos70001' ssh -o StrictHostKeyChecking=no localadmin@192.168.1.138 "python --version"
+sshpass -p '[REDACTED]' ssh -o StrictHostKeyChecking=no localadmin@192.168.1.138 "python --version"
 ```
 
 - 返回 `Python 3.12.x` → Python 已在 PATH，继续下一步
@@ -154,7 +163,7 @@ C:\Users\Lenovo\Downloads\python-3.12.8-amd64.exe /quiet InstallAllUsers=0 Prepe
 等待 30 秒后验证：
 
 ```bash
-sshpass -p 'Dos70001' ssh localadmin@192.168.1.138 "python --version"
+sshpass -p '[REDACTED]' ssh localadmin@192.168.1.138 "python --version"
 # 应返回 Python 3.12.x
 ```
 
@@ -166,7 +175,7 @@ sshpass -p 'Dos70001' ssh localadmin@192.168.1.138 "python --version"
 通过非完整安装包装的 Python（或者 embed 版）默认没有 pip/setuptools，必须先装：
 
 ```bash
-sshpass -p 'Dos70001' ssh localadmin@192.168.1.138 "python -m pip install setuptools wheel"
+sshpass -p '[REDACTED]' ssh localadmin@192.168.1.138 "python -m pip install setuptools wheel"
 ```
 
 #### 2.5 第五步：Clone 并打包 Hermes 源码传到目标机器
@@ -181,19 +190,19 @@ git clone --depth=1 https://github.com/NousResearch/hermes-agent.git
 tar -czf hermes-agent.tar.gz hermes-agent
 
 # 传到远程
-sshpass -p 'Dos70001' scp hermes-agent.tar.gz localadmin@192.168.1.138:C:/Users/localadmin/
+sshpass -p '[REDACTED]' scp hermes-agent.tar.gz localadmin@192.168.1.138:C:/Users/localadmin/
 ```
 
 **远程解压（用 Python 解压，Windows tar 解不了 .tar.gz）：**
 
 ```bash
-sshpass -p 'Dos70001' ssh localadmin@192.168.1.138 "python -c \"import tarfile; tarfile.open('C:\\Users\\localadmin\\hermes-agent.tar.gz').extractall('C:\\Users\\localadmin')\""
+sshpass -p '[REDACTED]' ssh localadmin@192.168.1.138 "python -c \"import tarfile; tarfile.open('C:\\Users\\localadmin\\hermes-agent.tar.gz').extractall('C:\\Users\\localadmin')\""
 ```
 
 #### 2.6 第六步：pip install 本地源码
 
 ```bash
-sshpass -p 'Dos70001' ssh localadmin@192.168.1.138 "python -m pip install C:\\Users\\localadmin\\hermes-agent"
+sshpass -p '[REDACTED]' ssh localadmin@192.168.1.138 "python -m pip install C:\\Users\\localadmin\\hermes-agent"
 ```
 
 #### 2.7 第七步：配置 API Key
@@ -220,9 +229,18 @@ setx ANTHROPIC_BASE_URL "https://api.minimaxi.com/anthropic" /M
 #### 2.8 第八步：验证安装
 
 ```bash
-sshpass -p 'Dos70001' ssh localadmin@192.168.1.138 "hermes --version"
+sshpass -p '[REDACTED]' ssh localadmin@192.168.1.138 "hermes --version"
 # 应返回：Hermes Agent v0.13.0
 ```
+
+---
+
+{% raw %}
+<figure>
+  <figcaption>图2 · Hermes 远程安装 8 步流程与关键命令</figcaption>
+  <iframe src="./figs/remote-windows-install-flow.html" width="100%" height="620" style="border:none;border-radius:8px;"></iframe>
+</figure>
+{% endraw %}
 
 ---
 
@@ -327,7 +345,7 @@ runas 在 bat 里会导致密码框闪退，改用计划任务：
 $action = New-ScheduledTaskAction -Execute "C:\Users\localadmin\AppData\Local\Programs\Python\Python312\Scripts\hermes.exe"
 $trigger = New-ScheduledTaskTrigger -AtLogon
 $settings = New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries -StartWhenAvailable
-Register-ScheduledTask -TaskName "HermesAgent" -Action $action -Trigger $trigger -Settings $settings -User "localadmin" -Password "Dos70001" -RunLevel Highest -Force
+Register-ScheduledTask -TaskName "HermesAgent" -Action $action -Trigger $trigger -Settings $settings -User "localadmin" -Password "[REDACTED]" -RunLevel Highest -Force
 ```
 
 hermes.bat 只需一行触发命令（不需要密码）：
@@ -370,9 +388,9 @@ $action = New-ScheduledTaskAction -Execute "cmd.exe" -Argument "/c python -m her
 ```bash
 # 写脚本到 /tmp/fix.py（本地）
 # scp 传到远程
-sshpass -p 'Dos70001' scp /tmp/fix.py localadmin@192.168.1.138:C:/Users/localadmin/fix.py
+sshpass -p '[REDACTED]' scp /tmp/fix.py localadmin@192.168.1.138:C:/Users/localadmin/fix.py
 # 远程执行
-sshpass -p 'Dos70001' ssh localadmin@192.168.1.138 "python C:\Users\localadmin\fix.py"
+sshpass -p '[REDACTED]' ssh localadmin@192.168.1.138 "python C:\Users\localadmin\fix.py"
 ```
 
 > **教训：** 涉及读写文件、调试输出时，始终用 Python 脚本 + scp 方案，不要 direct command inline。
@@ -396,8 +414,8 @@ sshpass -p 'Dos70001' ssh localadmin@192.168.1.138 "python C:\Users\localadmin\f
 ```
 IP:           192.168.1.138
 SSH 用户:     localadmin
-SSH 密码:     Dos70001
-RDP PIN:      qinyuan
+SSH 密码:     [REDACTED]
+RDP PIN:      [REDACTED]
 机器名:       DESKTOP-0LVHJ7D
 Hermes 路径:  C:\Users\localadmin\AppData\Local\Programs\Python\Python312\Scripts\hermes.exe
 Python 路径:  C:\Users\localadmin\AppData\Local\Programs\Python\Python312\python.exe
