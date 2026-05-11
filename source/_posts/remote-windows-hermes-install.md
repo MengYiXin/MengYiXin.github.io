@@ -29,7 +29,7 @@ tags:
 {% raw %}
 <figure>
   <figcaption>图1 · 远程连接全貌：本机 WSL → 局域网 SSH → Windows 目标机</figcaption>
-  <iframe src="./figs/remote-windows-ssh-arch.html" width="100%" height="580" style="border:none;border-radius:8px;"></iframe>
+  <iframe src="/images/remote-windows-ssh-arch.html" width="100%" height="580" style="border:none;border-radius:8px;"></iframe>
 </figure>
 {% endraw %}
 
@@ -238,7 +238,7 @@ sshpass -p '[REDACTED]' ssh localadmin@192.168.1.138 "hermes --version"
 {% raw %}
 <figure>
   <figcaption>图2 · Hermes 远程安装 8 步流程与关键命令</figcaption>
-  <iframe src="./figs/remote-windows-install-flow.html" width="100%" height="620" style="border:none;border-radius:8px;"></iframe>
+  <iframe src="/images/remote-windows-install-flow.html" width="100%" height="620" style="border:none;border-radius:8px;"></iframe>
 </figure>
 {% endraw %}
 
