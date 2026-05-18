@@ -15,11 +15,13 @@
 <link rel="stylesheet" href="/css/style.css">
 
     <link rel="shortcut icon" href="/images/logo.svg">
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/css/font-awesome.min.css">
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
     <script id="hexo-configurations">
     let KEEP = window.KEEP || {};
     KEEP.hexo_config = {"hostname":"mengyx.com.cn","root":"/","language":"zh","path":"search.json"};
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.svg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"不要熬夜哟！"},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":true}}},"local_search":{"enable":true,"preload":true},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":true},"lazyload":{"enable":false},"version":"3.4.3"};
+    KEEP.theme_config = {"toc":{"enable":false,"number":false,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.svg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":false,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":false,"preload":false},"code_copy":{"enable":false,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.4.3"};
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
   </script>
 <meta name="generator" content="Hexo 5.4.0"></head>
@@ -28,14 +30,7 @@
 <body>
 <div class="progress-bar-container">
     
-        <span class="scroll-progress-bar"></span>
-    
 
-    
-        <span class="pjax-progress-bar"></span>
-        <span class="pjax-progress-icon">
-            <i class="fas fa-circle-notch fa-spin"></i>
-        </span>
     
 </div>
 
@@ -94,15 +89,9 @@
                         </li>
                     
                     
-                        <li class="menu-item search search-popup-trigger">
-                            <i class="fas fa-search"></i>
-                        </li>
-                    
                 </ul>
             </div>
             <div class="mobile">
-                
-                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
                 
                 <div class="icon-item menu-bar">
                     <div class="menu-bar-middle"></div>
@@ -157,6 +146,127 @@
                 
 
                 <h3 class="home-article-title">
+                    <a href="/2026/05/05/hermes-skills-design/">
+                        Hermes Agent 进阶：用 Skill 把日常工作流变成可复用工具
+                    </a>
+                </h3>
+
+                <div class="home-article-content markdown-body">
+                    
+                        Hermes Agent 有一个我很喜欢的设计：可以把任何重复性的工作流打包成 Skill，之后类似的事情只需要调用 Skill，AI 就会按既定流程执行，不用每次重新描述需求。
+这篇文章总结一下我目前建的那些 Skill，以及背后的设计思路。
+为什...
+                    
+                </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Tue May 05 2026 16:00:00 GMT+0000">2026-05-05</span></span>
+        
+        
+    </div>
+
+    <a href="/2026/05/05/hermes-skills-design/">Read more&nbsp;<i class="fas fa-angle-right"></i></a>
+</div>
+
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                <h3 class="home-article-title">
+                    <a href="/2026/05/05/hexo-github-actions-deploy/">
+                        Hermes Agent 博客实战：Hexo + GitHub Actions 两分支自动化部署
+                    </a>
+                </h3>
+
+                <div class="home-article-content markdown-body">
+                    
+                        我的博客 mengyx.com.cn 托管在 GitHub Pages，最初用 Hexo 的 hexo deploy 手动发布，后来踩了几个坑之后切成了 GitHub Actions 两分支模式，彻底实现了”写完文章自动上线”。这篇文章记录全过程。
+...
+                    
+                </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Tue May 05 2026 16:00:00 GMT+0000">2026-05-05</span></span>
+        
+        
+    </div>
+
+    <a href="/2026/05/05/hexo-github-actions-deploy/">Read more&nbsp;<i class="fas fa-angle-right"></i></a>
+</div>
+
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                <h3 class="home-article-title">
+                    <a href="/2026/05/05/wsl-git-proxy-wrapper/">
+                        Hermes Agent 环境搭建：WSL 下 GitHub 访问的三级代理方案
+                    </a>
+                </h3>
+
+                <div class="home-article-content markdown-body">
+                    
+                        我的 WSL2 环境一直有个痛点：访问 GitHub 不稳定，有时能 ping 通但 curl https://github.com 超时，有时 git push 报 Failed to connect to localhost port 7890。...
+                    
+                </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Tue May 05 2026 16:00:00 GMT+0000">2026-05-05</span></span>
+        
+        
+    </div>
+
+    <a href="/2026/05/05/wsl-git-proxy-wrapper/">Read more&nbsp;<i class="fas fa-angle-right"></i></a>
+</div>
+
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                <h3 class="home-article-title">
+                    <a href="/2026/05/05/ai-tools-config-notes/">
+                        Claude Code / Hermes 配置笔记：网络问题、代理配置与常见错误修复
+                    </a>
+                </h3>
+
+                <div class="home-article-content markdown-body">
+                    
+                         AI 工具配置笔记：网络、代理与故障排除
+记录日期：2026-05-05
+
+一、网络配置核心问题
+1.1 GitHub 连接问题现象： git push / clone 失败，Connection reset 或超时
+排查流程：
+123451. 直...
+                    
+                </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Tue May 05 2026 15:00:00 GMT+0000">2026-05-05</span></span>
+        
+        
+    </div>
+
+    <a href="/2026/05/05/ai-tools-config-notes/">Read more&nbsp;<i class="fas fa-angle-right"></i></a>
+</div>
+
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                <h3 class="home-article-title">
                     <a href="/2026/05/05/claude-code-full-guide/">
                         Claude Code 使用全记录：安装配置、Hermes、gstack 与网络修复笔记
                     </a>
@@ -173,52 +283,8 @@
 
                 <div class="home-article-meta-info-container">
     <div class="home-article-meta-info">
-        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Tue May 05 2026 15:00:00 GMT+0800">2026-05-05</span></span>
+        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Tue May 05 2026 15:00:00 GMT+0000">2026-05-05</span></span>
         
-            <span class="home-article-category"><i class="fas fa-folder"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/categories/%E6%8A%80%E6%9C%AF%E5%AE%9E%E6%88%98/">技术实战</a>&nbsp;
-                        </li>
-                    
-                    
-                </ul>
-            </span>
-        
-        
-            <span class="home-article-tag">
-                <i class="fas fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/Claude-Code/">Claude Code</a>&nbsp;
-                        </li>
-                    
-                        <li>
-                            | 
-                            <a href="/tags/Hermes/">Hermes</a>&nbsp;
-                        </li>
-                    
-                        <li>
-                            | 
-                            <a href="/tags/WSL2/">WSL2</a>&nbsp;
-                        </li>
-                    
-                        <li>
-                            | 
-                            <a href="/tags/gstack/">gstack</a>&nbsp;
-                        </li>
-                    
-                        <li>
-                            | 
-                            <a href="/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">开发工具</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
         
     </div>
 
@@ -252,47 +318,8 @@
 
                 <div class="home-article-meta-info-container">
     <div class="home-article-meta-info">
-        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Tue May 05 2026 15:00:00 GMT+0800">2026-05-05</span></span>
+        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Tue May 05 2026 15:00:00 GMT+0000">2026-05-05</span></span>
         
-            <span class="home-article-category"><i class="fas fa-folder"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/categories/%E6%8A%80%E6%9C%AF%E5%AE%9E%E6%88%98/">技术实战</a>&nbsp;
-                        </li>
-                    
-                    
-                </ul>
-            </span>
-        
-        
-            <span class="home-article-tag">
-                <i class="fas fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/Claude-Code/">Claude Code</a>&nbsp;
-                        </li>
-                    
-                        <li>
-                            | 
-                            <a href="/tags/%E5%B7%A5%E4%BD%9C%E6%B5%81/">工作流</a>&nbsp;
-                        </li>
-                    
-                        <li>
-                            | 
-                            <a href="/tags/%E8%87%AA%E5%8A%A8%E5%8C%96/">自动化</a>&nbsp;
-                        </li>
-                    
-                        <li>
-                            | 
-                            <a href="/tags/Skill/">Skill</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
         
     </div>
 
@@ -319,52 +346,8 @@
 
                 <div class="home-article-meta-info-container">
     <div class="home-article-meta-info">
-        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Tue May 05 2026 01:30:00 GMT+0800">2026-05-05</span></span>
+        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Tue May 05 2026 01:30:00 GMT+0000">2026-05-05</span></span>
         
-            <span class="home-article-category"><i class="fas fa-folder"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/categories/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD/">基础设施</a>&nbsp;
-                        </li>
-                    
-                    
-                </ul>
-            </span>
-        
-        
-            <span class="home-article-tag">
-                <i class="fas fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/%E5%8D%8E%E4%B8%BA/">华为</a>&nbsp;
-                        </li>
-                    
-                        <li>
-                            | 
-                            <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a>&nbsp;
-                        </li>
-                    
-                        <li>
-                            | 
-                            <a href="/tags/ARM/">ARM</a>&nbsp;
-                        </li>
-                    
-                        <li>
-                            | 
-                            <a href="/tags/AI/">AI</a>&nbsp;
-                        </li>
-                    
-                        <li>
-                            | 
-                            <a href="/tags/%E9%B2%B2%E9%B9%8F/">鲲鹏</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
         
     </div>
 
@@ -392,58 +375,8 @@
 
                 <div class="home-article-meta-info-container">
     <div class="home-article-meta-info">
-        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Tue May 09 2023 11:30:00 GMT+0800">2023-05-09</span></span>
+        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Tue May 09 2023 11:30:00 GMT+0000">2023-05-09</span></span>
         
-            <span class="home-article-category"><i class="fas fa-folder"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/categories/AI%E5%B7%A5%E5%85%B7/">AI工具</a>&nbsp;
-                        </li>
-                    
-                    
-                        <li>
-                            &gt; 
-                            <a href="/categories/AI%E5%B7%A5%E5%85%B7/%E6%8A%80%E6%9C%AF%E6%8A%98%E8%85%BE/">技术折腾</a>&nbsp;
-                        </li>
-                    
-                    
-                </ul>
-            </span>
-        
-        
-            <span class="home-article-tag">
-                <i class="fas fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/Hermes-Agent/">Hermes Agent</a>&nbsp;
-                        </li>
-                    
-                        <li>
-                            | 
-                            <a href="/tags/%E9%A3%9E%E4%B9%A6/">飞书</a>&nbsp;
-                        </li>
-                    
-                        <li>
-                            | 
-                            <a href="/tags/%E8%87%AA%E5%8A%A8%E5%8C%96/">自动化</a>&nbsp;
-                        </li>
-                    
-                        <li>
-                            | 
-                            <a href="/tags/AI%E5%B7%A5%E4%BD%9C%E6%B5%81/">AI工作流</a>&nbsp;
-                        </li>
-                    
-                        <li>
-                            | 
-                            <a href="/tags/%E7%B3%BB%E7%BB%9F%E9%9B%86%E6%88%90/">系统集成</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
         
     </div>
 
@@ -476,25 +409,8 @@
 
                 <div class="home-article-meta-info-container">
     <div class="home-article-meta-info">
-        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Wed Apr 05 2023 17:05:21 GMT+0800">2023-04-05</span></span>
+        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Wed Apr 05 2023 17:05:21 GMT+0000">2023-04-05</span></span>
         
-        
-            <span class="home-article-tag">
-                <i class="fas fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/%E6%A1%8C%E9%9D%A2%E4%BA%91/">桌面云</a>&nbsp;
-                        </li>
-                    
-                        <li>
-                            | 
-                            <a href="/tags/%E4%B8%8A%E6%9E%B6%E5%AE%89%E8%A3%85%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9/">上架安装注意事项</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
         
     </div>
 
@@ -523,193 +439,12 @@
 
                 <div class="home-article-meta-info-container">
     <div class="home-article-meta-info">
-        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Sat Feb 18 2023 20:05:21 GMT+0800">2023-02-18</span></span>
+        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Sat Feb 18 2023 20:05:21 GMT+0000">2023-02-18</span></span>
         
-        
-            <span class="home-article-tag">
-                <i class="fas fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/Linux/">Linux</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
         
     </div>
 
     <a href="/2023/02/18/Linux%20CentOs%E5%88%9B%E5%BB%BA%E7%BD%91%E6%A1%A5%EF%BC%8C%E5%AE%9E%E7%8E%B0KVM%E5%AE%BF%E4%B8%BB%E6%9C%BA%E4%B8%8E%E8%99%9A%E6%8B%9F%E6%9C%BA%E9%80%9A%E8%AE%AF/">Read more&nbsp;<i class="fas fa-angle-right"></i></a>
-</div>
-
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                <h3 class="home-article-title">
-                    <a href="/2023/02/03/%E4%BD%BF%E7%94%A8linux%E7%9A%84iptables%E5%AE%9E%E7%8E%B0%E8%B7%AF%E7%94%B1%E8%BD%AC%E5%8F%91/">
-                        使用Linux的iptables实现路由转发
-                    </a>
-                </h3>
-
-                <div class="home-article-content markdown-body">
-                    
-                        使用linux的iptables实现路由的转发开启ip包转发功能linux默认关闭该功能
-1234vim /etc/sysctl.conf#加入或修改net.ipv4.ip_forward = 1
-重启
-1reboot
-
-开启NAT功能1sudo i...
-                    
-                </div>
-
-                <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Fri Feb 03 2023 20:05:21 GMT+0800">2023-02-03</span></span>
-        
-        
-            <span class="home-article-tag">
-                <i class="fas fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/Linux/">Linux</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
-        
-    </div>
-
-    <a href="/2023/02/03/%E4%BD%BF%E7%94%A8linux%E7%9A%84iptables%E5%AE%9E%E7%8E%B0%E8%B7%AF%E7%94%B1%E8%BD%AC%E5%8F%91/">Read more&nbsp;<i class="fas fa-angle-right"></i></a>
-</div>
-
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                <h3 class="home-article-title">
-                    <a href="/2023/02/03/%E4%BD%BF%E7%94%A8windows%E7%BD%91%E7%BB%9C%E5%85%B1%E4%BA%AB%E5%AE%9E%E7%8E%B0NAT/">
-                        使用windows网络共享实现NAT
-                    </a>
-                </h3>
-
-                <div class="home-article-content markdown-body">
-                    
-                        使用windows网络共享实现NAT适用范围有一台可以上外网的机器，局域网内其它多台机器无法访问外网，只有一根网线，又没有交换机等等，比如虚拟机集群中，使用vsphere，没有自带的NAT功能，这时候就可以使用本文档的方法实现局域网NAT访问外网。使...
-                    
-                </div>
-
-                <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Fri Feb 03 2023 20:05:21 GMT+0800">2023-02-03</span></span>
-        
-        
-            <span class="home-article-tag">
-                <i class="fas fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/Linux/">Linux</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
-        
-    </div>
-
-    <a href="/2023/02/03/%E4%BD%BF%E7%94%A8windows%E7%BD%91%E7%BB%9C%E5%85%B1%E4%BA%AB%E5%AE%9E%E7%8E%B0NAT/">Read more&nbsp;<i class="fas fa-angle-right"></i></a>
-</div>
-
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                <h3 class="home-article-title">
-                    <a href="/2023/02/02/simpread-%E5%85%B3%E4%BA%8E%20docker%20%E7%9A%84%E7%BC%BA%E7%82%B9/">
-                        关于Docker的缺点
-                    </a>
-                </h3>
-
-                <div class="home-article-content markdown-body">
-                    
-                        使用 docker 时候，我惊叹发现 docker 真的是个宝藏，可以秒级开启应用，不用特别繁琐的配置什么配置，可以减轻很多这种重复性的劳动。最近我在学习 docker，然后我就在想它可不可以虚拟化 Windows 的桌面系统呢？
-通过查找资料，我发...
-                    
-                </div>
-
-                <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Thu Feb 02 2023 20:05:21 GMT+0800">2023-02-02</span></span>
-        
-        
-            <span class="home-article-tag">
-                <i class="fas fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/%E6%A1%8C%E9%9D%A2%E4%BA%91/">桌面云</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
-        
-    </div>
-
-    <a href="/2023/02/02/simpread-%E5%85%B3%E4%BA%8E%20docker%20%E7%9A%84%E7%BC%BA%E7%82%B9/">Read more&nbsp;<i class="fas fa-angle-right"></i></a>
-</div>
-
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                <h3 class="home-article-title">
-                    <a href="/2023/02/01/simpread-%E6%9C%80%E5%89%8D%E6%B2%BF%EF%BC%9AMeta%20Learning_Learning%20to%20Learn,%20%E5%88%B0%E5%BA%95%E6%88%91%E4%BB%AC%E8%A6%81%E5%AD%A6%E4%BC%9A%E5%AD%A6%E4%B9%A0%E4%BB%80%E4%B9%88%EF%BC%9F/">
-                        最前沿：Meta Learning to Learn, 到底我们要学会学习什么？
-                    </a>
-                </h3>
-
-                <div class="home-article-content markdown-body">
-                    
-                        1 前言
-在本文之前，智能专栏上已经有多篇介绍 Meta Learning 的文章：
-Kay Ke：概要：NIPS 2017 Deep Learning for Robotics Keynote
-Flood Sung：最前沿：百家争鸣的 Meta L...
-                    
-                </div>
-
-                <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Wed Feb 01 2023 19:05:21 GMT+0800">2023-02-01</span></span>
-        
-        
-            <span class="home-article-tag">
-                <i class="fas fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/%E8%AE%BA%E6%96%87/">论文</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
-        
-    </div>
-
-    <a href="/2023/02/01/simpread-%E6%9C%80%E5%89%8D%E6%B2%BF%EF%BC%9AMeta%20Learning_Learning%20to%20Learn,%20%E5%88%B0%E5%BA%95%E6%88%91%E4%BB%AC%E8%A6%81%E5%AD%A6%E4%BC%9A%E5%AD%A6%E4%B9%A0%E4%BB%80%E4%B9%88%EF%BC%9F/">Read more&nbsp;<i class="fas fa-angle-right"></i></a>
 </div>
 
             </li>
@@ -751,7 +486,7 @@ Flood Sung：最前沿：百家争鸣的 Meta L...
             2026&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">Yixin</a>
         </div>
         
-            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <script async  src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
             <div class="website-count info-item">
                 
                     <span id="busuanzi_container_site_uv">
@@ -800,6 +535,10 @@ Flood Sung：最前沿：百家争鸣的 Meta L...
         
 
         
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
 
         <li class="tools-item tool-scroll-to-bottom flex-center">
             <i class="fas fa-arrow-down"></i>
@@ -810,11 +549,6 @@ Flood Sung：最前沿：百家争鸣的 Meta L...
         <li class="tools-item tool-toggle-show flex-center">
             <i class="fas fa-cog fa-spin"></i>
         </li>
-        
-            <li class="tools-item tool-scroll-to-top flex-center">
-                <i class="arrow-up fas fa-arrow-up"></i>
-                <span class="percent"></span>
-            </li>
         
     </ul>
 </div>
@@ -829,88 +563,33 @@ Flood Sung：最前沿：百家争鸣的 Meta L...
 
 
     
-        <div class="search-pop-overlay">
-    <div class="popup search-popup">
-        <div class="search-header">
-          <span class="search-input-field-pre">
-            <i class="fas fa-keyboard"></i>
-          </span>
-            <div class="search-input-container">
-                <input autocomplete="off"
-                       autocorrect="off"
-                       autocapitalize="off"
-                       placeholder="Search..."
-                       spellcheck="false"
-                       type="search"
-                       class="search-input"
-                >
-            </div>
-            <span class="popup-btn-close">
-                <i class="fas fa-times"></i>
-            </span>
-        </div>
-        <div id="search-result">
-            <div id="no-result">
-                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
-            </div>
-        </div>
-    </div>
-</div>
-
-    
 
 </main>
 
 
 
 
-<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/dark-light-toggle.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
 
 
-    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/local-search.js"></script>
-
-
-
-    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/code-copy.js"></script>
 
 
 
 
-<div class="post-scripts pjax">
+
+
+<div class="post-scripts">
     
 </div>
-
-
-    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/libs/pjax.min.js"></script>
-<script>
-    window.addEventListener('DOMContentLoaded', () => {
-        window.pjax = new Pjax({
-            selectors: [
-                'head title',
-                '.page-container',
-                '.pjax'
-            ],
-            history: true,
-            debug: false,
-            cacheBust: false,
-            timeout: 0,
-            analytics: false,
-            currentUrlFullReload: false,
-            scrollRestoration: false,
-            // scrollTo: true,
-        });
-
-        document.addEventListener('pjax:send', () => {
-            KEEP.utils.pjaxProgressBarStart();
-        });
-
-        document.addEventListener('pjax:complete', () => {
-            KEEP.utils.pjaxProgressBarEnd();
-            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
-            KEEP.refresh();
-        });
-    });
-</script>
 
 
 
