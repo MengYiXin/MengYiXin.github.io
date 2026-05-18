@@ -48,6 +48,12 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Override theme config
+        run: |
+          if [ -f source/_config.yml ]; then
+            cp source/_config.yml _config.yml
+          fi
+
       - name: Build
         run: npx hexo generate
 
