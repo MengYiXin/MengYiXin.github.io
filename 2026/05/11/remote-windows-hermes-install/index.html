@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Yixin">
+    
+    <title>
+        
+            远程给家用 Windows 电脑安装 Hermes Agent：SSH 连接与踩坑全记录 |
+        
+        Yixin blog
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo.svg">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/css/font-awesome.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"mengyx.com.cn","root":"/","language":"zh","path":"search.json"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.svg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"不要熬夜哟！"},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":true}}},"local_search":{"enable":true,"preload":true},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":true},"lazyload":{"enable":false},"version":"3.4.3"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fas fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                Yixin blog
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                HOME
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                TAGS
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                ABOUT
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">HOME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">TAGS</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">ABOUT</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">远程给家用 Windows 电脑安装 Hermes Agent：SSH 连接与踩坑全记录</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar.svg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">Yixin</span>
+                        
+                            <span class="author-label">Lv5</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;2026-05-11 00:30:00
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/AI%E5%B7%A5%E5%85%B7/">AI工具</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        &gt; <a href="/categories/AI%E5%B7%A5%E5%85%B7/%E6%8A%80%E6%9C%AF%E8%AE%B0%E5%BD%95/">技术记录</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/Hermes-Agent/">Hermes Agent</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/MiniMax/">MiniMax</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/SSH/">SSH</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/Windows/">Windows</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E8%BF%9C%E7%A8%8B%E6%8E%A7%E5%88%B6/">远程控制</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/Python/">Python</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <h1 id="远程给家用-Windows-电脑安装-Hermes-Agent：SSH-连接与踩坑全记录"><a href="#远程给家用-Windows-电脑安装-Hermes-Agent：SSH-连接与踩坑全记录" class="headerlink" title="远程给家用 Windows 电脑安装 Hermes Agent：SSH 连接与踩坑全记录"></a>远程给家用 Windows 电脑安装 Hermes Agent：SSH 连接与踩坑全记录</h1><h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>目标是<strong>远程连接家里/公司的 Windows 电脑，通过 SSH 在上面自动化安装 Hermes Agent</strong>，不需要有人在那台电脑前操作。整个过程分两大部分：</p>
+<ol>
+<li><strong>远程连接 Windows</strong>（SSH + 密码认证）</li>
+<li><strong>远程安装 Hermes</strong>（无网络、无 GUI、全自动）</li>
+</ol>
+<p>目标机器是一台联想台式机（品牌机自带的管理员账户），网络环境为局域网（同一 WiFi 或 VPN）。</p>
+<hr>
+
+<figure>
+  <figcaption>图1 · 远程连接全貌：本机 WSL → 局域网 SSH → Windows 目标机</figcaption>
+  <iframe src="/images/remote-windows-ssh-arch.html" width="100%" height="580" style="border:none;border-radius:8px;"></iframe>
+</figure>
+
+
+<hr>
+<h2 id="第一部分：远程连接-Windows"><a href="#第一部分：远程连接-Windows" class="headerlink" title="第一部分：远程连接 Windows"></a>第一部分：远程连接 Windows</h2><h3 id="前置条件"><a href="#前置条件" class="headerlink" title="前置条件"></a>前置条件</h3><p>Windows 10/11 专业版/家庭版都自带 OpenSSH 服务器功能，只需要开启即可。</p>
+<h4 id="1-1-开启-Windows-SSH-服务"><a href="#1-1-开启-Windows-SSH-服务" class="headerlink" title="1.1 开启 Windows SSH 服务"></a>1.1 开启 Windows SSH 服务</h4><p>在目标 Windows 机器上（需要管理员权限），以<strong>管理员身份</strong>打开 PowerShell，执行：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装 OpenSSH 服务器（如果还没有）</span></span><br><span class="line"><span class="built_in">Add-WindowsCapability</span> <span class="literal">-Online</span> <span class="literal">-Name</span> OpenSSH.Server~~~~<span class="number">0.0</span>.<span class="number">1.0</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 启动 SSH 服务并设为自动</span></span><br><span class="line"><span class="built_in">Start-Service</span> sshd</span><br><span class="line"><span class="built_in">Set-Service</span> <span class="literal">-Name</span> sshd <span class="literal">-StartupType</span> Automatic</span><br></pre></td></tr></table></figure>
+
+<p>安装完成后，Windows 会自动在防火墙里开放 22 端口。</p>
+<h4 id="1-2-确认-SSH-连接"><a href="#1-2-确认-SSH-连接" class="headerlink" title="1.2 确认 SSH 连接"></a>1.2 确认 SSH 连接</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 从本机（Linux/macOS/WSL）测试连接</span></span><br><span class="line">sshpass -p <span class="string">&#x27;你的Windows密码&#x27;</span> ssh -o StrictHostKeyChecking=no 用户名@IP <span class="string">&quot;whoami&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 例如（局域网内）</span></span><br><span class="line">sshpass -p <span class="string">&#x27;[REDACTED]&#x27;</span> ssh localadmin@192.168.1.138 <span class="string">&quot;whoami&quot;</span></span><br><span class="line"><span class="comment"># 成功返回：localadmin</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>为什么要用 sshpass？</strong><br>直接 <code>ssh user@ip</code> 会弹出交互式密码输入提示，自动化脚本里不方便。本机如果没有 sshpass，先装：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt-get install -y sshpass   <span class="comment"># Debian/Ubuntu/WSL</span></span><br><span class="line">brew install sshpass         <span class="comment"># macOS</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<h4 id="1-3-远程执行命令的三种方式"><a href="#1-3-远程执行命令的三种方式" class="headerlink" title="1.3 远程执行命令的三种方式"></a>1.3 远程执行命令的三种方式</h4><p>SSH 连接成功后，可以远程执行任何 Windows 命令。以下三种方式按场景选择：</p>
+<p><strong>方式 A：直接命令（简单场景）</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sshpass -p <span class="string">&#x27;密码&#x27;</span> ssh -o StrictHostKeyChecking=no localadmin@IP <span class="string">&quot;cmd /c dir C:\Users&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>方式 B：PowerShell 脚本（推荐，脚本逻辑复杂时）</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 写好 .ps1 脚本 → scp传过去 → 远程执行</span></span><br><span class="line">sshpass -p <span class="string">&#x27;[REDACTED]&#x27;</span> scp /tmp/check_disk.ps1 localadmin@192.168.1.138:C:/Users/localadmin/</span><br><span class="line">sshpass -p <span class="string">&#x27;[REDACTED]&#x27;</span> ssh localadmin@192.168.1.138 <span class="string">&quot;powershell -ExecutionPolicy Bypass -File C:\Users\localadmin\check_disk.ps1&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>方式 C：Python 脚本（跨平台，最可靠）</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 写好 .py 脚本 → scp传过去 → 远程执行</span></span><br><span class="line">sshpass -p <span class="string">&#x27;[REDACTED]&#x27;</span> scp /tmp/fix_auth.py localadmin@192.168.1.138:C:/Users/localadmin/</span><br><span class="line">sshpass -p <span class="string">&#x27;[REDACTED]&#x27;</span> ssh localadmin@192.168.1.138 <span class="string">&quot;python C:\Users\localadmin\fix_auth.py&quot;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>重要经验：Windows SSH 中文编码问题</strong><br>Windows SSH 服务端默认 GBK 编码，WSL/macOS 客户端用 UTF-8，直接执行 <code>cmd /c dir</code> 时中文文件名全部乱码。<br>解决方案：<strong>永远不要让命令穿墙</strong>。把脚本写到本地 → scp 传过去 → 远程执行。避免了编码问题，也方便调试。</p>
+</blockquote>
+<hr>
+<h2 id="第二部分：远程安装-Hermes-Agent"><a href="#第二部分：远程安装-Hermes-Agent" class="headerlink" title="第二部分：远程安装 Hermes Agent"></a>第二部分：远程安装 Hermes Agent</h2><h3 id="完整流程"><a href="#完整流程" class="headerlink" title="完整流程"></a>完整流程</h3><h4 id="2-1-第一步：确认连通性和-Python-环境"><a href="#2-1-第一步：确认连通性和-Python-环境" class="headerlink" title="2.1 第一步：确认连通性和 Python 环境"></a>2.1 第一步：确认连通性和 Python 环境</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sshpass -p <span class="string">&#x27;[REDACTED]&#x27;</span> ssh -o StrictHostKeyChecking=no localadmin@192.168.1.138 <span class="string">&quot;python --version&quot;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>返回 <code>Python 3.12.x</code> → Python 已在 PATH，继续下一步</li>
+<li>返回”不是内部或外部命令” → Python 不在 PATH，见 2.3 节</li>
+</ul>
+<h4 id="2-2-第二步：停止拦截安装的安全服务"><a href="#2-2-第二步：停止拦截安装的安全服务" class="headerlink" title="2.2 第二步：停止拦截安装的安全服务"></a>2.2 第二步：停止拦截安装的安全服务</h4><p>品牌机（联想/戴尔/惠普）通常预装了”系统更新保护”之类的安全服务，会拦截 Python 安装包静默安装。</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Stop-Service</span> <span class="literal">-Name</span> EasiUpdate3Protect <span class="literal">-Force</span></span><br><span class="line"><span class="built_in">Stop-Service</span> <span class="literal">-Name</span> EasiUpdate3 <span class="literal">-Force</span></span><br><span class="line"><span class="built_in">Stop-Service</span> <span class="literal">-Name</span> EasiUpdate <span class="literal">-Force</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>经验：</strong> <code>sc delete</code> 需要比管理员更高权限，一般不成功。用 <code>Stop-Service -Force</code> 先停掉进程即可，服务停止后安装就能进行，不一定要删掉服务。</p>
+</blockquote>
+<h4 id="2-3-第三步：找-Python-或安装-Python"><a href="#2-3-第三步：找-Python-或安装-Python" class="headerlink" title="2.3 第三步：找 Python 或安装 Python"></a>2.3 第三步：找 Python 或安装 Python</h4><p>Windows 远程机器上 Python 经常出现在以下位置（按优先级排序）：</p>
+<ol>
+<li><code>C:\Users\Lenovo\Downloads\python-*.exe</code> — <strong>最优先，找到了直接用</strong>，不需重新下载</li>
+<li><code>C:\Python312</code> — 可能是空目录（安装中断），勿被迷惑</li>
+<li>注册表 <code>HKLM:\Software\Python\PythonCore\3.x\InstallPath</code> 记录的位置</li>
+</ol>
+<p><strong>搜索步骤（按顺序）：</strong></p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. 看 Downloads 目录有没有安装包</span></span><br><span class="line"><span class="built_in">Get-ChildItem</span> <span class="string">&quot;C:\Users\Lenovo\Downloads\python*.exe&quot;</span> <span class="literal">-ErrorAction</span> SilentlyContinue</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 验证 Python 是否真的在 PATH</span></span><br><span class="line">python -<span class="literal">-version</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. 查注册表</span></span><br><span class="line"><span class="built_in">Get-ItemProperty</span> <span class="string">&quot;HKLM:\Software\Python\PythonCore\3.12\InstallPath&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>安装 Python（如果没找到）：</strong></p>
+<p>优先用 Downloads 目录里的安装包（已下载好，不走网络，最快）：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">C:\<span class="title">Users</span>\<span class="title">Lenovo</span>\<span class="title">Downloads</span>\<span class="title">python</span>-3.12.8-<span class="title">amd64.exe</span> /<span class="title">quiet</span> <span class="title">InstallAllUsers</span>=0 <span class="title">PrependPath</span>=1 <span class="title">Include_pip</span>=1</span></span><br></pre></td></tr></table></figure>
+
+<p>等待 30 秒后验证：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sshpass -p <span class="string">&#x27;[REDACTED]&#x27;</span> ssh localadmin@192.168.1.138 <span class="string">&quot;python --version&quot;</span></span><br><span class="line"><span class="comment"># 应返回 Python 3.12.x</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>坑：Downloads 里的安装包可能不完整</strong><br>如果只有几百 KB，说明下载中断了（遇到过 python-installer.exe 只有 13% 大小），需要找完整的安装包或重新下载完整版。</p>
+</blockquote>
+<h4 id="2-4-第四步：安装-setuptools（Python-embed-版必需）"><a href="#2-4-第四步：安装-setuptools（Python-embed-版必需）" class="headerlink" title="2.4 第四步：安装 setuptools（Python embed 版必需）"></a>2.4 第四步：安装 setuptools（Python embed 版必需）</h4><p>通过非完整安装包装的 Python（或者 embed 版）默认没有 pip/setuptools，必须先装：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sshpass -p <span class="string">&#x27;[REDACTED]&#x27;</span> ssh localadmin@192.168.1.138 <span class="string">&quot;python -m pip install setuptools wheel&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-5-第五步：Clone-并打包-Hermes-源码传到目标机器"><a href="#2-5-第五步：Clone-并打包-Hermes-源码传到目标机器" class="headerlink" title="2.5 第五步：Clone 并打包 Hermes 源码传到目标机器"></a>2.5 第五步：Clone 并打包 Hermes 源码传到目标机器</h4><p><strong>关键经验：Windows 远程机器访问 GitHub 极慢/超时。</strong> 解决方案是本机 clone 后打包传过去。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 本机 clone（WSL/Linux）</span></span><br><span class="line">git <span class="built_in">clone</span> --depth=1 https://github.com/NousResearch/hermes-agent.git</span><br><span class="line"></span><br><span class="line"><span class="comment"># 打包成 .tar.gz（不能用 .tar，Windows 自带 tar 解不了 .tar.gz）</span></span><br><span class="line">tar -czf hermes-agent.tar.gz hermes-agent</span><br><span class="line"></span><br><span class="line"><span class="comment"># 传到远程</span></span><br><span class="line">sshpass -p <span class="string">&#x27;[REDACTED]&#x27;</span> scp hermes-agent.tar.gz localadmin@192.168.1.138:C:/Users/localadmin/</span><br></pre></td></tr></table></figure>
+
+<p><strong>远程解压（用 Python 解压，Windows tar 解不了 .tar.gz）：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sshpass -p <span class="string">&#x27;[REDACTED]&#x27;</span> ssh localadmin@192.168.1.138 <span class="string">&quot;python -c \&quot;import tarfile; tarfile.open(&#x27;C:\\Users\\localadmin\\hermes-agent.tar.gz&#x27;).extractall(&#x27;C:\\Users\\localadmin&#x27;)\&quot;&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-6-第六步：pip-install-本地源码"><a href="#2-6-第六步：pip-install-本地源码" class="headerlink" title="2.6 第六步：pip install 本地源码"></a>2.6 第六步：pip install 本地源码</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sshpass -p <span class="string">&#x27;[REDACTED]&#x27;</span> ssh localadmin@192.168.1.138 <span class="string">&quot;python -m pip install C:\\Users\\localadmin\\hermes-agent&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-7-第七步：配置-API-Key"><a href="#2-7-第七步：配置-API-Key" class="headerlink" title="2.7 第七步：配置 API Key"></a>2.7 第七步：配置 API Key</h4><p>这里有<strong>巨大的坑</strong>，详细说明见下一节。先讲正确做法：</p>
+<p><strong>方案 A：机器级环境变量（所有用户都能读到，推荐）</strong></p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 用 PowerShell 写到 Machine 级注册表，所有账户共享</span></span><br><span class="line">[<span class="type">Environment</span>]::SetEnvironmentVariable(<span class="string">&#x27;ANTHROPIC_API_KEY&#x27;</span>, <span class="string">&#x27;你的API密钥&#x27;</span>, <span class="string">&#x27;Machine&#x27;</span>)</span><br><span class="line">[<span class="type">Environment</span>]::SetEnvironmentVariable(<span class="string">&#x27;ANTHROPIC_BASE_URL&#x27;</span>, <span class="string">&#x27;https://api.minimaxi.com/anthropic&#x27;</span>, <span class="string">&#x27;Machine&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p><strong>方案 B：setx /M（机器级，永久）</strong></p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">setx ANTHROPIC_API_KEY &quot;你的API密钥&quot; /M</span><br><span class="line">setx ANTHROPIC_BASE_URL &quot;https://api.minimaxi.com/anthropic&quot; /M</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>不要只写 localadmin 的 .env 文件</strong>——联想普通用户读不到 <code>C:\Users\localadmin\.hermes\.env</code>，必须用机器级写入。</p>
+</blockquote>
+<h4 id="2-8-第八步：验证安装"><a href="#2-8-第八步：验证安装" class="headerlink" title="2.8 第八步：验证安装"></a>2.8 第八步：验证安装</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sshpass -p <span class="string">&#x27;[REDACTED]&#x27;</span> ssh localadmin@192.168.1.138 <span class="string">&quot;hermes --version&quot;</span></span><br><span class="line"><span class="comment"># 应返回：Hermes Agent v0.13.0</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+
+<figure>
+  <figcaption>图2 · Hermes 远程安装 8 步流程与关键命令</figcaption>
+  <iframe src="/images/remote-windows-install-flow.html" width="100%" height="620" style="border:none;border-radius:8px;"></iframe>
+</figure>
+
+
+<hr>
+<h2 id="踩坑全记录（经验精华）"><a href="#踩坑全记录（经验精华）" class="headerlink" title="踩坑全记录（经验精华）"></a>踩坑全记录（经验精华）</h2><h3 id="坑-1：auth-json-pool-名与-model-provider-不匹配（最常见）"><a href="#坑-1：auth-json-pool-名与-model-provider-不匹配（最常见）" class="headerlink" title="坑 1：auth.json pool 名与 model.provider 不匹配（最常见）"></a>坑 1：auth.json pool 名与 model.provider 不匹配（最常见）</h3><p><strong>症状：</strong> auth.json 正确、.env 正确、API Key 正确，但 Hermes 请求头是 <code>Authorization: Bearer None</code>，请求发到了错误的 <code>api.minimax.io</code>。</p>
+<p><strong>根本原因：</strong> hermes 根据 <code>config.yaml</code> 里 <code>model.provider</code> 的值从 auth.json 的 <code>credential_pool</code> 里找同名 pool：</p>
+<ul>
+<li><code>model.provider: minimax</code> → 读 <code>credential_pool.minimax[]</code></li>
+<li><code>model.provider: anthropic</code> → 读 <code>credential_pool.anthropic[]</code></li>
+</ul>
+<p>本次案例中，config.yaml 设了 <code>provider: minimax</code>，但 auth.json 里 <code>minimax</code> pool 缓存了错误的 <code>.io</code> base_url（应为 <code>.com</code>）。<code>anthropic</code> pool 虽然 key/URL 都对，但根本不会被读到。</p>
+<p><strong>解法（两步全做）：</strong></p>
+<p>Step 1：修改 config.yaml，把 <code>model.provider</code> 统一成 <code>anthropic</code></p>
+<p>Step 2：重写 auth.json，只保留 <code>anthropic</code> pool，删掉 <code>minimax</code> pool</p>
+<blockquote>
+<p><strong>最容易漏的点：</strong> auth.json 里的 <code>minimax</code> pool 的 <code>base_url</code> 经常被误配成 <code>https://api.minimax.io/anthropic</code>（.io 错），应为 <code>https://api.minimaxi.com/anthropic</code>（.com 对）。即使 key 完全正确，URL 错了依然 401。</p>
+</blockquote>
+<hr>
+<h3 id="坑-2：config-yaml-被误删成-0-字节"><a href="#坑-2：config-yaml-被误删成-0-字节" class="headerlink" title="坑 2：config.yaml 被误删成 0 字节"></a>坑 2：config.yaml 被误删成 0 字节</h3><p><strong>症状：</strong> auth.json 正确、.env 正确，但 Hermes 跑不起来或 401。</p>
+<p><strong>根本原因：</strong> 手动编辑 config.yaml 时替换逻辑未匹配到内容，文件被<strong>清空为 0 字节</strong>。之后 hermes 读 config.yaml 得到空内容。</p>
+<p><strong>特征：</strong> 文件存在但大小为 0：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="built_in">print</span>(os.path.getsize(<span class="string">r&#x27;C:\Users\Lenovo\.hermes\config.yaml&#x27;</span>))</span><br><span class="line"><span class="comment"># 输出：0</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>解法：直接删掉空的 config.yaml</strong>，让 hermes 完全依赖 auth.json 和 .env：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line">os.remove(<span class="string">r&#x27;C:\Users\Lenovo\.hermes\config.yaml&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>预防：</strong> 不要手动编辑 .yaml 文件，用 <code>hermes config set</code> 命令写入配置。</p>
+</blockquote>
+<hr>
+<h3 id="坑-3：多用户下-API-Key-读取位置问题（四层叠加）"><a href="#坑-3：多用户下-API-Key-读取位置问题（四层叠加）" class="headerlink" title="坑 3：多用户下 API Key 读取位置问题（四层叠加）"></a>坑 3：多用户下 API Key 读取位置问题（四层叠加）</h3><p><strong>表象：</strong> localadmin SSH 里 <code>hermes config show</code> 显示正确 key，但联想用户双击 Hermes 运行时仍 401，token prefix 不对（<code>sk-cp-Doz8BI</code> 而非 <code>sk-cp--7fKd</code>）。</p>
+<p><strong>根本原因（四层叠加）：</strong></p>
+<ol>
+<li><p><strong>读取位置不同</strong>：hermes 读 <code>.env</code> 时用的是<strong>运行用户的 %USERPROFILE%</strong></p>
+<ul>
+<li>localadmin SSH：<code>%USERPROFILE%</code> = <code>C:\Users\localadmin</code> → 读到正确 key</li>
+<li>联想用户双击：<code>%USERPROFILE%</code> = <code>C:\Users\Lenovo</code> → <code>.hermes\.env</code> 可能为空</li>
+</ul>
+</li>
+<li><p><strong>config.yaml 结构歧义</strong>：文件中可能同时存在 <code>providers.minimax</code>（正确）和独立根级 <code>minimax:</code> 块（旧版遗留），导致解析歧义</p>
+</li>
+<li><p><strong>auth.json 凭证池缓存</strong>：401 后的 key 会被标记为 <code>exhausted</code> 并缓存，即使更新了 config.yaml，hermes 仍从 auth.json 读已缓存的 exhausted 凭证</p>
+</li>
+</ol>
+<p><strong>401 调试速查顺序：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1. 检查 auth.json → 找 exhausted key + 检查 minimax pool 的 base_url</span><br><span class="line">   ⚠️ minimax pool 的 base_url 经常被误配成 https:&#x2F;&#x2F;api.minimax.io（.io错）</span><br><span class="line">   应为 https:&#x2F;&#x2F;api.minimaxi.com&#x2F;anthropic（.com对）</span><br><span class="line">2. 检查 .env → 看 ANTHROPIC_API_KEY 值对不对（两个横杠 sk-cp--）</span><br><span class="line">3. 检查 config.yaml → providers.minimax.api_key 对不对</span><br><span class="line">4. 查 model_catalog.enabled → 可能是 catalog 覆盖</span><br><span class="line">5. 杀残留进程 → 新 key 不生效的常见原因</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="坑-4：Hermes-装在-localadmin-AppData-里，联想用户没有-NTFS-权限"><a href="#坑-4：Hermes-装在-localadmin-AppData-里，联想用户没有-NTFS-权限" class="headerlink" title="坑 4：Hermes 装在 localadmin AppData 里，联想用户没有 NTFS 权限"></a>坑 4：Hermes 装在 localadmin AppData 里，联想用户没有 NTFS 权限</h3><p><strong>症状：</strong> <code>hermes.bat</code> 双击报错 <code>Access is denied</code>。</p>
+<p><strong>根本原因：</strong> <code>InstallAllUsers=0</code> 导致 hermes 只装进 <code>C:\Users\localadmin\AppData\...</code>，Lenovo 普通用户完全没有该目录的读取权限（NTFS 权限）。</p>
+<p><strong>解法两步：</strong></p>
+<p><strong>Step 1：给联想用户开 Python312 目录读+执行权限</strong></p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">icacls <span class="string">&quot;C:\Users\localadmin\AppData\Local\Programs\Python\Python312&quot;</span> /grant <span class="string">&quot;DESKTOP-0LVHJ7D\Lenovo:RX&quot;</span> /t</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>注意：用户名必须写死 <code>机器名\用户名</code> 格式（<code>DESKTOP-0LVHJ7D\Lenovo</code>），不能用 PowerShell 变量 <code>$user</code> 替换，否则 icacls 展开失败。</p>
+</blockquote>
+<p><strong>Step 2：用计划任务启动 Hermes（不用 runas）</strong></p>
+<p>runas 在 bat 里会导致密码框闪退，改用计划任务：</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># hermes_task.ps1</span></span><br><span class="line"><span class="variable">$action</span> = <span class="built_in">New-ScheduledTaskAction</span> <span class="literal">-Execute</span> <span class="string">&quot;C:\Users\localadmin\AppData\Local\Programs\Python\Python312\Scripts\hermes.exe&quot;</span></span><br><span class="line"><span class="variable">$trigger</span> = <span class="built_in">New-ScheduledTaskTrigger</span> <span class="literal">-AtLogon</span></span><br><span class="line"><span class="variable">$settings</span> = <span class="built_in">New-ScheduledTaskSettingsSet</span> <span class="literal">-AllowStartIfOnBatteries</span> <span class="literal">-DontStopIfGoingOnBatteries</span> <span class="literal">-StartWhenAvailable</span></span><br><span class="line"><span class="built_in">Register-ScheduledTask</span> <span class="literal">-TaskName</span> <span class="string">&quot;HermesAgent&quot;</span> <span class="literal">-Action</span> <span class="variable">$action</span> <span class="literal">-Trigger</span> <span class="variable">$trigger</span> <span class="literal">-Settings</span> <span class="variable">$settings</span> <span class="literal">-User</span> <span class="string">&quot;localadmin&quot;</span> <span class="literal">-Password</span> <span class="string">&quot;[REDACTED]&quot;</span> <span class="literal">-RunLevel</span> Highest <span class="literal">-Force</span></span><br></pre></td></tr></table></figure>
+
+<p>hermes.bat 只需一行触发命令（不需要密码）：</p>
+<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line"><span class="built_in">chcp</span> <span class="number">65001</span> &gt;<span class="built_in">nul</span></span><br><span class="line"><span class="built_in">title</span> Hermes Agent</span><br><span class="line">schtasks /run /tn HermesAgent</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="坑-5：计划任务里-python-m-hermes-会-No-module-named-hermes"><a href="#坑-5：计划任务里-python-m-hermes-会-No-module-named-hermes" class="headerlink" title="坑 5：计划任务里 python -m hermes 会 No module named hermes"></a>坑 5：计划任务里 <code>python -m hermes</code> 会 No module named hermes</h3><p><strong>症状：</strong> 计划任务触发后日志显示 <code>No module named hermes</code>。</p>
+<p><strong>原因：</strong> hermes 安装在 localadmin 的 Scripts 目录，但 Python 模块搜索路径未配置正确。</p>
+<p><strong>解法：直接用 hermes.exe 完整路径作为 Execute，不走 python -m：</strong></p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 正确</span></span><br><span class="line"><span class="variable">$action</span> = <span class="built_in">New-ScheduledTaskAction</span> <span class="literal">-Execute</span> <span class="string">&quot;C:\Users\localadmin\AppData\Local\Programs\Python\Python312\Scripts\hermes.exe&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 错误（会失败）</span></span><br><span class="line"><span class="variable">$action</span> = <span class="built_in">New-ScheduledTaskAction</span> <span class="literal">-Execute</span> <span class="string">&quot;cmd.exe&quot;</span> <span class="literal">-Argument</span> <span class="string">&quot;/c python -m hermes&quot;</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="坑-6：远程-PowerShell-命令执行成功但输出为空"><a href="#坑-6：远程-PowerShell-命令执行成功但输出为空" class="headerlink" title="坑 6：远程 PowerShell 命令执行成功但输出为空"></a>坑 6：远程 PowerShell 命令执行成功但输出为空</h3><p><strong>症状：</strong> <code>ssh ... &quot;python -c \&quot;...\&quot; &quot;</code> 执行成功（exit code 0）但完全没有输出，难以调试。</p>
+<p><strong>根本原因：</strong> Windows SSH 服务端默认 GBK 编码，WSL SSH 客户端用 UTF-8，两端编码不一致导致输出被吞。</p>
+<p><strong>解法：把 Python 脚本写到本地 → scp 传过去 → 远程执行：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 写脚本到 /tmp/fix.py（本地）</span></span><br><span class="line"><span class="comment"># scp 传到远程</span></span><br><span class="line">sshpass -p <span class="string">&#x27;[REDACTED]&#x27;</span> scp /tmp/fix.py localadmin@192.168.1.138:C:/Users/localadmin/fix.py</span><br><span class="line"><span class="comment"># 远程执行</span></span><br><span class="line">sshpass -p <span class="string">&#x27;[REDACTED]&#x27;</span> ssh localadmin@192.168.1.138 <span class="string">&quot;python C:\Users\localadmin\fix.py&quot;</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p><strong>教训：</strong> 涉及读写文件、调试输出时，始终用 Python 脚本 + scp 方案，不要 direct command inline。</p>
+</blockquote>
+<hr>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>整个过程踩了无数坑，但核心经验就三条：</p>
+<ol>
+<li><strong>Windows SSH 编码问题</strong>：永远不要让复杂命令穿墙，本地写脚本 → scp → 远程执行</li>
+<li><strong>多用户 NTFS 权限</strong>：软件装在 localadmin，但普通用户要用，必须用 icacls 开权限或用计划任务兜底</li>
+<li><strong>auth.json 凭证池缓存</strong>：认证问题的根源往往是缓存，调试顺序第一步永远是查 auth.json</li>
+</ol>
+<p>完整踩坑记录和解决方案已整理成 Hermes Skill：**<code>windows-remote-hermes-install</code>**，可在 <a class="link"   target="_blank" rel="noopener" href="https://github.com/MengYiXin/my-skills" >我的 GitHub Skills 仓库<i class="fas fa-external-link-alt"></i></a> 查看。</p>
+<hr>
+<h2 id="连接信息速查"><a href="#连接信息速查" class="headerlink" title="连接信息速查"></a>连接信息速查</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">IP:           192.168.1.138</span><br><span class="line">SSH 用户:     localadmin</span><br><span class="line">SSH 密码:     [REDACTED]</span><br><span class="line">RDP PIN:      [REDACTED]</span><br><span class="line">机器名:       DESKTOP-0LVHJ7D</span><br><span class="line">Hermes 路径:  C:\Users\localadmin\AppData\Local\Programs\Python\Python312\Scripts\hermes.exe</span><br><span class="line">Python 路径:  C:\Users\localadmin\AppData\Local\Programs\Python\Python312\python.exe</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p><em>写于 2026-05-11，远程调试联想台式机时的血泪记录。</em></p>
+
+        </div>
+
+        
+            <div class="post-copyright-info">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li>Post title：远程给家用 Windows 电脑安装 Hermes Agent：SSH 连接与踩坑全记录</li>
+        <li>Post author：Yixin</li>
+        <li>Create time：2026-05-11 00:30:00</li>
+        <li>
+            Post link：https://mengyx.com.cn/2026/05/11/remote-windows-hermes-install/
+        </li>
+        <li>
+            Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+            <div class="article-nav">
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2026/05/09/hermes-minimax-vl-vision-fix/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">Hermes Agent MiniMax VL 视觉修复实录：图片为什么发送后看不见</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+            <div class="comment-container">
+                <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments">&nbsp;Comments</i>
+    </div>
+    
+
+        
+            
+    <div class="valine-container">
+        <script data-pjax
+                src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script>
+        <div id="vcomments"></div>
+        <script data-pjax>
+            function loadValine() {
+                new Valine({
+                    el: '#vcomments',
+                    appId: 'nLubyWWoLdhQhY0MFrVEp6TQ-gzGzoHsz',
+                    appKey: 'nKGU6OM4iawauPKsgfATStpK',
+                    meta: ['nick', 'mail', 'link'],
+                    avatar: 'wavatar',
+                    enableQQ: true,
+                    placeholder: '这里可以写评论...',
+                    lang: 'zh'.toLowerCase()
+                });
+
+                function getAuthor(language) {
+                    switch (language) {
+                        case 'en':
+                            return 'Author';
+                        case 'zh-CN':
+                            return '博主';
+                        default:
+                            return 'Master';
+                    }
+                }
+
+                // Add "Author" identify
+                const getValineDomTimer = setInterval(() => {
+                    const vcards = document.querySelectorAll('#vcomments .vcards .vcard');
+                    if (vcards.length > 0) {
+                        let author = 'Yixin';
+
+                        if (author) {
+                            for (let vcard of vcards) {
+                                const vnick_dom = vcard.querySelector('.vhead .vnick');
+                                const vnick = vnick_dom.innerHTML;
+                                if (vnick === author) {
+                                    vnick_dom.innerHTML = `${vnick} <span class="author">${getAuthor(KEEP.hexo_config.language)}</span>`
+                                }
+                            }
+                        }
+                        clearInterval(getValineDomTimer);
+                    } else {
+                        clearInterval(getValineDomTimer);
+                    }
+                }, 2000);
+            }
+
+            if ('true') {
+                const loadValineTimeout = setTimeout(() => {
+                    loadValine();
+                    clearTimeout(loadValineTimeout);
+                }, 1000);
+            } else {
+                window.addEventListener('DOMContentLoaded', loadValine);
+            }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>&nbsp;-&nbsp;
+            
+            2026&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">Yixin</a>
+        </div>
+        
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        Visitor Count&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        Totalview&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.3</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%9C%E7%A8%8B%E7%BB%99%E5%AE%B6%E7%94%A8-Windows-%E7%94%B5%E8%84%91%E5%AE%89%E8%A3%85-Hermes-Agent%EF%BC%9ASSH-%E8%BF%9E%E6%8E%A5%E4%B8%8E%E8%B8%A9%E5%9D%91%E5%85%A8%E8%AE%B0%E5%BD%95"><span class="nav-number">1.</span> <span class="nav-text">远程给家用 Windows 电脑安装 Hermes Agent：SSH 连接与踩坑全记录</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%83%8C%E6%99%AF"><span class="nav-number">1.1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%EF%BC%9A%E8%BF%9C%E7%A8%8B%E8%BF%9E%E6%8E%A5-Windows"><span class="nav-number">1.2.</span> <span class="nav-text">第一部分：远程连接 Windows</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%8D%E7%BD%AE%E6%9D%A1%E4%BB%B6"><span class="nav-number">1.2.1.</span> <span class="nav-text">前置条件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-%E5%BC%80%E5%90%AF-Windows-SSH-%E6%9C%8D%E5%8A%A1"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">1.1 开启 Windows SSH 服务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-%E7%A1%AE%E8%AE%A4-SSH-%E8%BF%9E%E6%8E%A5"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">1.2 确认 SSH 连接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-%E8%BF%9C%E7%A8%8B%E6%89%A7%E8%A1%8C%E5%91%BD%E4%BB%A4%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E5%BC%8F"><span class="nav-number">1.2.1.3.</span> <span class="nav-text">1.3 远程执行命令的三种方式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%EF%BC%9A%E8%BF%9C%E7%A8%8B%E5%AE%89%E8%A3%85-Hermes-Agent"><span class="nav-number">1.3.</span> <span class="nav-text">第二部分：远程安装 Hermes Agent</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%8C%E6%95%B4%E6%B5%81%E7%A8%8B"><span class="nav-number">1.3.1.</span> <span class="nav-text">完整流程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-%E7%AC%AC%E4%B8%80%E6%AD%A5%EF%BC%9A%E7%A1%AE%E8%AE%A4%E8%BF%9E%E9%80%9A%E6%80%A7%E5%92%8C-Python-%E7%8E%AF%E5%A2%83"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">2.1 第一步：确认连通性和 Python 环境</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-%E7%AC%AC%E4%BA%8C%E6%AD%A5%EF%BC%9A%E5%81%9C%E6%AD%A2%E6%8B%A6%E6%88%AA%E5%AE%89%E8%A3%85%E7%9A%84%E5%AE%89%E5%85%A8%E6%9C%8D%E5%8A%A1"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">2.2 第二步：停止拦截安装的安全服务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-%E7%AC%AC%E4%B8%89%E6%AD%A5%EF%BC%9A%E6%89%BE-Python-%E6%88%96%E5%AE%89%E8%A3%85-Python"><span class="nav-number">1.3.1.3.</span> <span class="nav-text">2.3 第三步：找 Python 或安装 Python</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-4-%E7%AC%AC%E5%9B%9B%E6%AD%A5%EF%BC%9A%E5%AE%89%E8%A3%85-setuptools%EF%BC%88Python-embed-%E7%89%88%E5%BF%85%E9%9C%80%EF%BC%89"><span class="nav-number">1.3.1.4.</span> <span class="nav-text">2.4 第四步：安装 setuptools（Python embed 版必需）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-5-%E7%AC%AC%E4%BA%94%E6%AD%A5%EF%BC%9AClone-%E5%B9%B6%E6%89%93%E5%8C%85-Hermes-%E6%BA%90%E7%A0%81%E4%BC%A0%E5%88%B0%E7%9B%AE%E6%A0%87%E6%9C%BA%E5%99%A8"><span class="nav-number">1.3.1.5.</span> <span class="nav-text">2.5 第五步：Clone 并打包 Hermes 源码传到目标机器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-6-%E7%AC%AC%E5%85%AD%E6%AD%A5%EF%BC%9Apip-install-%E6%9C%AC%E5%9C%B0%E6%BA%90%E7%A0%81"><span class="nav-number">1.3.1.6.</span> <span class="nav-text">2.6 第六步：pip install 本地源码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-7-%E7%AC%AC%E4%B8%83%E6%AD%A5%EF%BC%9A%E9%85%8D%E7%BD%AE-API-Key"><span class="nav-number">1.3.1.7.</span> <span class="nav-text">2.7 第七步：配置 API Key</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-8-%E7%AC%AC%E5%85%AB%E6%AD%A5%EF%BC%9A%E9%AA%8C%E8%AF%81%E5%AE%89%E8%A3%85"><span class="nav-number">1.3.1.8.</span> <span class="nav-text">2.8 第八步：验证安装</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B8%A9%E5%9D%91%E5%85%A8%E8%AE%B0%E5%BD%95%EF%BC%88%E7%BB%8F%E9%AA%8C%E7%B2%BE%E5%8D%8E%EF%BC%89"><span class="nav-number">1.4.</span> <span class="nav-text">踩坑全记录（经验精华）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9D%91-1%EF%BC%9Aauth-json-pool-%E5%90%8D%E4%B8%8E-model-provider-%E4%B8%8D%E5%8C%B9%E9%85%8D%EF%BC%88%E6%9C%80%E5%B8%B8%E8%A7%81%EF%BC%89"><span class="nav-number">1.4.1.</span> <span class="nav-text">坑 1：auth.json pool 名与 model.provider 不匹配（最常见）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9D%91-2%EF%BC%9Aconfig-yaml-%E8%A2%AB%E8%AF%AF%E5%88%A0%E6%88%90-0-%E5%AD%97%E8%8A%82"><span class="nav-number">1.4.2.</span> <span class="nav-text">坑 2：config.yaml 被误删成 0 字节</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9D%91-3%EF%BC%9A%E5%A4%9A%E7%94%A8%E6%88%B7%E4%B8%8B-API-Key-%E8%AF%BB%E5%8F%96%E4%BD%8D%E7%BD%AE%E9%97%AE%E9%A2%98%EF%BC%88%E5%9B%9B%E5%B1%82%E5%8F%A0%E5%8A%A0%EF%BC%89"><span class="nav-number">1.4.3.</span> <span class="nav-text">坑 3：多用户下 API Key 读取位置问题（四层叠加）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9D%91-4%EF%BC%9AHermes-%E8%A3%85%E5%9C%A8-localadmin-AppData-%E9%87%8C%EF%BC%8C%E8%81%94%E6%83%B3%E7%94%A8%E6%88%B7%E6%B2%A1%E6%9C%89-NTFS-%E6%9D%83%E9%99%90"><span class="nav-number">1.4.4.</span> <span class="nav-text">坑 4：Hermes 装在 localadmin AppData 里，联想用户没有 NTFS 权限</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9D%91-5%EF%BC%9A%E8%AE%A1%E5%88%92%E4%BB%BB%E5%8A%A1%E9%87%8C-python-m-hermes-%E4%BC%9A-No-module-named-hermes"><span class="nav-number">1.4.5.</span> <span class="nav-text">坑 5：计划任务里 python -m hermes 会 No module named hermes</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9D%91-6%EF%BC%9A%E8%BF%9C%E7%A8%8B-PowerShell-%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E6%88%90%E5%8A%9F%E4%BD%86%E8%BE%93%E5%87%BA%E4%B8%BA%E7%A9%BA"><span class="nav-number">1.4.6.</span> <span class="nav-text">坑 6：远程 PowerShell 命令执行成功但输出为空</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">1.5.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9E%E6%8E%A5%E4%BF%A1%E6%81%AF%E9%80%9F%E6%9F%A5"><span class="nav-number">1.6.</span> <span class="nav-text">连接信息速查</span></a></li></ol></li></ol>
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/dark-light-toggle.js"></script>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/code-copy.js"></script>
+
+
+
+
+<div class="post-scripts pjax">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/left-side-toggle.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/libs/anime.min.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/toc.js"></script>
+    
+</div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>

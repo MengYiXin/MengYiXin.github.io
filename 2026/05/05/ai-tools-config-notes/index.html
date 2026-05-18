@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Yixin">
+    
+    <title>
+        
+            Claude Code / Hermes 配置笔记：网络问题、代理配置与常见错误修复 |
+        
+        Yixin blog
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo.svg">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/css/font-awesome.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"mengyx.com.cn","root":"/","language":"zh","path":"search.json"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.svg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"不要熬夜哟！"},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":true}}},"local_search":{"enable":true,"preload":true},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":true},"lazyload":{"enable":false},"version":"3.4.3"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fas fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                Yixin blog
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                HOME
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                TAGS
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                ABOUT
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">HOME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">TAGS</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">ABOUT</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">Claude Code / Hermes 配置笔记：网络问题、代理配置与常见错误修复</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar.svg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">Yixin</span>
+                        
+                            <span class="author-label">Lv5</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;2026-05-05 15:00:00
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/%E6%8A%80%E6%9C%AF%E5%AE%9E%E6%88%98/">技术实战</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/Claude-Code/">Claude Code</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/Hermes/">Hermes</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E7%BD%91%E7%BB%9C/">网络</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E4%BB%A3%E7%90%86/">代理</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/WSL2/">WSL2</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E6%95%85%E9%9A%9C%E6%8E%92%E9%99%A4/">故障排除</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <p> AI 工具配置笔记：网络、代理与故障排除</p>
+<p><strong>记录日期：2026-05-05</strong></p>
+<hr>
+<h2 id="一、网络配置核心问题"><a href="#一、网络配置核心问题" class="headerlink" title="一、网络配置核心问题"></a>一、网络配置核心问题</h2><p><img src="https://raw.githubusercontent.com/MengYiXin/blog-images/main/07-ai-tools-config-notes.svg" alt="配图"></p>
+<h3 id="1-1-GitHub-连接问题"><a href="#1-1-GitHub-连接问题" class="headerlink" title="1.1 GitHub 连接问题"></a>1.1 GitHub 连接问题</h3><p><strong>现象：</strong> git push / clone 失败，Connection reset 或超时</p>
+<p><strong>排查流程：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1. 直接重试（不等3-5秒）</span><br><span class="line">   ↓ 仍然失败</span><br><span class="line">2. 检查网络稳定性（curl github.com）</span><br><span class="line">   ↓ 仍失败</span><br><span class="line">3. 配置代理</span><br></pre></td></tr></table></figure>
+
+<p><strong>代理配置（Clash）：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查找 Clash 配置</span></span><br><span class="line">find ~/.config/clash* -name <span class="string">&quot;config.yaml&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 获取端口（通常是 7890）</span></span><br><span class="line">grep <span class="string">&quot;mixed-port:&quot;</span> ~/.config/clash*/config.yaml</span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置 git 代理</span></span><br><span class="line">git config --global http.proxy http://127.0.0.1:7890</span><br><span class="line">git config --global https.proxy http://127.0.0.1:7890</span><br></pre></td></tr></table></figure>
+
+<p><strong>关键经验：</strong></p>
+<ul>
+<li>GitHub 直连通常可行，不需要默认开代理</li>
+<li>curl 和 git 失败规律不同，属于网络波动</li>
+<li>先重试一次，确认持续失败再配置代理</li>
+</ul>
+<h3 id="1-2-WSL2-网络问题"><a href="#1-2-WSL2-网络问题" class="headerlink" title="1.2 WSL2 网络问题"></a>1.2 WSL2 网络问题</h3><p><strong>现象：</strong> gstack browse goto 超时</p>
+<p><strong>原因：</strong> WSL2 网络配置问题，非 gstack 本身问题</p>
+<p><strong>解决：</strong> 在 Windows 端使用 Chrome CDP，而不是 WSL 内的 Chromium</p>
+<hr>
+<h2 id="二、Clash-代理配置"><a href="#二、Clash-代理配置" class="headerlink" title="二、Clash 代理配置"></a>二、Clash 代理配置</h2><h3 id="2-1-配置文件位置"><a href="#2-1-配置文件位置" class="headerlink" title="2.1 配置文件位置"></a>2.1 配置文件位置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~&#x2F;.config&#x2F;clash*&#x2F;config.yaml</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-2-常用端口"><a href="#2-2-常用端口" class="headerlink" title="2.2 常用端口"></a>2.2 常用端口</h3><table>
+<thead>
+<tr>
+<th>端口类型</th>
+<th>默认值</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>mixed-port</td>
+<td>7890</td>
+<td>HTTP/HTTPS 代理</td>
+</tr>
+<tr>
+<td>port</td>
+<td>7890</td>
+<td>HTTP 代理</td>
+</tr>
+<tr>
+<td>socks-port</td>
+<td>7891</td>
+<td>SOCKS5 代理</td>
+</tr>
+</tbody></table>
+<h3 id="2-3-git-proxy-清理"><a href="#2-3-git-proxy-清理" class="headerlink" title="2.3 git proxy 清理"></a>2.3 git proxy 清理</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看当前配置</span></span><br><span class="line">git config --global --get-regexp proxy</span><br><span class="line"></span><br><span class="line"><span class="comment"># 清除配置</span></span><br><span class="line">git config --global --<span class="built_in">unset</span> http.proxy</span><br><span class="line">git config --global --<span class="built_in">unset</span> https.proxy</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="三、Hermes-配置陷阱"><a href="#三、Hermes-配置陷阱" class="headerlink" title="三、Hermes 配置陷阱"></a>三、Hermes 配置陷阱</h2><h3 id="3-1-base-url-陷阱"><a href="#3-1-base-url-陷阱" class="headerlink" title="3.1 base_url 陷阱"></a>3.1 base_url 陷阱</h3><p><strong>错误写法：</strong></p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">minimax:</span></span><br><span class="line">  <span class="attr">api_key:</span> <span class="string">sk-xxx</span></span><br><span class="line">  <span class="attr">base_url:</span> <span class="string">https://api.minimaxi.com/anthropic/v1</span>  <span class="comment"># 多加了 /v1</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>正确写法：</strong></p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">minimax:</span></span><br><span class="line">  <span class="attr">api_key:</span> <span class="string">sk-xxx</span></span><br><span class="line">  <span class="attr">base_url:</span> <span class="string">https://api.minimaxi.com/anthropic</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="3-2-API-Key-位置陷阱"><a href="#3-2-API-Key-位置陷阱" class="headerlink" title="3.2 API Key 位置陷阱"></a>3.2 API Key 位置陷阱</h3><p><strong>错误写法：</strong></p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">providers:</span></span><br><span class="line">  <span class="attr">minimax:</span></span><br><span class="line">    <span class="attr">api_key:</span> <span class="string">sk-xxx</span>  <span class="comment"># 错：写在 providers 下</span></span><br><span class="line"></span><br><span class="line"><span class="attr">model:</span></span><br><span class="line">  <span class="attr">provider:</span> <span class="string">providers</span>  <span class="comment"># 错：provider 不能是 &quot;providers&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>正确写法：</strong></p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">model:</span></span><br><span class="line">  <span class="attr">provider:</span> <span class="string">minimax</span></span><br><span class="line"></span><br><span class="line"><span class="attr">minimax:</span></span><br><span class="line">  <span class="attr">api_key:</span> <span class="string">sk-xxx</span></span><br><span class="line">  <span class="attr">base_url:</span> <span class="string">https://api.minimaxi.com/anthropic</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="四、Python-环境问题"><a href="#四、Python-环境问题" class="headerlink" title="四、Python 环境问题"></a>四、Python 环境问题</h2><h3 id="4-1-externally-managed-environment"><a href="#4-1-externally-managed-environment" class="headerlink" title="4.1 externally-managed-environment"></a>4.1 externally-managed-environment</h3><p><strong>原因：</strong> Debian/Ubuntu 系统的 PEP 668 保护</p>
+<p><strong>解决方案：</strong></p>
+<p>方案1（推荐）：加 <code>--break-system-packages</code> 参数</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install xxx --break-system-packages</span><br></pre></td></tr></table></figure>
+
+<p>方案2：使用虚拟环境内的 pip</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~/.hermes/hermes-agent/venv/bin/pip install xxx</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-2-Python-版本问题"><a href="#4-2-Python-版本问题" class="headerlink" title="4.2 Python 版本问题"></a>4.2 Python 版本问题</h3><p><strong>问题：</strong> 提示 “Python 3.11 not found”</p>
+<p><strong>解决：</strong> 用 uv 安装指定版本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">uv python list  <span class="comment"># 查看可用版本</span></span><br><span class="line">uv python install 3.11</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="五、WSL2-特殊问题"><a href="#五、WSL2-特殊问题" class="headerlink" title="五、WSL2 特殊问题"></a>五、WSL2 特殊问题</h2><h3 id="5-1-Chromium-沙箱问题"><a href="#5-1-Chromium-沙箱问题" class="headerlink" title="5.1 Chromium 沙箱问题"></a>5.1 Chromium 沙箱问题</h3><p><strong>错误：</strong> Running as root without –no-sandbox is not supported</p>
+<p><strong>原因：</strong> Chromium 默认拒绝 root 用户使用沙箱</p>
+<p><strong>解决：</strong> 设置环境变量</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (process.env.CI || process.env.CONTAINER || process.env.WSL_DISTRO_NAME) &#123;</span><br><span class="line">  launchArgs.push(<span class="string">&#x27;--no-sandbox&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-2-LD-LIBRARY-PATH-问题"><a href="#5-2-LD-LIBRARY-PATH-问题" class="headerlink" title="5.2 LD_LIBRARY_PATH 问题"></a>5.2 LD_LIBRARY_PATH 问题</h3><p><strong>错误：</strong> Chromium: error while loading shared libraries</p>
+<p><strong>解决：</strong> 设置 LD_LIBRARY_PATH</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&quot;env&quot;: &#123;</span><br><span class="line">  &quot;LD_LIBRARY_PATH&quot;: &quot;/root/.local/lib/chromium-deps/usr/lib/x86_64-linux-gnu&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-3-路径映射"><a href="#5-3-路径映射" class="headerlink" title="5.3 路径映射"></a>5.3 路径映射</h3><p>WSL 和 Windows 路径映射：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">WSL:  &#x2F;root&#x2F;.claude&#x2F;skills&#x2F;gstack</span><br><span class="line">Win:  C:\Users\16080\.claude\skills\gstack</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="六、常见错误汇总"><a href="#六、常见错误汇总" class="headerlink" title="六、常见错误汇总"></a>六、常见错误汇总</h2><table>
+<thead>
+<tr>
+<th>错误信息</th>
+<th>原因</th>
+<th>解决方案</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>command not found: hermes</td>
+<td>PATH 未配置</td>
+<td>添加 ~/.local/bin 到 PATH</td>
+</tr>
+<tr>
+<td>401 authentication error</td>
+<td>API key 错误</td>
+<td>检查 config.yaml</td>
+</tr>
+<tr>
+<td>externally-managed-environment</td>
+<td>PEP 668 保护</td>
+<td>加 –break-system-packages</td>
+</tr>
+<tr>
+<td>–no-sandbox required</td>
+<td>root 用户</td>
+<td>设置 WSL_DISTRO_NAME</td>
+</tr>
+<tr>
+<td>Connection reset</td>
+<td>网络波动</td>
+<td>等几秒重试</td>
+</tr>
+<tr>
+<td>Unable to access GitHub</td>
+<td>代理/网络</td>
+<td>配置 git proxy</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="七、快速修复命令"><a href="#七、快速修复命令" class="headerlink" title="七、快速修复命令"></a>七、快速修复命令</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. hermes 命令找不到</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;export PATH=&quot;$HOME/.local/bin:$PATH&quot;&#x27;</span> &gt;&gt; ~/.bashrc &amp;&amp; <span class="built_in">source</span> ~/.bashrc</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. pip 安装失败</span></span><br><span class="line">pip install xxx --break-system-packages</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. git push 失败（配置代理）</span></span><br><span class="line">git config --global http.proxy http://127.0.0.1:7890</span><br><span class="line"></span><br><span class="line"><span class="comment"># 4. 清理 git 代理</span></span><br><span class="line">git config --global --<span class="built_in">unset</span> http.proxy &amp;&amp; git config --global --<span class="built_in">unset</span> https.proxy</span><br><span class="line"></span><br><span class="line"><span class="comment"># 5. 检查 Clash 端口</span></span><br><span class="line">grep <span class="string">&quot;mixed-port:&quot;</span> ~/.config/clash*/config.yaml</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p><strong>记录于 2026-05-05</strong></p>
+
+        </div>
+
+        
+            <div class="post-copyright-info">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li>Post title：Claude Code / Hermes 配置笔记：网络问题、代理配置与常见错误修复</li>
+        <li>Post author：Yixin</li>
+        <li>Create time：2026-05-05 15:00:00</li>
+        <li>
+            Post link：https://mengyx.com.cn/2026/05/05/ai-tools-config-notes/
+        </li>
+        <li>
+            Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2026/05/05/wsl-git-proxy-wrapper/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">Hermes Agent 环境搭建：WSL 下 GitHub 访问的三级代理方案</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2026/05/05/claude-code-full-guide/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">Claude Code 使用全记录：安装配置、Hermes、gstack 与网络修复笔记</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+            <div class="comment-container">
+                <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments">&nbsp;Comments</i>
+    </div>
+    
+
+        
+            
+    <div class="valine-container">
+        <script data-pjax
+                src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script>
+        <div id="vcomments"></div>
+        <script data-pjax>
+            function loadValine() {
+                new Valine({
+                    el: '#vcomments',
+                    appId: 'nLubyWWoLdhQhY0MFrVEp6TQ-gzGzoHsz',
+                    appKey: 'nKGU6OM4iawauPKsgfATStpK',
+                    meta: ['nick', 'mail', 'link'],
+                    avatar: 'wavatar',
+                    enableQQ: true,
+                    placeholder: '这里可以写评论...',
+                    lang: 'zh'.toLowerCase()
+                });
+
+                function getAuthor(language) {
+                    switch (language) {
+                        case 'en':
+                            return 'Author';
+                        case 'zh-CN':
+                            return '博主';
+                        default:
+                            return 'Master';
+                    }
+                }
+
+                // Add "Author" identify
+                const getValineDomTimer = setInterval(() => {
+                    const vcards = document.querySelectorAll('#vcomments .vcards .vcard');
+                    if (vcards.length > 0) {
+                        let author = 'Yixin';
+
+                        if (author) {
+                            for (let vcard of vcards) {
+                                const vnick_dom = vcard.querySelector('.vhead .vnick');
+                                const vnick = vnick_dom.innerHTML;
+                                if (vnick === author) {
+                                    vnick_dom.innerHTML = `${vnick} <span class="author">${getAuthor(KEEP.hexo_config.language)}</span>`
+                                }
+                            }
+                        }
+                        clearInterval(getValineDomTimer);
+                    } else {
+                        clearInterval(getValineDomTimer);
+                    }
+                }, 2000);
+            }
+
+            if ('true') {
+                const loadValineTimeout = setTimeout(() => {
+                    loadValine();
+                    clearTimeout(loadValineTimeout);
+                }, 1000);
+            } else {
+                window.addEventListener('DOMContentLoaded', loadValine);
+            }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>&nbsp;-&nbsp;
+            
+            2026&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">Yixin</a>
+        </div>
+        
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        Visitor Count&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        Totalview&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.3</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE%E6%A0%B8%E5%BF%83%E9%97%AE%E9%A2%98"><span class="nav-number">1.</span> <span class="nav-text">一、网络配置核心问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-GitHub-%E8%BF%9E%E6%8E%A5%E9%97%AE%E9%A2%98"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 GitHub 连接问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-WSL2-%E7%BD%91%E7%BB%9C%E9%97%AE%E9%A2%98"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 WSL2 网络问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81Clash-%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE"><span class="nav-number">2.</span> <span class="nav-text">二、Clash 代理配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E4%BD%8D%E7%BD%AE"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 配置文件位置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E5%B8%B8%E7%94%A8%E7%AB%AF%E5%8F%A3"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 常用端口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-git-proxy-%E6%B8%85%E7%90%86"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 git proxy 清理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81Hermes-%E9%85%8D%E7%BD%AE%E9%99%B7%E9%98%B1"><span class="nav-number">3.</span> <span class="nav-text">三、Hermes 配置陷阱</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-base-url-%E9%99%B7%E9%98%B1"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 base_url 陷阱</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-API-Key-%E4%BD%8D%E7%BD%AE%E9%99%B7%E9%98%B1"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 API Key 位置陷阱</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81Python-%E7%8E%AF%E5%A2%83%E9%97%AE%E9%A2%98"><span class="nav-number">4.</span> <span class="nav-text">四、Python 环境问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-externally-managed-environment"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 externally-managed-environment</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-Python-%E7%89%88%E6%9C%AC%E9%97%AE%E9%A2%98"><span class="nav-number">4.2.</span> <span class="nav-text">4.2 Python 版本问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81WSL2-%E7%89%B9%E6%AE%8A%E9%97%AE%E9%A2%98"><span class="nav-number">5.</span> <span class="nav-text">五、WSL2 特殊问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-Chromium-%E6%B2%99%E7%AE%B1%E9%97%AE%E9%A2%98"><span class="nav-number">5.1.</span> <span class="nav-text">5.1 Chromium 沙箱问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-LD-LIBRARY-PATH-%E9%97%AE%E9%A2%98"><span class="nav-number">5.2.</span> <span class="nav-text">5.2 LD_LIBRARY_PATH 问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-3-%E8%B7%AF%E5%BE%84%E6%98%A0%E5%B0%84"><span class="nav-number">5.3.</span> <span class="nav-text">5.3 路径映射</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF%E6%B1%87%E6%80%BB"><span class="nav-number">6.</span> <span class="nav-text">六、常见错误汇总</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%83%E3%80%81%E5%BF%AB%E9%80%9F%E4%BF%AE%E5%A4%8D%E5%91%BD%E4%BB%A4"><span class="nav-number">7.</span> <span class="nav-text">七、快速修复命令</span></a></li></ol>
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/dark-light-toggle.js"></script>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/code-copy.js"></script>
+
+
+
+
+<div class="post-scripts pjax">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/left-side-toggle.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/libs/anime.min.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/toc.js"></script>
+    
+</div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+</body>
+</html>
