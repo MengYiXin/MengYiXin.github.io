@@ -48,11 +48,12 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Override theme config
+      - name: Debug config
         run: |
-          if [ -f source/_config.yml ]; then
-            cp source/_config.yml _config.yml
-          fi
+          echo "=== Site _config.yml first_screen ==="
+          grep -A5 "first_screen" _config.yml || echo "NOT FOUND in site config"
+          echo "=== Theme package _config.yml first_screen ==="
+          grep -A5 "first_screen" node_modules/hexo-theme-keep/_config.yml || echo "NOT FOUND in theme config"
 
       - name: Build
         run: npx hexo generate
