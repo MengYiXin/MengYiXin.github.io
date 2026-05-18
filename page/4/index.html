@@ -15,13 +15,11 @@
 <link rel="stylesheet" href="/css/style.css">
 
     <link rel="shortcut icon" href="/images/logo.svg">
-    
-<link rel="stylesheet" href="/css/font-awesome.min.css">
-
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/css/font-awesome.min.css">
     <script id="hexo-configurations">
     let KEEP = window.KEEP || {};
     KEEP.hexo_config = {"hostname":"mengyx.com.cn","root":"/","language":"zh","path":"search.json"};
-    KEEP.theme_config = {"toc":{"enable":false,"number":false,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.svg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":false,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":false,"preload":false},"code_copy":{"enable":false,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.4.3"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.svg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"不要熬夜哟！"},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":true}}},"local_search":{"enable":true,"preload":true},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":true},"lazyload":{"enable":false},"version":"3.4.3"};
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
   </script>
 <meta name="generator" content="Hexo 5.4.0"></head>
@@ -30,7 +28,14 @@
 <body>
 <div class="progress-bar-container">
     
+        <span class="scroll-progress-bar"></span>
+    
 
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fas fa-circle-notch fa-spin"></i>
+        </span>
     
 </div>
 
@@ -89,9 +94,15 @@
                         </li>
                     
                     
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
                 </ul>
             </div>
             <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
                 
                 <div class="icon-item menu-bar">
                     <div class="menu-bar-middle"></div>
@@ -146,37 +157,6 @@
                 
 
                 <h3 class="home-article-title">
-                    <a href="/2023/01/30/simpread-%E6%80%8E%E4%B9%88%E7%90%86%E8%A7%A3%20TCP%20%E7%9A%84%E9%9D%A2%E5%90%91%E8%BF%9E%E6%8E%A5%E5%92%8C%20UDP%20%E7%9A%84%E6%97%A0%E8%BF%9E%E6%8E%A5%EF%BC%88%E4%B8%8D%E9%9D%A2%E5%90%91%E8%BF%9E%E6%8E%A5%EF%BC%89%EF%BC%9F/">
-                        怎么理解TCP的面向连接和UDP的无连接
-                    </a>
-                </h3>
-
-                <div class="home-article-content markdown-body">
-                    
-                        
-初始传输层前面说过，传输层的作用是建立应用程序间的端到端连接，为数据传输提供可靠或不可靠的通信服务。传输层有两个重要协议，分别是 TCP 和 UDP。TCP 是面向连接的可靠传输协议，UDP 是无连接的不可靠传输协议。
-
-一个 IP 地址可以标识一...
-                    
-                </div>
-
-                <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Mon Jan 30 2023 18:05:21 GMT+0000">2023-01-30</span></span>
-        
-        
-    </div>
-
-    <a href="/2023/01/30/simpread-%E6%80%8E%E4%B9%88%E7%90%86%E8%A7%A3%20TCP%20%E7%9A%84%E9%9D%A2%E5%90%91%E8%BF%9E%E6%8E%A5%E5%92%8C%20UDP%20%E7%9A%84%E6%97%A0%E8%BF%9E%E6%8E%A5%EF%BC%88%E4%B8%8D%E9%9D%A2%E5%90%91%E8%BF%9E%E6%8E%A5%EF%BC%89%EF%BC%9F/">Read more&nbsp;<i class="fas fa-angle-right"></i></a>
-</div>
-
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                <h3 class="home-article-title">
                     <a href="/2021/11/16/simpread-%E5%85%A8%E9%9D%A2%E8%AE%B2%E8%A7%A3%20Vlan%E3%80%81%E4%B8%89%E5%B1%82%E4%BA%A4%E6%8D%A2%E6%9C%BA%E3%80%81%E7%BD%91%E5%85%B3%E3%80%81DNS%E3%80%81%E5%AD%90%E7%BD%91%E6%8E%A9%E7%A0%81%E3%80%81MAC%20%E5%9C%B0%E5%9D%80%E7%AD%89%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86%EF%BC%8C%E5%80%BC%E5%BE%97%E6%94%B6%E8%97%8F%E5%AD%A6%E4%B9%A0%EF%BC%81/">
                         全面讲解 Vlan、三层交换机、网关、DNS、子网掩码、MAC 地址等网络知识
                     </a>
@@ -192,8 +172,20 @@ VLAN 中文是 “虚拟局域网”。LAN 可以是由少数几台家用计算.
 
                 <div class="home-article-meta-info-container">
     <div class="home-article-meta-info">
-        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Tue Nov 16 2021 19:17:21 GMT+0000">2021-11-16</span></span>
+        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Tue Nov 16 2021 19:17:21 GMT+0800">2021-11-16</span></span>
         
+        
+            <span class="home-article-tag">
+                <i class="fas fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
         
     </div>
 
@@ -220,8 +212,20 @@ VLAN 中文是 “虚拟局域网”。LAN 可以是由少数几台家用计算.
 
                 <div class="home-article-meta-info-container">
     <div class="home-article-meta-info">
-        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Tue Nov 16 2021 18:17:21 GMT+0000">2021-11-16</span></span>
+        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Tue Nov 16 2021 18:17:21 GMT+0800">2021-11-16</span></span>
         
+        
+            <span class="home-article-tag">
+                <i class="fas fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
         
     </div>
 
@@ -250,8 +254,20 @@ VLAN 中文是 “虚拟局域网”。LAN 可以是由少数几台家用计算.
 
                 <div class="home-article-meta-info-container">
     <div class="home-article-meta-info">
-        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Tue Nov 16 2021 17:17:21 GMT+0000">2021-11-16</span></span>
+        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Tue Nov 16 2021 17:17:21 GMT+0800">2021-11-16</span></span>
         
+        
+            <span class="home-article-tag">
+                <i class="fas fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
         
     </div>
 
@@ -282,8 +298,20 @@ VLAN 中文是 “虚拟局域网”。LAN 可以是由少数几台家用计算.
 
                 <div class="home-article-meta-info-container">
     <div class="home-article-meta-info">
-        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Tue Nov 16 2021 17:17:21 GMT+0000">2021-11-16</span></span>
+        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Tue Nov 16 2021 17:17:21 GMT+0800">2021-11-16</span></span>
         
+        
+            <span class="home-article-tag">
+                <i class="fas fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
         
     </div>
 
@@ -310,8 +338,20 @@ VLAN 中文是 “虚拟局域网”。LAN 可以是由少数几台家用计算.
 
                 <div class="home-article-meta-info-container">
     <div class="home-article-meta-info">
-        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Tue Nov 16 2021 14:17:21 GMT+0000">2021-11-16</span></span>
+        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Tue Nov 16 2021 14:17:21 GMT+0800">2021-11-16</span></span>
         
+        
+            <span class="home-article-tag">
+                <i class="fas fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
         
     </div>
 
@@ -339,8 +379,20 @@ GitHub 上发现了一个不错的项目，收集了中国科学技术大学课�
 
                 <div class="home-article-meta-info-container">
     <div class="home-article-meta-info">
-        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Fri Nov 12 2021 15:11:21 GMT+0000">2021-11-12</span></span>
+        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Fri Nov 12 2021 15:11:21 GMT+0800">2021-11-12</span></span>
         
+        
+            <span class="home-article-tag">
+                <i class="fas fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/%E5%AD%A6%E4%B9%A0/">学习</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
         
     </div>
 
@@ -375,8 +427,20 @@ GitHub 上发现了一个不错的项目，收集了中国科学技术大学课�
 
                 <div class="home-article-meta-info-container">
     <div class="home-article-meta-info">
-        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Fri Nov 12 2021 15:11:21 GMT+0000">2021-11-12</span></span>
+        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Fri Nov 12 2021 15:11:21 GMT+0800">2021-11-12</span></span>
         
+        
+            <span class="home-article-tag">
+                <i class="fas fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
         
     </div>
 
@@ -409,8 +473,20 @@ There are different options to get the name and the nu...
 
                 <div class="home-article-meta-info-container">
     <div class="home-article-meta-info">
-        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Mon Nov 08 2021 17:04:21 GMT+0000">2021-11-08</span></span>
+        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Mon Nov 08 2021 17:04:21 GMT+0800">2021-11-08</span></span>
         
+        
+            <span class="home-article-tag">
+                <i class="fas fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/VMware/">VMware</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
         
     </div>
 
@@ -438,12 +514,64 @@ VMware不同版本的对比：https://www.vmware.com/products/vsphere.htmlVMware
 
                 <div class="home-article-meta-info-container">
     <div class="home-article-meta-info">
-        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Sun Nov 07 2021 17:04:21 GMT+0000">2021-11-07</span></span>
+        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Sun Nov 07 2021 17:04:21 GMT+0800">2021-11-07</span></span>
         
+        
+            <span class="home-article-tag">
+                <i class="fas fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/VMware/">VMware</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
         
     </div>
 
     <a href="/2021/11/07/important-link/">Read more&nbsp;<i class="fas fa-angle-right"></i></a>
+</div>
+
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                <h3 class="home-article-title">
+                    <a href="/2021/05/04/Linux/">
+                        Linux的学习
+                    </a>
+                </h3>
+
+                <div class="home-article-content markdown-body">
+                    
+                        Linux学习： https://www.shiyanlou.com/courses/1 http://linuxcommand.org/tlcl.php http://www.imooc.com/read/39 https://fanzhongwe...
+                    
+                </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Tue May 04 2021 18:05:21 GMT+0800">2021-05-04</span></span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fas fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/Linux/">Linux</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
+        
+    </div>
+
+    <a href="/2021/05/04/Linux/">Read more&nbsp;<i class="fas fa-angle-right"></i></a>
 </div>
 
             </li>
@@ -485,7 +613,7 @@ VMware不同版本的对比：https://www.vmware.com/products/vsphere.htmlVMware
             2026&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">Yixin</a>
         </div>
         
-            <script async  src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
             <div class="website-count info-item">
                 
                     <span id="busuanzi_container_site_uv">
@@ -534,10 +662,6 @@ VMware不同版本的对比：https://www.vmware.com/products/vsphere.htmlVMware
         
 
         
-            <li class="tools-item tool-scroll-to-top flex-center">
-                <i class="fas fa-arrow-up"></i>
-            </li>
-        
 
         <li class="tools-item tool-scroll-to-bottom flex-center">
             <i class="fas fa-arrow-down"></i>
@@ -548,6 +672,11 @@ VMware不同版本的对比：https://www.vmware.com/products/vsphere.htmlVMware
         <li class="tools-item tool-toggle-show flex-center">
             <i class="fas fa-cog fa-spin"></i>
         </li>
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
         
     </ul>
 </div>
@@ -562,33 +691,88 @@ VMware不同版本的对比：https://www.vmware.com/products/vsphere.htmlVMware
 
 
     
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
 
 </main>
 
 
 
 
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/dark-light-toggle.js"></script>
 
-<script src="/js/utils.js"></script>
 
-<script src="/js/main.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/local-search.js"></script>
 
-<script src="/js/header-shrink.js"></script>
 
-<script src="/js/back2top.js"></script>
 
-<script src="/js/dark-light-toggle.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/code-copy.js"></script>
 
 
 
 
-
-
-
-
-<div class="post-scripts">
+<div class="post-scripts pjax">
     
 </div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
 
 
 

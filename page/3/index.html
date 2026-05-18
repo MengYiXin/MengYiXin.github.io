@@ -15,13 +15,11 @@
 <link rel="stylesheet" href="/css/style.css">
 
     <link rel="shortcut icon" href="/images/logo.svg">
-    
-<link rel="stylesheet" href="/css/font-awesome.min.css">
-
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/css/font-awesome.min.css">
     <script id="hexo-configurations">
     let KEEP = window.KEEP || {};
     KEEP.hexo_config = {"hostname":"mengyx.com.cn","root":"/","language":"zh","path":"search.json"};
-    KEEP.theme_config = {"toc":{"enable":false,"number":false,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.svg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":false,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":false,"preload":false},"code_copy":{"enable":false,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.4.3"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.svg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"不要熬夜哟！"},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":true}}},"local_search":{"enable":true,"preload":true},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":true},"lazyload":{"enable":false},"version":"3.4.3"};
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
   </script>
 <meta name="generator" content="Hexo 5.4.0"></head>
@@ -30,7 +28,14 @@
 <body>
 <div class="progress-bar-container">
     
+        <span class="scroll-progress-bar"></span>
+    
 
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fas fa-circle-notch fa-spin"></i>
+        </span>
     
 </div>
 
@@ -89,9 +94,15 @@
                         </li>
                     
                     
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
                 </ul>
             </div>
             <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
                 
                 <div class="icon-item menu-bar">
                     <div class="menu-bar-middle"></div>
@@ -146,39 +157,6 @@
                 
 
                 <h3 class="home-article-title">
-                    <a href="/2023/02/03/%E4%BD%BF%E7%94%A8linux%E7%9A%84iptables%E5%AE%9E%E7%8E%B0%E8%B7%AF%E7%94%B1%E8%BD%AC%E5%8F%91/">
-                        使用Linux的iptables实现路由转发
-                    </a>
-                </h3>
-
-                <div class="home-article-content markdown-body">
-                    
-                        使用linux的iptables实现路由的转发开启ip包转发功能linux默认关闭该功能
-1234vim /etc/sysctl.conf#加入或修改net.ipv4.ip_forward = 1
-重启
-1reboot
-
-开启NAT功能1sudo i...
-                    
-                </div>
-
-                <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Fri Feb 03 2023 20:05:21 GMT+0000">2023-02-03</span></span>
-        
-        
-    </div>
-
-    <a href="/2023/02/03/%E4%BD%BF%E7%94%A8linux%E7%9A%84iptables%E5%AE%9E%E7%8E%B0%E8%B7%AF%E7%94%B1%E8%BD%AC%E5%8F%91/">Read more&nbsp;<i class="fas fa-angle-right"></i></a>
-</div>
-
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                <h3 class="home-article-title">
                     <a href="/2023/02/03/%E4%BD%BF%E7%94%A8windows%E7%BD%91%E7%BB%9C%E5%85%B1%E4%BA%AB%E5%AE%9E%E7%8E%B0NAT/">
                         使用windows网络共享实现NAT
                     </a>
@@ -192,8 +170,20 @@
 
                 <div class="home-article-meta-info-container">
     <div class="home-article-meta-info">
-        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Fri Feb 03 2023 20:05:21 GMT+0000">2023-02-03</span></span>
+        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Fri Feb 03 2023 20:05:21 GMT+0800">2023-02-03</span></span>
         
+        
+            <span class="home-article-tag">
+                <i class="fas fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/Linux/">Linux</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
         
     </div>
 
@@ -221,8 +211,20 @@
 
                 <div class="home-article-meta-info-container">
     <div class="home-article-meta-info">
-        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Thu Feb 02 2023 20:05:21 GMT+0000">2023-02-02</span></span>
+        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Thu Feb 02 2023 20:05:21 GMT+0800">2023-02-02</span></span>
         
+        
+            <span class="home-article-tag">
+                <i class="fas fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/%E6%A1%8C%E9%9D%A2%E4%BA%91/">桌面云</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
         
     </div>
 
@@ -252,8 +254,20 @@ Flood Sung：最前沿：百家争鸣的 Meta L...
 
                 <div class="home-article-meta-info-container">
     <div class="home-article-meta-info">
-        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Wed Feb 01 2023 19:05:21 GMT+0000">2023-02-01</span></span>
+        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Wed Feb 01 2023 19:05:21 GMT+0800">2023-02-01</span></span>
         
+        
+            <span class="home-article-tag">
+                <i class="fas fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/%E8%AE%BA%E6%96%87/">论文</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
         
     </div>
 
@@ -281,8 +295,20 @@ Flood Sung：最前沿：百家争鸣的 Meta L...
 
                 <div class="home-article-meta-info-container">
     <div class="home-article-meta-info">
-        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Wed Feb 01 2023 17:08:21 GMT+0000">2023-02-01</span></span>
+        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Wed Feb 01 2023 17:08:21 GMT+0800">2023-02-01</span></span>
         
+        
+            <span class="home-article-tag">
+                <i class="fas fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/%E8%AE%BA%E6%96%87/">论文</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
         
     </div>
 
@@ -313,8 +339,20 @@ https://paperswithcode.com/sota
 
                 <div class="home-article-meta-info-container">
     <div class="home-article-meta-info">
-        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Wed Feb 01 2023 13:05:21 GMT+0000">2023-02-01</span></span>
+        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Wed Feb 01 2023 13:05:21 GMT+0800">2023-02-01</span></span>
         
+        
+            <span class="home-article-tag">
+                <i class="fas fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/%E8%AE%BA%E6%96%87/">论文</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
         
     </div>
 
@@ -349,8 +387,20 @@ https://paperswithcode.com/sota
 
                 <div class="home-article-meta-info-container">
     <div class="home-article-meta-info">
-        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Tue Jan 31 2023 20:05:21 GMT+0000">2023-01-31</span></span>
+        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Tue Jan 31 2023 20:05:21 GMT+0800">2023-01-31</span></span>
         
+        
+            <span class="home-article-tag">
+                <i class="fas fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/Linux/">Linux</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
         
     </div>
 
@@ -380,8 +430,20 @@ Hexo Theme Keep
 
                 <div class="home-article-meta-info-container">
     <div class="home-article-meta-info">
-        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Tue Jan 31 2023 17:11:21 GMT+0000">2023-01-31</span></span>
+        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Tue Jan 31 2023 17:11:21 GMT+0800">2023-01-31</span></span>
         
+        
+            <span class="home-article-tag">
+                <i class="fas fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
         
     </div>
 
@@ -408,8 +470,20 @@ Hexo Theme Keep
 
                 <div class="home-article-meta-info-container">
     <div class="home-article-meta-info">
-        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Tue Jan 31 2023 17:05:21 GMT+0000">2023-01-31</span></span>
+        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Tue Jan 31 2023 17:05:21 GMT+0800">2023-01-31</span></span>
         
+        
+            <span class="home-article-tag">
+                <i class="fas fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/%E6%A1%8C%E9%9D%A2%E4%BA%91/">桌面云</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
         
     </div>
 
@@ -445,12 +519,67 @@ Hexo Theme Keep
 
                 <div class="home-article-meta-info-container">
     <div class="home-article-meta-info">
-        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Mon Jan 30 2023 20:05:21 GMT+0000">2023-01-30</span></span>
+        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Mon Jan 30 2023 20:05:21 GMT+0800">2023-01-30</span></span>
         
+        
+            <span class="home-article-tag">
+                <i class="fas fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86/">计算机组成原理</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
         
     </div>
 
     <a href="/2023/01/30/simpread-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%20(%E4%B8%87%E5%AD%97%E7%88%86%E8%82%9D%E6%95%B4%E7%90%86)/">Read more&nbsp;<i class="fas fa-angle-right"></i></a>
+</div>
+
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                <h3 class="home-article-title">
+                    <a href="/2023/01/30/simpread-%E6%80%8E%E4%B9%88%E7%90%86%E8%A7%A3%20TCP%20%E7%9A%84%E9%9D%A2%E5%90%91%E8%BF%9E%E6%8E%A5%E5%92%8C%20UDP%20%E7%9A%84%E6%97%A0%E8%BF%9E%E6%8E%A5%EF%BC%88%E4%B8%8D%E9%9D%A2%E5%90%91%E8%BF%9E%E6%8E%A5%EF%BC%89%EF%BC%9F/">
+                        怎么理解TCP的面向连接和UDP的无连接
+                    </a>
+                </h3>
+
+                <div class="home-article-content markdown-body">
+                    
+                        
+初始传输层前面说过，传输层的作用是建立应用程序间的端到端连接，为数据传输提供可靠或不可靠的通信服务。传输层有两个重要协议，分别是 TCP 和 UDP。TCP 是面向连接的可靠传输协议，UDP 是无连接的不可靠传输协议。
+
+一个 IP 地址可以标识一...
+                    
+                </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Mon Jan 30 2023 18:05:21 GMT+0800">2023-01-30</span></span>
+        
+        
+            <span class="home-article-tag">
+                <i class="fas fa-tags"></i>&nbsp;
+                <ul>
+                    
+                        <li>
+                            
+                            <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>&nbsp;
+                        </li>
+                    
+                </ul>
+            </span>
+        
+    </div>
+
+    <a href="/2023/01/30/simpread-%E6%80%8E%E4%B9%88%E7%90%86%E8%A7%A3%20TCP%20%E7%9A%84%E9%9D%A2%E5%90%91%E8%BF%9E%E6%8E%A5%E5%92%8C%20UDP%20%E7%9A%84%E6%97%A0%E8%BF%9E%E6%8E%A5%EF%BC%88%E4%B8%8D%E9%9D%A2%E5%90%91%E8%BF%9E%E6%8E%A5%EF%BC%89%EF%BC%9F/">Read more&nbsp;<i class="fas fa-angle-right"></i></a>
 </div>
 
             </li>
@@ -492,7 +621,7 @@ Hexo Theme Keep
             2026&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">Yixin</a>
         </div>
         
-            <script async  src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
             <div class="website-count info-item">
                 
                     <span id="busuanzi_container_site_uv">
@@ -541,10 +670,6 @@ Hexo Theme Keep
         
 
         
-            <li class="tools-item tool-scroll-to-top flex-center">
-                <i class="fas fa-arrow-up"></i>
-            </li>
-        
 
         <li class="tools-item tool-scroll-to-bottom flex-center">
             <i class="fas fa-arrow-down"></i>
@@ -555,6 +680,11 @@ Hexo Theme Keep
         <li class="tools-item tool-toggle-show flex-center">
             <i class="fas fa-cog fa-spin"></i>
         </li>
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
         
     </ul>
 </div>
@@ -569,33 +699,88 @@ Hexo Theme Keep
 
 
     
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
 
 </main>
 
 
 
 
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/dark-light-toggle.js"></script>
 
-<script src="/js/utils.js"></script>
 
-<script src="/js/main.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/local-search.js"></script>
 
-<script src="/js/header-shrink.js"></script>
 
-<script src="/js/back2top.js"></script>
 
-<script src="/js/dark-light-toggle.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/code-copy.js"></script>
 
 
 
 
-
-
-
-
-<div class="post-scripts">
+<div class="post-scripts pjax">
     
 </div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
 
 
 

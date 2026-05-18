@@ -17,13 +17,11 @@
 <link rel="stylesheet" href="/css/style.css">
 
     <link rel="shortcut icon" href="/images/logo.svg">
-    
-<link rel="stylesheet" href="/css/font-awesome.min.css">
-
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/css/font-awesome.min.css">
     <script id="hexo-configurations">
     let KEEP = window.KEEP || {};
     KEEP.hexo_config = {"hostname":"mengyx.com.cn","root":"/","language":"zh","path":"search.json"};
-    KEEP.theme_config = {"toc":{"enable":false,"number":false,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.svg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":false,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":false,"preload":false},"code_copy":{"enable":false,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.4.3"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.svg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"不要熬夜哟！"},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":true}}},"local_search":{"enable":true,"preload":true},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":true},"lazyload":{"enable":false},"version":"3.4.3"};
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
   </script>
 <meta name="generator" content="Hexo 5.4.0"></head>
@@ -32,7 +30,14 @@
 <body>
 <div class="progress-bar-container">
     
+        <span class="scroll-progress-bar"></span>
+    
 
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fas fa-circle-notch fa-spin"></i>
+        </span>
     
 </div>
 
@@ -91,9 +96,15 @@
                         </li>
                     
                     
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
                 </ul>
             </div>
             <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
                 
                 <div class="icon-item menu-bar">
                     <div class="menu-bar-middle"></div>
@@ -547,6 +558,23 @@
         </div>
 
         
+            <div class="post-copyright-info">
+                <div class="article-copyright-info-container">
+    <ul>
+        <li>Post title：Claude Code 使用全记录：安装配置、Hermes、gstack 与网络修复笔记</li>
+        <li>Post author：Yixin</li>
+        <li>Create time：2026-05-05 15:00:00</li>
+        <li>
+            Post link：https://mengyx.com.cn/2026/05/05/claude-code-full-guide/
+        </li>
+        <li>
+            Copyright Notice：All articles in this blog are licensed under <a class="license" target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">BY-NC-SA</a> unless stating additionally.
+        </li>
+    </ul>
+</div>
+
+            </div>
+        
 
         
             <div class="article-nav">
@@ -586,6 +614,85 @@
         
 
         
+            <div class="comment-container">
+                <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments">&nbsp;Comments</i>
+    </div>
+    
+
+        
+            
+    <div class="valine-container">
+        <script data-pjax
+                src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script>
+        <div id="vcomments"></div>
+        <script data-pjax>
+            function loadValine() {
+                new Valine({
+                    el: '#vcomments',
+                    appId: 'nLubyWWoLdhQhY0MFrVEp6TQ-gzGzoHsz',
+                    appKey: 'nKGU6OM4iawauPKsgfATStpK',
+                    meta: ['nick', 'mail', 'link'],
+                    avatar: 'wavatar',
+                    enableQQ: true,
+                    placeholder: '这里可以写评论...',
+                    lang: 'zh'.toLowerCase()
+                });
+
+                function getAuthor(language) {
+                    switch (language) {
+                        case 'en':
+                            return 'Author';
+                        case 'zh-CN':
+                            return '博主';
+                        default:
+                            return 'Master';
+                    }
+                }
+
+                // Add "Author" identify
+                const getValineDomTimer = setInterval(() => {
+                    const vcards = document.querySelectorAll('#vcomments .vcards .vcard');
+                    if (vcards.length > 0) {
+                        let author = 'Yixin';
+
+                        if (author) {
+                            for (let vcard of vcards) {
+                                const vnick_dom = vcard.querySelector('.vhead .vnick');
+                                const vnick = vnick_dom.innerHTML;
+                                if (vnick === author) {
+                                    vnick_dom.innerHTML = `${vnick} <span class="author">${getAuthor(KEEP.hexo_config.language)}</span>`
+                                }
+                            }
+                        }
+                        clearInterval(getValineDomTimer);
+                    } else {
+                        clearInterval(getValineDomTimer);
+                    }
+                }, 2000);
+            }
+
+            if ('true') {
+                const loadValineTimeout = setTimeout(() => {
+                    loadValine();
+                    clearTimeout(loadValineTimeout);
+                }, 1000);
+            } else {
+                window.addEventListener('DOMContentLoaded', loadValine);
+            }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+            </div>
+        
     </div>
 </div>
 
@@ -606,7 +713,7 @@
             2026&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">Yixin</a>
         </div>
         
-            <script async  src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
             <div class="website-count info-item">
                 
                     <span id="busuanzi_container_site_uv">
@@ -636,8 +743,16 @@
     <ul class="tools-list">
         <!-- TOC aside toggle -->
         
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
 
         <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fas fa-comment"></i>
+            </li>
         
     </ul>
 </div>
@@ -668,10 +783,6 @@
         
 
         
-            <li class="tools-item tool-scroll-to-top flex-center">
-                <i class="fas fa-arrow-up"></i>
-            </li>
-        
 
         <li class="tools-item tool-scroll-to-bottom flex-center">
             <i class="fas fa-arrow-down"></i>
@@ -683,11 +794,24 @@
             <i class="fas fa-cog fa-spin"></i>
         </li>
         
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
     </ul>
 </div>
 
     </div>
 
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E4%B8%8E-Claude-Code-%E7%9A%84%E7%9B%B8%E9%81%87"><span class="nav-number">1.</span> <span class="nav-text">一、与 Claude Code 的相遇</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81Claude-Code-%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B"><span class="nav-number">2.</span> <span class="nav-text">二、Claude Code 安装过程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 环境准备</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E5%AE%89%E8%A3%85%E6%AD%A5%E9%AA%A4"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 安装步骤</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81Hermes-Agent-%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE"><span class="nav-number">3.</span> <span class="nav-text">三、Hermes Agent 安装与配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-%E4%B8%BA%E4%BB%80%E4%B9%88%E7%94%A8-Hermes"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 为什么用 Hermes</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 安装过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-API-Key-%E9%85%8D%E7%BD%AE"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 API Key 配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-%E5%88%9D%E5%A7%8B%E5%8C%96%E9%85%8D%E7%BD%AE"><span class="nav-number">3.4.</span> <span class="nav-text">3.4 初始化配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-%E5%88%9B%E5%BB%BA-Windows-%E6%A1%8C%E9%9D%A2%E5%BF%AB%E6%8D%B7%E6%96%B9%E5%BC%8F"><span class="nav-number">3.5.</span> <span class="nav-text">3.5 创建 Windows 桌面快捷方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-6-Hermes-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="nav-number">3.6.</span> <span class="nav-text">3.6 Hermes 常用命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-7-%E5%8D%87%E7%BA%A7%E8%AE%B0%E5%BD%95"><span class="nav-number">3.7.</span> <span class="nav-text">3.7 升级记录</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81gstack-WSL2-%E5%AE%89%E8%A3%85"><span class="nav-number">4.</span> <span class="nav-text">四、gstack WSL2 安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-%E4%BB%80%E4%B9%88%E6%98%AF-gstack"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 什么是 gstack</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B"><span class="nav-number">4.2.</span> <span class="nav-text">4.2 安装过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-%E5%85%B3%E9%94%AE%E9%85%8D%E7%BD%AE"><span class="nav-number">4.3.</span> <span class="nav-text">4.3 关键配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-4-%E9%AA%8C%E8%AF%81%E7%BB%93%E6%9E%9C"><span class="nav-number">4.4.</span> <span class="nav-text">4.4 验证结果</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81%E7%BD%91%E7%BB%9C%E9%97%AE%E9%A2%98%E4%BF%AE%E5%A4%8D"><span class="nav-number">5.</span> <span class="nav-text">五、网络问题修复</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0"><span class="nav-number">5.1.</span> <span class="nav-text">5.1 问题描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE"><span class="nav-number">5.2.</span> <span class="nav-text">5.2 代理配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-3-%E9%87%8D%E8%A6%81%E7%BB%8F%E9%AA%8C"><span class="nav-number">5.3.</span> <span class="nav-text">5.3 重要经验</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-4-%E7%BD%91%E7%BB%9C%E6%81%A2%E5%A4%8D%E6%B5%81%E7%A8%8B"><span class="nav-number">5.4.</span> <span class="nav-text">5.4 网络恢复流程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E3%80%81Skills-%E5%88%9B%E4%BD%9C"><span class="nav-number">6.</span> <span class="nav-text">六、Skills 创作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6-1-%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%88%9B%E5%BB%BA-Skills"><span class="nav-number">6.1.</span> <span class="nav-text">6.1 为什么要创建 Skills</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-2-%E5%B7%B2%E5%88%9B%E5%BB%BA%E7%9A%84-Skills"><span class="nav-number">6.2.</span> <span class="nav-text">6.2 已创建的 Skills</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-3-Skills-%E5%88%9B%E5%BB%BA%E6%96%B9%E6%B3%95%E8%AE%BA"><span class="nav-number">6.3.</span> <span class="nav-text">6.3 Skills 创建方法论</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%83%E3%80%81%E8%AE%B0%E5%BF%86%E7%B3%BB%E7%BB%9F"><span class="nav-number">7.</span> <span class="nav-text">七、记忆系统</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#7-1-%E8%AE%B0%E5%BF%86%E7%B1%BB%E5%9E%8B"><span class="nav-number">7.1.</span> <span class="nav-text">7.1 记忆类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-2-%E8%AE%B0%E5%BF%86%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%84"><span class="nav-number">7.2.</span> <span class="nav-text">7.2 记忆文件结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-3-IMA-%E7%9F%A5%E8%AF%86%E5%BA%93"><span class="nav-number">7.3.</span> <span class="nav-text">7.3 IMA 知识库</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AB%E3%80%81%E5%B7%B2%E6%8E%88%E6%9D%83%E6%93%8D%E4%BD%9C%E6%B8%85%E5%8D%95"><span class="nav-number">8.</span> <span class="nav-text">八、已授权操作清单</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#8-1-GitHub-%E7%9B%B8%E5%85%B3"><span class="nav-number">8.1.</span> <span class="nav-text">8.1 GitHub 相关</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-2-%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%E5%AE%89%E8%A3%85"><span class="nav-number">8.2.</span> <span class="nav-text">8.2 开发工具安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-3-Skills-%E5%92%8C%E6%8F%92%E4%BB%B6"><span class="nav-number">8.3.</span> <span class="nav-text">8.3 Skills 和插件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-4-%E7%BD%91%E7%BB%9C%E8%AE%BF%E9%97%AE"><span class="nav-number">8.4.</span> <span class="nav-text">8.4 网络访问</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-5-%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F"><span class="nav-number">8.5.</span> <span class="nav-text">8.5 文件系统</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B9%9D%E3%80%81reporter-web-%E9%A1%B9%E7%9B%AE"><span class="nav-number">9.</span> <span class="nav-text">九、reporter-web 项目</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#9-1-%E9%A1%B9%E7%9B%AE%E6%A6%82%E8%BF%B0"><span class="nav-number">9.1.</span> <span class="nav-text">9.1 项目概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-2-%E6%8A%80%E6%9C%AF%E6%A0%88"><span class="nav-number">9.2.</span> <span class="nav-text">9.2 技术栈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-3-%E5%8A%9F%E8%83%BD%E6%A8%A1%E5%BC%8F"><span class="nav-number">9.3.</span> <span class="nav-text">9.3 功能模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-4-%E9%83%A8%E7%BD%B2%E6%B5%81%E7%A8%8B"><span class="nav-number">9.4.</span> <span class="nav-text">9.4 部署流程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81%E3%80%81%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB"><span class="nav-number">10.</span> <span class="nav-text">十、常见问题汇总</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Q1-hermes-%E5%91%BD%E4%BB%A4%E6%89%BE%E4%B8%8D%E5%88%B0"><span class="nav-number">10.1.</span> <span class="nav-text">Q1: hermes 命令找不到</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q2-pip-install-%E6%8A%A5%E9%94%99-externally-managed-environment"><span class="nav-number">10.2.</span> <span class="nav-text">Q2: pip install 报错 externally-managed-environment</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q3-config-yaml-%E4%BF%AE%E6%94%B9%E5%90%8E%E4%B8%8D%E7%94%9F%E6%95%88"><span class="nav-number">10.3.</span> <span class="nav-text">Q3: config.yaml 修改后不生效</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Q4-Git-push-%E5%A4%B1%E8%B4%A5"><span class="nav-number">10.4.</span> <span class="nav-text">Q4: Git push 失败</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81%E4%B8%80%E3%80%81%E6%A1%8C%E9%9D%A2%E6%96%87%E4%BB%B6%E6%95%B4%E7%90%86"><span class="nav-number">11.</span> <span class="nav-text">十一、桌面文件整理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8D%81%E4%BA%8C%E3%80%81%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">12.</span> <span class="nav-text">十二、参考资料</span></a></li></ol>
+    </div>
+</div>
+        </aside>
     
 
     <div class="image-viewer-container">
@@ -696,32 +820,89 @@
 
 
     
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="Search..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
 
 </main>
 
 
 
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/dark-light-toggle.js"></script>
 
-<script src="/js/utils.js"></script>
 
-<script src="/js/main.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/local-search.js"></script>
 
-<script src="/js/header-shrink.js"></script>
 
-<script src="/js/back2top.js"></script>
 
-<script src="/js/dark-light-toggle.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/code-copy.js"></script>
 
 
 
 
-
-
-
-
-<div class="post-scripts">
+<div class="post-scripts pjax">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/left-side-toggle.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/libs/anime.min.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/toc.js"></script>
     
 </div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
 
 
 
