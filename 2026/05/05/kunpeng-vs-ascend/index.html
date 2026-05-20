@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Yixin">
+    
+    <title>
+        
+            鲲鹏与昇腾：华为算力双子星架构解析 |
+        
+        Yixin blog
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo.svg">
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"mengyx.com.cn","root":"/","language":"zh","path":"search.json"};
+    KEEP.theme_config = {"toc":{"enable":false,"number":false,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.svg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":false,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":false,"preload":false},"code_copy":{"enable":false,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.4.3"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                Yixin blog
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                HOME
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                TAGS
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                ABOUT
+                            </a>
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">HOME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">TAGS</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">ABOUT</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">鲲鹏与昇腾：华为算力双子星架构解析</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar.svg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">Yixin</span>
+                        
+                            <span class="author-label">Lv5</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;2026-05-05 01:30:00
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/%E5%9F%BA%E7%A1%80%E8%AE%BE%E6%96%BD/">基础设施</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/%E5%8D%8E%E4%B8%BA/">华为</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/ARM/">ARM</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/AI/">AI</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E9%B2%B2%E9%B9%8F/">鲲鹏</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E6%98%87%E8%85%BE/">昇腾</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>华为在国内服务器市场有两张王牌：<strong>鲲鹏</strong>（CPU）和<strong>昇腾</strong>（AI加速器）。两者经常被同时提起，但实际上定位完全不同。这篇梳理一下两者的技术架构、适用场景和选型建议。</p>
+<span id="more"></span>
+
+<h2 id="鲲鹏（Kunpeng）"><a href="#鲲鹏（Kunpeng）" class="headerlink" title="鲲鹏（Kunpeng）"></a>鲲鹏（Kunpeng）</h2><h3 id="架构定位"><a href="#架构定位" class="headerlink" title="架构定位"></a>架构定位</h3><p>鲲鹏是华为自研的 ARM 架构服务器 CPU，目标是替代 Intel/AMD 的 x86 处理器。目前主力版本：</p>
+<table>
+<thead>
+<tr>
+<th>代际</th>
+<th>型号</th>
+<th>核心数</th>
+<th>主频</th>
+<th>制程</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>920（第一代）</td>
+<td>Kunpeng 920-6280</td>
+<td>64</td>
+<td>2.6GHz</td>
+<td>7nm</td>
+</tr>
+<tr>
+<td>920（高性能）</td>
+<td>Kunpeng 920-4824</td>
+<td>48</td>
+<td>3.0GHz</td>
+<td>7nm</td>
+</tr>
+<tr>
+<td>930（第二代）</td>
+<td>Kunpeng 930</td>
+<td>128</td>
+<td>3.0GHz+</td>
+<td>5nm</td>
+</tr>
+</tbody></table>
+<h3 id="核心优势"><a href="#核心优势" class="headerlink" title="核心优势"></a>核心优势</h3><p><strong>1. ARM 架构的能效比</strong><br>同样 64 核，鲲鹏 920 TDP 约为 180W，而 Intel Xeon Platinum 8280（28核×2）TDP 达 205W。单位算力功耗比 x86 架构更低，适合大规模部署。</p>
+<p><strong>2. 自主可控</strong><br>从指令集到微架构均为华为自研（ARMv8.2 授权基础上），不受 Intel/AMD 供货影响。</p>
+<p><strong>3. 内存带宽</strong><br>鲲鹏 920 支持 8 通道 DDR4，内存带宽优于同期 Intel Xeon。</p>
+<h3 id="主要局限"><a href="#主要局限" class="headerlink" title="主要局限"></a>主要局限</h3><ul>
+<li><strong>生态兼容</strong>：ARM 版 Windows、传统 x86 软件需要重新编译或转译（Rosetta2 类方案）</li>
+<li><strong>单核性能</strong>：同频率下单核性能仍略弱于 Intel Xeon</li>
+<li><strong>市场成熟度</strong>：x86 生态积累 30 年，鲲鹏需要时间追赶</li>
+</ul>
+<h3 id="适用场景"><a href="#适用场景" class="headerlink" title="适用场景"></a>适用场景</h3><ul>
+<li>内部 IT 系统、办公自动化、Web 服务</li>
+<li>云计算裸金属服务器</li>
+<li>政企类对自主可控有要求的场景</li>
+</ul>
+<hr>
+<h2 id="昇腾（Ascend）"><a href="#昇腾（Ascend）" class="headerlink" title="昇腾（Ascend）"></a>昇腾（Ascend）</h2><h3 id="架构定位-1"><a href="#架构定位-1" class="headerlink" title="架构定位"></a>架构定位</h3><p>昇腾是华为的 AI 加速器产品线，类似 NVIDIA A100/H100 的定位，但有自研达芬奇（DaVinci）架构。目前主力：</p>
+<table>
+<thead>
+<tr>
+<th>型号</th>
+<th>架构</th>
+<th>FP16 算力</th>
+<th>功耗</th>
+<th>定位</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Ascend 910B</td>
+<td>达芬奇</td>
+<td>320 TFLOPS</td>
+<td>400W</td>
+<td>训练旗舰</td>
+</tr>
+<tr>
+<td>Ascend 310</td>
+<td>达芬奇</td>
+<td>8 TFLOPS</td>
+<td>8W</td>
+<td>推理边缘</td>
+</tr>
+<tr>
+<td>Ascend 910C</td>
+<td>达芬奇</td>
+<td>560 TFLOPS</td>
+<td>400W</td>
+<td>下一代训练</td>
+</tr>
+</tbody></table>
+<h3 id="核心优势-1"><a href="#核心优势-1" class="headerlink" title="核心优势"></a>核心优势</h3><p><strong>1. 达芬奇架构专为 AI 设计</strong><br>3D Cube 矩阵乘法单元，针对 Transformer 结构优化。BERT 训练性能约为 A100 的 80-90%。</p>
+<p><strong>2. 高速片间互联</strong><br>昇腾 910 使用 HCCS（Huawei Cache Coherence System）实现多卡互联，910C 使用 Canaan 互联，集群规模可达万卡。</p>
+<p><strong>3. 软硬件协同</strong><br>CANN（Compute Architecture for Neural Networks）异构计算架构 + MindSpore 框架，硬件利用率高。</p>
+<h3 id="主要局限-1"><a href="#主要局限-1" class="headerlink" title="主要局限"></a>主要局限</h3><ul>
+<li><strong>CUDA 生态</strong>：昇腾不兼容 CUDA，需用 CANN 或 MindSpore，移植成本高</li>
+<li><strong>通用计算</strong>：不能当普通 CPU 用，必须配合 x86/鲲鹏服务器</li>
+<li><strong>供应链</strong>：先进制程受限，实际产能有限</li>
+</ul>
+<h3 id="适用场景-1"><a href="#适用场景-1" class="headerlink" title="适用场景"></a>适用场景</h3><ul>
+<li>LLM 训练/微调（昇腾 910C 已批量部署于华为云）</li>
+<li>图像识别、目标检测等 CV 任务</li>
+<li>智慧城市、政务 AI 等对国产化有要求的项目</li>
+</ul>
+<hr>
+<h2 id="鲲鹏-昇腾：组合部署"><a href="#鲲鹏-昇腾：组合部署" class="headerlink" title="鲲鹏 + 昇腾：组合部署"></a>鲲鹏 + 昇腾：组合部署</h2><p>华为推荐组合：<strong>鲲鹏 930 服务器（宿主）+ 昇腾 910C（AI 加速卡）</strong></p>
+<p>这种组合在政企 AI 项目中越来越多：</p>
+<ul>
+<li>鲲鹏处理调度、存储、网络等通用任务</li>
+<li>昇腾专注 AI 算力</li>
+</ul>
+<p>典型配置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">宿主：Kunpeng 930 服务器 × 2台</span><br><span class="line">AI模块：昇腾 910C × 4卡</span><br><span class="line">组网：100G RoCEv2</span><br><span class="line">存储：NVMe SSD + 华为 OceanStor</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="选型建议"><a href="#选型建议" class="headerlink" title="选型建议"></a>选型建议</h2><table>
+<thead>
+<tr>
+<th>维度</th>
+<th>选鲲鹏</th>
+<th>选昇腾</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>纯通用计算</td>
+<td>✅</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>大模型训练</td>
+<td>❌（CPU太慢）</td>
+<td>✅（配合GPU集群）</td>
+</tr>
+<tr>
+<td>小模型推理</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>政企自主可控</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>生态兼容性要求高</td>
+<td>❌</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>能效比敏感</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>鲲鹏和昇腾是互补关系，不是替代关系。鲲鹏解决”通用算力自主可控”，昇腾解决”AI 算力自主可控”。两者组合构成了华为服务器产品线的完整拼图。</p>
+<p>如果你的业务需要 AI 推理能力且对国产化有要求，昇腾是值得认真考虑的选择。如果是通用服务器场景，鲲鹏已经能很好地满足需求。</p>
+
+        </div>
+
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2026/05/05/skills-creation-methodology/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">Claude Code Skills 创作方法论：7个实战Skills详解与设计思路</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2023/05/09/hermes-feishu-webhook-integration/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">Hermes Agent 飞书双向通信实战：从诊断到开机自启</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>&nbsp;-&nbsp;
+            
+            2026&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">Yixin</a>
+        </div>
+        
+            <script async  src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        Visitor Count&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        Totalview&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.3</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+
+
+
+<div class="post-scripts">
+    
+</div>
+
+
+
+</body>
+</html>

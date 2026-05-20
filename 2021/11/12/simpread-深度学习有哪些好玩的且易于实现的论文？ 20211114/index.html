@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Yixin">
+    
+    <title>
+        
+            深度学习有哪些好玩且易于实现的论文？ |
+        
+        Yixin blog
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo.svg">
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"mengyx.com.cn","root":"/","language":"zh","path":"search.json"};
+    KEEP.theme_config = {"toc":{"enable":false,"number":false,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.svg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":false,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":false,"preload":false},"code_copy":{"enable":false,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.4.3"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                Yixin blog
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                HOME
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                TAGS
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                ABOUT
+                            </a>
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">HOME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">TAGS</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">ABOUT</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">深度学习有哪些好玩且易于实现的论文？</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar.svg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">Yixin</span>
+                        
+                            <span class="author-label">Lv5</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;2021-11-12 15:11:21
+    </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/%E5%AD%A6%E4%B9%A0/">学习</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <p><img src="https://pic1.zhimg.com/v2-91f47a7444bf3fce21265f20db523da4_r.jpg?source=1940ef5c"></p>
+<p>GitHub 上发现了一个不错的项目，收集了中国科学技术大学课程资源，主要包括了计算机学院，也包括经管、经济、物理、数学等相关课程的 repo，甚至包含了人文社科类的。目前该项目已收获了 13716 个 Star，4221 个 Fork。课程的结构大致如下：</p>
+<p><img src="https://pica.zhimg.com/v2-e1f3de77b4c6f79b876674b25c324733_r.jpg?source=1940ef5c"><a class="link"   href="https://link.zhihu.com/?target=https://ustc-resource.github.io/USTC-Course/" >https://ustc-resource.github.io/USTC-Course/<i class="fas fa-external-link-alt"></i></a></p>
+<p><strong><em>有很多</em></strong></p>
+<p><img src="https://pic1.zhimg.com/v2-8d17cb682fd6ea6cc9af8fd8028a91dc_r.jpg?source=1940ef5c"><img src="https://pic3.zhimg.com/v2-bc5d24c0b881d77e304cfebd70cf3d19_r.jpg?source=1940ef5c"><a class="link"   href="https://link.zhihu.com/?target=https://aws.amazon.com/marketplace/solutions/machine-learning" >Machine Learning solutions in AWS Marketplace<i class="fas fa-external-link-alt"></i></a></p>
+<p><strong><em>亚马逊的机器学习的博客</em></strong></p>
+<p><img src="https://pica.zhimg.com/v2-9ab5f34036ed7989f6c4e027b37fab3e_r.jpg?source=1940ef5c"><a class="link"   href="https://link.zhihu.com/?target=https://aws.amazon.com/marketplace/b/6297422015?page=1&filters=FulfillmentOptionType&FulfillmentOptionType=SageMaker" >AWS Marketplace<i class="fas fa-external-link-alt"></i></a></p>
+<p>2019/10/25 再次更新</p>
+<p><img src="https://pic2.zhimg.com/v2-0ba7f265d786af87539dca187103a01a_r.jpg?source=1940ef5c"><a class="link"   href="https://link.zhihu.com/?target=https://www.learnpython.org/" >Learn Python - Free Interactive Python Tutorial<i class="fas fa-external-link-alt"></i></a></p>
+<p><strong><em>优达学城，乔治亚理工学院的课程</em></strong></p>
+<p><img src="https://pic3.zhimg.com/v2-bb381ddb140d84c9e404db5794e51456_r.jpg?source=1940ef5c"><a class="link"   href="https://link.zhihu.com/?target=https://cn.udacity.com/courses/georgia-tech-masters-in-cs" >优达学城课程分类_在线视频课程 - 优达学城 (Udacity) 官网<i class="fas fa-external-link-alt"></i></a></p>
+<p>关于软件和镜像下载源，大家可以看看我这篇回答。管清华和中科大的朋友要的。 <a class="link"   target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/59124173" >清华，中科大，计算机学院下载资源<i class="fas fa-external-link-alt"></i></a></p>
+<p>2019/10/17 更新 ，基于大家对我的喜爱，我就放两本很好的电子书的链接在上边。深度学习的哦。如果你们给我点赞多一点，或者转发，我会放更多的资料在上边。</p>
+<p><img src="https://pic1.zhimg.com/v2-eaf10e1cde743ed23c05e690363cb981_r.jpg?source=1940ef5c"><a class="link"   href="https://link.zhihu.com/?target=http://www.deeplearningbook.org/" >Deep Learning<i class="fas fa-external-link-alt"></i></a><img src="https://pic1.zhimg.com/v2-647820f673caf8fc568cb6054dcdb68b_r.jpg?source=1940ef5c"><a class="link"   href="https://link.zhihu.com/?target=http://neuralnetworksanddeeplearning.com/" >Neural networks and deep learning<i class="fas fa-external-link-alt"></i></a></p>
+<p>—————————————- 我是分割线 —————————————— 有很多！今天来强答一波。祭出我的月光宝盒来。各位小哥哥，小姐姐，看完记得点个赞哦 (´-ω-`)。<strong>还有机器学习大礼包，含 tensorflow 书籍和李航统计学习法，以及斯坦福的课件，大小 400 多 M，有需要的小宝贝私聊我就好。</strong>！(上传百度网盘链接，居然涉及违法违规～)</p>
+<h3 id="1-网站-https-paperswithcode-com-sota"><a href="#1-网站-https-paperswithcode-com-sota" class="headerlink" title="1. 网站 https://paperswithcode.com/sota"></a>1. 网站 <a class="link"   href="https://link.zhihu.com/?target=https://paperswithcode.com/sota" >https://paperswithcode.com/sota<i class="fas fa-external-link-alt"></i></a></h3><p><img src="https://pica.zhimg.com/v2-6bbaee22122e5bb75b12143f8887c112_r.jpg?source=1940ef5c"><img src="https://pic1.zhimg.com/v2-bfcf3bf943e180bfb1d1f30d67b2b803_r.jpg?source=1940ef5c"></p>
+<hr>
+<h3 id="2-网站-https-github-com-zziz-pwc-blob-master-README-md-—-，是这个样子的，和上边差不多。"><a href="#2-网站-https-github-com-zziz-pwc-blob-master-README-md-—-，是这个样子的，和上边差不多。" class="headerlink" title="2. 网站 https://github.com/zziz/pwc/blob/master/README.md#—- ，是这个样子的，和上边差不多。"></a>2. 网站 <a class="link"   href="https://link.zhihu.com/?target=https://github.com/zziz/pwc/blob/master/README.md%23----" >https://github.com/zziz/pwc/blob/master/README.md#—-<i class="fas fa-external-link-alt"></i></a> ，是这个样子的，和上边差不多。</h3><p><img src="https://pic3.zhimg.com/v2-8f7d2c37fb452f06a5c0dd7179be3a69_r.jpg?source=1940ef5c"></p>
+<hr>
+<h3 id="3-还有视频，讲神经网络的，附-YouTube-链接-https-www-youtube-com-watch-v-aircAruvnKk"><a href="#3-还有视频，讲神经网络的，附-YouTube-链接-https-www-youtube-com-watch-v-aircAruvnKk" class="headerlink" title="3. 还有视频，讲神经网络的，附 YouTube 链接 https://www.youtube.com/watch?v=aircAruvnKk"></a>3. 还有视频，讲神经网络的，附 YouTube 链接 <a class="link"   href="https://link.zhihu.com/?target=https://www.youtube.com/watch?v=aircAruvnKk" >https://www.youtube.com/watch?v=aircAruvnKk<i class="fas fa-external-link-alt"></i></a></h3><p><img src="https://pic1.zhimg.com/v2-3e742d68ef4c0aa050e345dd4365097f_r.jpg?source=1940ef5c"></p>
+<hr>
+<h3 id="4-以及-DeepLearning-500-questions，-https-github-com-scutan90-DeepLearning-500-questions-深度学习-500-问，以问答形式对常用的概率知识、线性代数、机器学习、深度学习、计算机视觉等热点问题进行阐述，以帮助自己及有需要的读者。"><a href="#4-以及-DeepLearning-500-questions，-https-github-com-scutan90-DeepLearning-500-questions-深度学习-500-问，以问答形式对常用的概率知识、线性代数、机器学习、深度学习、计算机视觉等热点问题进行阐述，以帮助自己及有需要的读者。" class="headerlink" title="4. 以及_DeepLearning-500-questions，_https://github.com/scutan90/DeepLearning-500-questions 深度学习 500 问，以问答形式对常用的概率知识、线性代数、机器学习、深度学习、计算机视觉等热点问题进行阐述，以帮助自己及有需要的读者。"></a>4. 以及_DeepLearning-500-questions，_<a class="link"   href="https://link.zhihu.com/?target=https://github.com/scutan90/DeepLearning-500-questions" >https://github.com/scutan90/DeepLearning-500-questions<i class="fas fa-external-link-alt"></i></a> 深度学习 500 问，以问答形式对常用的概率知识、线性代数、机器学习、深度学习、计算机视觉等热点问题进行阐述，以帮助自己及有需要的读者。</h3><p><img src="https://pic3.zhimg.com/v2-954cbdb024d8fc590fee0f47d0007785_r.jpg?source=1940ef5c"></p>
+<hr>
+<h3 id="5-以及莫烦小哥的-python-https-morvanzhou-github-io-tutorials-machine-learning-tensorflow"><a href="#5-以及莫烦小哥的-python-https-morvanzhou-github-io-tutorials-machine-learning-tensorflow" class="headerlink" title="5. 以及莫烦小哥的 python https://morvanzhou.github.io/tutorials/machine-learning/tensorflow/"></a>5. 以及莫烦小哥的 python <a class="link"   href="https://link.zhihu.com/?target=https://morvanzhou.github.io/tutorials/machine-learning/tensorflow/" >https://morvanzhou.github.io/tutorials/machine-learning/tensorflow/<i class="fas fa-external-link-alt"></i></a></h3><p><img src="https://pic1.zhimg.com/v2-faa141afff15a4e71dac1385268b084a_r.jpg?source=1940ef5c"><img src="https://pica.zhimg.com/v2-d0bbfe9005765e95786d6bbd54a13675_r.jpg?source=1940ef5c"></p>
+<hr>
+<h3 id="6-这个是思科的，Welcome-to-Deep-Learning-NLP-documentation"><a href="#6-这个是思科的，Welcome-to-Deep-Learning-NLP-documentation" class="headerlink" title="6. 这个是思科的，Welcome to Deep Learning NLP documentation!"></a>6. 这个是思科的，<a class="link"   href="https://link.zhihu.com/?target=https://machine-learning-course.readthedocs.io/en/latest/index.html" >Welcome to Deep Learning NLP documentation!<i class="fas fa-external-link-alt"></i></a></h3><p><img src="https://pic3.zhimg.com/v2-cbd19a0e3542b7449b2434706d211896_r.jpg?source=1940ef5c"></p>
+<hr>
+<h3 id="7-这网站非常硬核，讲的清楚，而且很干净漂亮。还有-python-跟-R-的内容代码"><a href="#7-这网站非常硬核，讲的清楚，而且很干净漂亮。还有-python-跟-R-的内容代码" class="headerlink" title="7. 这网站非常硬核，讲的清楚，而且很干净漂亮。还有 python 跟 R 的内容代码"></a>7. 这网站非常硬核，讲的清楚，而且很干净漂亮。还有 python 跟 R 的内容代码</h3><p><a class="link"   href="https://link.zhihu.com/?target=https://ujjwalkarn.me/2016/08/11/intuitive-explanation-convnets/" >https://ujjwalkarn.me/2016/08/11/intuitive-explanation-convnets/<i class="fas fa-external-link-alt"></i></a></p>
+<p><img src="https://pic3.zhimg.com/v2-52bab0319a3270781652d005f6942eac_r.jpg?source=1940ef5c"><img src="https://pica.zhimg.com/v2-fabae68b41db9fe2be8b5b60d451411f_r.jpg?source=1940ef5c"><img src="https://pic2.zhimg.com/v2-667b3fb9e352eddb496b164dd25e7227_r.jpg?source=1940ef5c"></p>
+<hr>
+<ol start="8">
+<li>还有一个开放的社区，会定期讨论大家最近在看什么文章，机器学习相关的项目。前两天还让我投票，说是发起了请愿书，让大家呼吁不要去美国开 AI 的国际会议。<a class="link"   href="https://link.zhihu.com/?target=https://www.reddit.com/r/MachineLearning/" >https://www.reddit.com/r/MachineLearning/<i class="fas fa-external-link-alt"></i></a></li>
+</ol>
+<p><img src="https://pica.zhimg.com/v2-cc2b1380d2ed00e9ff8078f2db2c3521_r.jpg?source=1940ef5c"></p>
+<hr>
+<p><a class="link"   href="https://link.zhihu.com/?target=https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&mid=2650757542&idx=3&sn=c054aac3dee9ce4903363657f74d511e&chksm=871a9dd8b06d14ce3b1fc7f71c7426dcc5a9224e571efee47b28ee26af225c261146730b7f22&mpshare=1&scene=23&srcid=%23rd" >还有中科大的这个教程，从人工智能到区块链应有尽有<i class="fas fa-external-link-alt"></i></a></p>
+<p><img src="https://pic3.zhimg.com/v2-9a45d786b642af448716c9f89056da68_r.jpg?source=1940ef5c"></p>
+<hr>
+<p>给大家放上几本好书，推荐！</p>
+<p><img src="https://pic3.zhimg.com/v2-dcc2d1cffea630ade129aeeb4e3c804b_r.jpg?source=1940ef5c"><img src="https://pic2.zhimg.com/v2-7e00c70f3cdb1430283818ea383879c8_r.jpg?source=1940ef5c"><img src="https://pica.zhimg.com/v2-ac7ffc9ada9caf3a894e405e089b462e_r.jpg?source=1940ef5c"><img src="https://pic1.zhimg.com/da8e974dc_xs.jpg?source=1940ef5c"></p>
+
+        </div>
+
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2021/11/16/simpread-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%A4%AA%E9%9A%BE%EF%BC%9F%E4%BA%86%E8%A7%A3%E8%BF%99%E4%B8%80%E7%AF%87%E5%B0%B1%E5%A4%9F%E4%BA%86/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">计网基础知识</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2021/11/12/simpread-%E8%81%94%E6%83%B3%20SR630%20%E6%9C%8D%E5%8A%A1%E5%99%A8_Yixin%20%E7%9A%84%E5%8D%9A%E5%AE%A2%20-%20CSDN%20%E5%8D%9A%E5%AE%A2/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">联想SR630服务器</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>&nbsp;-&nbsp;
+            
+            2026&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">Yixin</a>
+        </div>
+        
+            <script async  src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        Visitor Count&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        Totalview&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.3</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+
+
+
+<div class="post-scripts">
+    
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Yixin">
+    
+    <title>
+        
+            Claude Code 使用全记录：安装配置、Hermes、gstack 与网络修复笔记 |
+        
+        Yixin blog
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo.svg">
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"mengyx.com.cn","root":"/","language":"zh","path":"search.json"};
+    KEEP.theme_config = {"toc":{"enable":false,"number":false,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.svg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":false,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":false,"preload":false},"code_copy":{"enable":false,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.4.3"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                Yixin blog
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                HOME
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                TAGS
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                ABOUT
+                            </a>
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">HOME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">TAGS</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">ABOUT</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">Claude Code 使用全记录：安装配置、Hermes、gstack 与网络修复笔记</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar.svg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">Yixin</span>
+                        
+                            <span class="author-label">Lv5</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;2026-05-05 15:00:00
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/%E6%8A%80%E6%9C%AF%E5%AE%9E%E6%88%98/">技术实战</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/Claude-Code/">Claude Code</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/Hermes/">Hermes</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/WSL2/">WSL2</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/gstack/">gstack</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7/">开发工具</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <p> Claude Code 使用全记录</p>
+<p><strong>记录日期：2026-05-05</strong></p>
+<hr>
+<h2 id="一、与-Claude-Code-的相遇"><a href="#一、与-Claude-Code-的相遇" class="headerlink" title="一、与 Claude Code 的相遇"></a>一、与 Claude Code 的相遇</h2><p>我叫蒙沂鑫，目前在 IT 行业从事解决方案相关工作。2026年4月开始探索 AI 编码工具，朋友推荐了 Claude Code，说这是目前最强的 AI 编程助手。经过这段时间的摸索，把安装配置全过程、使用技巧、遇到的问题和解决方案都记录下来，供自己回顾，也供有类似需求的朋友参考。</p>
+<p><strong>我的技术背景：</strong></p>
+<ul>
+<li>熟悉信创、算力、AI</li>
+<li>常用 Windows + WSL2 Ubuntu</li>
+<li>不喜欢折腾代理，希望开箱即用</li>
+<li>目前使用 MiniMax-M2.7 作为主力模型（通过 Claude API）</li>
+</ul>
+<hr>
+<h2 id="二、Claude-Code-安装过程"><a href="#二、Claude-Code-安装过程" class="headerlink" title="二、Claude Code 安装过程"></a>二、Claude Code 安装过程</h2><p><img src="https://raw.githubusercontent.com/MengYiXin/blog-images/main/05-claude-code-full-guide.svg" alt="配图"></p>
+<h3 id="2-1-环境准备"><a href="#2-1-环境准备" class="headerlink" title="2.1 环境准备"></a>2.1 环境准备</h3><p>环境信息：</p>
+<ul>
+<li>Windows 11 Home China</li>
+<li>WSL2 Ubuntu（通过 <code>wsl --install</code> 安装）</li>
+<li>Claude Code 版本：2.1.122</li>
+</ul>
+<h3 id="2-2-安装步骤"><a href="#2-2-安装步骤" class="headerlink" title="2.2 安装步骤"></a>2.2 安装步骤</h3><p>Claude Code 的安装非常简洁：</p>
+<ol>
+<li><p><strong>下载安装包</strong><br>从官网下载 Claude Code 安装程序</p>
+</li>
+<li><p><strong>完成基础配置</strong></p>
+<ul>
+<li>设置工作目录</li>
+<li>配置 API 访问（使用 MiniMax API）</li>
+</ul>
+</li>
+<li><p><strong>配置 CLAUDE.md</strong><br>这是项目级别的行为指南：</p>
+</li>
+</ol>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># CLAUDE.md</span></span><br><span class="line">Behavioral guidelines to reduce common LLM coding mistakes.</span><br><span class="line"></span><br><span class="line"><span class="section">## 1. Think Before Coding</span></span><br><span class="line"><span class="bullet">-</span> Don&#x27;t assume. Don&#x27;t hide confusion. Surface tradeoffs.</span><br><span class="line"><span class="bullet">-</span> State your assumptions explicitly. If uncertain, ask.</span><br><span class="line"></span><br><span class="line"><span class="section">## 2. Simplicity First</span></span><br><span class="line"><span class="bullet">-</span> Minimum code that solves the problem. Nothing speculative.</span><br><span class="line"><span class="bullet">-</span> No features beyond what was asked.</span><br><span class="line"></span><br><span class="line"><span class="section">## 3. Surgical Changes</span></span><br><span class="line"><span class="bullet">-</span> Touch only what you must. Clean up only your own mess.</span><br><span class="line"><span class="bullet">-</span> Match existing style, even if you&#x27;d do it differently.</span><br><span class="line"></span><br><span class="line"><span class="section">## 4. Goal-Driven Execution</span></span><br><span class="line"><span class="bullet">-</span> Define success criteria. Loop until verified.</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="三、Hermes-Agent-安装与配置"><a href="#三、Hermes-Agent-安装与配置" class="headerlink" title="三、Hermes Agent 安装与配置"></a>三、Hermes Agent 安装与配置</h2><h3 id="3-1-为什么用-Hermes"><a href="#3-1-为什么用-Hermes" class="headerlink" title="3.1 为什么用 Hermes"></a>3.1 为什么用 Hermes</h3><p>Hermes Agent 是一个基于 Claude 的 AI Agent，可以联网搜索、浏览网页、记忆管理。我在 2026-04-29 首次安装，后来在 2026-05-05 升级到 v0.12.0。</p>
+<h3 id="3-2-安装过程"><a href="#3-2-安装过程" class="headerlink" title="3.2 安装过程"></a>3.2 安装过程</h3><p><strong>前提条件：</strong></p>
+<ul>
+<li>Windows 10/11，已开启 WSL2</li>
+<li>Ubuntu 已启动</li>
+<li>网络正常（能访问 GitHub）</li>
+</ul>
+<p><strong>一键安装命令：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -fsSL https://raw.githubusercontent.com/NousResearch/hermes-agent/main/scripts/install.sh | bash</span><br></pre></td></tr></table></figure>
+
+<p>这个脚本会自动完成：</p>
+<ul>
+<li>安装 uv（Python 包管理器）</li>
+<li>安装 Python 3.11</li>
+<li>安装 Node.js 22</li>
+<li>克隆代码仓库到 ~/.hermes/hermes-agent/</li>
+<li>创建虚拟环境 venv</li>
+<li>安装所有 Python 依赖</li>
+<li>安装 npm 依赖</li>
+<li>链接 hermes 命令到 ~/.local/bin/hermes</li>
+</ul>
+<h3 id="3-3-API-Key-配置"><a href="#3-3-API-Key-配置" class="headerlink" title="3.3 API Key 配置"></a>3.3 API Key 配置</h3><p>安装完成后，必须配置 API Key：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hermes config edit</span><br></pre></td></tr></table></figure>
+
+<p>在 minimax 段落填入：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">minimax:</span></span><br><span class="line">  <span class="attr">api_key:</span> <span class="string">你的sk-xxx密钥</span></span><br><span class="line">  <span class="attr">base_url:</span> <span class="string">https://api.minimaxi.com/anthropic</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>重要陷阱：</strong></p>
+<ul>
+<li>base_url 不带 /v1 后缀</li>
+<li>API key 填在 minimax: 段落，不是 providers: 里</li>
+</ul>
+<h3 id="3-4-初始化配置"><a href="#3-4-初始化配置" class="headerlink" title="3.4 初始化配置"></a>3.4 初始化配置</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hermes setup</span><br></pre></td></tr></table></figure>
+
+<p>按提示选择：</p>
+<ul>
+<li>Provider：minimax</li>
+<li>Model：MiniMax-2.7</li>
+</ul>
+<h3 id="3-5-创建-Windows-桌面快捷方式"><a href="#3-5-创建-Windows-桌面快捷方式" class="headerlink" title="3.5 创建 Windows 桌面快捷方式"></a>3.5 创建 Windows 桌面快捷方式</h3><p>创建 <code>hermes.bat</code>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@echo off</span><br><span class="line">title Hermes Agent</span><br><span class="line">wsl -d Ubuntu -e bash -c &quot;cd &#x2F;root &amp;&amp; &#x2F;root&#x2F;.local&#x2F;bin&#x2F;hermes&quot;</span><br><span class="line">pause</span><br></pre></td></tr></table></figure>
+
+<p>双击即可启动。</p>
+<h3 id="3-6-Hermes-常用命令"><a href="#3-6-Hermes-常用命令" class="headerlink" title="3.6 Hermes 常用命令"></a>3.6 Hermes 常用命令</h3><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>hermes</td>
+<td>启动对话</td>
+</tr>
+<tr>
+<td>hermes setup</td>
+<td>重新配置</td>
+</tr>
+<tr>
+<td>hermes config edit</td>
+<td>编辑配置文件</td>
+</tr>
+<tr>
+<td>hermes config set</td>
+<td>查看/修改单项配置</td>
+</tr>
+<tr>
+<td>hermes gateway</td>
+<td>启动消息网关</td>
+</tr>
+<tr>
+<td>hermes update</td>
+<td>更新到最新版本</td>
+</tr>
+</tbody></table>
+<h3 id="3-7-升级记录"><a href="#3-7-升级记录" class="headerlink" title="3.7 升级记录"></a>3.7 升级记录</h3><ul>
+<li>2026-04-29：首次安装 v0.11.0</li>
+<li>2026-05-05：升级到 v0.12.0（ Autonomous Curator、自改进循环升级、4个新推理provider、Spotify+Google Meet集成）</li>
+</ul>
+<hr>
+<h2 id="四、gstack-WSL2-安装"><a href="#四、gstack-WSL2-安装" class="headerlink" title="四、gstack WSL2 安装"></a>四、gstack WSL2 安装</h2><h3 id="4-1-什么是-gstack"><a href="#4-1-什么是-gstack" class="headerlink" title="4.1 什么是 gstack"></a>4.1 什么是 gstack</h3><p>gstack 是一个浏览器自动化工具，可以控制 Chrome 浏览器进行网页操作。</p>
+<h3 id="4-2-安装过程"><a href="#4-2-安装过程" class="headerlink" title="4.2 安装过程"></a>4.2 安装过程</h3><p>gstack 安装在 WSL2 环境下，路径映射：</p>
+<ul>
+<li>WSL：<code>/root/.claude/skills/gstack</code></li>
+<li>Windows：<code>C:\Users\16080\.claude\skills\gstack</code>（符号链接）</li>
+</ul>
+<h3 id="4-3-关键配置"><a href="#4-3-关键配置" class="headerlink" title="4.3 关键配置"></a>4.3 关键配置</h3><p><strong>browser-manager.ts 补丁：</strong><br>添加 <code>WSL_DISTRO_NAME</code> 到沙箱检测，解决 WSL2 root 用户 Chromium –no-sandbox 问题：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (process.env.CI || process.env.CONTAINER || process.env.WSL_DISTRO_NAME) &#123;</span><br><span class="line">  launchArgs.push(<span class="string">&#x27;--no-sandbox&#x27;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>settings.json 配置：</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&quot;env&quot;: &#123;</span><br><span class="line">  &quot;PATH&quot;: &quot;/root/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin&quot;,</span><br><span class="line">  &quot;LD_LIBRARY_PATH&quot;: &quot;/root/.local/lib/chromium-deps/usr/lib/x86_64-linux-gnu&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-4-验证结果"><a href="#4-4-验证结果" class="headerlink" title="4.4 验证结果"></a>4.4 验证结果</h3><ul>
+<li>browse status → healthy</li>
+<li>browse url → about:blank（正常）</li>
+<li>browse goto → 超时（WSL网络配置问题，非gstack本身问题）</li>
+</ul>
+<hr>
+<h2 id="五、网络问题修复"><a href="#五、网络问题修复" class="headerlink" title="五、网络问题修复"></a>五、网络问题修复</h2><h3 id="5-1-问题描述"><a href="#5-1-问题描述" class="headerlink" title="5.1 问题描述"></a>5.1 问题描述</h3><p>Git 操作经常失败，特别是 <code>git push</code> 到 GitHub。</p>
+<h3 id="5-2-代理配置"><a href="#5-2-代理配置" class="headerlink" title="5.2 代理配置"></a>5.2 代理配置</h3><p>代理是 Clash（HTTP端口7890）。</p>
+<p><strong>配置步骤：</strong></p>
+<ol>
+<li>查找 Clash 配置文件（<code>~/.config/clash*/config.yaml</code>）</li>
+<li>获取 mixed-port</li>
+<li>配置 git 代理：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global http.proxy http://127.0.0.1:7890</span><br><span class="line">git config --global https.proxy http://127.0.0.1:7890</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="5-3-重要经验"><a href="#5-3-重要经验" class="headerlink" title="5.3 重要经验"></a>5.3 重要经验</h3><p><strong>经验1：</strong> GitHub 直连通常可行，不需要默认开代理。测试发现 curl 和 git clone 不开代理也能连上，之前超时是网络抖动。</p>
+<p><strong>经验2：</strong> 网络不稳定，curl 和 git 均有间歇性失败。curl 能通时 git 可能失败，反之亦然，属于网络波动而非代理问题。</p>
+<p><strong>经验3：</strong> 遇到 Connection reset 或超时，先等几秒重试，不要立即判定为代理问题。如果反复失败再配置代理。</p>
+<h3 id="5-4-网络恢复流程"><a href="#5-4-网络恢复流程" class="headerlink" title="5.4 网络恢复流程"></a>5.4 网络恢复流程</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">网络操作失败 → 等3-5秒重试 → 检查Clash进程 → 启动Clash（端口7890）</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="六、Skills-创作"><a href="#六、Skills-创作" class="headerlink" title="六、Skills 创作"></a>六、Skills 创作</h2><h3 id="6-1-为什么要创建-Skills"><a href="#6-1-为什么要创建-Skills" class="headerlink" title="6.1 为什么要创建 Skills"></a>6.1 为什么要创建 Skills</h3><p>Skills 是 Claude Code 的扩展机制，可以把重复操作自动化。需求场景：</p>
+<ul>
+<li>日常重复操作做成 Skills</li>
+<li>一句话触发复杂流程</li>
+<li>跨 Session 记忆偏好</li>
+</ul>
+<h3 id="6-2-已创建的-Skills"><a href="#6-2-已创建的-Skills" class="headerlink" title="6.2 已创建的 Skills"></a>6.2 已创建的 Skills</h3><table>
+<thead>
+<tr>
+<th>Skill</th>
+<th>触发词</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>01-hermes-install</td>
+<td>“install hermes”, “reinstall hermes”</td>
+<td>Hermes 重装（官方安装脚本、venv setup、MiniMax API 配置）</td>
+</tr>
+<tr>
+<td>02-gstack-install</td>
+<td>“install gstack”, “gstack not working”</td>
+<td>gstack WSL2 安装（含 browser-manager.ts 补丁）</td>
+</tr>
+<tr>
+<td>03-git-proxy-heal</td>
+<td>“git push 失败”, “git proxy”</td>
+<td>Git 代理自愈（自动查找 Clash 端口并配置）</td>
+</tr>
+<tr>
+<td>04-blog-deployer</td>
+<td>-</td>
+<td>GitHub Pages 博客一键部署</td>
+</tr>
+<tr>
+<td>05-cold-email-sequencer</td>
+<td>-</td>
+<td>冷邮件序列生成与发送自动化</td>
+</tr>
+<tr>
+<td>06-content-pipeline</td>
+<td>-</td>
+<td>AI 内容批量生产（多平台适配）</td>
+</tr>
+<tr>
+<td>07-info-arbitrage-monitor</td>
+<td>-</td>
+<td>信息差监控（域名/WHOIS/社媒/关键词）</td>
+</tr>
+</tbody></table>
+<h3 id="6-3-Skills-创建方法论"><a href="#6-3-Skills-创建方法论" class="headerlink" title="6.3 Skills 创建方法论"></a>6.3 Skills 创建方法论</h3><p><strong>触发词设计：</strong></p>
+<ul>
+<li>覆盖同义表达（”install hermes” = “reinstall hermes”）</li>
+<li>包含错误场景（”hermes broken”）</li>
+<li>简短易记</li>
+</ul>
+<p><strong>内容结构：</strong></p>
+<ol>
+<li>前置条件检查</li>
+<li>核心步骤（带验证）</li>
+<li>常见问题排查</li>
+<li>触发词列表</li>
+</ol>
+<hr>
+<h2 id="七、记忆系统"><a href="#七、记忆系统" class="headerlink" title="七、记忆系统"></a>七、记忆系统</h2><h3 id="7-1-记忆类型"><a href="#7-1-记忆类型" class="headerlink" title="7.1 记忆类型"></a>7.1 记忆类型</h3><table>
+<thead>
+<tr>
+<th>类型</th>
+<th>用途</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>user</td>
+<td>用户背景信息</td>
+<td>技术偏好</td>
+</tr>
+<tr>
+<td>feedback</td>
+<td>操作习惯偏好</td>
+<td>代理配置、不喜欢问问题</td>
+</tr>
+<tr>
+<td>project</td>
+<td>当前项目状态</td>
+<td>开发进度</td>
+</tr>
+<tr>
+<td>reference</td>
+<td>外部系统入口</td>
+<td>GitHub、IMA 知识库地址</td>
+</tr>
+</tbody></table>
+<h3 id="7-2-记忆文件结构"><a href="#7-2-记忆文件结构" class="headerlink" title="7.2 记忆文件结构"></a>7.2 记忆文件结构</h3><p>每个记忆文件包含：</p>
+<ul>
+<li><code>name</code>: 唯一标识</li>
+<li><code>description</code>: 一行描述（用于判断相关性）</li>
+<li><code>type</code>: 类型（user/feedback/project/reference）</li>
+<li><code>content</code>: 具体内容</li>
+</ul>
+<h3 id="7-3-IMA-知识库"><a href="#7-3-IMA-知识库" class="headerlink" title="7.3 IMA 知识库"></a>7.3 IMA 知识库</h3><p>访问地址：<a class="link"   target="_blank" rel="noopener" href="https://ima.qq.com/wikis%EF%BC%88%E7%8B%AC%E7%AB%8B" >https://ima.qq.com/wikis（独立<i class="fas fa-external-link-alt"></i></a> SPA 页面）</p>
+<p>知识库内容：</p>
+<ul>
+<li>微信精选文章</li>
+<li>各类项目资料</li>
+<li>技术文档</li>
+<li>培训材料</li>
+</ul>
+<hr>
+<h2 id="八、已授权操作清单"><a href="#八、已授权操作清单" class="headerlink" title="八、已授权操作清单"></a>八、已授权操作清单</h2><p>为了减少重复确认，预先授权了以下操作类别：</p>
+<h3 id="8-1-GitHub-相关"><a href="#8-1-GitHub-相关" class="headerlink" title="8.1 GitHub 相关"></a>8.1 GitHub 相关</h3><ul>
+<li>创建新仓库并推送</li>
+<li>克隆仓库到 <code>F:/Repos/MengYiXin/</code></li>
+<li>所有 git push/pull/clone 操作</li>
+</ul>
+<h3 id="8-2-开发工具安装"><a href="#8-2-开发工具安装" class="headerlink" title="8.2 开发工具安装"></a>8.2 开发工具安装</h3><ul>
+<li>npm 包安装（<code>npm install -g</code>）</li>
+<li>Python 包（pip install）</li>
+<li>Node.js / npx</li>
+<li>构建命令（<code>npm run build</code>）</li>
+</ul>
+<h3 id="8-3-Skills-和插件"><a href="#8-3-Skills-和插件" class="headerlink" title="8.3 Skills 和插件"></a>8.3 Skills 和插件</h3><ul>
+<li>安装任何 skill</li>
+<li>添加 MCP server</li>
+<li>安装 superpowers 全家桶</li>
+</ul>
+<h3 id="8-4-网络访问"><a href="#8-4-网络访问" class="headerlink" title="8.4 网络访问"></a>8.4 网络访问</h3><ul>
+<li>WebSearch / WebFetch</li>
+<li>Chrome DevTools Protocol</li>
+<li>GitHub API</li>
+<li>所有外部 URL</li>
+</ul>
+<h3 id="8-5-文件系统"><a href="#8-5-文件系统" class="headerlink" title="8.5 文件系统"></a>8.5 文件系统</h3><ul>
+<li>读取桌面 PDF/Word/Excel 文件</li>
+<li>整理桌面文件</li>
+<li>创建/修改/删除本地文件</li>
+</ul>
+<hr>
+<h2 id="九、reporter-web-项目"><a href="#九、reporter-web-项目" class="headerlink" title="九、reporter-web 项目"></a>九、reporter-web 项目</h2><h3 id="9-1-项目概述"><a href="#9-1-项目概述" class="headerlink" title="9.1 项目概述"></a>9.1 项目概述</h3><p>reporter-web 是周报日报生成器，基于 AI 的自动化工具。</p>
+<h3 id="9-2-技术栈"><a href="#9-2-技术栈" class="headerlink" title="9.2 技术栈"></a>9.2 技术栈</h3><ul>
+<li>React + TypeScript + TailwindCSS + Vite</li>
+<li>GitHub Pages 部署</li>
+<li>GitHub Gist 作为数据存储</li>
+<li>月之暗面 Kimi API</li>
+</ul>
+<h3 id="9-3-功能模式"><a href="#9-3-功能模式" class="headerlink" title="9.3 功能模式"></a>9.3 功能模式</h3><ul>
+<li><strong>M 模式</strong>：科技公司日报</li>
+<li><strong>Y 模式</strong>：三江集团周报</li>
+</ul>
+<h3 id="9-4-部署流程"><a href="#9-4-部署流程" class="headerlink" title="9.4 部署流程"></a>9.4 部署流程</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm run build</span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="十、常见问题汇总"><a href="#十、常见问题汇总" class="headerlink" title="十、常见问题汇总"></a>十、常见问题汇总</h2><h3 id="Q1-hermes-命令找不到"><a href="#Q1-hermes-命令找不到" class="headerlink" title="Q1: hermes 命令找不到"></a>Q1: hermes 命令找不到</h3><p><strong>原因：</strong> 安装后没有刷新 shell 环境，或 ~/.local/bin 不在 PATH 里<br><strong>解决：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;export PATH=&quot;$HOME/.local/bin:$PATH&quot;&#x27;</span> &gt;&gt; ~/.bashrc</span><br><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></table></figure>
+
+<h3 id="Q2-pip-install-报错-externally-managed-environment"><a href="#Q2-pip-install-报错-externally-managed-environment" class="headerlink" title="Q2: pip install 报错 externally-managed-environment"></a>Q2: pip install 报错 externally-managed-environment</h3><p><strong>原因：</strong> Debian/Ubuntu 系统 Python 受 PEP 668 保护<br><strong>解决：</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install xxx --break-system-packages</span><br></pre></td></tr></table></figure>
+
+<h3 id="Q3-config-yaml-修改后不生效"><a href="#Q3-config-yaml-修改后不生效" class="headerlink" title="Q3: config.yaml 修改后不生效"></a>Q3: config.yaml 修改后不生效</h3><p><strong>原因：</strong> API key 应填在 minimax: 段落，而非写在 providers: 里<br><strong>解决：</strong> 确保格式正确，冒号后有空格</p>
+<h3 id="Q4-Git-push-失败"><a href="#Q4-Git-push-失败" class="headerlink" title="Q4: Git push 失败"></a>Q4: Git push 失败</h3><p><strong>原因：</strong> 网络问题或代理配置错误<br><strong>解决：</strong> 先等3-5秒重试，确认持续失败后再配置代理</p>
+<hr>
+<h2 id="十一、桌面文件整理"><a href="#十一、桌面文件整理" class="headerlink" title="十一、桌面文件整理"></a>十一、桌面文件整理</h2><p>Windows 桌面文件组织结构：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">桌面&#x2F;</span><br><span class="line">├── 00-Hermes安装说明.txt</span><br><span class="line">├── install_hermes.sh</span><br><span class="line">├── hermes.bat</span><br><span class="line">├── 01-文档&#x2F;</span><br><span class="line">├── 02-演示文稿&#x2F;</span><br><span class="line">├── 03-表格&#x2F;</span><br><span class="line">├── 04-快捷方式&#x2F;</span><br><span class="line">├── 05-参考资料&#x2F;</span><br><span class="line">├── Linux PPT&#x2F;</span><br><span class="line">└── ...（按项目分类）</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="十二、参考资料"><a href="#十二、参考资料" class="headerlink" title="十二、参考资料"></a>十二、参考资料</h2><ul>
+<li>Claude Code 版本：2.1.122</li>
+<li>Hermes Agent 版本：v0.12.0</li>
+<li>Python：3.11.15</li>
+<li>OpenAI SDK：2.32.0</li>
+<li>Node.js：v22.16.0</li>
+<li>WSL2 Ubuntu</li>
+</ul>
+<hr>
+<p><strong>记录于 2026-05-05</strong></p>
+
+        </div>
+
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2026/05/05/ai-tools-config-notes/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">Claude Code / Hermes 配置笔记：网络问题、代理配置与常见错误修复</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2026/05/05/skills-creation-methodology/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">Claude Code Skills 创作方法论：7个实战Skills详解与设计思路</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>&nbsp;-&nbsp;
+            
+            2026&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">Yixin</a>
+        </div>
+        
+            <script async  src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        Visitor Count&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        Totalview&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.3</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+
+
+
+<div class="post-scripts">
+    
+</div>
+
+
+
+</body>
+</html>

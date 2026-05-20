@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Yixin">
+    
+    <title>
+        
+            WSL 下 hexo deploy 失败排障：SSH、HTTPS Token、.deploy_git 全记录 |
+        
+        Yixin blog
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo.svg">
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"mengyx.com.cn","root":"/","language":"zh","path":"search.json"};
+    KEEP.theme_config = {"toc":{"enable":false,"number":false,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.svg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":false,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":false,"preload":false},"code_copy":{"enable":false,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.4.3"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                Yixin blog
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                HOME
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                TAGS
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                ABOUT
+                            </a>
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">HOME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">TAGS</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">ABOUT</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">WSL 下 hexo deploy 失败排障：SSH、HTTPS Token、.deploy_git 全记录</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar.svg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">Yixin</span>
+                        
+                            <span class="author-label">Lv5</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;2026-05-18 12:00:00
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/%E6%8A%80%E6%9C%AF%E8%AE%B0%E5%BD%95/">技术记录</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        &gt; <a href="/categories/%E6%8A%80%E6%9C%AF%E8%AE%B0%E5%BD%95/DevOps/">DevOps</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/GitHub-Pages/">GitHub Pages</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/Hexo/">Hexo</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/WSL/">WSL</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/Git/">Git</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/Deployment/">Deployment</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <h1 id="WSL-下-hexo-deploy-失败排障：SSH、HTTPS-Token、-deploy-git-全记录"><a href="#WSL-下-hexo-deploy-失败排障：SSH、HTTPS-Token、-deploy-git-全记录" class="headerlink" title="WSL 下 hexo deploy 失败排障：SSH、HTTPS Token、.deploy_git 全记录"></a>WSL 下 hexo deploy 失败排障：SSH、HTTPS Token、.deploy_git 全记录</h1><h2 id="问题背景"><a href="#问题背景" class="headerlink" title="问题背景"></a>问题背景</h2><p>在 WSL 环境下执行 <code>hexo deploy</code>，<code>hexo generate</code> 成功，但推送到 GitHub Pages master 分支时报错：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Host key verification failed.</span><br><span class="line">fatal: Could not read from remote repository.</span><br></pre></td></tr></table></figure>
+
+<p>hexo deploy 走的是 <code>.deploy_git/</code> 目录里的 Git 仓库，remote 配置是 SSH 格式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git@github.com:MengYiXin&#x2F;MengYiXin.github.io.git</span><br></pre></td></tr></table></figure>
+
+<p>但 WSL 环境没有配置这个仓库的 SSH key，所以 push 失败。</p>
+<h2 id="完整排查链路"><a href="#完整排查链路" class="headerlink" title="完整排查链路"></a>完整排查链路</h2><h3 id="第一层：SSH-key-不存在"><a href="#第一层：SSH-key-不存在" class="headerlink" title="第一层：SSH key 不存在"></a>第一层：SSH key 不存在</h3><p>WSL 下没有 SSH key，git remote 又是 SSH 格式，所以直接报 <code>Host key verification failed</code>。</p>
+<p><strong>尝试方案</strong>：切到 HTTPS 格式。</p>
+<h3 id="第二层：HTTPS-Token-嵌入-URL-失败"><a href="#第二层：HTTPS-Token-嵌入-URL-失败" class="headerlink" title="第二层：HTTPS Token 嵌入 URL 失败"></a>第二层：HTTPS Token 嵌入 URL 失败</h3><p>修改 remote 为带 token 的 HTTPS URL：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git remote set-url origin https://ghp_TOKEN@github.com/MengYiXin/MengYiXin.github.io.git</span><br><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
+
+<p>仍然失败，因为 ~/bin/git wrapper 会把 URL rewrite 到 <code>ghproxy.com</code>，但 ghproxy 不认识带 token 的 URL 格式。</p>
+<h3 id="第三层：credential-helper-干扰"><a href="#第三层：credential-helper-干扰" class="headerlink" title="第三层：credential helper 干扰"></a>第三层：credential helper 干扰</h3><p>尝试用 credential helper 存储 token：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global credential.helper <span class="string">&quot;store&quot;</span></span><br><span class="line">git push origin master</span><br></pre></td></tr></table></figure>
+
+<p>失败：<code>could not read Username for &#39;https://github.com&#39;: terminal prompts disabled</code></p>
+<p>credential helper 没有生效，git 在尝试读取 stdin。</p>
+<h3 id="第四层：直接绕过-wrapper"><a href="#第四层：直接绕过-wrapper" class="headerlink" title="第四层：直接绕过 wrapper"></a>第四层：直接绕过 wrapper</h3><p>发现问题根源：~/bin/git wrapper 在检测到代理可用时，会把 GitHub URL rewrite 到 ghproxy.com。但 ghproxy 不认识带 token 的 HTTPS URL，导致连接失败。</p>
+<p>解决：清理所有 git config 的 rewrite 规则，直接推。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 清理 git wrapper 的 rewrite</span></span><br><span class="line">git config --global --<span class="built_in">unset</span> url.<span class="string">&quot;https://ghproxy.com/https://github.com/&quot;</span>.insteadOf</span><br><span class="line"></span><br><span class="line"><span class="comment"># 用 system git 直接推</span></span><br><span class="line">/usr/bin/git push origin master</span><br></pre></td></tr></table></figure>
+
+<p>仍然失败：报错 <code>rejected because the remote contains work that you do not have locally</code>。</p>
+<h3 id="第五层：-deploy-git-的-remote-问题"><a href="#第五层：-deploy-git-的-remote-问题" class="headerlink" title="第五层：.deploy_git 的 remote 问题"></a>第五层：.deploy_git 的 remote 问题</h3><p>进入 <code>.deploy_git/</code> 目录检查 remote 配置：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> .deploy_git</span><br><span class="line">git remote -v</span><br><span class="line"><span class="comment"># 输出：git@github.com:MengYiXin/MengYiXin.github.io.git (push)</span></span><br></pre></td></tr></table></figure>
+
+<p>原来 <code>.deploy_git/</code> 是独立的 Git 仓库，remote 指向 SSH URL，且没有 fetch。</p>
+<h3 id="第六层：修复-deploy-git-的-remote"><a href="#第六层：修复-deploy-git-的-remote" class="headerlink" title="第六层：修复 .deploy_git 的 remote"></a>第六层：修复 .deploy_git 的 remote</h3><p>给 <code>.deploy_git/</code> 添加 HTTPS remote：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git remote add origin https://ghp_TOKEN@github.com/MengYiXin/MengYiXin.github.io.git</span><br><span class="line">git remote -v</span><br><span class="line"><span class="comment"># 确认 remote 已改</span></span><br></pre></td></tr></table></figure>
+
+<p>然后 push，但因为远程有 GitHub Actions 生成的提交，本地没有，直接 push 会失败。</p>
+<h3 id="第七层：–force-覆盖"><a href="#第七层：–force-覆盖" class="headerlink" title="第七层：–force 覆盖"></a>第七层：–force 覆盖</h3><p>GitHub Pages 的 master 分支是 GitHub Actions 自动生成的，本地 hexo generate 的结果不需要保留远程历史，直接覆盖：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GIT_TERMINAL_PROMPT=0 git push origin master --force</span><br></pre></td></tr></table></figure>
+
+<p>成功！</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">To https:&#x2F;&#x2F;github.com&#x2F;MengYiXin&#x2F;MengYiXin.github.io.git</span><br><span class="line"> + 386aa93...e211b24 master -&gt; master (forced update)</span><br></pre></td></tr></table></figure>
+
+<h2 id="为什么-GitHub-Actions-部署没问题，本地-hexo-deploy-就挂了？"><a href="#为什么-GitHub-Actions-部署没问题，本地-hexo-deploy-就挂了？" class="headerlink" title="为什么 GitHub Actions 部署没问题，本地 hexo deploy 就挂了？"></a>为什么 GitHub Actions 部署没问题，本地 hexo deploy 就挂了？</h2><p>GitHub Actions 用的是<strong>部署密钥（Deploy Key）</strong>，是 SSH 格式，但 Actions runner 有这个 key，所以能推成功。</p>
+<p>WSL 本地没有这个 SSH key，所以推不上去。</p>
+<h2 id="教训总结"><a href="#教训总结" class="headerlink" title="教训总结"></a>教训总结</h2><table>
+<thead>
+<tr>
+<th>层级</th>
+<th>问题</th>
+<th>解法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>SSH key 缺失</td>
+<td>切 HTTPS</td>
+</tr>
+<tr>
+<td>2</td>
+<td>~/bin/git wrapper rewrite</td>
+<td>用 /usr/bin/git</td>
+</tr>
+<tr>
+<td>3</td>
+<td>credential helper 不生效</td>
+<td>token 直接嵌入 URL</td>
+</tr>
+<tr>
+<td>4</td>
+<td>.deploy_git 是独立仓库</td>
+<td>单独修复它的 remote</td>
+</tr>
+<tr>
+<td>5</td>
+<td>远程有提交冲突</td>
+<td>–force 覆盖</td>
+</tr>
+</tbody></table>
+<h2 id="预防方案"><a href="#预防方案" class="headerlink" title="预防方案"></a>预防方案</h2><p>下次 hexo deploy 前，先检查 <code>.deploy_git/</code> 的 remote 配置：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cat .deploy_git/.git/config | grep url</span><br><span class="line"><span class="comment"># 应该是 HTTPS 格式，不是 SSH</span></span><br></pre></td></tr></table></figure>
+
+<p>如果看到 <code>git@github.com:</code> 开头，手动改成 HTTPS：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> .deploy_git</span><br><span class="line">git remote set-url origin https://github.com/MengYiXin/MengYiXin.github.io.git</span><br></pre></td></tr></table></figure>
+
+<h2 id="关键路径"><a href="#关键路径" class="headerlink" title="关键路径"></a>关键路径</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.hexo-deploy&#x2F;          # Hexo 自动生成的临时部署目录</span><br><span class="line">  .deploy_git&#x2F;        # 实际执行 git push 的仓库</span><br><span class="line">    .git&#x2F;config       # 关键：remote 配置在这里</span><br></pre></td></tr></table></figure>
+
+<p>Hexo generate 的输出先到 <code>.deploy_git/</code> 再 push，所以 <code>.deploy_git/</code> 的 Git 配置是最后一道关卡。</p>
+
+        </div>
+
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2026/05/18/blog-style-fix-github-pages-legacy-mode/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">博客样式丢失排查记：GitHub Pages 双构建覆盖问题</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2026/05/18/openclaw-feishu-troubleshooting/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">OpenClaw 飞书掉线排障：从 plugin duplicate 到 delivery pending 全记录</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>&nbsp;-&nbsp;
+            
+            2026&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">Yixin</a>
+        </div>
+        
+            <script async  src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        Visitor Count&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        Totalview&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.3</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+
+
+
+<div class="post-scripts">
+    
+</div>
+
+
+
+</body>
+</html>
