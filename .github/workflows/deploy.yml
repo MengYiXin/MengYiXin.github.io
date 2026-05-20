@@ -59,23 +59,24 @@ jobs:
 
       - name: Override theme config with site values
         run: |
-          # PROBLEM: hexo-theme-keep's default _config.yml has first_screen.enable: false
-          # Our _config.yml has theme_config.first_screen.enable: true
-          # But in Actions, Hexo's merge doesn't work correctly (outputs enable: false)
-          # FIX: Directly patch the theme package's _config.yml to match our site config
+          # hexo-theme-keep's default _config.yml has first_screen.enable: false
+          # and first_screen.description: Keep writing and Keep loving.
+          # Our _config.yml has theme_config.first_screen with the right values,
+          # but Hexo's theme_config merge doesn't work reliably in all environments.
+          # FIX: Directly patch the theme package's _config.yml
           python3 << 'EOF'
           import re
           theme_cfg = "node_modules/hexo-theme-keep/_config.yml"
           with open(theme_cfg, "r") as f:
             content = f.read()
-          # Patch first_screen section - set enable to true and description to ours
+          # Patch first_screen section - replace enable line and description line unconditionally
           content = re.sub(
-            r'(first_screen:\n\s+enable:\s*)false',
+            r'(first_screen:\n\s+enable:\s*)\w+',
             r'\g<1>true',
             content
           )
           content = re.sub(
-            r'(first_screen:\n\s+description:\s*)["\']Keep writing.*["\']',
+            r'(first_screen:\n\s+description:\s*)[^\n]+',
             r'\g<1>不要熬夜哟！',
             content
           )
@@ -85,7 +86,7 @@ jobs:
           # Verify
           import subprocess
           result = subprocess.run(
-            ["grep", "-A1", "first_screen:", theme_cfg],
+            ["grep", "-A2", "first_screen:", theme_cfg],
             capture_output=True, text=True
           )
           print("Result:", result.stdout.strip())

@@ -126,6 +126,13 @@ theme_config:
       site_uv: true
       site_pv: true
       page_pv: true
+  comment:
+    enable: true
+    use: valine
+    valine:
+      appid: nLubyWWoLdhQhY0MFrVEp6TQ-gzGzoHsz
+      appkey: nKGU6OM4iawauPKsgfATStpK
+      placeholder: 这里可以写评论...
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
