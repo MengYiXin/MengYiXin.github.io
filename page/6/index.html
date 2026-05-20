@@ -15,11 +15,13 @@
 <link rel="stylesheet" href="/css/style.css">
 
     <link rel="shortcut icon" href="/images/logo.svg">
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/css/font-awesome.min.css">
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
     <script id="hexo-configurations">
     let KEEP = window.KEEP || {};
     KEEP.hexo_config = {"hostname":"mengyx.com.cn","root":"/","language":"zh","path":"search.json"};
-    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.svg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":true,"scale":true},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"不要熬夜哟！"},"scroll":{"progress_bar":{"enable":true},"percent":{"enable":true}}},"local_search":{"enable":true,"preload":true},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":true},"lazyload":{"enable":false},"version":"3.4.3"};
+    KEEP.theme_config = {"toc":{"enable":false,"number":false,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.svg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":false,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":false,"preload":false},"code_copy":{"enable":false,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.4.3"};
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
   </script>
 <meta name="generator" content="Hexo 5.4.0"></head>
@@ -28,14 +30,7 @@
 <body>
 <div class="progress-bar-container">
     
-        <span class="scroll-progress-bar"></span>
-    
 
-    
-        <span class="pjax-progress-bar"></span>
-        <span class="pjax-progress-icon">
-            <i class="fas fa-circle-notch fa-spin"></i>
-        </span>
     
 </div>
 
@@ -65,7 +60,7 @@
                             <a class="active"
                                href="/"
                             >
-                                首页
+                                HOME
                             </a>
                         </li>
                     
@@ -73,7 +68,7 @@
                             <a class=""
                                href="/archives"
                             >
-                                归档
+                                ARCHIVES
                             </a>
                         </li>
                     
@@ -81,7 +76,7 @@
                             <a class=""
                                href="/tags"
                             >
-                                标签
+                                TAGS
                             </a>
                         </li>
                     
@@ -89,20 +84,14 @@
                             <a class=""
                                href="/about"
                             >
-                                关于
+                                ABOUT
                             </a>
                         </li>
                     
                     
-                        <li class="menu-item search search-popup-trigger">
-                            <i class="fas fa-search"></i>
-                        </li>
-                    
                 </ul>
             </div>
             <div class="mobile">
-                
-                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
                 
                 <div class="icon-item menu-bar">
                     <div class="menu-bar-middle"></div>
@@ -116,22 +105,22 @@
             
                 <li class="drawer-menu-item flex-center">
                     <a class="active"
-                       href="/">首页</a>
+                       href="/">HOME</a>
                 </li>
             
                 <li class="drawer-menu-item flex-center">
                     <a class=""
-                       href="/archives">归档</a>
+                       href="/archives">ARCHIVES</a>
                 </li>
             
                 <li class="drawer-menu-item flex-center">
                     <a class=""
-                       href="/tags">标签</a>
+                       href="/tags">TAGS</a>
                 </li>
             
                 <li class="drawer-menu-item flex-center">
                     <a class=""
-                       href="/about">关于</a>
+                       href="/about">ABOUT</a>
                 </li>
             
         </ul>
@@ -157,6 +146,138 @@
                 
 
                 <h3 class="home-article-title">
+                    <a href="/2021/05/02/simpread-%E4%BB%8E%200%20%E5%BC%80%E5%A7%8B%E5%AE%89%E8%A3%85%20VSAN%20%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98%E5%92%8C%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95_Yixin%20%E7%9A%84%E5%8D%9A%E5%AE%A2%20-%20CSDN%20%E5%8D%9A%E5%AE%A2_vsan%20%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/">
+                        从0开始装VSAN
+                    </a>
+                </h3>
+
+                <div class="home-article-content markdown-body">
+                    
+                        
+请务必格式化好全部的硬盘，否则可能会出现配置好了但是不能使用的问题。  
+安装 VCSA 可能会卡 80% 参考网上解决。（有可能实际上是等待不够久，并不会出现进度条不会动的情况）  
+注意好安装环境的物理网络情况，确保过程中的通信。  
+EVC ...
+                    
+                </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Sun May 02 2021 17:07:21 GMT+0000">2021-05-02</span></span>
+        
+        
+    </div>
+
+    <a href="/2021/05/02/simpread-%E4%BB%8E%200%20%E5%BC%80%E5%A7%8B%E5%AE%89%E8%A3%85%20VSAN%20%E9%81%87%E5%88%B0%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98%E5%92%8C%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95_Yixin%20%E7%9A%84%E5%8D%9A%E5%AE%A2%20-%20CSDN%20%E5%8D%9A%E5%AE%A2_vsan%20%E5%AE%89%E8%A3%85%E6%95%99%E7%A8%8B/">Read more&nbsp;<i class="fas fa-angle-right"></i></a>
+</div>
+
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                <h3 class="home-article-title">
+                    <a href="/2021/05/02/simpread-VSAN%20%E7%9A%84%E5%AE%89%E8%A3%85_Yixin%20%E7%9A%84%E5%8D%9A%E5%AE%A2%20-%20CSDN%20%E5%8D%9A%E5%AE%A2/">
+                        VMWare VSAN 的安装
+                    </a>
+                </h3>
+
+                <div class="home-article-content markdown-body">
+                    
+                        
+本文由 简悦 SimpRead 转码， 原文地址 blog.csdn.net
+
+将 VCenter 安装在任何一台主机上（192.168.30.2，192.168.30.3，192.168.30.4）这周（7 月 28 号）教我了 VSAN 的知识...
+                    
+                </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Sun May 02 2021 17:05:21 GMT+0000">2021-05-02</span></span>
+        
+        
+    </div>
+
+    <a href="/2021/05/02/simpread-VSAN%20%E7%9A%84%E5%AE%89%E8%A3%85_Yixin%20%E7%9A%84%E5%8D%9A%E5%AE%A2%20-%20CSDN%20%E5%8D%9A%E5%AE%A2/">Read more&nbsp;<i class="fas fa-angle-right"></i></a>
+</div>
+
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                <h3 class="home-article-title">
+                    <a href="/2021/05/02/simpread-VMware-ESXi%20%E7%9A%84%E5%AE%89%E8%A3%85_Yixin%20%E7%9A%84%E5%8D%9A%E5%AE%A2%20-%20CSDN%20%E5%8D%9A%E5%AE%A2/">
+                        VMWare Esxi 的安装
+                    </a>
+                </h3>
+
+                <div class="home-article-content markdown-body">
+                    
+                        密码账号:USERID/PASSW0RD密码的 0 是数字零
+
+
+  选择 ESXI 的镜像，挂载成功。
+
+
+然后重新启动，选择驱动引导：
+在合适的时候按 F1，出现如下界面
+
+按空格选择设置 IP。之后就可以访问了。
+
+                    
+                </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Sun May 02 2021 17:04:21 GMT+0000">2021-05-02</span></span>
+        
+        
+    </div>
+
+    <a href="/2021/05/02/simpread-VMware-ESXi%20%E7%9A%84%E5%AE%89%E8%A3%85_Yixin%20%E7%9A%84%E5%8D%9A%E5%AE%A2%20-%20CSDN%20%E5%8D%9A%E5%AE%A2/">Read more&nbsp;<i class="fas fa-angle-right"></i></a>
+</div>
+
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                <h3 class="home-article-title">
+                    <a href="/2021/05/02/simpread-VMWare%20vCenter%20Server%20%E7%9A%84%E5%AE%89%E8%A3%85_Yixin%20%E7%9A%84%E5%8D%9A%E5%AE%A2%20-%20CSDN%20%E5%8D%9A%E5%AE%A2/">
+                        VMWare vCenter Server 的安装
+                    </a>
+                </h3>
+
+                <div class="home-article-content markdown-body">
+                    
+                        从 ESXI 中，删除 Vcenter 虚拟机本身，然后全部进行重装一遍。熟悉流程2020/7/22
+具体虚拟机进入操作系统的密码
+
+
+                    
+                </div>
+
+                <div class="home-article-meta-info-container">
+    <div class="home-article-meta-info">
+        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Sun May 02 2021 17:03:21 GMT+0000">2021-05-02</span></span>
+        
+        
+    </div>
+
+    <a href="/2021/05/02/simpread-VMWare%20vCenter%20Server%20%E7%9A%84%E5%AE%89%E8%A3%85_Yixin%20%E7%9A%84%E5%8D%9A%E5%AE%A2%20-%20CSDN%20%E5%8D%9A%E5%AE%A2/">Read more&nbsp;<i class="fas fa-angle-right"></i></a>
+</div>
+
+            </li>
+        
+            <li class="home-article-item">
+
+                
+
+                <h3 class="home-article-title">
                     <a href="/2021/05/02/simpread-go%20%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0_Yixin%20%E7%9A%84%E5%8D%9A%E5%AE%A2%20-%20CSDN%20%E5%8D%9A%E5%AE%A2/">
                         go语言学习
                     </a>
@@ -171,24 +292,12 @@
 
                 <div class="home-article-meta-info-container">
     <div class="home-article-meta-info">
-        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Sun May 02 2021 17:01:21 GMT+0800">2021-05-02</span></span>
+        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Sun May 02 2021 17:01:21 GMT+0000">2021-05-02</span></span>
         
-        
-            <span class="home-article-tag">
-                <i class="fas fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/golang/">golang</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
         
     </div>
 
-    <a href="/2021/05/02/simpread-go%20%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0_Yixin%20%E7%9A%84%E5%8D%9A%E5%AE%A2%20-%20CSDN%20%E5%8D%9A%E5%AE%A2/">阅读全文&nbsp;<i class="fas fa-angle-right"></i></a>
+    <a href="/2021/05/02/simpread-go%20%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0_Yixin%20%E7%9A%84%E5%8D%9A%E5%AE%A2%20-%20CSDN%20%E5%8D%9A%E5%AE%A2/">Read more&nbsp;<i class="fas fa-angle-right"></i></a>
 </div>
 
             </li>
@@ -214,24 +323,12 @@ https://blog.csdn.net/weixin_44888486/article/details/10290240...
 
                 <div class="home-article-meta-info-container">
     <div class="home-article-meta-info">
-        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Sun May 02 2021 15:19:21 GMT+0800">2021-05-02</span></span>
+        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Sun May 02 2021 15:19:21 GMT+0000">2021-05-02</span></span>
         
-        
-            <span class="home-article-tag">
-                <i class="fas fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/Python/">Python</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
         
     </div>
 
-    <a href="/2021/05/02/simpread-Python%20%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99_Yixin%20%E7%9A%84%E5%8D%9A%E5%AE%A2%20-%20CSDN%20%E5%8D%9A%E5%AE%A2/">阅读全文&nbsp;<i class="fas fa-angle-right"></i></a>
+    <a href="/2021/05/02/simpread-Python%20%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99_Yixin%20%E7%9A%84%E5%8D%9A%E5%AE%A2%20-%20CSDN%20%E5%8D%9A%E5%AE%A2/">Read more&nbsp;<i class="fas fa-angle-right"></i></a>
 </div>
 
             </li>
@@ -254,24 +351,12 @@ https://blog.csdn.net/weixin_44888486/article/details/10290240...
 
                 <div class="home-article-meta-info-container">
     <div class="home-article-meta-info">
-        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Sun May 02 2021 15:18:21 GMT+0800">2021-05-02</span></span>
+        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Sun May 02 2021 15:18:21 GMT+0000">2021-05-02</span></span>
         
-        
-            <span class="home-article-tag">
-                <i class="fas fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/Python/">Python</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
         
     </div>
 
-    <a href="/2021/05/02/simpread-Python%20%E5%AD%A6%E4%B9%A0%20-Day7%EF%BC%882021.3.4%EF%BC%89_Yixin%20%E7%9A%84%E5%8D%9A%E5%AE%A2%20-%20CSDN%20%E5%8D%9A%E5%AE%A2/">阅读全文&nbsp;<i class="fas fa-angle-right"></i></a>
+    <a href="/2021/05/02/simpread-Python%20%E5%AD%A6%E4%B9%A0%20-Day7%EF%BC%882021.3.4%EF%BC%89_Yixin%20%E7%9A%84%E5%8D%9A%E5%AE%A2%20-%20CSDN%20%E5%8D%9A%E5%AE%A2/">Read more&nbsp;<i class="fas fa-angle-right"></i></a>
 </div>
 
             </li>
@@ -295,24 +380,12 @@ https://blog.csdn.net/weixin_44888486/article/details/10290240...
 
                 <div class="home-article-meta-info-container">
     <div class="home-article-meta-info">
-        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Sun May 02 2021 15:17:21 GMT+0800">2021-05-02</span></span>
+        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Sun May 02 2021 15:17:21 GMT+0000">2021-05-02</span></span>
         
-        
-            <span class="home-article-tag">
-                <i class="fas fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/Python/">Python</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
         
     </div>
 
-    <a href="/2021/05/02/simpread-Python%20%E5%AD%A6%E4%B9%A0%20-Day6%EF%BC%882021.3.3%EF%BC%89_Yixin%20%E7%9A%84%E5%8D%9A%E5%AE%A2%20-%20CSDN%20%E5%8D%9A%E5%AE%A2/">阅读全文&nbsp;<i class="fas fa-angle-right"></i></a>
+    <a href="/2021/05/02/simpread-Python%20%E5%AD%A6%E4%B9%A0%20-Day6%EF%BC%882021.3.3%EF%BC%89_Yixin%20%E7%9A%84%E5%8D%9A%E5%AE%A2%20-%20CSDN%20%E5%8D%9A%E5%AE%A2/">Read more&nbsp;<i class="fas fa-angle-right"></i></a>
 </div>
 
             </li>
@@ -336,24 +409,12 @@ https://blog.csdn.net/weixin_44888486/article/details/10290240...
 
                 <div class="home-article-meta-info-container">
     <div class="home-article-meta-info">
-        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Sun May 02 2021 15:16:21 GMT+0800">2021-05-02</span></span>
+        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Sun May 02 2021 15:16:21 GMT+0000">2021-05-02</span></span>
         
-        
-            <span class="home-article-tag">
-                <i class="fas fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/Python/">Python</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
         
     </div>
 
-    <a href="/2021/05/02/simpread-Python%20%E5%AD%A6%E4%B9%A0%20-Day5%EF%BC%882021.3.2%EF%BC%89_Yixin%20%E7%9A%84%E5%8D%9A%E5%AE%A2%20-%20CSDN%20%E5%8D%9A%E5%AE%A2/">阅读全文&nbsp;<i class="fas fa-angle-right"></i></a>
+    <a href="/2021/05/02/simpread-Python%20%E5%AD%A6%E4%B9%A0%20-Day5%EF%BC%882021.3.2%EF%BC%89_Yixin%20%E7%9A%84%E5%8D%9A%E5%AE%A2%20-%20CSDN%20%E5%8D%9A%E5%AE%A2/">Read more&nbsp;<i class="fas fa-angle-right"></i></a>
 </div>
 
             </li>
@@ -376,187 +437,12 @@ https://blog.csdn.net/weixin_44888486/article/details/10290240...
 
                 <div class="home-article-meta-info-container">
     <div class="home-article-meta-info">
-        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Sun May 02 2021 15:15:21 GMT+0800">2021-05-02</span></span>
+        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Sun May 02 2021 15:15:21 GMT+0000">2021-05-02</span></span>
         
-        
-            <span class="home-article-tag">
-                <i class="fas fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/Python/">Python</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
         
     </div>
 
-    <a href="/2021/05/02/simpread-Python%20%E5%AD%A6%E4%B9%A0%20-Day4%EF%BC%882021.3.1%EF%BC%89_Yixin%20%E7%9A%84%E5%8D%9A%E5%AE%A2%20-%20CSDN%20%E5%8D%9A%E5%AE%A2/">阅读全文&nbsp;<i class="fas fa-angle-right"></i></a>
-</div>
-
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                <h3 class="home-article-title">
-                    <a href="/2021/05/02/simpread-Python%20%E5%AD%A6%E4%B9%A0%20-Day3%EF%BC%882021.2.26%EF%BC%89_Yixin%20%E7%9A%84%E5%8D%9A%E5%AE%A2%20-%20CSDN%20%E5%8D%9A%E5%AE%A2/">
-                        Python Day3
-                    </a>
-                </h3>
-
-                <div class="home-article-content markdown-body">
-                    
-                        12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667...
-                    
-                </div>
-
-                <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Sun May 02 2021 15:14:21 GMT+0800">2021-05-02</span></span>
-        
-        
-            <span class="home-article-tag">
-                <i class="fas fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/Python/">Python</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
-        
-    </div>
-
-    <a href="/2021/05/02/simpread-Python%20%E5%AD%A6%E4%B9%A0%20-Day3%EF%BC%882021.2.26%EF%BC%89_Yixin%20%E7%9A%84%E5%8D%9A%E5%AE%A2%20-%20CSDN%20%E5%8D%9A%E5%AE%A2/">阅读全文&nbsp;<i class="fas fa-angle-right"></i></a>
-</div>
-
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                <h3 class="home-article-title">
-                    <a href="/2021/05/02/simpread-Python%20%E5%AD%A6%E4%B9%A0%20-Day2%EF%BC%882021.2.25%EF%BC%89_Yixin%20%E7%9A%84%E5%8D%9A%E5%AE%A2%20-%20CSDN%20%E5%8D%9A%E5%AE%A2/">
-                        Python Day2
-                    </a>
-                </h3>
-
-                <div class="home-article-content markdown-body">
-                    
-                        123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051# 标准数据类型import math &quot;&quot;...
-                    
-                </div>
-
-                <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Sun May 02 2021 15:13:21 GMT+0800">2021-05-02</span></span>
-        
-        
-            <span class="home-article-tag">
-                <i class="fas fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/Python/">Python</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
-        
-    </div>
-
-    <a href="/2021/05/02/simpread-Python%20%E5%AD%A6%E4%B9%A0%20-Day2%EF%BC%882021.2.25%EF%BC%89_Yixin%20%E7%9A%84%E5%8D%9A%E5%AE%A2%20-%20CSDN%20%E5%8D%9A%E5%AE%A2/">阅读全文&nbsp;<i class="fas fa-angle-right"></i></a>
-</div>
-
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                <h3 class="home-article-title">
-                    <a href="/2021/05/02/simpread-Python%20%E5%AD%A6%E4%B9%A0%20-Day1%EF%BC%882021.2.24%EF%BC%89_Yixin%20%E7%9A%84%E5%8D%9A%E5%AE%A2%20-%20CSDN%20%E5%8D%9A%E5%AE%A2/">
-                        Python Day1
-                    </a>
-                </h3>
-
-                <div class="home-article-content markdown-body">
-                    
-                        12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667...
-                    
-                </div>
-
-                <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Sun May 02 2021 15:12:21 GMT+0800">2021-05-02</span></span>
-        
-        
-            <span class="home-article-tag">
-                <i class="fas fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/Python/">Python</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
-        
-    </div>
-
-    <a href="/2021/05/02/simpread-Python%20%E5%AD%A6%E4%B9%A0%20-Day1%EF%BC%882021.2.24%EF%BC%89_Yixin%20%E7%9A%84%E5%8D%9A%E5%AE%A2%20-%20CSDN%20%E5%8D%9A%E5%AE%A2/">阅读全文&nbsp;<i class="fas fa-angle-right"></i></a>
-</div>
-
-            </li>
-        
-            <li class="home-article-item">
-
-                
-
-                <h3 class="home-article-title">
-                    <a href="/2021/05/02/simpread-Python%20%E5%AD%A6%E4%B9%A0%20-Day0%EF%BC%882021.2.23%EF%BC%89_Yixin%20%E7%9A%84%E5%8D%9A%E5%AE%A2%20-%20CSDN%20%E5%8D%9A%E5%AE%A2/">
-                        Python Day0
-                    </a>
-                </h3>
-
-                <div class="home-article-content markdown-body">
-                    
-                        今天玲姐带我们学习 Python，启动。
-讲明了学习的计划与方法，并且分享了相关的文件。
-建了微信群众，从此每天写点代码，进行 Python 学习。
-玲姐:1.gitlab 地址是 gitlab.vthink.cloud没有注册过的，先注册一下，注册...
-                    
-                </div>
-
-                <div class="home-article-meta-info-container">
-    <div class="home-article-meta-info">
-        <span><i class="fas fa-history"></i>&nbsp;<span class="home-article-date" data-date="Sun May 02 2021 15:11:21 GMT+0800">2021-05-02</span></span>
-        
-        
-            <span class="home-article-tag">
-                <i class="fas fa-tags"></i>&nbsp;
-                <ul>
-                    
-                        <li>
-                            
-                            <a href="/tags/Python/">Python</a>&nbsp;
-                        </li>
-                    
-                </ul>
-            </span>
-        
-    </div>
-
-    <a href="/2021/05/02/simpread-Python%20%E5%AD%A6%E4%B9%A0%20-Day0%EF%BC%882021.2.23%EF%BC%89_Yixin%20%E7%9A%84%E5%8D%9A%E5%AE%A2%20-%20CSDN%20%E5%8D%9A%E5%AE%A2/">阅读全文&nbsp;<i class="fas fa-angle-right"></i></a>
+    <a href="/2021/05/02/simpread-Python%20%E5%AD%A6%E4%B9%A0%20-Day4%EF%BC%882021.3.1%EF%BC%89_Yixin%20%E7%9A%84%E5%8D%9A%E5%AE%A2%20-%20CSDN%20%E5%8D%9A%E5%AE%A2/">Read more&nbsp;<i class="fas fa-angle-right"></i></a>
 </div>
 
             </li>
@@ -568,13 +454,13 @@ https://blog.csdn.net/weixin_44888486/article/details/10290240...
     
         <a class="prev btn"
            href="/page/5/"
-        >上一页</a>
+        >Prev</a>
     
 
     
         <a class="next btn"
            href="/page/7/"
-        >下一页</a>
+        >Next</a>
     
 </div>
 
@@ -598,22 +484,22 @@ https://blog.csdn.net/weixin_44888486/article/details/10290240...
             2026&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">Yixin</a>
         </div>
         
-            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <script async  src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
             <div class="website-count info-item">
                 
                     <span id="busuanzi_container_site_uv">
-                        访问人数&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                        Visitor Count&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
                     </span>
                 
                 
                     <span id="busuanzi_container_site_pv">
-                        总访问量&nbsp;<span id="busuanzi_value_site_pv"></span>
+                        Totalview&nbsp;<span id="busuanzi_value_site_pv"></span>
                     </span>
                 
             </div>
         
         <div class="theme-info info-item">
-            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.3</a>
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.3</a>
         </div>
         
     </div>
@@ -647,6 +533,10 @@ https://blog.csdn.net/weixin_44888486/article/details/10290240...
         
 
         
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
 
         <li class="tools-item tool-scroll-to-bottom flex-center">
             <i class="fas fa-arrow-down"></i>
@@ -657,11 +547,6 @@ https://blog.csdn.net/weixin_44888486/article/details/10290240...
         <li class="tools-item tool-toggle-show flex-center">
             <i class="fas fa-cog fa-spin"></i>
         </li>
-        
-            <li class="tools-item tool-scroll-to-top flex-center">
-                <i class="arrow-up fas fa-arrow-up"></i>
-                <span class="percent"></span>
-            </li>
         
     </ul>
 </div>
@@ -676,88 +561,33 @@ https://blog.csdn.net/weixin_44888486/article/details/10290240...
 
 
     
-        <div class="search-pop-overlay">
-    <div class="popup search-popup">
-        <div class="search-header">
-          <span class="search-input-field-pre">
-            <i class="fas fa-keyboard"></i>
-          </span>
-            <div class="search-input-container">
-                <input autocomplete="off"
-                       autocorrect="off"
-                       autocapitalize="off"
-                       placeholder="搜索..."
-                       spellcheck="false"
-                       type="search"
-                       class="search-input"
-                >
-            </div>
-            <span class="popup-btn-close">
-                <i class="fas fa-times"></i>
-            </span>
-        </div>
-        <div id="search-result">
-            <div id="no-result">
-                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
-            </div>
-        </div>
-    </div>
-</div>
-
-    
 
 </main>
 
 
 
 
-<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/dark-light-toggle.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
 
 
-    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/local-search.js"></script>
-
-
-
-    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/code-copy.js"></script>
 
 
 
 
-<div class="post-scripts pjax">
+
+
+<div class="post-scripts">
     
 </div>
-
-
-    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.3/source/js/libs/pjax.min.js"></script>
-<script>
-    window.addEventListener('DOMContentLoaded', () => {
-        window.pjax = new Pjax({
-            selectors: [
-                'head title',
-                '.page-container',
-                '.pjax'
-            ],
-            history: true,
-            debug: false,
-            cacheBust: false,
-            timeout: 0,
-            analytics: false,
-            currentUrlFullReload: false,
-            scrollRestoration: false,
-            // scrollTo: true,
-        });
-
-        document.addEventListener('pjax:send', () => {
-            KEEP.utils.pjaxProgressBarStart();
-        });
-
-        document.addEventListener('pjax:complete', () => {
-            KEEP.utils.pjaxProgressBarEnd();
-            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
-            KEEP.refresh();
-        });
-    });
-</script>
 
 
 
