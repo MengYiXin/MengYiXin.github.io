@@ -54,6 +54,42 @@ jobs:
           grep -A5 "first_screen" _config.yml || echo "NOT FOUND in site config"
           echo "=== Theme package _config.yml first_screen ==="
           grep -A5 "first_screen" node_modules/hexo-theme-keep/_config.yml || echo "NOT FOUND in theme config"
+          echo "=== All theme_config keys ==="
+          grep "^[a-z]" node_modules/hexo-theme-keep/_config.yml | head -20
+
+      - name: Override theme config with site values
+        run: |
+          # PROBLEM: hexo-theme-keep's default _config.yml has first_screen.enable: false
+          # Our _config.yml has theme_config.first_screen.enable: true
+          # But in Actions, Hexo's merge doesn't work correctly (outputs enable: false)
+          # FIX: Directly patch the theme package's _config.yml to match our site config
+          python3 << 'EOF'
+          import re
+          theme_cfg = "node_modules/hexo-theme-keep/_config.yml"
+          with open(theme_cfg, "r") as f:
+            content = f.read()
+          # Patch first_screen section - set enable to true and description to ours
+          content = re.sub(
+            r'(first_screen:\n\s+enable:\s*)false',
+            r'\g<1>true',
+            content
+          )
+          content = re.sub(
+            r'(first_screen:\n\s+description:\s*)["\']Keep writing.*["\']',
+            r'\g<1>不要熬夜哟！',
+            content
+          )
+          with open(theme_cfg, "w") as f:
+            f.write(content)
+          print("Theme config patched successfully")
+          # Verify
+          import subprocess
+          result = subprocess.run(
+            ["grep", "-A1", "first_screen:", theme_cfg],
+            capture_output=True, text=True
+          )
+          print("Result:", result.stdout.strip())
+          EOF
 
       - name: Build
         run: npx hexo generate
