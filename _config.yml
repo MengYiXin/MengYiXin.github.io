@@ -115,6 +115,11 @@ theme_config:
     enable: true
     background_img: /images/bg.svg
     description: 不要熬夜哟！
+  toc:
+    enable: true
+    number: true
+    expand_all: true
+    init_open: true
   scroll:
     progress_bar:
       enable: true
