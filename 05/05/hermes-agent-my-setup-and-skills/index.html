@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Yixin">
+    
+    <title>
+        
+            Hermes Agent 使用手记：从安装到打造个人AI工作流 |
+        
+        Yixin blog
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo.svg">
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"mengyx.com.cn","root":"/","language":"zh","path":"search.json"};
+    KEEP.theme_config = {"toc":{"enable":false,"number":false,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.svg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":false,"preload":false},"code_copy":{"enable":false,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.4.3"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                Yixin blog
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                HOME
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                TAGS
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                ABOUT
+                            </a>
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">HOME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">TAGS</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">ABOUT</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">Hermes Agent 使用手记：从安装到打造个人AI工作流</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar.svg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">Yixin</span>
+                        
+                            <span class="author-label">Lv5</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;2026-05-05 16:00:00
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/AI%E5%B7%A5%E5%85%B7/">AI工具</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/Hermes-Agent/">Hermes Agent</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E5%B7%A5%E4%BD%9C%E6%B5%81/">工作流</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/AI%E5%B7%A5%E5%85%B7/">AI工具</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <p>前阵子把 Hermes Agent 在我的 WSL2 环境里跑起来了，顺便配了一系列 Skill，把日常的信息处理、博客发布、Git 管理都串进了这个 AI 工作流。今天把这段经历整理出来，供想入坑的同学参考。</p>
+<h2 id="什么是Hermes-Agent"><a href="#什么是Hermes-Agent" class="headerlink" title="什么是Hermes Agent"></a>什么是Hermes Agent</h2><p>Hermes Agent 是 <a class="link"   target="_blank" rel="noopener" href="https://nousresearch.com/" >Nous Research<i class="fas fa-external-link-alt"></i></a> 开发的一个开源 AI 智能体框架（MIT 许可证）。它不是普通的聊天机器人，而是一个”住在你服务器上的自主 AI 助手”——24小时在线，有记忆，会学习，用得越多越懂你。</p>
+<p>核心指标：</p>
+<p>┌───────────────┬────────────┐<br>│ GitHub Stars  │ 27,000+    │<br>│ 内置工具      │ 47+        │<br>│ 支持平台      │ 12+        │<br>│ MCP 可接入    │ 6,000+     │<br>│ 最低部署成本  │ $5/月      │<br>│ 内存占用      │ &lt;500MB     │<br>│ 许可证        │ MIT        │<br>└───────────────┴────────────┘</p>
+<p>一句话概括：<strong>Hermes 是第一个出厂就带”缰绳”的 Agent，而且缰绳会自己长大。</strong></p>
+<h2 id="我的环境"><a href="#我的环境" class="headerlink" title="我的环境"></a>我的环境</h2><p><img src="https://raw.githubusercontent.com/MengYiXin/blog-images/main/01-hermes-skills-ecosystem.svg" alt="配图"></p>
+<ul>
+<li>系统：WSL2（Windows下的Linux子系统）</li>
+<li>用户目录：/mnt/f/（文件放F盘，空间大）</li>
+<li>博客：Hexo + GitHub Pages，自定义域名 mengyx.com.cn</li>
+<li>GitHub 仓库：MengYiXin/MengYiXin.github.io（source分支存Hexo源文件，master存HTML）</li>
+<li>主要使用场景：AI副业/变现工作流、信息差赚钱、内容批量生产</li>
+</ul>
+<h2 id="我都配了哪些Skill"><a href="#我都配了哪些Skill" class="headerlink" title="我都配了哪些Skill"></a>我都配了哪些Skill</h2><p>Skill 是 Hermes 的核心扩展机制——你可以把任何重复性的工作流打包成一个可复用的技能。</p>
+<p>下面是我目前在建/已建的几个核心 Skill：</p>
+<h3 id="1-blog-deployer"><a href="#1-blog-deployer" class="headerlink" title="1. blog-deployer"></a>1. blog-deployer</h3><p>博客自动化部署。Hexo源文件在 source 分支，push 到 GitHub 后 Actions 自动 build 并发布到 master 分支。关键点：</p>
+<ul>
+<li>文件名必须用英文 slug（中文文件名在 GitHub Pages 上会404）</li>
+<li>CNAME 文件必须叫 <code>CNAME</code>（不是 CNAME.txt）</li>
+<li>deploy.yml 里要显式 <code>cp source/CNAME _deploy/CNAME</code>，否则自定义域名会失效</li>
+<li>评论系统原来用的 Valine（依赖LeanCloud），已官方宣布关闭服务，建议换 Twikoo</li>
+</ul>
+<h3 id="2-git-proxy-heal"><a href="#2-git-proxy-heal" class="headerlink" title="2. git-proxy-heal"></a>2. git-proxy-heal</h3><p>WSL 下 Clash 代理导致 git push/pull 失败的自动修复。</p>
+<p>症状：<code>Failed to connect to localhost port 7890</code>，或者 curl <a class="link"   target="_blank" rel="noopener" href="https://github.com/" >https://github.com<i class="fas fa-external-link-alt"></i></a> 卡住。</p>
+<p>我的解法是 <strong>~/bin/git wrapper 三级自动切换</strong>：</p>
+<p>┌──────────────────────────────────────────────────────┐<br>│ ~/bin/git wrapper 三级 fallback                       │<br>├──────────────────────────────────────────────────────┤<br>│ 级1：ghproxy 通（经Clash检测） → 走 ghproxy 镜像     │<br>│ 级2：ghproxy 挂 + Clash 在线   → 走 Clash 代理直连   │<br>│ 级3：Clash 也挂了              → 直连                │<br>└──────────────────────────────────────────────────────┘</p>
+<p>每次 git 命令动态判断，全程无需手动干预。</p>
+<h3 id="3-session-backup"><a href="#3-session-backup" class="headerlink" title="3. session-backup"></a>3. session-backup</h3><p>Session 备份轮询系统。两条 cron job 驱动：</p>
+<p>| job_id          | schedule         | 触发条件          │<br>|—————–│—————–│——————-|<br>| fee5e5957c9e    | */5 * * * *     | 哈希变化时触发    │<br>| 5dd74c629478    | * * * * *       | 每分钟检查消息边界 |</p>
+<ul>
+<li>每 20 条消息触发一次备份（可调）</li>
+<li>最多保留 30 份，超出自动清理最旧的</li>
+<li>备份存放：<code>~/.hermes/sessions_backups/</code></li>
+</ul>
+<h3 id="4-education-data-analysis"><a href="#4-education-data-analysis" class="headerlink" title="4. education-data-analysis"></a>4. education-data-analysis</h3><p>跨省高校/高考数据对比分析。用 box-drawing 字符画表格，数据源用软科排名（shanghairanking.cn）和高考志愿填报数据。</p>
+<h3 id="5-gstack"><a href="#5-gstack" class="headerlink" title="5. gstack"></a>5. gstack</h3><p>gstack 是 Hermes 生态里的 QA 浏览器工具，可以用命令行控制 Chromium，完成页面截图表单填写等操作。在 WSL 下有个已知坑：root 用户运行会报 <code>Running as root without --no-sandbox</code>，解法是运行前 <code>export CONTAINER=1</code>，已内置自动处理。</p>
+<h2 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h2><p>用 Hermes Agent 一段时间下来，最直接的感受是：<strong>它把 AI 从”问完就走”的工具变成了”帮我干活”的助手</strong>。配好 Skill 之后，很多重复性的事情——发布博客、查数据、备份记忆——都能自动跑起来。</p>
+<p>下一步打算把更多日常工作流 Skill 化，特别是内容批量生产和信息差监控方向。有兴趣的同学可以关注我的博客 mengyx.com.cn，后续会陆续分享实战细节。</p>
+
+        </div>
+
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2026/05/06/hotel-wifi-dns-github-fix/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">住酒店顺手修好的GitHub访问问题：DNS污染</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2026/05/05/hermes-skills-design/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">Hermes Agent 进阶：用 Skill 把日常工作流变成可复用工具</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+            <div class="comment-container">
+                <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments">&nbsp;Comments</i>
+    </div>
+    
+
+        
+            
+    <div class="valine-container">
+        <script 
+                src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script>
+        <div id="vcomments"></div>
+        <script >
+            function loadValine() {
+                new Valine({
+                    el: '#vcomments',
+                    appId: 'nLubyWWoLdhQhY0MFrVEp6TQ-gzGzoHsz',
+                    appKey: 'nKGU6OM4iawauPKsgfATStpK',
+                    meta: ['nick', 'mail', 'link'],
+                    avatar: 'wavatar',
+                    enableQQ: true,
+                    placeholder: '这里可以写评论...',
+                    lang: 'zh'.toLowerCase()
+                });
+
+                function getAuthor(language) {
+                    switch (language) {
+                        case 'en':
+                            return 'Author';
+                        case 'zh-CN':
+                            return '博主';
+                        default:
+                            return 'Master';
+                    }
+                }
+
+                // Add "Author" identify
+                const getValineDomTimer = setInterval(() => {
+                    const vcards = document.querySelectorAll('#vcomments .vcards .vcard');
+                    if (vcards.length > 0) {
+                        let author = 'Yixin';
+
+                        if (author) {
+                            for (let vcard of vcards) {
+                                const vnick_dom = vcard.querySelector('.vhead .vnick');
+                                const vnick = vnick_dom.innerHTML;
+                                if (vnick === author) {
+                                    vnick_dom.innerHTML = `${vnick} <span class="author">${getAuthor(KEEP.hexo_config.language)}</span>`
+                                }
+                            }
+                        }
+                        clearInterval(getValineDomTimer);
+                    } else {
+                        clearInterval(getValineDomTimer);
+                    }
+                }, 2000);
+            }
+
+            if ('false') {
+                const loadValineTimeout = setTimeout(() => {
+                    loadValine();
+                    clearTimeout(loadValineTimeout);
+                }, 1000);
+            } else {
+                window.addEventListener('DOMContentLoaded', loadValine);
+            }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>&nbsp;-&nbsp;
+            
+            2026&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">Yixin</a>
+        </div>
+        
+            <script async  src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        Visitor Count&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        Totalview&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.3</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+
+
+
+<div class="post-scripts">
+    
+</div>
+
+
+
+</body>
+</html>

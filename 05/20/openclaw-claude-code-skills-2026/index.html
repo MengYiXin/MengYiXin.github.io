@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Yixin">
+    
+    <title>
+        
+            给 OpenClaw 和 Claude Code 装上技能包，把 AI 助手当真正的搭档用 |
+        
+        Yixin blog
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo.svg">
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"mengyx.com.cn","root":"/","language":"zh","path":"search.json"};
+    KEEP.theme_config = {"toc":{"enable":false,"number":false,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.svg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":false,"preload":false},"code_copy":{"enable":false,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.4.3"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                Yixin blog
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                HOME
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                TAGS
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                ABOUT
+                            </a>
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">HOME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">TAGS</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">ABOUT</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">给 OpenClaw 和 Claude Code 装上技能包，把 AI 助手当真正的搭档用</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar.svg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">Yixin</span>
+                        
+                            <span class="author-label">Lv5</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;2026-05-20 14:00:00
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/AI%E5%B7%A5%E5%85%B7/">AI工具</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/Claude-Code/">Claude Code</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/AI%E5%B7%A5%E5%85%B7/">AI工具</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E6%95%88%E7%8E%87/">效率</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/OpenClaw/">OpenClaw</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/skill/">skill</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <p>5月的某天，给 OpenClaw 和 Claude Code 各做了一次技能大扩容。两个工具加起来装了 14 个 skills，覆盖浏览器自动化、安全扫描、代码审查、对话记忆、自我改进……装完跑了一周，体验是<strong>真的回不去了</strong>。</p>
+<h2 id="先说结论"><a href="#先说结论" class="headerlink" title="先说结论"></a>先说结论</h2><p>AI coding agent 本身已经很强了，但装完这批 skills 之后，它从一个「能干的助手」变成了「能干且知道怎么干得更漂亮的助手」。每个 skill 各管一块，减少重复劳动，效果是实实在在的。</p>
+<p>两个工具定位不太一样：OpenClaw 更像一个全能助手，Claude Code 则更偏向编程侧。把合适的 skills 装到对的工具上，效率叠加效果比想象中更好。</p>
+<h2 id="OpenClaw-装了哪些"><a href="#OpenClaw-装了哪些" class="headerlink" title="OpenClaw 装了哪些"></a>OpenClaw 装了哪些</h2><h3 id="效率工具组"><a href="#效率工具组" class="headerlink" title="效率工具组"></a>效率工具组</h3><p><strong>bb-browser</strong><br>命令行刷 B站、知乎、微博、Twitter。不用开浏览器，直接在终端里抓内容、查热搜、批量获取数据。36 个平台覆盖，适合需要频繁获取社交媒体数据的场景。</p>
+<p><strong>openclaw-agent-browser</strong><br>官方出的浏览器自动化 skill。填表、点按钮、截图、爬数据这些操作，装完它之后 OpenClaw 就能控制浏览器替你做。</p>
+<p><strong>opencli-skill</strong><br>另一个命令行操作平台的 skill，更专注单个平台的内容获取和交互（B站、YouTube、雪球股票等）。有点安全警告，涉及外部 API 调用，用的时候稍加注意。</p>
+<h3 id="安全扫描组"><a href="#安全扫描组" class="headerlink" title="安全扫描组"></a>安全扫描组</h3><p><strong>skill-vetter</strong><br>每个新 skill 安装之前先过一遍安检。扫代码查有没有密钥泄露、eval 调用、危险权限这些可疑操作。装第三方 skill 之前必跑，相当于先看体检报告再决定装不装。</p>
+<h3 id="学习记忆组"><a href="#学习记忆组" class="headerlink" title="学习记忆组"></a>学习记忆组</h3><p><strong>self-improving-agent</strong><br>错误记录器。踩过的坑、下次不该再犯的错，它会自动记下来。长期学习型 skill，越用越懂你。</p>
+<p><strong>lossless-claw</strong><br>对话蒸馏机。把聊天记录提炼出重点——谁是你、你关注什么、你做过什么决定。不是什么都记，是把噪声去掉，记住真正重要的。</p>
+<h3 id="系统运维组"><a href="#系统运维组" class="headerlink" title="系统运维组"></a>系统运维组</h3><p><strong>openclaw-control-center</strong><br>可视化控制面板。查看系统状态、AI 运行指标、管理定时任务。不是命令行了，给整个操作体验加了个 Dashboard。</p>
+<p><strong>openclaw-backup</strong><br>定期备份 OpenClaw 所有数据（配置、技能、记忆），支持一键恢复。升级前跑一下，心里踏实。</p>
+<h2 id="Claude-Code-装了哪些"><a href="#Claude-Code-装了哪些" class="headerlink" title="Claude Code 装了哪些"></a>Claude Code 装了哪些</h2><h3 id="自建-6-个专项-skill"><a href="#自建-6-个专项-skill" class="headerlink" title="自建 6 个专项 skill"></a>自建 6 个专项 skill</h3><p>按 Claude Code 的标准工作流拆出来的专项技能，各管一块：</p>
+<table>
+<thead>
+<tr>
+<th>Skill</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>explore</td>
+<td>通读项目结构、画架构图</td>
+</tr>
+<tr>
+<td>debugger</td>
+<td>定位报错、分析调用链</td>
+</tr>
+<tr>
+<td>code-review</td>
+<td>查漏洞、边界、风险点</td>
+</tr>
+<tr>
+<td>test-engineer</td>
+<td>划测试优先级、找等价类</td>
+</tr>
+<tr>
+<td>code-simplifier</td>
+<td>删重复代码、拆过长函数</td>
+</tr>
+<tr>
+<td>security-review</td>
+<td>扫登录鉴权安全边界</td>
+</tr>
+</tbody></table>
+<p>之前这些能力全塞在一个 system prompt 里，AI 有时候会漏掉某个环节。现在拆成独立 skill，Claude Code 知道什么时候该调哪个。</p>
+<h3 id="从-clawhub-装的"><a href="#从-clawhub-装的" class="headerlink" title="从 clawhub 装的"></a>从 clawhub 装的</h3><p><strong>skill-vetter</strong> — 安全扫描。装任何第三方 skill 之前先跑一遍，检查有没有恶意代码、密钥泄露、危险权限。</p>
+<p><strong>self-improving-agent</strong> — 错误笔记本。踩过的坑自动记录，下次遇到同类问题直接调取。</p>
+<p><strong>lossless-claw</strong> — 对话蒸馏。把每次对话里的上下文、决策、偏好提炼出来存入长期记忆。Claude Code 跑的项目多，这个 skill 让它记住哪个项目是什么技术栈、有哪些特殊约束。</p>
+<p><strong>openclaw-backup</strong> — 备份。定期备份项目配置、skills、记忆文件，防止换环境或升级之后丢失积累。</p>
+<p><strong>openclaw-control-center</strong> — 控制面板。查看运行状态、skill 调用记录、任务进度。调试问题的时候很好使。</p>
+<h2 id="安装过程踩了个坑"><a href="#安装过程踩了个坑" class="headerlink" title="安装过程踩了个坑"></a>安装过程踩了个坑</h2><p>给 Claude Code 装 skill 和给 OpenClaw 装不太一样。OpenClaw 用 <code>hermes agent skill install</code> 命令直接装，Claude Code 的 skill 放在 <code>~/.claude/skills/</code> 目录下，需要手动放文件然后按标准格式写 SKILL.md。</p>
+<p>写 SKILL.md 的时候要注意：</p>
+<ol>
+<li><strong>name 字段</strong>必须和目录名一致</li>
+<li><strong>description</strong> 要写得具体，Claude Code 是靠 description 决定要不要调用这个 skill 的</li>
+<li><strong>触发条件</strong>（usage_hint）要写清楚什么时候该用</li>
+</ol>
+<p>skill-vetter 装的时候报了个安全警告，原因是它会扫描第三方 skill 的代码——这是设计如此，不是误报。用 <code>--force</code> 强装就行。</p>
+<h2 id="用下来的感受"><a href="#用下来的感受" class="headerlink" title="用下来的感受"></a>用下来的感受</h2><p>最大的感受是：<strong>信任感建立起来了</strong>。</p>
+<p>以前让 AI 读项目代码，总是担心它读不对、读不全。现在有 <code>explore</code> 专门负责通读，<code>code-review</code> 专门负责安全，<code>debugger</code> 专门负责报错……每个环节都有专项工具，AI 的发挥更稳定，复查成本也低了。</p>
+<p>两个工具现在互相补充：</p>
+<ul>
+<li>需要多平台操作、查资料、写作 → OpenClaw</li>
+<li>需要写代码、code review、debug → Claude Code</li>
+</ul>
+<p>两边共享同一套记忆 skills，所以不管用哪个，背景上下文不用重复解释。</p>
+<h2 id="适合谁"><a href="#适合谁" class="headerlink" title="适合谁"></a>适合谁</h2><p>如果你同时用多个 AI coding agent（比如 OpenClaw + Claude Code），建议两边都装，但装的 skill 可以不一样——按场景分配，让每个工具干它最擅长的事。</p>
+<p>如果只用一个工具，那就按自己最痛的地方挑 skill 装：</p>
+<ul>
+<li>经常爬数据 → 先装 bb-browser</li>
+<li>经常装各种 skill → 先装 skill-vetter</li>
+<li>同时开很多项目 → 先装 explore + lossless-claw</li>
+<li>项目经常出 bug → 先装 debugger</li>
+<li>经常多人协作项目 → 先装 security-review</li>
+</ul>
+<p>按需来，不用一次全装。</p>
+<hr>
+<p><em>有问题或者想聊具体某个 skill 的用法，群里见。</em></p>
+
+        </div>
+
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2026/05/20/%E9%87%8D%E8%A6%81%E9%93%BE%E6%8E%A5/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">精选链接</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2026/05/20/claude-code-skills-2026/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">Claude Code 装技能包：把 AI coding agent 调教成专属搭档</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+            <div class="comment-container">
+                <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments">&nbsp;Comments</i>
+    </div>
+    
+
+        
+            
+    <div class="valine-container">
+        <script 
+                src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script>
+        <div id="vcomments"></div>
+        <script >
+            function loadValine() {
+                new Valine({
+                    el: '#vcomments',
+                    appId: 'nLubyWWoLdhQhY0MFrVEp6TQ-gzGzoHsz',
+                    appKey: 'nKGU6OM4iawauPKsgfATStpK',
+                    meta: ['nick', 'mail', 'link'],
+                    avatar: 'wavatar',
+                    enableQQ: true,
+                    placeholder: '这里可以写评论...',
+                    lang: 'zh'.toLowerCase()
+                });
+
+                function getAuthor(language) {
+                    switch (language) {
+                        case 'en':
+                            return 'Author';
+                        case 'zh-CN':
+                            return '博主';
+                        default:
+                            return 'Master';
+                    }
+                }
+
+                // Add "Author" identify
+                const getValineDomTimer = setInterval(() => {
+                    const vcards = document.querySelectorAll('#vcomments .vcards .vcard');
+                    if (vcards.length > 0) {
+                        let author = 'Yixin';
+
+                        if (author) {
+                            for (let vcard of vcards) {
+                                const vnick_dom = vcard.querySelector('.vhead .vnick');
+                                const vnick = vnick_dom.innerHTML;
+                                if (vnick === author) {
+                                    vnick_dom.innerHTML = `${vnick} <span class="author">${getAuthor(KEEP.hexo_config.language)}</span>`
+                                }
+                            }
+                        }
+                        clearInterval(getValineDomTimer);
+                    } else {
+                        clearInterval(getValineDomTimer);
+                    }
+                }, 2000);
+            }
+
+            if ('false') {
+                const loadValineTimeout = setTimeout(() => {
+                    loadValine();
+                    clearTimeout(loadValineTimeout);
+                }, 1000);
+            } else {
+                window.addEventListener('DOMContentLoaded', loadValine);
+            }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>&nbsp;-&nbsp;
+            
+            2026&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">Yixin</a>
+        </div>
+        
+            <script async  src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        Visitor Count&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        Totalview&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.3</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+
+
+
+<div class="post-scripts">
+    
+</div>
+
+
+
+</body>
+</html>

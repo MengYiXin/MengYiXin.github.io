@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Yixin">
+    
+    <title>
+        
+            Linux CentOS创建网桥，实现KVM宿主机与虚拟机通讯 |
+        
+        Yixin blog
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo.svg">
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"mengyx.com.cn","root":"/","language":"zh","path":"search.json"};
+    KEEP.theme_config = {"toc":{"enable":false,"number":false,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.svg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":false,"preload":false},"code_copy":{"enable":false,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.4.3"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                Yixin blog
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                HOME
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                TAGS
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                ABOUT
+                            </a>
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">HOME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">TAGS</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">ABOUT</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">Linux CentOS创建网桥，实现KVM宿主机与虚拟机通讯</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar.svg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">Yixin</span>
+                        
+                            <span class="author-label">Lv5</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;2023-02-18 20:05:21
+    </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/Linux/">Linux</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <h1 id="Linux创建网桥，实现KVM宿主机与虚拟机通讯"><a href="#Linux创建网桥，实现KVM宿主机与虚拟机通讯" class="headerlink" title="Linux创建网桥，实现KVM宿主机与虚拟机通讯"></a>Linux创建网桥，实现KVM宿主机与虚拟机通讯</h1><p>由于业务需求，最近开始尝试在Linux(CentOS) 里面装虚拟机，而这个CentOs本身就是在vSphere中的虚拟机。也就是我们常说的，虚机化嵌套，套娃。业务主要涉及以下：</p>
+<ul>
+<li>先在VMware vSphere环境里面起一台CentOS, 然后给其配置网络和SSH。</li>
+<li>然后再给CentOs用命令行安装图形化桌面（使用KVM需要）。</li>
+<li>之后再用网桥的方式，提前后面KVM要启动的虚机（jupiter—Ubuntu魔改）做网络层面的准备，KVM部署网络选项时候需要选自己新创建的网桥。</li>
+<li>注意，可以用Xftp工具为虚拟机（CentOs）内部上传它所需要的镜像，如图。</li>
+</ul>
+<p><img src="https://cdn.staticaly.com/gh/MengYiXin/photo@master/20230218/1.4xvpz1ozk880.jpg" alt="1"></p>
+<p>今天主要记录的是，如何 在centos7下创建网桥，解决KVM宿主机与虚拟机通讯？</p>
+<h2 id="第一种办法"><a href="#第一种办法" class="headerlink" title="第一种办法"></a>第一种办法</h2><ol>
+<li>   最开始我是通过B站视频，进行短暂学习，并且按照步骤搭建了一下环境。比如</li>
+</ol>
+<ol>
+<li> <a class="link"   target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1M5411s7rP/?spm_id_from=333.1007.top_right_bar_window_history.content.click&vd_source=069855d938307b0a82fdde6b3d8ddffa" >centos7下kvm虚拟机的网络配置（桥接网卡模式）<i class="fas fa-external-link-alt"></i></a></li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span>  /etc/sysconfig/network-scripts/   <span class="comment">#（第一步先到网络目录下）</span></span><br><span class="line">cp  ifcfg-ens192  ifcfg-wangq     <span class="comment">#（先复制物料网卡信息-懒得写。再修改，wangq是随便起的名字）</span></span><br><span class="line">ls                  			<span class="comment"># (发现新增 ifcfg-wangq)</span></span><br><span class="line">vim ifcfg-wangq    			 <span class="comment">#（然后我们编辑一下网桥）</span></span><br><span class="line">  TYPE=Bridge</span><br><span class="line">  NAME不要，UUID不要，注意DEVICE后面一定要跟网桥的名字一样。NAME不要，UUID不要，注意DEVICE后面一定要跟网桥的名字一样。然后保存，退出。</span><br><span class="line"></span><br><span class="line">vim ifcfg-ens192  <span class="comment"># (然后物理网卡要加一句话。)</span></span><br><span class="line">	BRIDGE=<span class="string">&quot;wangq&quot;</span></span><br><span class="line"></span><br><span class="line">/etc/init.d/network restart       <span class="comment">#（重启网卡）</span></span><br><span class="line"></span><br><span class="line">ip a                   			   <span class="comment">#（可以看到网桥配置文件）</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>但是后来发现这样行不通，centos上的网络总是有问题，所以就准备找了其他办法。</p>
+<h2 id="第二种办法"><a href="#第二种办法" class="headerlink" title="第二种办法"></a>第二种办法</h2><ol start="2">
+<li>   另一种办法是通过代码来实现网桥功能，我先修改了下面目录的配置文件（包括物理网卡配置nes192 和 新建的br0）：</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/sysconfig/network-scripts/</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.staticaly.com/gh/MengYiXin/photo@master/20230218/1.1vyy1c8a9bmo.jpg" alt="1"></p>
+<p><img src="https://cdn.staticaly.com/gh/MengYiXin/photo@master/20230218/2.1c7u6m8zegcg.jpg" alt="2"></p>
+<p><img src="https://cdn.staticaly.com/gh/MengYiXin/photo@master/20230218/3.2qegeyma6qg0.jpg" alt="3"></p>
+<p>在此同时，我将之前的ens192的配置文件，也就是我物理网卡配置内容做个备份，以免遗忘。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">TYPE=Ethernet</span><br><span class="line">PROXY_METHOD=none</span><br><span class="line">BROWSER_ONLY=no</span><br><span class="line"></span><br><span class="line">BOOTPROTO=static</span><br><span class="line">PROXY_METHOD=none</span><br><span class="line">BROWSER_ONLY=no</span><br><span class="line"></span><br><span class="line">BOOTPROTO=static</span><br><span class="line">DEFROUTE=yes</span><br><span class="line">IPV4_FAILURE_FATAL=no</span><br><span class="line">IPV6INIT=yes</span><br><span class="line">IPV6_AUTOCONF=yes</span><br><span class="line">IPV6_DEFROUTE=yes</span><br><span class="line">IPV6_FAILURE_FATAL=no</span><br><span class="line">IPV6_ADDR_GEN_MODE=stable-privacy</span><br><span class="line">NAME=ens192</span><br><span class="line">UUID=2c658628-92f9-4c27-9cd6-6fbd2cfd585b</span><br><span class="line"></span><br><span class="line">DEVICE=ens192</span><br><span class="line">ONBOOT=yes</span><br><span class="line">IPADDR=172.10.3.1</span><br><span class="line">NETMASK=255.255.0.0</span><br><span class="line">GATEWAY=172.10.0.1</span><br><span class="line">DNS1=114.114.114.114</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>然后再通过下面的博客链接，的第五部分开始，进行相关配置。</p>
+<ol start="2">
+<li> <a class="link"   target="_blank" rel="noopener" href="https://www.cnblogs.com/heyongboke/p/10337447.html" >Linux中KVM桥接的配置<i class="fas fa-external-link-alt"></i></a></li>
+</ol>
+<p>最终再参考这篇文章，最终实现配置网桥的目标。</p>
+<ol start="3">
+<li> <a class="link"   target="_blank" rel="noopener" href="https://blog.51cto.com/cubix/1736750" >Red Hat 7 创建网桥，解决KVM宿主机与虚拟机无法通讯<i class="fas fa-external-link-alt"></i></a></li>
+</ol>
+<p><img src="https://cdn.staticaly.com/gh/MengYiXin/photo@master/20230218/2.kr5t51pm0mo.jpg" alt="2"></p>
+<p>配置完网卡后，重启虚机方能出现效果。</p>
+
+        </div>
+
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2023/04/05/simpread-%E6%98%BE%E7%A4%BA%E5%99%A8%E9%80%80%E5%87%BA%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F%20_%20%E6%9F%A5%E7%9C%8B%E5%BC%80%E6%9C%BA%E4%BD%BF%E7%94%A8%E6%97%B6%E9%95%BF%20-%20%E5%A8%81%E8%AE%AF%E4%BA%91%E7%9F%A5%E8%AF%86%E5%BA%93/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">显示器退出工厂模式 _ 查看开机使用时长</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2023/02/03/%E4%BD%BF%E7%94%A8linux%E7%9A%84iptables%E5%AE%9E%E7%8E%B0%E8%B7%AF%E7%94%B1%E8%BD%AC%E5%8F%91/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">使用Linux的iptables实现路由转发</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+            <div class="comment-container">
+                <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments">&nbsp;Comments</i>
+    </div>
+    
+
+        
+            
+    <div class="valine-container">
+        <script 
+                src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script>
+        <div id="vcomments"></div>
+        <script >
+            function loadValine() {
+                new Valine({
+                    el: '#vcomments',
+                    appId: 'nLubyWWoLdhQhY0MFrVEp6TQ-gzGzoHsz',
+                    appKey: 'nKGU6OM4iawauPKsgfATStpK',
+                    meta: ['nick', 'mail', 'link'],
+                    avatar: 'wavatar',
+                    enableQQ: true,
+                    placeholder: '这里可以写评论...',
+                    lang: 'zh'.toLowerCase()
+                });
+
+                function getAuthor(language) {
+                    switch (language) {
+                        case 'en':
+                            return 'Author';
+                        case 'zh-CN':
+                            return '博主';
+                        default:
+                            return 'Master';
+                    }
+                }
+
+                // Add "Author" identify
+                const getValineDomTimer = setInterval(() => {
+                    const vcards = document.querySelectorAll('#vcomments .vcards .vcard');
+                    if (vcards.length > 0) {
+                        let author = 'Yixin';
+
+                        if (author) {
+                            for (let vcard of vcards) {
+                                const vnick_dom = vcard.querySelector('.vhead .vnick');
+                                const vnick = vnick_dom.innerHTML;
+                                if (vnick === author) {
+                                    vnick_dom.innerHTML = `${vnick} <span class="author">${getAuthor(KEEP.hexo_config.language)}</span>`
+                                }
+                            }
+                        }
+                        clearInterval(getValineDomTimer);
+                    } else {
+                        clearInterval(getValineDomTimer);
+                    }
+                }, 2000);
+            }
+
+            if ('false') {
+                const loadValineTimeout = setTimeout(() => {
+                    loadValine();
+                    clearTimeout(loadValineTimeout);
+                }, 1000);
+            } else {
+                window.addEventListener('DOMContentLoaded', loadValine);
+            }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>&nbsp;-&nbsp;
+            
+            2026&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">Yixin</a>
+        </div>
+        
+            <script async  src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        Visitor Count&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        Totalview&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.3</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+
+
+
+<div class="post-scripts">
+    
+</div>
+
+
+
+</body>
+</html>

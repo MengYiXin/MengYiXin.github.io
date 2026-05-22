@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Yixin">
+    
+    <title>
+        
+            Hermes Agent MiniMax VL 视觉修复实录：图片为什么发送后看不见 |
+        
+        Yixin blog
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo.svg">
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"mengyx.com.cn","root":"/","language":"zh","path":"search.json"};
+    KEEP.theme_config = {"toc":{"enable":false,"number":false,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.svg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":false,"preload":false},"code_copy":{"enable":false,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.4.3"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                Yixin blog
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                HOME
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                TAGS
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                ABOUT
+                            </a>
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">HOME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">TAGS</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">ABOUT</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">Hermes Agent MiniMax VL 视觉修复实录：图片为什么发送后看不见</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar.svg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">Yixin</span>
+                        
+                            <span class="author-label">Lv5</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;2026-05-09 19:00:00
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/AI%E5%B7%A5%E5%85%B7/">AI工具</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/Hermes-Agent/">Hermes Agent</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/MiniMax/">MiniMax</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/Vision/">Vision</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E5%9B%BE%E7%89%87%E8%AF%86%E5%88%AB/">图片识别</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/Bug%E4%BF%AE%E5%A4%8D/">Bug修复</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <h2 id="问题现象"><a href="#问题现象" class="headerlink" title="问题现象"></a>问题现象</h2><p>在 Hermes Agent 对话里发了一张截图，模型回复：”I don’t see any image attached”。</p>
+<p>当时的第一反应是：图片格式不对？文件损坏了？于是换了一张 JPEG 图片重试——还是看不到。又试了 PNG——依然不行。</p>
+<p>确认不是图片问题之后，开始排查 Hermes 本身的 vision 处理链路。</p>
+<h2 id="排查过程"><a href="#排查过程" class="headerlink" title="排查过程"></a>排查过程</h2><h3 id="第一步：排除图片本身的问题"><a href="#第一步：排除图片本身的问题" class="headerlink" title="第一步：排除图片本身的问题"></a>第一步：排除图片本身的问题</h3><p>先用工具验证图片是否正常：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看图片尺寸和格式</span></span><br><span class="line">file test_vision.jpg</span><br><span class="line"><span class="comment"># 输出：JPEG, 1004x325</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 用 tesseract OCR 提取文字（验证图片内容可读）</span></span><br><span class="line">tesseract test_vision.jpg stdout</span><br><span class="line"><span class="comment"># 输出：成功提取出表格文字</span></span><br></pre></td></tr></table></figure>
+
+<p>图片本身没问题，尺寸、格式、EXIF 数据都正常，说明问题出在 Hermes 的图片传输环节。</p>
+<h3 id="第二步：缩小范围——是端点不支持，还是格式不兼容？"><a href="#第二步：缩小范围——是端点不支持，还是格式不兼容？" class="headerlink" title="第二步：缩小范围——是端点不支持，还是格式不兼容？"></a>第二步：缩小范围——是端点不支持，还是格式不兼容？</h3><p>查了一下 MiniMax 的 API 文档，发现了一个关键事实：</p>
+<ul>
+<li>MiniMax <strong>普通聊天端点</strong> <code>/v1/chat/completions</code>：<strong>不支持</strong> <code>image_url</code> 格式，图片会被直接丢弃</li>
+<li>MiniMax <strong>VL 端点</strong> <code>/v1/coding_plan/vlm</code>：支持图片，但 body 格式是 <code>&#123;&quot;prompt&quot;: ..., &quot;image_url&quot;: &quot;data:...&quot;&#125;</code>，和 OpenAI 不一样</li>
+</ul>
+<p>Hermes 的 vision tool 走的是普通聊天端点（通过 OpenAI SDK），图片以 <code>image_url</code> 格式发送——所以图片实际上<strong>根本没有被送达</strong>。</p>
+<h3 id="第三步：直接测试-MiniMax-VL-端点"><a href="#第三步：直接测试-MiniMax-VL-端点" class="headerlink" title="第三步：直接测试 MiniMax VL 端点"></a>第三步：直接测试 MiniMax VL 端点</h3><p>用 curl 验证 VL 端点本身是否可用：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> httpx</span><br><span class="line"></span><br><span class="line">response = httpx.post(</span><br><span class="line">    <span class="string">&quot;https://api.minimaxi.com/v1/coding_plan/vlm&quot;</span>,</span><br><span class="line">    headers=&#123;<span class="string">&quot;Authorization&quot;</span>: <span class="string">f&quot;Bearer <span class="subst">&#123;MINIMAX_API_KEY&#125;</span>&quot;</span>&#125;,</span><br><span class="line">    json=&#123;</span><br><span class="line">        <span class="string">&quot;prompt&quot;</span>: <span class="string">&quot;描述这张图的内容&quot;</span>,</span><br><span class="line">        <span class="string">&quot;image_url&quot;</span>: <span class="string">&quot;data:image/jpeg;base64,...&quot;</span>  <span class="comment"># 省略实际base64数据</span></span><br><span class="line">    &#125;,</span><br><span class="line">    timeout=<span class="number">60.0</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(response.json())</span><br><span class="line"><span class="comment"># 返回：成功识别图片内容</span></span><br></pre></td></tr></table></figure>
+
+<p>VL 端点本身是通的。问题只在于 Hermes 没有接入这个端点。</p>
+<h2 id="为什么-OpenClaw-能读图，Hermes-不能？"><a href="#为什么-OpenClaw-能读图，Hermes-不能？" class="headerlink" title="为什么 OpenClaw 能读图，Hermes 不能？"></a>为什么 OpenClaw 能读图，Hermes 不能？</h2><p>有趣的是，OpenClaw（桌面版）的图片识别是正常的。翻了它的源码后发现：OpenClaw 自己写了代码专门路由到 <code>/v1/coding_plan/vlm</code>，绕过了普通聊天端点。</p>
+<p>Hermes 没有这个分支——它的 vision 代码只有 <code>_try_openai()</code>、<code>_try_anthropic()</code>、<code>_try_gemini()</code>、<code>_try_ollama()</code>，没有 <code>_try_minimax()</code>。</p>
+<p><strong>根因确认：Hermes 的 auxiliary vision 系统不支持 MiniMax 作为 vision 后端。</strong></p>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><h3 id="整体思路"><a href="#整体思路" class="headerlink" title="整体思路"></a>整体思路</h3><p>不通过 OpenAI SDK 调用 MiniMax，用原生 httpx 直连 VL 端点，然后手动把响应翻译成 OpenAI chat completion 格式，给下游消费者使用。</p>
+<h3 id="具体改动"><a href="#具体改动" class="headerlink" title="具体改动"></a>具体改动</h3><p>修改文件：<code>/usr/local/lib/hermes-agent/agent/auxiliary_client.py</code></p>
+<h4 id="1-新增-try-minimax-vision-函数"><a href="#1-新增-try-minimax-vision-函数" class="headerlink" title="1. 新增 _try_minimax_vision() 函数"></a>1. 新增 <code>_try_minimax_vision()</code> 函数</h4><p>在 <code>_try_anthropic()</code> 附近插入：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">_try_minimax_vision</span>(<span class="params">model: <span class="built_in">str</span></span>):</span></span><br><span class="line">    api_key = os.environ.get(<span class="string">&quot;MINIMAX_API_KEY&quot;</span>)</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> api_key:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">None</span></span><br><span class="line">    base = os.environ.get(<span class="string">&quot;MINIMAX_BASE_URL&quot;</span>, <span class="string">&quot;https://api.minimaxi.com&quot;</span>).rstrip(<span class="string">&quot;/&quot;</span>)</span><br><span class="line">    <span class="keyword">return</span> _MiniMaxVLClient(api_key, base, model <span class="keyword">or</span> <span class="string">&quot;MiniMax-VL-01&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-新增-MiniMaxVLClient-类"><a href="#2-新增-MiniMaxVLClient-类" class="headerlink" title="2. 新增 _MiniMaxVLClient 类"></a>2. 新增 <code>_MiniMaxVLClient</code> 类</h4><p>核心是通过 <code>__getattr__</code> 拦截 <code>chat</code> 属性，返回一个可链式调用的代理对象：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">_MiniMaxVLClient</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, api_key: <span class="built_in">str</span>, base_url: <span class="built_in">str</span>, model: <span class="built_in">str</span></span>):</span></span><br><span class="line">        self.api_key = api_key</span><br><span class="line">        self.base_url = base_url.rstrip(<span class="string">&quot;/&quot;</span>)</span><br><span class="line">        self.model = model</span><br><span class="line">        self._chat = _ChatProxy(self)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__getattr__</span>(<span class="params">self, name: <span class="built_in">str</span></span>):</span></span><br><span class="line">        <span class="keyword">if</span> name == <span class="string">&quot;chat&quot;</span>:</span><br><span class="line">            <span class="keyword">return</span> self._chat</span><br><span class="line">        <span class="keyword">raise</span> AttributeError(<span class="string">f&quot;no attribute &#x27;<span class="subst">&#123;name&#125;</span>&#x27;&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">chat</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">return</span> self._chat</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">_ChatProxy</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, client: _MiniMaxVLClient</span>):</span></span><br><span class="line">        self._client = client</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__call__</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">return</span> self  <span class="comment"># 支持 client.chat() 直接调用</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">completions</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">return</span> _Completions(self._client)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">_Completions</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">create</span>(<span class="params">self, messages: <span class="built_in">list</span>[<span class="built_in">dict</span>], **kwargs</span>):</span></span><br><span class="line">        <span class="comment"># 从 messages 里提取图片（兼容 OpenAI 和 Anthropic 两种格式）</span></span><br><span class="line">        image_data = <span class="literal">None</span></span><br><span class="line">        prompt_text = <span class="string">&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> msg <span class="keyword">in</span> messages:</span><br><span class="line">            content = msg.get(<span class="string">&quot;content&quot;</span>, <span class="string">&quot;&quot;</span>)</span><br><span class="line">            <span class="keyword">if</span> <span class="built_in">isinstance</span>(content, <span class="built_in">list</span>):</span><br><span class="line">                <span class="keyword">for</span> item <span class="keyword">in</span> content:</span><br><span class="line">                    <span class="keyword">if</span> item.get(<span class="string">&quot;type&quot;</span>) == <span class="string">&quot;image_url&quot;</span>:</span><br><span class="line">                        image_data = item[<span class="string">&quot;image_url&quot;</span>][<span class="string">&quot;url&quot;</span>]</span><br><span class="line">                    <span class="keyword">elif</span> item.get(<span class="string">&quot;type&quot;</span>) == <span class="string">&quot;image&quot;</span>:</span><br><span class="line">                        <span class="comment"># Hermes 内部用的是 Anthropic 格式</span></span><br><span class="line">                        src = item.get(<span class="string">&quot;source&quot;</span>, &#123;&#125;)</span><br><span class="line">                        img_data = src.get(<span class="string">&quot;data&quot;</span>, <span class="string">&quot;&quot;</span>)</span><br><span class="line">                        media = src.get(<span class="string">&quot;media_type&quot;</span>, <span class="string">&quot;image/jpeg&quot;</span>)</span><br><span class="line">                        image_data = <span class="string">f&quot;data:<span class="subst">&#123;media&#125;</span>;base64,<span class="subst">&#123;img_data&#125;</span>&quot;</span></span><br><span class="line">            <span class="keyword">elif</span> <span class="built_in">isinstance</span>(content, <span class="built_in">str</span>):</span><br><span class="line">                prompt_text += content + <span class="string">&quot;\n&quot;</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> image_data:</span><br><span class="line">            <span class="keyword">raise</span> ValueError(<span class="string">&quot;No image data found&quot;</span>)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 发往 MiniMax VL 端点</span></span><br><span class="line">        payload = &#123;<span class="string">&quot;prompt&quot;</span>: prompt_text.strip(), <span class="string">&quot;image_url&quot;</span>: image_data, <span class="string">&quot;model&quot;</span>: self._client.model&#125;</span><br><span class="line"></span><br><span class="line">        resp = httpx.post(</span><br><span class="line">            <span class="string">f&quot;<span class="subst">&#123;self._client.base_url&#125;</span>/v1/coding_plan/vlm&quot;</span>,</span><br><span class="line">            headers=&#123;<span class="string">&quot;Authorization&quot;</span>: <span class="string">f&quot;Bearer <span class="subst">&#123;self._client.api_key&#125;</span>&quot;</span>, <span class="string">&quot;Content-Type&quot;</span>: <span class="string">&quot;application/json&quot;</span>&#125;,</span><br><span class="line">            json=payload,</span><br><span class="line">            timeout=<span class="number">60.0</span>,</span><br><span class="line">        )</span><br><span class="line">        resp.raise_for_status()</span><br><span class="line">        data = resp.json()</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 包装成 OpenAI chat completion 格式，给下游用</span></span><br><span class="line">        <span class="keyword">return</span> _OpenAIMockCompletion(data)</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-OpenAIMockCompletion——把-VL-响应转成-OpenAI-格式"><a href="#3-OpenAIMockCompletion——把-VL-响应转成-OpenAI-格式" class="headerlink" title="3. _OpenAIMockCompletion——把 VL 响应转成 OpenAI 格式"></a>3. <code>_OpenAIMockCompletion</code>——把 VL 响应转成 OpenAI 格式</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">_OpenAIMockCompletion</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, vl_data: <span class="built_in">dict</span></span>):</span></span><br><span class="line">        self.vl_data = vl_data</span><br><span class="line">        self.model = vl_data.get(<span class="string">&quot;model&quot;</span>, <span class="string">&quot;MiniMax-VL-01&quot;</span>)</span><br><span class="line">        self.<span class="built_in">id</span> = vl_data.get(<span class="string">&quot;id&quot;</span>, <span class="string">&quot;vlmock-001&quot;</span>)</span><br><span class="line">        self._text = (</span><br><span class="line">            vl_data.get(<span class="string">&quot;response&quot;</span>)</span><br><span class="line">            <span class="keyword">or</span> vl_data.get(<span class="string">&quot;output&quot;</span>, &#123;&#125;).get(<span class="string">&quot;text&quot;</span>)</span><br><span class="line">            <span class="keyword">or</span> (vl_data.get(<span class="string">&quot;choices&quot;</span>, [&#123;&#125;])[<span class="number">0</span>].get(<span class="string">&quot;message&quot;</span>, &#123;&#125;).get(<span class="string">&quot;content&quot;</span>, <span class="string">&quot;&quot;</span>))</span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">choices</span>(<span class="params">self</span>):</span></span><br><span class="line">        <span class="keyword">return</span> [<span class="built_in">type</span>(<span class="string">&quot;obj&quot;</span>, (<span class="built_in">object</span>,), &#123;<span class="string">&quot;message&quot;</span>: <span class="built_in">type</span>(<span class="string">&quot;obj&quot;</span>, (<span class="built_in">object</span>,), &#123;<span class="string">&quot;role&quot;</span>: <span class="string">&quot;assistant&quot;</span>, <span class="string">&quot;content&quot;</span>: self._text&#125;)()&#125;)()]</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">model_dump</span>(<span class="params">self, **kwargs</span>):</span></span><br><span class="line">        <span class="keyword">return</span> &#123;<span class="string">&quot;id&quot;</span>: self.<span class="built_in">id</span>, <span class="string">&quot;model&quot;</span>: self.model, <span class="string">&quot;choices&quot;</span>: [&#123;<span class="string">&quot;message&quot;</span>: &#123;<span class="string">&quot;role&quot;</span>: <span class="string">&quot;assistant&quot;</span>, <span class="string">&quot;content&quot;</span>: self._text&#125;&#125;]&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="4-修改-resolve-strict-vision-backend（约-2722-行）"><a href="#4-修改-resolve-strict-vision-backend（约-2722-行）" class="headerlink" title="4. 修改 _resolve_strict_vision_backend（约 2722 行）"></a>4. 修改 <code>_resolve_strict_vision_backend</code>（约 2722 行）</h4><p>在 provider 判断里加 minimax：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">elif</span> provider <span class="keyword">in</span> (<span class="string">&quot;minimax&quot;</span>, <span class="string">&quot;minimax-cn&quot;</span>):</span><br><span class="line">    <span class="keyword">return</span> _try_minimax_vision(model)</span><br></pre></td></tr></table></figure>
+
+<h4 id="5-修改-to-async-client（约-2083-行）"><a href="#5-修改-to-async-client（约-2083-行）" class="headerlink" title="5. 修改 _to_async_client（约 2083 行）"></a>5. 修改 <code>_to_async_client</code>（约 2083 行）</h4><p>防止 <code>_MiniMaxVLClient</code> 被错误地包装成 <code>AsyncAnthropicAuxiliaryClient</code>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> <span class="built_in">isinstance</span>(sync_client, _MiniMaxVLClient):</span><br><span class="line">    <span class="keyword">return</span> sync_client</span><br></pre></td></tr></table></figure>
+
+<h4 id="6-修改-resolve-vision-provider-client——explicit-路径"><a href="#6-修改-resolve-vision-provider-client——explicit-路径" class="headerlink" title="6. 修改 resolve_vision_provider_client——explicit 路径"></a>6. 修改 <code>resolve_vision_provider_client</code>——explicit 路径</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> provider <span class="keyword">in</span> (<span class="string">&quot;minimax&quot;</span>, <span class="string">&quot;minimax-cn&quot;</span>):</span><br><span class="line">    backend, model_name = _resolve_strict_vision_backend(provider)</span><br><span class="line">    <span class="keyword">if</span> backend:</span><br><span class="line">        <span class="keyword">return</span> backend(model_name)</span><br></pre></td></tr></table></figure>
+
+<h4 id="7-修改-auto-路径（auxiliary-vision-provider-auto）"><a href="#7-修改-auto-路径（auxiliary-vision-provider-auto）" class="headerlink" title="7. 修改 auto 路径（auxiliary.vision.provider: auto）"></a>7. 修改 auto 路径（<code>auxiliary.vision.provider: auto</code>）</h4><p>原来 auto 路径检测到主 provider 是 minimax 时，错误地返回了 <code>AsyncAnthropicAuxiliaryClient</code>（不支持图片）。替换为：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> _strict_vision_backend_available(main_provider):</span><br><span class="line">    backend, model_name = _resolve_strict_vision_backend(main_provider)</span><br><span class="line">    <span class="keyword">if</span> backend:</span><br><span class="line">        <span class="keyword">return</span> backend(model_name)</span><br></pre></td></tr></table></figure>
+
+<h2 id="验证结果"><a href="#验证结果" class="headerlink" title="验证结果"></a>验证结果</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">asyncio.run(vision_analyze_tool(</span><br><span class="line">    image_url=<span class="string">&quot;/tmp/test_vision.jpg&quot;</span>,</span><br><span class="line">    user_prompt=<span class="string">&quot;描述图片内容&quot;</span>,</span><br><span class="line">    model=<span class="literal">None</span></span><br><span class="line">))</span><br></pre></td></tr></table></figure>
+
+<p>输出（耗时 11 秒）：</p>
+<blockquote>
+<p>这张图表是一份关于大语言模型（LLM）在特定硬件配置下的性能测试报告。具体来说，它展示了以下关键信息：</p>
+<ol>
+<li>测试平台：AT3500 G3 (64G) 服务器，配备了 8张华为昇腾 (Ascend) 910B AI加速卡</li>
+<li>测试模型：Qwen2.5-72B 和 DS-70B</li>
+<li>测试条件：FP16精度，30路并发…<br>（后续省略）</li>
+</ol>
+</blockquote>
+<p>图片内容完整识别。✅</p>
+<h2 id="坑点总结"><a href="#坑点总结" class="headerlink" title="坑点总结"></a>坑点总结</h2><ol>
+<li><p><strong>图片格式兼容性</strong>：Hermes 内部传的是 Anthropic 格式（<code>&#123;&quot;type&quot;: &quot;image&quot;, &quot;source&quot;: &#123;...&#125;&#125;</code>），不是 OpenAI 格式。<code>_Completions.create()</code> 必须同时处理两种格式。</p>
+</li>
+<li><p><strong>base_url 拼接</strong>：要用 <code>.rstrip(&quot;/&quot;)</code>，否则 <code>f&quot;&#123;base&#125;/v1/...&quot;</code> 会拼成 <code>https://api.minimaxi.com//v1/...</code>（双斜杠），导致 404。</p>
+</li>
+<li><p><strong><code>_MiniMaxVLClient</code> 不能用 OpenAI SDK</strong>：SDK 会往 base_url 追加 <code>/chat/completions</code>，且发送的是 OpenAI 格式，VL 端点不认。必须用原生 httpx。</p>
+</li>
+<li><p><strong>版本更新会被覆盖</strong>：这是源码层面的 hack，下次 Hermes 版本更新后需要重新 patch。建议提 PR 给官方仓库。</p>
+</li>
+<li><p><strong>auto 路径的陷阱</strong>：<code>auxiliary.vision.provider: auto</code> 时，代码走的是 <code>resolve_provider_client</code> 而不是 <code>_resolve_strict_vision_backend</code>，导致 minimax 被错误地路由到不支持图片的 <code>AsyncAnthropicAuxiliaryClient</code>。</p>
+</li>
+</ol>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li>MiniMax VL 端点文档（需要申请权限）</li>
+<li>Hermes 源码：<code>agent/auxiliary_client.py</code></li>
+<li>之前的相关记录：<a href="https://mengyx.com.cn/hermes-agent-ima-tencent-integration/">《Hermes Agent 接入腾讯 IMA 知识库》</a></li>
+</ul>
+<hr>
+<p>修完之后发图片给我就能看了 👀</p>
+
+        </div>
+
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2026/05/11/remote-windows-hermes-install/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">远程给家用 Windows 电脑安装 Hermes Agent：SSH 连接与踩坑全记录</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2026/05/08/openclaw-minimax-upgrade-full-record/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">OpenClaw × MiniMax 升级全记录：从月之暗面切换，统一三大 AI 工具计费体系</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+            <div class="comment-container">
+                <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments">&nbsp;Comments</i>
+    </div>
+    
+
+        
+            
+    <div class="valine-container">
+        <script 
+                src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script>
+        <div id="vcomments"></div>
+        <script >
+            function loadValine() {
+                new Valine({
+                    el: '#vcomments',
+                    appId: 'nLubyWWoLdhQhY0MFrVEp6TQ-gzGzoHsz',
+                    appKey: 'nKGU6OM4iawauPKsgfATStpK',
+                    meta: ['nick', 'mail', 'link'],
+                    avatar: 'wavatar',
+                    enableQQ: true,
+                    placeholder: '这里可以写评论...',
+                    lang: 'zh'.toLowerCase()
+                });
+
+                function getAuthor(language) {
+                    switch (language) {
+                        case 'en':
+                            return 'Author';
+                        case 'zh-CN':
+                            return '博主';
+                        default:
+                            return 'Master';
+                    }
+                }
+
+                // Add "Author" identify
+                const getValineDomTimer = setInterval(() => {
+                    const vcards = document.querySelectorAll('#vcomments .vcards .vcard');
+                    if (vcards.length > 0) {
+                        let author = 'Yixin';
+
+                        if (author) {
+                            for (let vcard of vcards) {
+                                const vnick_dom = vcard.querySelector('.vhead .vnick');
+                                const vnick = vnick_dom.innerHTML;
+                                if (vnick === author) {
+                                    vnick_dom.innerHTML = `${vnick} <span class="author">${getAuthor(KEEP.hexo_config.language)}</span>`
+                                }
+                            }
+                        }
+                        clearInterval(getValineDomTimer);
+                    } else {
+                        clearInterval(getValineDomTimer);
+                    }
+                }, 2000);
+            }
+
+            if ('false') {
+                const loadValineTimeout = setTimeout(() => {
+                    loadValine();
+                    clearTimeout(loadValineTimeout);
+                }, 1000);
+            } else {
+                window.addEventListener('DOMContentLoaded', loadValine);
+            }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>&nbsp;-&nbsp;
+            
+            2026&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">Yixin</a>
+        </div>
+        
+            <script async  src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        Visitor Count&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        Totalview&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.3</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+
+
+
+<div class="post-scripts">
+    
+</div>
+
+
+
+</body>
+</html>

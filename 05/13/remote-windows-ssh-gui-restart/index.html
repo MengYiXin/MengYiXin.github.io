@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Yixin">
+    
+    <title>
+        
+            记一次远程Windows飞书重启：SSH无法启动GUI的彻底解决 |
+        
+        Yixin blog
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo.svg">
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"mengyx.com.cn","root":"/","language":"zh","path":"search.json"};
+    KEEP.theme_config = {"toc":{"enable":false,"number":false,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.svg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":false,"preload":false},"code_copy":{"enable":false,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.4.3"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                Yixin blog
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                HOME
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                TAGS
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                ABOUT
+                            </a>
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">HOME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">TAGS</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">ABOUT</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">记一次远程Windows飞书重启：SSH无法启动GUI的彻底解决</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar.svg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">Yixin</span>
+                        
+                            <span class="author-label">Lv5</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;2026-05-13 09:45:00
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/%E9%A3%9E%E4%B9%A6/">飞书</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/Windows/">Windows</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/SSH/">SSH</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/PowerShell/">PowerShell</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E8%BF%9C%E7%A8%8B%E8%BF%90%E7%BB%B4/">远程运维</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>有一台远程Windows电脑（192.168.1.138），飞书客户端卡死了，9个进程全部无响应。通过SSH（localadmin账号）远程连接，想把飞书重启一下。</p>
+<p>结果发现：<strong>SSH会话根本没办法启动GUI程序</strong>。</p>
+<p>这篇文章记录了我踩过的所有坑，以及最终怎么解决的。</p>
+<hr>
+<h2 id="环境信息"><a href="#环境信息" class="headerlink" title="环境信息"></a>环境信息</h2><table>
+<thead>
+<tr>
+<th>项目</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>远程IP</td>
+<td>192.168.1.138</td>
+</tr>
+<tr>
+<td>SSH账号</td>
+<td>localadmin</td>
+</tr>
+<tr>
+<td>飞书进程名</td>
+<td>Feishu.exe</td>
+</tr>
+<tr>
+<td>飞书路径</td>
+<td>C:\Users\Lenovo\AppData\Local\Feishu\app\Feishu.exe</td>
+</tr>
+<tr>
+<td>飞书运行用户</td>
+<td>Lenovo（不是localadmin）</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="所有失败的方法"><a href="#所有失败的方法" class="headerlink" title="所有失败的方法"></a>所有失败的方法</h2><h3 id="❌-方法1：SSH直接Start-Process"><a href="#❌-方法1：SSH直接Start-Process" class="headerlink" title="❌ 方法1：SSH直接Start-Process"></a>❌ 方法1：SSH直接Start-Process</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sshpass -p <span class="string">&#x27;Dos70001&#x27;</span> ssh localadmin@192.168.1.138 \</span><br><span class="line">  <span class="string">&quot;Start-Process &#x27;C:\Users\Lenovo\AppData\Local\Feishu\app\Feishu.exe&#x27;&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>结果</strong>：命令执行后没有任何报错，但飞书根本没起来。</p>
+<p><strong>原因</strong>：SSH会话是纯字符界面，没有Windows图形会话上下文。Start-Process找不到可以显示窗口的桌面会话。</p>
+<hr>
+<h3 id="❌-方法2：runas切换到联想用户"><a href="#❌-方法2：runas切换到联想用户" class="headerlink" title="❌ 方法2：runas切换到联想用户"></a>❌ 方法2：runas切换到联想用户</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">runas /user:DESKTOP<span class="literal">-0LVHJ7D</span>\Lenovo <span class="string">&quot;C:\Users\Lenovo\AppData\Local\Feishu\app\Feishu.exe&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>结果</strong>：报错，密码验证失败。</p>
+<p><strong>原因</strong>：runas需要目标用户的正确密码。SSH里无法交互输入密码，而且Lenovo账号的密码也不是qinyuan（那是PIN码）。</p>
+<hr>
+<h3 id="❌-方法3：PowerShell-Start-Process-with-PSCredential"><a href="#❌-方法3：PowerShell-Start-Process-with-PSCredential" class="headerlink" title="❌ 方法3：PowerShell Start-Process with PSCredential"></a>❌ 方法3：PowerShell Start-Process with PSCredential</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Start-Process</span> <span class="literal">-FilePath</span> <span class="string">&#x27;C:\Users\Lenovo\AppData\Local\Feishu\app\Feishu.exe&#x27;</span> <span class="literal">-Credential</span> <span class="variable">$cred</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>结果</strong>：报错，用户凭证不正确。</p>
+<p><strong>原因</strong>：localadmin账号无权以Lenovo用户身份启动进程。</p>
+<hr>
+<h3 id="❌-方法4：Chrome浏览器打开飞书网页版"><a href="#❌-方法4：Chrome浏览器打开飞书网页版" class="headerlink" title="❌ 方法4：Chrome浏览器打开飞书网页版"></a>❌ 方法4：Chrome浏览器打开飞书网页版</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sshpass -p <span class="string">&#x27;Dos70001&#x27;</span> ssh localadmin@192.168.1.138 \</span><br><span class="line">  <span class="string">&quot;C:\Program Files\Google\Chrome\Application\chrome.exe https://feishu.cn&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>结果</strong>：Chrome报GPU进程错误，无法启动。</p>
+<p><strong>原因</strong>：SSH会话没有图形环境，即使启动Chrome也找不到显示器，GPU进程初始化失败。</p>
+<hr>
+<h3 id="❌-方法5：WSL里用win32yank调用Windows程序"><a href="#❌-方法5：WSL里用win32yank调用Windows程序" class="headerlink" title="❌ 方法5：WSL里用win32yank调用Windows程序"></a>❌ 方法5：WSL里用win32yank调用Windows程序</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">win32yank -o | powershell -Command ...</span><br></pre></td></tr></table></figure>
+
+<p><strong>结果</strong>：win32yank命令不存在。</p>
+<p><strong>原因</strong>：win32yank未安装在远程PC上，而且这个工具本身是用于WSL和Windows之间传递数据的，不适合用来启动GUI。</p>
+<hr>
+<h3 id="❌-方法6：hermes-chat-q-触发browser工具"><a href="#❌-方法6：hermes-chat-q-触发browser工具" class="headerlink" title="❌ 方法6：hermes chat -q 触发browser工具"></a>❌ 方法6：hermes chat -q 触发browser工具</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hermes chat -q <span class="string">&quot;用browser工具打开飞书：导航到 https://feishu.cn&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>结果</strong>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">prompt_toolkit.output.win32.NoConsoleScreenBufferError:</span><br><span class="line">No Windows console found. Are you running cmd.exe?</span><br></pre></td></tr></table></figure>
+
+<p><strong>原因</strong>：SSH里hermes cli初始化时prompt_toolkit尝试访问Windows控制台，但SSH会话没有真实的控制台设备。这个问题和飞书无关，纯粹是hermes cli的终端检测逻辑在SSH里失效了。</p>
+<hr>
+<h3 id="❌-方法7：xfreerdp远程桌面连接"><a href="#❌-方法7：xfreerdp远程桌面连接" class="headerlink" title="❌ 方法7：xfreerdp远程桌面连接"></a>❌ 方法7：xfreerdp远程桌面连接</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xfreerdp /v:192.168.1.138 /u:localadmin /p:Dos70001</span><br></pre></td></tr></table></figure>
+
+<p><strong>结果</strong>：RDP可以建立连接，但命令行只能建立连接，无法操作GUI。</p>
+<p><strong>原因</strong>：xfreerdp建立的是观察者模式的连接，无法远程控制鼠标键盘。</p>
+<hr>
+<h3 id="❌-方法8：taskkill-直接路径启动"><a href="#❌-方法8：taskkill-直接路径启动" class="headerlink" title="❌ 方法8：taskkill + 直接路径启动"></a>❌ 方法8：taskkill + 直接路径启动</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 先杀掉卡死的进程</span></span><br><span class="line">taskkill /f /im Feishu.exe</span><br><span class="line"></span><br><span class="line"><span class="comment"># 再直接启动</span></span><br><span class="line">sshpass -p <span class="string">&#x27;Dos70001&#x27;</span> ssh localadmin@192.168.1.138 \</span><br><span class="line">  <span class="string">&quot;&#x27;C:\Users\Lenovo\AppData\Local\Feishu\app\Feishu.exe&#x27;&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>结果</strong>：进程杀掉后，飞书没有自动重启。手动调用路径无效。</p>
+<p><strong>原因</strong>：和Direct Start-Process一样，没有GUI会话承接这个进程。</p>
+<hr>
+<h2 id="✅-最终成功的方法"><a href="#✅-最终成功的方法" class="headerlink" title="✅ 最终成功的方法"></a>✅ 最终成功的方法</h2><h3 id="核心思路"><a href="#核心思路" class="headerlink" title="核心思路"></a>核心思路</h3><p>SSH本身是字符界面，无法直接启动GUI程序。但Windows的PowerShell Remoting（WinRM）可以跨会话执行命令——利用本地PowerShell Remoting，把启动命令注入到真实桌面会话执行。</p>
+<h3 id="步骤1：开启WinRM服务"><a href="#步骤1：开启WinRM服务" class="headerlink" title="步骤1：开启WinRM服务"></a>步骤1：开启WinRM服务</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sshpass -p <span class="string">&#x27;Dos70001&#x27;</span> ssh -o StrictHostKeyChecking=no localadmin@192.168.1.138 \</span><br><span class="line">  <span class="string">&quot;powershell -Command \&quot;Start-Service WinRM; Get-Service WinRM | Select-Object Name,Status\&quot;&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Name    Status</span><br><span class="line">----    ------</span><br><span class="line">WinRM   Running</span><br></pre></td></tr></table></figure>
+
+<p><strong>关键</strong>：WinRM服务必须是Running状态，否则后续的Invoke-Command会失败。</p>
+<h3 id="步骤2：通过PowerShell-Remoting启动飞书"><a href="#步骤2：通过PowerShell-Remoting启动飞书" class="headerlink" title="步骤2：通过PowerShell Remoting启动飞书"></a>步骤2：通过PowerShell Remoting启动飞书</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sshpass -p <span class="string">&#x27;Dos70001&#x27;</span> ssh -o StrictHostKeyChecking=no localadmin@192.168.1.138 \</span><br><span class="line">  <span class="string">&quot;powershell -Command \&quot;Invoke-Command -ComputerName localhost -ScriptBlock &#123; Start-Process &#x27;C:\\Users\\Lenovo\\AppData\\Local\\Feishu\\app\\Feishu.exe&#x27; &#125;\&quot;&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>执行后返回空，没有报错。</p>
+<h3 id="步骤3：验证进程"><a href="#步骤3：验证进程" class="headerlink" title="步骤3：验证进程"></a>步骤3：验证进程</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sshpass -p <span class="string">&#x27;Dos70001&#x27;</span> ssh -o StrictHostKeyChecking=no localadmin@192.168.1.138 \</span><br><span class="line">  <span class="string">&quot;powershell -Command \&quot;Get-Process Feishu -ErrorAction SilentlyContinue | Measure-Object | Select-Object -ExpandProperty Count\&quot;&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>输出：<strong>8</strong></p>
+<p>飞书起来了，8个进程正常运行。</p>
+<hr>
+<h2 id="原理图解"><a href="#原理图解" class="headerlink" title="原理图解"></a>原理图解</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">┌─────────────────────────────────────────────┐</span><br><span class="line">│  SSH Session (localadmin, 纯字符界面)         │</span><br><span class="line">│  无GUI会话上下文                             │</span><br><span class="line">└─────────────────┬───────────────────────────┘</span><br><span class="line">                  │ SSH 文本通道</span><br><span class="line">                  ▼</span><br><span class="line">┌─────────────────────────────────────────────┐</span><br><span class="line">│  PowerShell Remoting (WinRM)               │</span><br><span class="line">│  -ComputerName localhost                    │</span><br><span class="line">│  寻找本地真实桌面会话                        │</span><br><span class="line">└─────────────────┬───────────────────────────┘</span><br><span class="line">                  │ WinRM 通道</span><br><span class="line">                  ▼</span><br><span class="line">┌─────────────────────────────────────────────┐</span><br><span class="line">│  ScriptBlock &#123; Start-Process ... &#125;          │</span><br><span class="line">│  ← 在真实桌面会话(Lenovo用户)中执行          │</span><br><span class="line">└─────────────────────────────────────────────┘</span><br><span class="line">                  │</span><br><span class="line">                  ▼</span><br><span class="line">         ┌────────────────┐</span><br><span class="line">         │ Feishu.exe启动 │</span><br><span class="line">         │ 8个进程运行    │</span><br><span class="line">         └────────────────┘</span><br></pre></td></tr></table></figure>
+
+<p><strong>关键点</strong>：<code>Invoke-Command -ComputerName localhost</code> 走的是本地PowerShell Remoting通道，它会在当前机器上找一个真实的桌面会话来执行ScriptBlock，从而成功启动GUI程序。</p>
+<hr>
+<h2 id="完整一键脚本"><a href="#完整一键脚本" class="headerlink" title="完整一键脚本"></a>完整一键脚本</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"><span class="comment"># restart_feishu_remote.sh</span></span><br><span class="line">HOST=<span class="string">&quot;192.168.1.138&quot;</span></span><br><span class="line">USER=<span class="string">&quot;localadmin&quot;</span></span><br><span class="line">PASS=<span class="string">&quot;Dos70001&quot;</span></span><br><span class="line">FEISHU_PATH=<span class="string">&quot;C:\\Users\\Lenovo\\AppData\\Local\\Feishu\\app\\Feishu.exe&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 杀掉现有卡死的飞书进程</span></span><br><span class="line">sshpass -p <span class="string">&quot;<span class="variable">$PASS</span>&quot;</span> ssh -o StrictHostKeyChecking=no <span class="string">&quot;<span class="variable">$USER</span>@<span class="variable">$HOST</span>&quot;</span> \</span><br><span class="line">  <span class="string">&quot;powershell -Command \&quot;Get-Process Feishu -ErrorAction SilentlyContinue | Stop-Process -Force\&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">sleep 2</span><br><span class="line"></span><br><span class="line"><span class="comment"># 开启WinRM</span></span><br><span class="line">sshpass -p <span class="string">&quot;<span class="variable">$PASS</span>&quot;</span> ssh -o StrictHostKeyChecking=no <span class="string">&quot;<span class="variable">$USER</span>@<span class="variable">$HOST</span>&quot;</span> \</span><br><span class="line">  <span class="string">&quot;powershell -Command \&quot;Start-Service WinRM\&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 通过PowerShell Remoting启动飞书</span></span><br><span class="line">sshpass -p <span class="string">&quot;<span class="variable">$PASS</span>&quot;</span> ssh -o StrictHostKeyChecking=no <span class="string">&quot;<span class="variable">$USER</span>@<span class="variable">$HOST</span>&quot;</span> \</span><br><span class="line">  <span class="string">&quot;powershell -Command \&quot;Invoke-Command -ComputerName localhost -ScriptBlock &#123; Start-Process &#x27;<span class="variable">$FEISHU_PATH</span>&#x27; &#125;\&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">sleep 3</span><br><span class="line"></span><br><span class="line"><span class="comment"># 验证</span></span><br><span class="line">COUNT=$(sshpass -p <span class="string">&quot;<span class="variable">$PASS</span>&quot;</span> ssh -o StrictHostKeyChecking=no <span class="string">&quot;<span class="variable">$USER</span>@<span class="variable">$HOST</span>&quot;</span> \</span><br><span class="line">  <span class="string">&quot;powershell -Command \&quot;(Get-Process Feishu -ErrorAction SilentlyContinue | Measure-Object).Count\&quot;&quot;</span>)</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;Feishu进程数: <span class="variable">$COUNT</span>&quot;</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>结果</th>
+<th>原因</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>SSH + Start-Process</td>
+<td>❌ 失败</td>
+<td>SSH无GUI上下文</td>
+</tr>
+<tr>
+<td>runas切换用户</td>
+<td>❌ 失败</td>
+<td>密码错误</td>
+</tr>
+<tr>
+<td>PowerShell PSCredential</td>
+<td>❌ 失败</td>
+<td>localadmin无权以Lenovo身份启动</td>
+</tr>
+<tr>
+<td>Chrome打开网页版</td>
+<td>❌ 失败</td>
+<td>无显示器，GPU报错</td>
+</tr>
+<tr>
+<td>hermes chat -q</td>
+<td>❌ 失败</td>
+<td>prompt_toolkit无控制台</td>
+</tr>
+<tr>
+<td>xfreerdp</td>
+<td>❌ 失败</td>
+<td>只读连接，无法操作</td>
+</tr>
+<tr>
+<td><strong>PowerShell Remoting</strong></td>
+<td>✅ <strong>成功</strong></td>
+<td>注入真实桌面会话执行</td>
+</tr>
+</tbody></table>
+<p><strong>核心教训</strong>：SSH会话和远程桌面会话是两个完全独立的上下文。SSH里执行的命令没有图形桌面，只有通过PowerShell Remoting这样的机制，才能把命令发送到真实桌面会话去执行。</p>
+<hr>
+<p><em>文章写于2026年5月13日，远程PC环境：Windows 10专业版，飞书v7.x</em></p>
+
+        </div>
+
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2026/05/18/openclaw-feishu-troubleshooting/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">OpenClaw 飞书掉线排障：从 plugin duplicate 到 delivery pending 全记录</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2026/05/11/remote-windows-hermes-install/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">远程给家用 Windows 电脑安装 Hermes Agent：SSH 连接与踩坑全记录</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+            <div class="comment-container">
+                <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments">&nbsp;Comments</i>
+    </div>
+    
+
+        
+            
+    <div class="valine-container">
+        <script 
+                src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script>
+        <div id="vcomments"></div>
+        <script >
+            function loadValine() {
+                new Valine({
+                    el: '#vcomments',
+                    appId: 'nLubyWWoLdhQhY0MFrVEp6TQ-gzGzoHsz',
+                    appKey: 'nKGU6OM4iawauPKsgfATStpK',
+                    meta: ['nick', 'mail', 'link'],
+                    avatar: 'wavatar',
+                    enableQQ: true,
+                    placeholder: '这里可以写评论...',
+                    lang: 'zh'.toLowerCase()
+                });
+
+                function getAuthor(language) {
+                    switch (language) {
+                        case 'en':
+                            return 'Author';
+                        case 'zh-CN':
+                            return '博主';
+                        default:
+                            return 'Master';
+                    }
+                }
+
+                // Add "Author" identify
+                const getValineDomTimer = setInterval(() => {
+                    const vcards = document.querySelectorAll('#vcomments .vcards .vcard');
+                    if (vcards.length > 0) {
+                        let author = 'Yixin';
+
+                        if (author) {
+                            for (let vcard of vcards) {
+                                const vnick_dom = vcard.querySelector('.vhead .vnick');
+                                const vnick = vnick_dom.innerHTML;
+                                if (vnick === author) {
+                                    vnick_dom.innerHTML = `${vnick} <span class="author">${getAuthor(KEEP.hexo_config.language)}</span>`
+                                }
+                            }
+                        }
+                        clearInterval(getValineDomTimer);
+                    } else {
+                        clearInterval(getValineDomTimer);
+                    }
+                }, 2000);
+            }
+
+            if ('false') {
+                const loadValineTimeout = setTimeout(() => {
+                    loadValine();
+                    clearTimeout(loadValineTimeout);
+                }, 1000);
+            } else {
+                window.addEventListener('DOMContentLoaded', loadValine);
+            }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>&nbsp;-&nbsp;
+            
+            2026&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">Yixin</a>
+        </div>
+        
+            <script async  src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        Visitor Count&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        Totalview&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.3</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+
+
+
+<div class="post-scripts">
+    
+</div>
+
+
+
+</body>
+</html>

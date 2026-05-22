@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Yixin">
+    
+    <title>
+        
+            Hermes Agent 接入腾讯 IMA 知识库：一次坎坷的 API 对接实录 |
+        
+        Yixin blog
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo.svg">
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"mengyx.com.cn","root":"/","language":"zh","path":"search.json"};
+    KEEP.theme_config = {"toc":{"enable":false,"number":false,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.svg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":false,"preload":false},"code_copy":{"enable":false,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.4.3"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                Yixin blog
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                HOME
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                TAGS
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                ABOUT
+                            </a>
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">HOME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">TAGS</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">ABOUT</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">Hermes Agent 接入腾讯 IMA 知识库：一次坎坷的 API 对接实录</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar.svg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">Yixin</span>
+                        
+                            <span class="author-label">Lv5</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;2026-05-07 21:30:00
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/AI%E5%B7%A5%E5%85%B7/">AI工具</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/Hermes-Agent/">Hermes Agent</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E8%85%BE%E8%AE%AFIMA/">腾讯IMA</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/AI%E7%9F%A5%E8%AF%86%E5%BA%93/">AI知识库</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/API%E5%AF%B9%E6%8E%A5/">API对接</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E5%B7%A5%E4%BD%9C%E6%B5%81/">工作流</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <p>前两天把腾讯 IMA 接进了 Hermes Agent，终于可以让 AI 直接读我积累的华鲲振宇服务器配置笔记了。对接过程比预期曲折，走了不少弯路，这里把完整过程记录下来，供有类似需求的同学参考。</p>
+<h2 id="什么是腾讯-IMA"><a href="#什么是腾讯-IMA" class="headerlink" title="什么是腾讯 IMA"></a>什么是腾讯 IMA</h2><p>IMA 是腾讯推出的 AI 知识库产品，定位是”个人/团队的智能笔记+检索”。它的核心是<strong>笔记管理+知识检索</strong>，支持 API 访问，这让我们可以把它当成一个带检索能力的外部知识库来用。</p>
+<p>对于我这种在 IMA 里积累了大量工作笔记（华鲲配置规则、行业资料）的人来说，接入 API 意味着：<strong>以后问 Hermes 任何配置相关的问题，它可以直接去 IMA 里查，而不是靠记忆或临时搜索。</strong></p>
+<h2 id="我的目标"><a href="#我的目标" class="headerlink" title="我的目标"></a>我的目标</h2><p>简单说就是两件事：</p>
+<ol>
+<li><strong>写入</strong>：让 Hermes 把有用的配置规则永久存进 IMA</li>
+<li><strong>读取</strong>：让 Hermes 根据问题从 IMA 检索相关笔记并引用</li>
+</ol>
+<p>这样华鲲配置规则这类内容就能实现<strong>长期记忆+随时调用</strong>，不用每次都重新整理。</p>
+<h2 id="对接过程"><a href="#对接过程" class="headerlink" title="对接过程"></a>对接过程</h2><h3 id="第一步：安装-IMA-Skill"><a href="#第一步：安装-IMA-Skill" class="headerlink" title="第一步：安装 IMA Skill"></a>第一步：安装 IMA Skill</h3><p>Hermes Agent 支持通过 Skill 机制扩展功能。IMA 官方提供了一个 <a class="link"   target="_blank" rel="noopener" href="https://github.com/nickar/ima-skill" >ima-skill<i class="fas fa-external-link-alt"></i></a>，安装步骤很标准：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 下载最新版本</span></span><br><span class="line"><span class="built_in">cd</span> /tmp</span><br><span class="line">curl -sL https://github.com/nickar/ima-skill/releases/download/v1.1.7/ima-skills-1.1.7.zip -o ima.zip</span><br><span class="line">unzip -q ima.zip</span><br><span class="line">mv ima-skill ~/.hermes/skills/</span><br></pre></td></tr></table></figure>
+
+<p>安装完成后目录结构：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">~&#x2F;.hermes&#x2F;skills&#x2F;ima-skill&#x2F;</span><br><span class="line">├── SKILL.md              # Skill 定义文件</span><br><span class="line">├── ima_api.cjs           # Node.js API 封装</span><br><span class="line">└── references&#x2F;           # 参考文档</span><br></pre></td></tr></table></figure>
+
+<h3 id="第二步：创建-IMA-应用，获取凭证"><a href="#第二步：创建-IMA-应用，获取凭证" class="headerlink" title="第二步：创建 IMA 应用，获取凭证"></a>第二步：创建 IMA 应用，获取凭证</h3><p>IMA API 需要三样东西：</p>
+<table>
+<thead>
+<tr>
+<th>凭证</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Client ID</td>
+<td>应用唯一标识</td>
+</tr>
+<tr>
+<td>API Key</td>
+<td>访问密钥</td>
+</tr>
+<tr>
+<td>群 ID（可选）</td>
+<td>指定知识库群组</td>
+</tr>
+</tbody></table>
+<p>在 IMA 控制台创建应用后，就能拿到 Client ID 和 API Key。这里有个<strong>坑</strong>：IMA 的 API Key 有有效期限制，我的 Key 到 <strong>2026-05-27</strong> 过期，后续用之前得记得续期。</p>
+<p>凭证存到本地配置文件方便调用：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p ~/.config/ima</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;67564d25e3ec5101a938e0aa22e87145&quot;</span> &gt; ~/.config/ima/client_id</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;你的API密钥&quot;</span> &gt; ~/.config/ima/api_key</span><br></pre></td></tr></table></figure>
+
+<h3 id="第三步：API-连通性验证"><a href="#第三步：API-连通性验证" class="headerlink" title="第三步：API 连通性验证"></a>第三步：API 连通性验证</h3><p>这是第一个卡点。</p>
+<p>IMA Skill 自带了一个 Node.js 封装 <code>ima_api.cjs</code>，但在我环境里多次调用都<strong>没有任何输出</strong>，既不报错也不返回数据。原因不明，怀疑是 Node.js 版本或环境问题。</p>
+<p>最终绕过这个封装，<strong>直接用 curl 调用 IMA API</strong>：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">curl -s -X POST https://ima.qq.com/openapi/note/v1/list_notebook \</span><br><span class="line">  -H <span class="string">&quot;ima-openapi-clientid: 你的ClientID&quot;</span> \</span><br><span class="line">  -H <span class="string">&quot;ima-openapi-apikey: 你的APIKey&quot;</span> \</span><br><span class="line">  -H <span class="string">&quot;ima-openapi-ctx: skill_version=1.1.7&quot;</span> \</span><br><span class="line">  -H <span class="string">&quot;Content-Type: application/json&quot;</span> \</span><br><span class="line">  -d <span class="string">&#x27;&#123;&quot;cursor&quot;:&quot;0&quot;,&quot;limit&quot;:10&#125;&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>成功返回笔记本列表，说明凭证没问题，API 是通的。</p>
+<h3 id="第四步：搜索华鲲笔记"><a href="#第四步：搜索华鲲笔记" class="headerlink" title="第四步：搜索华鲲笔记"></a>第四步：搜索华鲲笔记</h3><p>用关键词”华鲲”搜索 IMA，返回了 9 篇相关笔记：</p>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>笔记标题</th>
+<th>note_id</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>总规则</td>
+<td>7450130605176421</td>
+</tr>
+<tr>
+<td>2</td>
+<td>配置规则 一</td>
+<td>7449464528731269</td>
+</tr>
+<tr>
+<td>3</td>
+<td>配置规则 二</td>
+<td>7449618136701275</td>
+</tr>
+<tr>
+<td>4</td>
+<td>配置规则 三</td>
+<td>7449798412105366</td>
+</tr>
+<tr>
+<td>5</td>
+<td>配置规则 四</td>
+<td>7449617432058498</td>
+</tr>
+<tr>
+<td>6</td>
+<td>配置规则 五</td>
+<td>7449806943293677</td>
+</tr>
+<tr>
+<td>7</td>
+<td>配置规则 六-昇腾</td>
+<td>7450126461179959</td>
+</tr>
+<tr>
+<td>8</td>
+<td>配置规则 七-昇腾</td>
+<td>7450124745732506</td>
+</tr>
+<tr>
+<td>9</td>
+<td>配置规则 八</td>
+<td>7457974016567714</td>
+</tr>
+</tbody></table>
+<h3 id="第五步：逐篇读取笔记全文"><a href="#第五步：逐篇读取笔记全文" class="headerlink" title="第五步：逐篇读取笔记全文"></a>第五步：逐篇读取笔记全文</h3><p>用 <code>get_doc_content</code> 接口逐篇拉取完整内容。这个接口接受 <code>note_id</code> 和 <code>target_content_format</code> 参数：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">curl -s -X POST https://ima.qq.com/openapi/note/v1/get_doc_content \</span><br><span class="line">  -H <span class="string">&quot;ima-openapi-clientid: 你的ClientID&quot;</span> \</span><br><span class="line">  -H <span class="string">&quot;ima-openapi-apikey: 你的APIKey&quot;</span> \</span><br><span class="line">  -H <span class="string">&quot;ima-openapi-ctx: skill_version=1.1.7&quot;</span> \</span><br><span class="line">  -H <span class="string">&quot;Content-Type: application/json&quot;</span> \</span><br><span class="line">  -d <span class="string">&#x27;&#123;&quot;note_id&quot;:&quot;7450130605176421&quot;,&quot;target_content_format&quot;:0&#125;&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>顺利拿到全部 9 篇笔记的原文，总字数超过 15000 字。</p>
+<h2 id="存入-Hermes：两种策略"><a href="#存入-Hermes：两种策略" class="headerlink" title="存入 Hermes：两种策略"></a>存入 Hermes：两种策略</h2><p>拿到笔记后，接下来的问题是：<strong>怎么让 Hermes 记住这些规则？</strong></p>
+<p>我用了两种互补的策略：</p>
+<h3 id="策略一：建立独立-Skill"><a href="#策略一：建立独立-Skill" class="headerlink" title="策略一：建立独立 Skill"></a>策略一：建立独立 Skill</h3><p>Hermes 的 Skill 机制支持存放任意长度的内容，没有字符数限制。把完整原文存成独立 Skill，华鲲规则就变成了 Hermes 的”内置知识”：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">~&#x2F;.hermes&#x2F;skills&#x2F;knowledge&#x2F;huakun-config-rules&#x2F;</span><br><span class="line">├── SKILL.md                        # 摘要版（供快速参考）</span><br><span class="line">└── references&#x2F;                     # 完整原文</span><br><span class="line">    ├── 01_总规则.json</span><br><span class="line">    ├── 02_配置规则一.json</span><br><span class="line">    ├── 03_配置规则二.json</span><br><span class="line">    ├── 04_配置规则三.json</span><br><span class="line">    ├── 05_配置规则四.json</span><br><span class="line">    ├── 06_配置规则五.json</span><br><span class="line">    ├── 07_配置规则六昇腾算力分级.json</span><br><span class="line">    ├── 08_配置规则七昇腾实操细节.json</span><br><span class="line">    └── 09_配置规则八.json</span><br></pre></td></tr></table></figure>
+
+<p>触发条件：用户问华鲲配置、服务器选型、GPU配卡、内存槽位、硬盘接口等问题时自动调用。</p>
+<h3 id="策略二：Memory-索引"><a href="#策略二：Memory-索引" class="headerlink" title="策略二：Memory 索引"></a>策略二：Memory 索引</h3><p>在 Hermes 的持久记忆里存一条精简索引，包含：</p>
+<ul>
+<li>核心 9 条踩坑点</li>
+<li>IMA 凭证信息（Key 有效期）</li>
+<li>API 调用示例</li>
+</ul>
+<p>这样即使 Skill 没加载，问一些通用配置问题时 Hermes 也能快速答上来。</p>
+<p><strong>这里遇到了一个现实问题</strong>：Memory 上限只有 2200 字符，存了华鲲规则索引后空间剩 104 字符，非常紧张。独立 Skill 的存在大大缓解了这个压力。</p>
+<h2 id="踩坑总结"><a href="#踩坑总结" class="headerlink" title="踩坑总结"></a>踩坑总结</h2><p>┌──────────────────────────────────────────────────────────┐<br>│ 本次对接踩坑汇总                                          │<br>├──────────────────────────────────────────────────────────┤<br>│ 坑1：Node.js 封装无输出   → 直接用 curl 绕过              │<br>│ 坑2：IMA API Key 有有效期 → 需定期续期（当前至2026-05-27）│<br>│ 坑3：Memory 容量紧张     → 重要内容移至独立 Skill 存储    │<br>│ 坑4：错误接口路径         → list_notebooks（复数）→ 实际是 │<br>│                             list_notebook（单数）+ search_note│<br>└──────────────────────────────────────────────────────────┘</p>
+<h2 id="现在的效果"><a href="#现在的效果" class="headerlink" title="现在的效果"></a>现在的效果</h2><p>接入完成后，问 Hermes 任何华鲲配置相关问题，它会：</p>
+<ol>
+<li>加载 <code>huakun-config-rules</code> Skill</li>
+<li>根据问题类型检索 references 里的相关 JSON</li>
+<li>结合完整原文回答，同时引用具体规则来源</li>
+</ol>
+<p>对于配置选型、核查、投标报价这些场景，AI 不再靠记忆或猜测，而是有据可查。</p>
+<h2 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h2><p>这次对接的核心收获是：<strong>知识库的价值在于调用频率</strong>。IMA 里的笔记如果只是存着不用，时间久了连自己都懒得翻。接进 Hermes 之后，每一次问配置问题都是一次检索和应用，知识才真正流动起来。</p>
+<p>后续打算把更多工作笔记逐步接进来，特别是行业资料和销售话术方向。也有计划把 IMA 的写入功能用起来，让 Hermes 在对话过程中自动把有价值的内容沉淀回 IMA。</p>
+<p>有同样想接 IMA 的同学，欢迎交流。</p>
+
+        </div>
+
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2026/05/08/openclaw-minimax-upgrade-full-record/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">OpenClaw × MiniMax 升级全记录：从月之暗面切换，统一三大 AI 工具计费体系</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2026/05/06/hotel-wifi-dns-github-fix/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">住酒店顺手修好的GitHub访问问题：DNS污染</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+            <div class="comment-container">
+                <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments">&nbsp;Comments</i>
+    </div>
+    
+
+        
+            
+    <div class="valine-container">
+        <script 
+                src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script>
+        <div id="vcomments"></div>
+        <script >
+            function loadValine() {
+                new Valine({
+                    el: '#vcomments',
+                    appId: 'nLubyWWoLdhQhY0MFrVEp6TQ-gzGzoHsz',
+                    appKey: 'nKGU6OM4iawauPKsgfATStpK',
+                    meta: ['nick', 'mail', 'link'],
+                    avatar: 'wavatar',
+                    enableQQ: true,
+                    placeholder: '这里可以写评论...',
+                    lang: 'zh'.toLowerCase()
+                });
+
+                function getAuthor(language) {
+                    switch (language) {
+                        case 'en':
+                            return 'Author';
+                        case 'zh-CN':
+                            return '博主';
+                        default:
+                            return 'Master';
+                    }
+                }
+
+                // Add "Author" identify
+                const getValineDomTimer = setInterval(() => {
+                    const vcards = document.querySelectorAll('#vcomments .vcards .vcard');
+                    if (vcards.length > 0) {
+                        let author = 'Yixin';
+
+                        if (author) {
+                            for (let vcard of vcards) {
+                                const vnick_dom = vcard.querySelector('.vhead .vnick');
+                                const vnick = vnick_dom.innerHTML;
+                                if (vnick === author) {
+                                    vnick_dom.innerHTML = `${vnick} <span class="author">${getAuthor(KEEP.hexo_config.language)}</span>`
+                                }
+                            }
+                        }
+                        clearInterval(getValineDomTimer);
+                    } else {
+                        clearInterval(getValineDomTimer);
+                    }
+                }, 2000);
+            }
+
+            if ('false') {
+                const loadValineTimeout = setTimeout(() => {
+                    loadValine();
+                    clearTimeout(loadValineTimeout);
+                }, 1000);
+            } else {
+                window.addEventListener('DOMContentLoaded', loadValine);
+            }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>&nbsp;-&nbsp;
+            
+            2026&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">Yixin</a>
+        </div>
+        
+            <script async  src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        Visitor Count&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        Totalview&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.3</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+
+
+
+<div class="post-scripts">
+    
+</div>
+
+
+
+</body>
+</html>

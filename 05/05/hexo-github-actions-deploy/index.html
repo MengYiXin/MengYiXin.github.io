@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="Yixin">
+    
+    <title>
+        
+            Hermes Agent 博客实战：Hexo + GitHub Actions 两分支自动化部署 |
+        
+        Yixin blog
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo.svg">
+    
+<link rel="stylesheet" href="/css/font-awesome.min.css">
+
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"mengyx.com.cn","root":"/","language":"zh","path":"search.json"};
+    KEEP.theme_config = {"toc":{"enable":false,"number":false,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.svg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":false,"preload":false},"code_copy":{"enable":false,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.4.3"};
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
+  </script>
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                Yixin blog
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                HOME
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                TAGS
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                ABOUT
+                            </a>
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">HOME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">TAGS</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">ABOUT</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">Hermes Agent 博客实战：Hexo + GitHub Actions 两分支自动化部署</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/images/avatar.svg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">Yixin</span>
+                        
+                            <span class="author-label">Lv5</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;2026-05-05 16:00:00
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/AI%E5%B7%A5%E5%85%B7/">AI工具</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/Hexo/">Hexo</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/GitHub-Actions/">GitHub Actions</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/Hermes-Agent/">Hermes Agent</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E5%8D%9A%E5%AE%A2/">博客</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/DevOps/">DevOps</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <p>我的博客 mengyx.com.cn 托管在 GitHub Pages，最初用 Hexo 的 <code>hexo deploy</code> 手动发布，后来踩了几个坑之后切成了 GitHub Actions 两分支模式，彻底实现了”写完文章自动上线”。这篇文章记录全过程。</p>
+<h2 id="旧架构的问题"><a href="#旧架构的问题" class="headerlink" title="旧架构的问题"></a>旧架构的问题</h2><p><img src="https://raw.githubusercontent.com/MengYiXin/blog-images/main/02-hexo-github-actions-deploy.svg" alt="配图"></p>
+<p>原来的方式是 <code>hexo deploy</code> 通过 <code>.deploy_git/</code> 往 master 分支推 HTML。问题是：</p>
+<ol>
+<li>本地要装 Hexo 环境和部署依赖</li>
+<li>换了电脑要重新配环境</li>
+<li>图片和主题处理混乱</li>
+<li>无法做构建验证</li>
+</ol>
+<h2 id="新架构：两分支-Actions"><a href="#新架构：两分支-Actions" class="headerlink" title="新架构：两分支 + Actions"></a>新架构：两分支 + Actions</h2><p>┌──────────────────────────────────────────────────────────────┐<br>│                      新架构                                  │<br>├──────────────────────────────────────────────────────────────┤<br>│  source 分支  ──push──►  GitHub Actions                      │<br>│  (Hexo源文件)              │                                  │<br>│                           └── hexo generate                   │<br>│                                    │                         │<br>│                           ┌──────▼──────┐                    │<br>│                           │  public/    │                    │<br>│                           └──────┬──────┘                    │<br>│                                    │                         │<br>│                           clone master 分支                   │<br>│                                    │                         │<br>│                           copy public/* + CNAME              │<br>│                                    │                         │<br>│                           push ──► master 分支               │<br>│                                    │                         │<br>│                           GitHub Pages serve master           │<br>└──────────────────────────────────────────────────────────────┘</p>
+<ul>
+<li><code>source</code> 分支：存 Hexo 源文件（md、_config.yml、themes通过npm安装）</li>
+<li><code>master</code> 分支：只存生成的 HTML 静态文件，由 Actions 自动维护</li>
+</ul>
+<h2 id="关键配置"><a href="#关键配置" class="headerlink" title="关键配置"></a>关键配置</h2><h3 id="1-SSH-部署密钥"><a href="#1-SSH-部署密钥" class="headerlink" title="1. SSH 部署密钥"></a>1. SSH 部署密钥</h3><p>Actions 往 master 分支推 HTML 需要认证。用的是 ED25519 部署密钥：</p>
+<ul>
+<li>公钥已作为 Deploy key 添加到仓库（可写权限）</li>
+<li>私钥加密存为 GitHub Secret <code>DEPLOY_KEY</code></li>
+</ul>
+<p>不要删除这个 key，否则 Actions 无法部署。</p>
+<h3 id="2-CNAME-文件"><a href="#2-CNAME-文件" class="headerlink" title="2. CNAME 文件"></a>2. CNAME 文件</h3><p>自定义域名 <code>mengyx.com.cn</code> 的 CNAME 文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 放在 source&#x2F;CNAME（注意不是 CNAME.txt）</span><br><span class="line">mengyx.com.cn</span><br></pre></td></tr></table></figure>
+
+<p><strong>坑</strong>：deploy.yml 里要显式复制这个文件：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Deploy</span> <span class="string">to</span> <span class="string">GitHub</span> <span class="string">Pages</span></span><br><span class="line">  <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line">    <span class="comment"># ... hexo generate 输出到 public/ ...</span></span><br><span class="line">    <span class="string">cp</span> <span class="string">source/CNAME</span> <span class="string">_deploy/CNAME</span>   <span class="comment"># 必须！Actions不会自动带</span></span><br><span class="line">    <span class="string">cd</span> <span class="string">_deploy</span></span><br><span class="line">    <span class="string">git</span> <span class="string">add</span> <span class="string">.</span></span><br><span class="line">    <span class="string">git</span> <span class="string">commit</span> <span class="string">-m</span> <span class="string">&quot;Deploy from Actions&quot;</span></span><br><span class="line">    <span class="string">git</span> <span class="string">push</span> <span class="string">--force</span> <span class="string">origin</span> <span class="string">master</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="3-themes-keep-是空的"><a href="#3-themes-keep-是空的" class="headerlink" title="3. themes/keep 是空的"></a>3. themes/keep 是空的</h3><p>Hexo 主题 <code>hexo-theme-keep</code> 是通过 npm 安装的，不在 git 仓库里：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-theme-keep</span><br></pre></td></tr></table></figure>
+
+<p>Actions 里的 <code>npm ci</code> 会自动恢复主题，所以 <code>themes/keep/</code> 目录在仓库里是空的。</p>
+<h3 id="4-图片存放"><a href="#4-图片存放" class="headerlink" title="4. 图片存放"></a>4. 图片存放</h3><p>博客图片统一存在 <a class="link"   target="_blank" rel="noopener" href="https://github.com/MengYiXin/blog-images%EF%BC%8C%E5%BC%95%E7%94%A8%E6%A0%BC%E5%BC%8F%EF%BC%9A" >https://github.com/MengYiXin/blog-images，引用格式：<i class="fas fa-external-link-alt"></i></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;MengYiXin&#x2F;blog-images&#x2F;main&#x2F;文件名.png</span><br></pre></td></tr></table></figure>
+
+<h2 id="踩过的坑"><a href="#踩过的坑" class="headerlink" title="踩过的坑"></a>踩过的坑</h2><h3 id="坑1：中文文件名导致404"><a href="#坑1：中文文件名导致404" class="headerlink" title="坑1：中文文件名导致404"></a>坑1：中文文件名导致404</h3><p>GitHub Pages 对中文路径有历史遗留 bug，访问 <code>https://mengyixin.github.io/2026/05/05/中文标题/</code> 会404。</p>
+<p>解法：文件名必须用英文 slug（YYYY-MM-DD-slug.md 或纯英文）。</p>
+<h3 id="坑2：url配置"><a href="#坑2：url配置" class="headerlink" title="坑2：url配置"></a>坑2：url配置</h3><p><code>_config.yml</code> 里 <code>url: http://example.com</code> 是默认值，构建后会导致页面跳转错误。</p>
+<p>必须改成：<code>url: https://mengyx.com.cn</code></p>
+<h3 id="坑3：菜单项不显示"><a href="#坑3：菜单项不显示" class="headerlink" title="坑3：菜单项不显示"></a>坑3：菜单项不显示</h3><p>Keep 主题的 menu 项在 Actions 构建后可能不生效。必须在主 <code>_config.yml</code> 里显式覆盖：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">theme_config:</span></span><br><span class="line">  <span class="attr">menu:</span></span><br><span class="line">    <span class="attr">Home:</span> <span class="string">/</span></span><br><span class="line">    <span class="attr">Archives:</span> <span class="string">/archives</span></span><br><span class="line">    <span class="attr">Tags:</span> <span class="string">/tags</span></span><br><span class="line">    <span class="attr">About:</span> <span class="string">/about</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="坑4：评论系统"><a href="#坑4：评论系统" class="headerlink" title="坑4：评论系统"></a>坑4：评论系统</h3><p>原来用的 Valine 依赖 LeanCloud，但 LeanCloud 已关闭新用户注册且现有应用匿名功能也关了。那组 appid/appkey 是官方占位符示例，根本不能用。</p>
+<p>建议直接换 Twikoo（腾讯云开发，免费）。</p>
+<h2 id="现在的写作流程"><a href="#现在的写作流程" class="headerlink" title="现在的写作流程"></a>现在的写作流程</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">写文章（英文slug）.md  →  git add  →  git push origin source</span><br><span class="line">                                        │</span><br><span class="line">                         GitHub Actions 自动构建（约2-3分钟）</span><br><span class="line">                                        │</span><br><span class="line">                              新文章上线 mengyx.com.cn</span><br></pre></td></tr></table></figure>
+
+<p>全程不需要手动 hexo generate / hexo deploy，换电脑也能写。</p>
+
+        </div>
+
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2026/05/05/hermes-skills-design/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">Hermes Agent 进阶：用 Skill 把日常工作流变成可复用工具</span>
+                                <span class="post-nav-item">Prev posts</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2026/05/05/wsl-git-proxy-wrapper/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">Hermes Agent 环境搭建：WSL 下 GitHub 访问的三级代理方案</span>
+                                <span class="post-nav-item">Next posts</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+            <div class="comment-container">
+                <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments">&nbsp;Comments</i>
+    </div>
+    
+
+        
+            
+    <div class="valine-container">
+        <script 
+                src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script>
+        <div id="vcomments"></div>
+        <script >
+            function loadValine() {
+                new Valine({
+                    el: '#vcomments',
+                    appId: 'nLubyWWoLdhQhY0MFrVEp6TQ-gzGzoHsz',
+                    appKey: 'nKGU6OM4iawauPKsgfATStpK',
+                    meta: ['nick', 'mail', 'link'],
+                    avatar: 'wavatar',
+                    enableQQ: true,
+                    placeholder: '这里可以写评论...',
+                    lang: 'zh'.toLowerCase()
+                });
+
+                function getAuthor(language) {
+                    switch (language) {
+                        case 'en':
+                            return 'Author';
+                        case 'zh-CN':
+                            return '博主';
+                        default:
+                            return 'Master';
+                    }
+                }
+
+                // Add "Author" identify
+                const getValineDomTimer = setInterval(() => {
+                    const vcards = document.querySelectorAll('#vcomments .vcards .vcard');
+                    if (vcards.length > 0) {
+                        let author = 'Yixin';
+
+                        if (author) {
+                            for (let vcard of vcards) {
+                                const vnick_dom = vcard.querySelector('.vhead .vnick');
+                                const vnick = vnick_dom.innerHTML;
+                                if (vnick === author) {
+                                    vnick_dom.innerHTML = `${vnick} <span class="author">${getAuthor(KEEP.hexo_config.language)}</span>`
+                                }
+                            }
+                        }
+                        clearInterval(getValineDomTimer);
+                    } else {
+                        clearInterval(getValineDomTimer);
+                    }
+                }, 2000);
+            }
+
+            if ('false') {
+                const loadValineTimeout = setTimeout(() => {
+                    loadValine();
+                    clearTimeout(loadValineTimeout);
+                }, 1000);
+            } else {
+                window.addEventListener('DOMContentLoaded', loadValine);
+            }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2020</span>&nbsp;-&nbsp;
+            
+            2026&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">Yixin</a>
+        </div>
+        
+            <script async  src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        Visitor Count&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        Totalview&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.3</a>
+        </div>
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+
+
+
+<div class="post-scripts">
+    
+</div>
+
+
+
+</body>
+</html>
