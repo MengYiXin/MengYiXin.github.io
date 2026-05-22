@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OpenClaw Upgrade Timeline</title>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'JetBrains Mono', monospace; background: #020617; min-height: 100vh; padding: 2rem; color: white; }
+    .container { max-width: 1200px; margin: 0 auto; }
+    .header { margin-bottom: 2rem; }
+    .header-row { display: flex; align-items: center; gap: 1rem; margin-bottom: 0.5rem; }
+    .pulse-dot { width: 12px; height: 12px; background: #fb7185; border-radius: 50%; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+    h1 { font-size: 1.5rem; font-weight: 700; letter-spacing: -0.025em; }
+    .subtitle { color: #94a3b8; font-size: 0.875rem; margin-left: 1.75rem; }
+    .diagram-container { background: rgba(15, 23, 42, 0.5); border-radius: 1rem; border: 1px solid #1e293b; padding: 1.5rem; overflow-x: auto; }
+    svg { width: 100%; min-width: 900px; display: block; }
+    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-top: 2rem; }
+    .card { background: rgba(15, 23, 42, 0.5); border-radius: 0.75rem; border: 1px solid #1e293b; padding: 1.25rem; }
+    .card-header { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.75rem; }
+    .card-dot { width: 8px; height: 8px; border-radius: 50%; }
+    .card-dot.cyan { background: #22d3ee; } .card-dot.emerald { background: #34d399; }
+    .card-dot.violet { background: #a78bfa; } .card-dot.amber { background: #fbbf24; }
+    .card-dot.rose { background: #fb7185; } .card-dot.orange { background: #fb923c; }
+    .card h3 { font-size: 0.875rem; font-weight: 600; }
+    .card ul { list-style: none; color: #94a3b8; font-size: 0.75rem; }
+    .card li { margin-bottom: 0.375rem; }
+    .footer { text-align: center; margin-top: 1.5rem; color: #475569; font-size: 0.75rem; }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <div class="header-row">
+      <div class="pulse-dot"></div>
+      <h1>OpenClaw Upgrade Timeline — 9 Bugs Across 3 Upgrades</h1>
+    </div>
+    <p class="subtitle">2026.5.7 → 2026.5.20 → 2026.5.22 · Three upgrade rounds, nine holes, all patched</p>
+  </div>
+
+  <div class="diagram-container">
+    <svg viewBox="0 0 1000 660">
+      <defs>
+        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+          <polygon points="0 0, 10 3.5, 0 7" fill="#64748b" />
+        </marker>
+        <marker id="arrow-rose" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+          <polygon points="0 0, 10 3.5, 0 7" fill="#fb7185" />
+        </marker>
+        <marker id="arrow-emerald" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+          <polygon points="0 0, 10 3.5, 0 7" fill="#34d399" />
+        </marker>
+        <marker id="arrow-amber" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+          <polygon points="0 0, 10 3.5, 0 7" fill="#fbbf24" />
+        </marker>
+        <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+          <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="0.5"/>
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#grid)" />
+
+      <!-- ===== Timeline Base Line ===== -->
+      <line x1="50" y1="80" x2="950" y2="80" stroke="#334155" stroke-width="2"/>
+
+      <!-- ===== Upgrade 1: 2026.5.7 ===== -->
+      <!-- Node -->
+      <circle cx="140" cy="80" r="14" fill="#0f172a" stroke="#22d3ee" stroke-width="2"/>
+      <text x="140" y="84" fill="#22d3ee" font-size="9" font-weight="700" text-anchor="middle">1</text>
+      <!-- Date label -->
+      <text x="140" y="58" fill="#22d3ee" font-size="10" font-weight="700" text-anchor="middle">Round 1</text>
+      <text x="140" y="108" fill="#94a3b8" font-size="8" text-anchor="middle">2026.5.7</text>
+      <!-- Version tag -->
+      <rect x="90" y="118" width="100" height="20" rx="4" fill="rgba(34, 211, 238, 0.15)" stroke="#22d3ee" stroke-width="1"/>
+      <text x="140" y="132" fill="#22d3ee" font-size="9" text-anchor="middle">2026.2.3-1 → 2026.5.6</text>
+
+      <!-- Bug 1 -->
+      <rect x="30" y="150" width="210" height="44" rx="6" fill="rgba(136, 19, 55, 0.25)" stroke="#fb7185" stroke-width="1"/>
+      <text x="40" y="166" fill="#fb7185" font-size="8" font-weight="600">Bug #1 · npm 权限报错</text>
+      <text x="40" y="178" fill="#94a3b8" font-size="7">preinstall 脚本调用 node 失败</text>
+      <text x="40" y="189" fill="#34d399" font-size="7">fix: npm install -g --ignore-scripts</text>
+      <line x1="135" y1="138" x2="135" y2="150" stroke="#fb7185" stroke-width="1" stroke-dasharray="3,2"/>
+
+      <!-- Bug 2 -->
+      <rect x="30" y="202" width="210" height="44" rx="6" fill="rgba(136, 19, 55, 0.25)" stroke="#fb7185" stroke-width="1"/>
+      <text x="40" y="218" fill="#fb7185" font-size="8" font-weight="600">Bug #2 · 404 model_not_found</text>
+      <text x="40" y="230" fill="#94a3b8" font-size="7">openai-completions 不支持 M2.7</text>
+      <text x="40" y="241" fill="#34d399" font-size="7">fix: api → anthropic-messages</text>
+      <line x1="135" y1="138" x2="135" y2="202" stroke="#fb7185" stroke-width="0.8" stroke-dasharray="3,2"/>
+
+      <!-- Bug 3 -->
+      <rect x="30" y="254" width="210" height="44" rx="6" fill="rgba(136, 19, 55, 0.25)" stroke="#fb7185" stroke-width="1"/>
+      <text x="40" y="270" fill="#fb7185" font-size="8" font-weight="600">Bug #3 · apiKeyEnv 不识别</text>
+      <text x="40" y="282" fill="#94a3b8" font-size="7">字段存在但 OpenClaw 忽略</text>
+      <text x="40" y="293" fill="#34d399" font-size="7">fix: 删字段，自动读 ANTHROPIC_API_KEY</text>
+      <line x1="135" y1="138" x2="135" y2="254" stroke="#fb7185" stroke-width="0.8" stroke-dasharray="3,2"/>
+
+      <!-- Bug 4 -->
+      <rect x="30" y="306" width="210" height="44" rx="6" fill="rgba(136, 19, 55, 0.25)" stroke="#fb7185" stroke-width="1"/>
+      <text x="40" y="322" fill="#fb7185" font-size="8" font-weight="600">Bug #4 · 飞书配对失效</text>
+      <text x="40" y="334" fill="#94a3b8" font-size="7">升级后需重新 approve</text>
+      <text x="40" y="345" fill="#34d399" font-size="7">fix: openclaw pairing approve feishu</text>
+      <line x1="135" y1="138" x2="135" y2="306" stroke="#fb7185" stroke-width="0.8" stroke-dasharray="3,2"/>
+
+      <!-- Bug 5 -->
+      <rect x="30" y="358" width="210" height="44" rx="6" fill="rgba(136, 19, 55, 0.25)" stroke="#fb7185" stroke-width="1"/>
+      <text x="40" y="374" fill="#fb7185" font-size="8" font-weight="600">Bug #5 · Gateway 端口锁死</text>
+      <text x="40" y="386" fill="#94a3b8" font-size="7">旧进程 PID 占用 :18789</text>
+      <text x="40" y="397" fill="#34d399" font-size="7">fix: powershell Stop-Process 强杀</text>
+      <line x1="135" y1="138" x2="135" y2="358" stroke="#fb7185" stroke-width="0.8" stroke-dasharray="3,2"/>
+
+      <!-- ===== Upgrade 2: 2026.5.20 ===== -->
+      <circle cx="430" cy="80" r="14" fill="#0f172a" stroke="#fbbf24" stroke-width="2"/>
+      <text x="430" y="84" fill="#fbbf24" font-size="9" font-weight="700" text-anchor="middle">2</text>
+      <text x="430" y="58" fill="#fbbf24" font-size="10" font-weight="700" text-anchor="middle">Round 2</text>
+      <text x="430" y="108" fill="#94a3b8" font-size="8" text-anchor="middle">2026.5.20</text>
+      <rect x="380" y="118" width="100" height="20" rx="4" fill="rgba(251, 191, 36, 0.15)" stroke="#fbbf24" stroke-width="1"/>
+      <text x="430" y="132" fill="#fbbf24" font-size="9" text-anchor="middle">2026.5.6 → 2026.5.20</text>
+
+      <!-- Bug 6 -->
+      <rect x="320" y="150" width="210" height="50" rx="6" fill="rgba(120, 53, 15, 0.3)" stroke="#fbbf24" stroke-width="1"/>
+      <text x="330" y="166" fill="#fbbf24" font-size="8" font-weight="600">Bug #6 · gateway.cmd 版本号未更新</text>
+      <text x="330" y="178" fill="#94a3b8" font-size="7">计划任务跑旧版，bot 无响应</text>
+      <text x="330" y="189" fill="#fb923c" font-size="7">status 正常但飞书 not connected</text>
+      <text x="330" y="196" fill="#34d399" font-size="7">fix: 手动改 gateway.cmd VERSION</text>
+      <line x1="425" y1="138" x2="425" y2="150" stroke="#fbbf24" stroke-width="1"/>
+
+      <!-- Arrow to Upgrade 3 -->
+      <line x1="154" y1="80" x2="416" y2="80" stroke="#334155" stroke-width="1.5" stroke-dasharray="6,4"/>
+      <line x1="444" y1="80" x2="776" y2="80" stroke="#334155" stroke-width="1.5" stroke-dasharray="6,4"/>
+
+      <!-- ===== Upgrade 3: 2026.5.22 ===== -->
+      <circle cx="810" cy="80" r="14" fill="#0f172a" stroke="#a78bfa" stroke-width="2"/>
+      <text x="810" y="84" fill="#a78bfa" font-size="9" font-weight="700" text-anchor="middle">3</text>
+      <text x="810" y="58" fill="#a78bfa" font-size="10" font-weight="700" text-anchor="middle">Round 3</text>
+      <text x="810" y="108" fill="#94a3b8" font-size="8" text-anchor="middle">2026.5.22</text>
+      <rect x="760" y="118" width="100" height="20" rx="4" fill="rgba(167, 139, 250, 0.15)" stroke="#a78bfa" stroke-width="1"/>
+      <text x="810" y="132" fill="#a78bfa" font-size="9" text-anchor="middle">2026.5.20 → 2026.5.22</text>
+
+      <!-- Bug 7 -->
+      <rect x="700" y="150" width="260" height="58" rx="6" fill="rgba(76, 29, 149, 0.3)" stroke="#a78bfa" stroke-width="1"/>
+      <text x="710" y="166" fill="#a78bfa" font-size="8" font-weight="600">Bug #7 · base_url 路径错误 401</text>
+      <text x="710" y="178" fill="#94a3b8" font-size="7">baseUrl: api.minimaxi.com/anthropic</text>
+      <text x="710" y="189" fill="#fb923c" font-size="7">auxiliary_client 路由到 /chat/completions</text>
+      <text x="710" y="200" fill="#34d399" font-size="7">fix: baseUrl 改为 /v1 后缀</text>
+      <line x1="805" y1="138" x2="805" y2="150" stroke="#a78bfa" stroke-width="1"/>
+
+      <!-- Bug 8 -->
+      <rect x="700" y="216" width="260" height="44" rx="6" fill="rgba(76, 29, 149, 0.3)" stroke="#a78bfa" stroke-width="1"/>
+      <text x="710" y="232" fill="#a78bfa" font-size="8" font-weight="600">Bug #8 · Vision 端点 404</text>
+      <text x="710" y="244" fill="#94a3b8" font-size="7">auxiliary.vision base_url 不一致</text>
+      <text x="710" y="255" fill="#34d399" font-size="7">fix: Vision base_url → /v1, model → MiniMax-M2</text>
+      <line x1="805" y1="138" x2="805" y2="216" stroke="#a78bfa" stroke-width="0.8" stroke-dasharray="3,2"/>
+
+      <!-- Bug 9 -->
+      <rect x="700" y="268" width="260" height="44" rx="6" fill="rgba(76, 29, 149, 0.3)" stroke="#a78bfa" stroke-width="1"/>
+      <text x="710" y="284" fill="#a78bfa" font-size="8" font-weight="600">Bug #9 · Authorization "None" 字符串</text>
+      <text x="710" y="296" fill="#94a3b8" font-size="7">token 变成 Python 字符串 "None"</text>
+      <text x="710" y="307" fill="#34d399" font-size="7">fix: 统一 base_url 后 os.environ.get 恢复正常</text>
+      <line x1="805" y1="138" x2="805" y2="268" stroke="#a78bfa" stroke-width="0.8" stroke-dasharray="3,2"/>
+
+      <!-- ===== Success Box ===== -->
+      <rect x="700" y="330" width="260" height="56" rx="8" fill="rgba(52, 211, 153, 0.15)" stroke="#34d399" stroke-width="1.5"/>
+      <text x="830" y="350" fill="#34d399" font-size="10" font-weight="700" text-anchor="middle">✅ All 9 Bugs Patched</text>
+      <text x="830" y="366" fill="#94a3b8" font-size="8" text-anchor="middle">baseUrl: api.minimaxi.com/v1</text>
+      <text x="830" y="380" fill="#94a3b8" font-size="8" text-anchor="middle">飞书 ✅ Hermes ✅ Claude Code ✅</text>
+      <line x1="805" y1="312" x2="805" y2="330" stroke="#34d399" stroke-width="1"/>
+
+      <!-- ===== Summary Legend ===== -->
+      <rect x="30" y="450" width="940" height="160" rx="10" fill="rgba(15, 23, 42, 0.3)" stroke="#1e293b" stroke-width="1"/>
+      <text x="50" y="468" fill="white" font-size="10" font-weight="700">Summary · Upgrade Routine for Windows</text>
+
+      <text x="50" y="488" fill="#fb7185" font-size="8" font-weight="600">Round 1 (2026.5.7):</text>
+      <text x="170" y="488" fill="#94a3b8" font-size="8">npm -g --ignore-scripts → anthropic-messages → 删 apiKeyEnv → pairing approve → Stop-Process</text>
+
+      <text x="50" y="506" fill="#fbbf24" font-size="8" font-weight="600">Round 2 (2026.5.20):</text>
+      <text x="170" y="506" fill="#94a3b8" font-size="8">npm -g --ignore-scripts → 手动改 gateway.cmd OPENCLAW_SERVICE_VERSION → schtasks /run</text>
+
+      <text x="50" y="524" fill="#a78bfa" font-size="8" font-weight="600">Round 3 (2026.5.22):</text>
+      <text x="170" y="524" fill="#94a3b8" font-size="8">npm -g --ignore-scripts → base_url /anthropic → /v1 → vision base_url 同步改为 /v1</text>
+
+      <!-- Key lesson box -->
+      <rect x="50" y="538" width="900" height="62" rx="6" fill="rgba(251, 191, 36, 0.08)" stroke="#fbbf24" stroke-width="1" stroke-dasharray="4,4"/>
+      <text x="70" y="556" fill="#fbbf24" font-size="9" font-weight="700">⚠ Windows 升级关键检查项</text>
+      <text x="70" y="572" fill="#94a3b8" font-size="8">① gateway.cmd 里的 OPENCLAW_SERVICE_VERSION 是否更新到新版本号</text>
+      <text x="70" y="586" fill="#94a3b8" font-size="8">② openclaw.json 的 baseUrl 是否仍为 /v1（不是 /anthropic）</text>
+      <text x="70" y="596" fill="#fbbf24" font-size="7">③ auxiliary_client vision 的 base_url 和 model 是否与主 provider 一致</text>
+    </svg>
+  </div>
+
+  <div class="cards">
+    <div class="card">
+      <div class="card-header"><div class="card-dot cyan"></div><h3>Round 1 · 2026.5.7 · 5 Bugs</h3></div>
+      <ul>
+        <li>• Bug #1: npm --ignore-scripts 跳过 preinstall</li>
+        <li>• Bug #2: api 类型改为 anthropic-messages</li>
+        <li>• Bug #3: 删 apiKeyEnv，自动读环境变量</li>
+        <li>• Bug #4: 飞书重新配对 approve</li>
+        <li>• Bug #5: PowerShell Stop-Process 杀旧进程</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-header"><div class="card-dot amber"></div><h3>Round 2 · 2026.5.20 · 1 Bug</h3></div>
+      <ul>
+        <li>• Bug #6: gateway.cmd 里的 VERSION 未更新</li>
+        <li>• Windows 计划任务调用的脚本版本不变</li>
+        <li>• 导致 Gateway 看似正常但 bot 实际离线</li>
+        <li>• 每次升级必须检查此文件</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-header"><div class="card-dot violet"></div><h3>Round 3 · 2026.5.22 · 3 Bugs</h3></div>
+      <ul>
+        <li>• Bug #7: base_url /anthropic 导致 401</li>
+        <li>• Bug #8: vision 端点 base_url 不一致 404</li>
+        <li>• Bug #9: token 变成字符串 "None"</li>
+        <li>• 根因: auxiliary_client 路由判断逻辑</li>
+        <li>• 统一 base_url → /v1 全部修复</li>
+      </ul>
+    </div>
+  </div>
+
+  <p class="footer">OpenClaw Upgrade Timeline · 3 rounds · 9 bugs · All patched · Last updated: 2026-05-22</p>
+</div>
+</body>
+</html>
