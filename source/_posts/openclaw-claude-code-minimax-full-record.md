@@ -5,7 +5,9 @@ tags: [OpenClaw, Claude Code, MiniMax, AI工具, 飞书机器人, 龙虾, AI工�
 categories: [AI工具, 技术折腾]
 ---
 
-![OpenClaw × Claude Code × MiniMax 全家桶升级](https://raw.githubusercontent.com/MengYiXin/blog-images/main/09-openclaw-minimax-upgrade.svg)
+![全家桶整体架构图](https://raw.githubusercontent.com/MengYiXin/blog-images/main/ai-tools-stack-architecture.svg)
+
+![三次升级踩坑时间线](https://raw.githubusercontent.com/MengYiXin/blog-images/main/openclaw-upgrade-timeline.svg)
 
 ## 背景：为什么要动 OpenClaw？
 
