@@ -23,7 +23,7 @@
     <script id="hexo-configurations">
     let KEEP = window.KEEP || {};
     KEEP.hexo_config = {"hostname":"mengyx.com.cn","root":"/","language":"zh","path":"search.json"};
-    KEEP.theme_config = {"toc":{"enable":false,"number":false,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.svg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":false,"preload":false},"code_copy":{"enable":false,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.4.3"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.svg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":false,"preload":false},"code_copy":{"enable":false,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.4.3"};
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
   </script>
 <meta name="generator" content="Hexo 5.4.0"></head>
@@ -477,6 +477,10 @@
     <ul class="tools-list">
         <!-- TOC aside toggle -->
         
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
 
         <!-- go comment -->
         
@@ -534,6 +538,14 @@
     </div>
 
     
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AF%E4%B8%AD%E7%BB%A7%E5%99%A8%EF%BC%9F"><span class="nav-number">1.</span> <span class="nav-text">1、什么是中继器？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AF%E7%BD%91%E6%A1%A5%EF%BC%9F"><span class="nav-number">2.</span> <span class="nav-text">2、什么是网桥？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AF%E9%9B%86%E7%BA%BF%E5%99%A8%EF%BC%9F"><span class="nav-number">3.</span> <span class="nav-text">3、什么是集线器？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AF%E4%BA%A4%E6%8D%A2%E6%9C%BA%EF%BC%9F"><span class="nav-number">4.</span> <span class="nav-text">4、什么是交换机？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5%E3%80%81%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%A6%82%E4%BD%95%E5%AD%A6%E4%B9%A0-MAC-%E5%9C%B0%E5%9D%80%EF%BC%9F"><span class="nav-number">5.</span> <span class="nav-text">5、交换机如何学习 MAC 地址？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6%E3%80%81%E5%AF%B9%E6%AF%94%E9%9B%86%E7%BA%BF%E5%99%A8%EF%BC%8C%E4%BA%A4%E6%8D%A2%E6%9C%BA%E6%9C%89%E5%93%AA%E4%BA%9B%E4%BC%98%E7%82%B9%EF%BC%9F"><span class="nav-number">6.</span> <span class="nav-text">6、对比集线器，交换机有哪些优点？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7%E3%80%81%E4%BB%A5%E5%A4%AA%E7%BD%91%E6%95%B0%E6%8D%AE%E5%B8%A7%E6%9C%89%E5%93%AA%E4%BA%9B%E7%B1%BB%E5%9E%8B%EF%BC%9F"><span class="nav-number">7.</span> <span class="nav-text">7、以太网数据帧有哪些类型？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8%E3%80%81%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%A6%82%E4%BD%95%E8%BD%AC%E5%8F%91%E6%95%B0%E6%8D%AE%E5%B8%A7%EF%BC%9F"><span class="nav-number">8.</span> <span class="nav-text">8、交换机如何转发数据帧？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9%E3%80%81%E5%8D%95%E5%B7%A5%E5%92%8C%E5%8F%8C%E5%B7%A5%E9%80%9A%E4%BF%A1%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="nav-number">9.</span> <span class="nav-text">9、单工和双工通信有什么区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10%E3%80%81%E4%BA%A4%E6%8D%A2%E6%9C%BA%E7%9A%84%E5%A4%84%E7%90%86%E8%83%BD%E5%8A%9B%E7%9A%84%E6%8C%87%E6%A0%87%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">10.</span> <span class="nav-text">10、交换机的处理能力的指标是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11%E3%80%81%E6%A0%B9%E6%8D%AE%E5%8A%9F%E8%83%BD%E5%88%86%E7%B1%BB%EF%BC%8C%E4%BA%A4%E6%8D%A2%E6%9C%BA%E6%9C%89%E5%87%A0%E7%A7%8D%E7%B1%BB%E5%9E%8B%EF%BC%9F"><span class="nav-number">11.</span> <span class="nav-text">11、根据功能分类，交换机有几种类型？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12%E3%80%81%E6%A0%B9%E6%8D%AE%E5%A4%96%E5%BD%A2%E5%88%86%E7%B1%BB%EF%BC%8C%E4%BA%A4%E6%8D%A2%E6%9C%BA%E6%9C%89%E5%87%A0%E7%A7%8D%E7%B1%BB%E5%9E%8B%EF%BC%9F"><span class="nav-number">12.</span> <span class="nav-text">12、根据外形分类，交换机有几种类型？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#13%E3%80%81%E6%A0%B9%E6%8D%AE%E7%94%A8%E9%80%94%E5%88%86%E7%B1%BB%EF%BC%8C%E4%BA%A4%E6%8D%A2%E6%9C%BA%E6%9C%89%E5%87%A0%E7%A7%8D%E7%B1%BB%E5%9E%8B%EF%BC%9F"><span class="nav-number">13.</span> <span class="nav-text">13、根据用途分类，交换机有几种类型？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#14%E3%80%81%E4%BA%A4%E6%8D%A2%E6%9C%BA%E6%9C%89%E5%87%A0%E7%A7%8D%E7%AB%AF%E5%8F%A3%E7%B1%BB%E5%9E%8B%EF%BC%9F"><span class="nav-number">14.</span> <span class="nav-text">14、交换机有几种端口类型？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%83%E5%85%86%E4%BB%A5%E5%A4%AA%E7%BD%91%E7%AB%AF%E5%8F%A3"><span class="nav-number">15.</span> <span class="nav-text">千兆以太网端口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%89%E7%BA%A4%E7%AB%AF%E5%8F%A3"><span class="nav-number">16.</span> <span class="nav-text">光纤端口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PoE-%E7%AB%AF%E5%8F%A3"><span class="nav-number">17.</span> <span class="nav-text">PoE 端口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8A%E8%A1%8C%E9%93%BE%E8%B7%AF%E7%AB%AF%E5%8F%A3"><span class="nav-number">18.</span> <span class="nav-text">上行链路端口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8B%E8%A1%8C%E9%93%BE%E8%B7%AF%E7%AB%AF%E5%8F%A3"><span class="nav-number">19.</span> <span class="nav-text">下行链路端口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%A0%86%E5%8F%A0"><span class="nav-number">20.</span> <span class="nav-text">交换机堆叠</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#15%E3%80%81%E4%BA%A4%E6%8D%A2%E6%9C%BA%E6%9C%89%E5%93%AA%E4%BA%9B%E5%8A%9F%E8%83%BD%EF%BC%9F"><span class="nav-number">21.</span> <span class="nav-text">15、交换机有哪些功能？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MAC-%E5%9C%B0%E5%9D%80%E6%95%B0"><span class="nav-number">22.</span> <span class="nav-text">MAC 地址数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%9F%E6%88%90%E6%A0%91%E5%8A%9F%E8%83%BD"><span class="nav-number">23.</span> <span class="nav-text">生成树功能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%93%BE%E8%B7%AF%E8%81%9A%E5%90%88"><span class="nav-number">24.</span> <span class="nav-text">链路聚合</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#VLAN"><span class="nav-number">25.</span> <span class="nav-text">VLAN</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AB%AF%E5%8F%A3%E9%95%9C%E5%83%8F"><span class="nav-number">26.</span> <span class="nav-text">端口镜像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#QoS-%E4%BC%98%E5%85%88%E7%BA%A7%E9%98%9F%E5%88%97"><span class="nav-number">27.</span> <span class="nav-text">QoS 优先级队列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MAC-%E5%9C%B0%E5%9D%80%E8%BF%87%E6%BB%A4"><span class="nav-number">28.</span> <span class="nav-text">MAC 地址过滤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E7%AB%AF%E5%8F%A3%E7%9A%84%E8%AE%A4%E8%AF%81"><span class="nav-number">29.</span> <span class="nav-text">基于端口的认证</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E7%AE%A1%E7%90%86"><span class="nav-number">30.</span> <span class="nav-text">网络管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#16%E3%80%81%E4%BA%A4%E6%8D%A2%E6%9C%BA%E7%9A%84%E6%9E%B6%E6%9E%84%E6%98%AF%E7%94%B1%E4%BB%80%E4%B9%88%E7%BB%84%E6%88%90%EF%BC%9F"><span class="nav-number">31.</span> <span class="nav-text">16、交换机的架构是由什么组成？</span></a></li></ol>
+    </div>
+</div>
+        </aside>
+    
 
     <div class="image-viewer-container">
     <img src="">
@@ -565,6 +577,14 @@
 
 
 <div class="post-scripts">
+    
+        
+<script src="/js/left-side-toggle.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+<script src="/js/toc.js"></script>
+
     
 </div>
 

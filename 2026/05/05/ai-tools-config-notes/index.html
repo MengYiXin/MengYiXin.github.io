@@ -23,7 +23,7 @@
     <script id="hexo-configurations">
     let KEEP = window.KEEP || {};
     KEEP.hexo_config = {"hostname":"mengyx.com.cn","root":"/","language":"zh","path":"search.json"};
-    KEEP.theme_config = {"toc":{"enable":false,"number":false,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.svg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":false,"preload":false},"code_copy":{"enable":false,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.4.3"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":true,"expand_all":true,"init_open":true},"style":{"primary_color":"#0066CC","avatar":"/images/avatar.svg","favicon":"/images/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":true,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":false,"preload":false},"code_copy":{"enable":false,"style":"default"},"pjax":{"enable":false},"lazyload":{"enable":false},"version":"3.4.3"};
     KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"};
   </script>
 <meta name="generator" content="Hexo 5.4.0"></head>
@@ -530,6 +530,10 @@
     <ul class="tools-list">
         <!-- TOC aside toggle -->
         
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
 
         <!-- go comment -->
         
@@ -587,6 +591,14 @@
     </div>
 
     
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE%E6%A0%B8%E5%BF%83%E9%97%AE%E9%A2%98"><span class="nav-number">1.</span> <span class="nav-text">一、网络配置核心问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-GitHub-%E8%BF%9E%E6%8E%A5%E9%97%AE%E9%A2%98"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 GitHub 连接问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-WSL2-%E7%BD%91%E7%BB%9C%E9%97%AE%E9%A2%98"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 WSL2 网络问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E3%80%81Clash-%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE"><span class="nav-number">2.</span> <span class="nav-text">二、Clash 代理配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E4%BD%8D%E7%BD%AE"><span class="nav-number">2.1.</span> <span class="nav-text">2.1 配置文件位置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-%E5%B8%B8%E7%94%A8%E7%AB%AF%E5%8F%A3"><span class="nav-number">2.2.</span> <span class="nav-text">2.2 常用端口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-git-proxy-%E6%B8%85%E7%90%86"><span class="nav-number">2.3.</span> <span class="nav-text">2.3 git proxy 清理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81Hermes-%E9%85%8D%E7%BD%AE%E9%99%B7%E9%98%B1"><span class="nav-number">3.</span> <span class="nav-text">三、Hermes 配置陷阱</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-base-url-%E9%99%B7%E9%98%B1"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 base_url 陷阱</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-API-Key-%E4%BD%8D%E7%BD%AE%E9%99%B7%E9%98%B1"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 API Key 位置陷阱</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B%E3%80%81Python-%E7%8E%AF%E5%A2%83%E9%97%AE%E9%A2%98"><span class="nav-number">4.</span> <span class="nav-text">四、Python 环境问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-externally-managed-environment"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 externally-managed-environment</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-Python-%E7%89%88%E6%9C%AC%E9%97%AE%E9%A2%98"><span class="nav-number">4.2.</span> <span class="nav-text">4.2 Python 版本问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%94%E3%80%81WSL2-%E7%89%B9%E6%AE%8A%E9%97%AE%E9%A2%98"><span class="nav-number">5.</span> <span class="nav-text">五、WSL2 特殊问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#5-1-Chromium-%E6%B2%99%E7%AE%B1%E9%97%AE%E9%A2%98"><span class="nav-number">5.1.</span> <span class="nav-text">5.1 Chromium 沙箱问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-2-LD-LIBRARY-PATH-%E9%97%AE%E9%A2%98"><span class="nav-number">5.2.</span> <span class="nav-text">5.2 LD_LIBRARY_PATH 问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-3-%E8%B7%AF%E5%BE%84%E6%98%A0%E5%B0%84"><span class="nav-number">5.3.</span> <span class="nav-text">5.3 路径映射</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%AD%E3%80%81%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF%E6%B1%87%E6%80%BB"><span class="nav-number">6.</span> <span class="nav-text">六、常见错误汇总</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%83%E3%80%81%E5%BF%AB%E9%80%9F%E4%BF%AE%E5%A4%8D%E5%91%BD%E4%BB%A4"><span class="nav-number">7.</span> <span class="nav-text">七、快速修复命令</span></a></li></ol>
+    </div>
+</div>
+        </aside>
+    
 
     <div class="image-viewer-container">
     <img src="">
@@ -618,6 +630,14 @@
 
 
 <div class="post-scripts">
+    
+        
+<script src="/js/left-side-toggle.js"></script>
+
+<script src="/js/libs/anime.min.js"></script>
+
+<script src="/js/toc.js"></script>
+
     
 </div>
 
