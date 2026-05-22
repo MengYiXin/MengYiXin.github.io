@@ -58,18 +58,17 @@ jobs:
           grep "^[a-z]" node_modules/hexo-theme-keep/_config.yml | head -20
 
       - name: Override theme config with site values
-        run: |
-          # hexo-theme-keep's default _config.yml has first_screen.enable: false
-          # and first_screen.description: Keep writing and Keep loving.
-          # Our _config.yml has theme_config.first_screen with the right values,
-          # but Hexo's theme_config merge doesn't work reliably in all environments.
-          # FIX: Directly patch the theme package's _config.yml
-          python3 << 'EOF'
+        run: |-
+          # hexo-theme-keep's default _config.yml has toc.enable: false
+          # and first_screen.description: "Keep writing and Keep loving."
+          # Hexo's theme_config merge doesn't work reliably, so we patch directly.
+          python3 << 'PYEOF'
           import re
           theme_cfg = "node_modules/hexo-theme-keep/_config.yml"
           with open(theme_cfg, "r") as f:
             content = f.read()
-          # Patch first_screen section - replace enable line and description line unconditionally
+
+          # Patch first_screen section
           content = re.sub(
             r'(first_screen:\n\s+enable:\s*)\w+',
             r'\g<1>true',
@@ -80,17 +79,19 @@ jobs:
             r'\g<1>不要熬夜哟！',
             content
           )
+
+          # Patch toc section
+          toc_block = "toc:\n  enable: true\n  number: true\n  expand_all: true\n  init_open: true"
+          content = re.sub(
+            r'toc:\s*\n\s*enable:\s*\w+\s*\n\s*number:\s*\w+\s*\n\s*expand_all:\s*\w+\s*\n\s*init_open:\s*\w+',
+            toc_block,
+            content
+          )
+
           with open(theme_cfg, "w") as f:
             f.write(content)
           print("Theme config patched successfully")
-          # Verify
-          import subprocess
-          result = subprocess.run(
-            ["grep", "-A2", "first_screen:", theme_cfg],
-            capture_output=True, text=True
-          )
-          print("Result:", result.stdout.strip())
-          EOF
+          PYEOF
 
       - name: Build
         run: npx hexo generate
