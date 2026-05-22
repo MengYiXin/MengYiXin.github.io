@@ -97,7 +97,9 @@ jobs:
 
       - name: Deploy
         run: |
-          git clone git@github.com:MengYiXin/MengYiXin.github.io.git _deploy
+          # 阻止GitHub Pages用Jekyll重写hexo生成的静态文件
+          touch public/.nojekyll
+          git clone --branch gh-pages --depth 1 git@github.com:MengYiXin/MengYiXin.github.io.git _deploy
           cp -r public/* _deploy/
           # 复制 CNAME（如果存在）
           if [ -f source/CNAME ]; then
@@ -108,4 +110,4 @@ jobs:
           git config user.email "MengYiXin@users.noreply.github.com"
           git add .
           git commit -m "deploy: ${{ github.event.head_commit.message }} $(date)"
-          git push
+          git push origin gh-pages
