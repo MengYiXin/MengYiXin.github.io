@@ -42,7 +42,7 @@
 <figure class="my-6 not-prose">
   <div class="rounded-md border border-default bg-page-2 p-5">
     <div class="text-meta text-xs uppercase tracking-wider text-center mb-4">昇腾芯片代际演进 · 2023 → 2028</div>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+    <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0.75rem;">
       <div class="rounded-md border-2 border-slate-400 bg-slate-50 dark:bg-slate-800 p-3">
         <div class="font-semibold text-sm">910B4 / 3500 G3</div>
         <div class="text-meta text-xs mt-1">2023 · 训推一体</div>
@@ -60,7 +60,7 @@
       </div>
     </div>
     <div class="flex items-center justify-center my-3 text-slate-400 text-sm">↓</div>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 max-w-md mx-auto">
+    <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0.75rem;max-width:28rem;margin-left:auto;margin-right:auto;">
       <div class="rounded-md border-2 border-purple-400 bg-purple-50 dark:bg-purple-950 p-3">
         <div class="font-semibold text-sm">960</div>
         <div class="text-meta text-xs mt-1">2027 · 路线图</div>
@@ -137,61 +137,24 @@
 <figure class="my-6 not-prose">
   <div class="rounded-md border border-default bg-page-2 p-5">
     <div class="text-meta text-xs uppercase tracking-wider text-center mb-4">Atlas 950 SuperPoD · 灵衢互联 UB · 2.2 TB/s</div>
-
-    <div class="text-center text-meta text-xs mb-2">8 × NPU(全互联 Mesh)</div>
-    <div class="grid grid-cols-4 gap-3 max-w-2xl mx-auto mb-4">
-      <div class="rounded-md border-2 border-blue-500 bg-blue-100 dark:bg-blue-900 p-3 text-center">
-        <div class="font-mono font-semibold text-sm">NPU 1</div>
-        <div class="text-meta text-xs">288 GB</div>
-      </div>
-      <div class="rounded-md border-2 border-blue-500 bg-blue-100 dark:bg-blue-900 p-3 text-center">
-        <div class="font-mono font-semibold text-sm">NPU 2</div>
-        <div class="text-meta text-xs">288 GB</div>
-      </div>
-      <div class="rounded-md border-2 border-blue-500 bg-blue-100 dark:bg-blue-900 p-3 text-center">
-        <div class="font-mono font-semibold text-sm">NPU 3</div>
-        <div class="text-meta text-xs">288 GB</div>
-      </div>
-      <div class="rounded-md border-2 border-blue-500 bg-blue-100 dark:bg-blue-900 p-3 text-center">
-        <div class="font-mono font-semibold text-sm">NPU 4</div>
-        <div class="text-meta text-xs">288 GB</div>
-      </div>
-      <div class="rounded-md border-2 border-blue-500 bg-blue-100 dark:bg-blue-900 p-3 text-center">
-        <div class="font-mono font-semibold text-sm">NPU 5</div>
-        <div class="text-meta text-xs">288 GB</div>
-      </div>
-      <div class="rounded-md border-2 border-blue-500 bg-blue-100 dark:bg-blue-900 p-3 text-center">
-        <div class="font-mono font-semibold text-sm">NPU 6</div>
-        <div class="text-meta text-xs">288 GB</div>
-      </div>
-      <div class="rounded-md border-2 border-blue-500 bg-blue-100 dark:bg-blue-900 p-3 text-center">
-        <div class="font-mono font-semibold text-sm">NPU 7</div>
-        <div class="text-meta text-xs">288 GB</div>
-      </div>
-      <div class="rounded-md border-2 border-blue-500 bg-blue-100 dark:bg-blue-900 p-3 text-center">
-        <div class="font-mono font-semibold text-sm">NPU 8</div>
-        <div class="text-meta text-xs">288 GB</div>
-      </div>
+    <div class="text-center text-meta text-xs mb-2">8 × NPU(全互联 Mesh · 每张卡 ↔ 7 张卡)</div>
+    <div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0.75rem;max-width:42rem;margin-left:auto;margin-right:auto;">
+      <div class="rounded-md border-2 border-blue-500 bg-blue-100 dark:bg-blue-900 p-3 text-center"><div class="font-mono font-semibold text-sm">NPU 1</div><div class="text-meta text-xs">288 GB</div></div>
+      <div class="rounded-md border-2 border-blue-500 bg-blue-100 dark:bg-blue-900 p-3 text-center"><div class="font-mono font-semibold text-sm">NPU 2</div><div class="text-meta text-xs">288 GB</div></div>
+      <div class="rounded-md border-2 border-blue-500 bg-blue-100 dark:bg-blue-900 p-3 text-center"><div class="font-mono font-semibold text-sm">NPU 3</div><div class="text-meta text-xs">288 GB</div></div>
+      <div class="rounded-md border-2 border-blue-500 bg-blue-100 dark:bg-blue-900 p-3 text-center"><div class="font-mono font-semibold text-sm">NPU 4</div><div class="text-meta text-xs">288 GB</div></div>
+      <div class="rounded-md border-2 border-blue-500 bg-blue-100 dark:bg-blue-900 p-3 text-center"><div class="font-mono font-semibold text-sm">NPU 5</div><div class="text-meta text-xs">288 GB</div></div>
+      <div class="rounded-md border-2 border-blue-500 bg-blue-100 dark:bg-blue-900 p-3 text-center"><div class="font-mono font-semibold text-sm">NPU 6</div><div class="text-meta text-xs">288 GB</div></div>
+      <div class="rounded-md border-2 border-blue-500 bg-blue-100 dark:bg-blue-900 p-3 text-center"><div class="font-mono font-semibold text-sm">NPU 7</div><div class="text-meta text-xs">288 GB</div></div>
+      <div class="rounded-md border-2 border-blue-500 bg-blue-100 dark:bg-blue-900 p-3 text-center"><div class="font-mono font-semibold text-sm">NPU 8</div><div class="text-meta text-xs">288 GB</div></div>
     </div>
-
-    <div class="text-center text-meta text-xs mb-2">↕ 全互联 2.2 TB/s · 每个 NPU ↔ 其他 7 个 NPU</div>
-
+    <div class="text-center text-meta text-xs mt-3 mb-2">↕ 全互联 2.2 TB/s · NPU ↔ NPU</div>
     <div class="text-center text-meta text-xs mt-4 mb-2">分布式内存池</div>
-    <div class="grid grid-cols-3 gap-3 max-w-md mx-auto">
-      <div class="rounded-md border-2 border-amber-500 bg-amber-100 dark:bg-amber-900 p-3 text-center">
-        <div class="font-mono font-semibold text-sm">MEM A</div>
-        <div class="text-meta text-xs">dist</div>
-      </div>
-      <div class="rounded-md border-2 border-amber-500 bg-amber-100 dark:bg-amber-900 p-3 text-center">
-        <div class="font-mono font-semibold text-sm">MEM B</div>
-        <div class="text-meta text-xs">dist</div>
-      </div>
-      <div class="rounded-md border-2 border-amber-500 bg-amber-100 dark:bg-amber-900 p-3 text-center">
-        <div class="font-mono font-semibold text-sm">MEM C</div>
-        <div class="text-meta text-xs">dist</div>
-      </div>
+    <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0.75rem;max-width:28rem;margin-left:auto;margin-right:auto;">
+      <div class="rounded-md border-2 border-amber-500 bg-amber-100 dark:bg-amber-900 p-3 text-center"><div class="font-mono font-semibold text-sm">MEM A</div><div class="text-meta text-xs">dist</div></div>
+      <div class="rounded-md border-2 border-amber-500 bg-amber-100 dark:bg-amber-900 p-3 text-center"><div class="font-mono font-semibold text-sm">MEM B</div><div class="text-meta text-xs">dist</div></div>
+      <div class="rounded-md border-2 border-amber-500 bg-amber-100 dark:bg-amber-900 p-3 text-center"><div class="font-mono font-semibold text-sm">MEM C</div><div class="text-meta text-xs">dist</div></div>
     </div>
-
     <div class="text-center mt-3 text-meta text-xs">数据来自华鲲昇腾产品介绍 slide 27</div>
   </div>
 </figure>
