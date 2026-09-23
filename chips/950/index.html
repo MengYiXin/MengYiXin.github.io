@@ -32,20 +32,178 @@
 })();
 </script>
 
-</head> <body> <header class="border-b border-default bg-page sticky top-0 z-40 backdrop-blur supports-[backdrop-filter]:bg-page/80"> <div class="container-shell flex items-center justify-between h-14"> <a href="/" class="flex items-center gap-2.5 group"> <span class="inline-block w-6 h-6 rounded bg-brand text-white text-[11px] font-bold leading-6 text-center">A</span> <span class="font-semibold text-ink-900 dark:text-ink-100 group-hover:text-brand transition-colors">Ascend Notes</span> <span class="hidden md:inline text-meta ml-1">· 昇腾实测档案</span> </a> <nav class="hidden md:flex items-center gap-6 text-sm"> <a href="/" class="nav-link"> 首页 </a><a href="/demos" class="nav-link"> 效果 </a><a href="/chips/3500-g3" class="nav-link"> 3500 G3 </a><a href="/chips/910c" class="nav-link"> 910C </a><a href="/chips/950" class="nav-link text-brand dark:text-brand-dark font-medium"> 950 </a><a href="/models" class="nav-link"> 模型 </a><a href="/benchmarks/extended" class="nav-link"> 性能 </a><a href="/demos/usage" class="nav-link"> 部署 </a><a href="/business/models" class="nav-link"> 业务 </a></nav> <div class="flex items-center gap-3"> <button id="theme-toggle" aria-label="切换主题" class="text-meta hover:text-brand transition-colors p-1.5 rounded" title="切换主题"> <svg class="w-4 h-4 dark:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"> <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path> </svg> <svg class="w-4 h-4 hidden dark:inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"> <circle cx="12" cy="12" r="4"></circle> <path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path> </svg> </button> <button id="mobile-menu-btn" class="md:hidden text-meta p-1.5" aria-label="菜单"> <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"> <path d="M3 12h18M3 6h18M3 18h18"></path> </svg> </button> </div> </div> <div id="mobile-menu" class="md:hidden hidden border-t border-default bg-page-2"> <div class="container-shell py-3 flex flex-col gap-2 text-sm"> <a href="/" class="nav-link py-1.5">首页</a><a href="/demos" class="nav-link py-1.5">效果</a><a href="/chips/3500-g3" class="nav-link py-1.5">3500 G3</a><a href="/chips/910c" class="nav-link py-1.5">910C</a><a href="/chips/950" class="nav-link py-1.5">950</a><a href="/models" class="nav-link py-1.5">模型</a><a href="/benchmarks/extended" class="nav-link py-1.5">性能</a><a href="/demos/usage" class="nav-link py-1.5">部署</a><a href="/business/models" class="nav-link py-1.5">业务</a></div> </div> </header> <script type="module">const e=document.getElementById("mobile-menu-btn"),n=document.getElementById("mobile-menu");e?.addEventListener("click",()=>n?.classList.toggle("hidden"));</script> <main>  <div class="container-shell py-8"> <nav aria-label="Breadcrumb" class="text-meta text-sm mb-4"> <ol class="flex items-center flex-wrap gap-1.5"> <li class="flex items-center gap-1.5"> <a href="/" class="hover:text-brand">首页</a> <span class="text-ink-400">›</span> </li><li class="flex items-center gap-1.5"> <a href="/" class="hover:text-brand">芯片</a> <span class="text-ink-400">›</span> </li><li class="flex items-center gap-1.5"> <span class="text-ink-700 dark:text-ink-200">950</span>  </li> </ol> </nav> <div class="flex gap-8"> <aside class="hidden lg:block w-56 shrink-0"> <nav class="sticky top-20 space-y-6 text-sm"> <div> <div class="text-meta uppercase tracking-wider text-xs font-medium mb-2 px-2"> 芯片 / 服务器 </div> <ul class="space-y-0.5"> <li> <a href="/chips/3500-g3" class="flex items-center justify-between px-2 py-1.5 rounded transition-colors text-ink-700 dark:text-ink-200 hover:bg-page-2"> <span>3500 G3</span>  </a> </li><li> <a href="/chips/910c" class="flex items-center justify-between px-2 py-1.5 rounded transition-colors text-ink-700 dark:text-ink-200 hover:bg-page-2"> <span>910C</span>  </a> </li><li> <a href="/chips/950" class="flex items-center justify-between px-2 py-1.5 rounded transition-colors bg-brand/10 text-brand dark:text-brand-dark font-medium"> <span>950 (路线图)</span> <span class="text-[10px] text-meta">本页</span> </a> </li> </ul> </div><div> <div class="text-meta uppercase tracking-wider text-xs font-medium mb-2 px-2"> 模型与基准 </div> <ul class="space-y-0.5"> <li> <a href="/models" class="flex items-center justify-between px-2 py-1.5 rounded transition-colors text-ink-700 dark:text-ink-200 hover:bg-page-2"> <span>模型适配总表</span>  </a> </li><li> <a href="/benchmarks/ttft" class="flex items-center justify-between px-2 py-1.5 rounded transition-colors text-ink-700 dark:text-ink-200 hover:bg-page-2"> <span>TTFT</span>  </a> </li><li> <a href="/benchmarks/throughput" class="flex items-center justify-between px-2 py-1.5 rounded transition-colors text-ink-700 dark:text-ink-200 hover:bg-page-2"> <span>吞吐</span>  </a> </li><li> <a href="/benchmarks/e2e" class="flex items-center justify-between px-2 py-1.5 rounded transition-colors text-ink-700 dark:text-ink-200 hover:bg-page-2"> <span>E2E</span>  </a> </li> </ul> </div> </nav> </aside> <article class="flex-1 min-w-0 prose-narrow">  <header class="mb-8"> <div class="text-meta text-sm mb-2">路线图 · 暂无实测</div> <h1 class="h1-title">昇腾 950</h1> <p class="mt-3 text-ink-700 dark:text-ink-200">华为规划的下一代昇腾芯片，定位为 910C 的下一代旗舰， 预计将在算力、显存带宽、HBM 容量、互联带宽上全面升级。 目前暂无第三方实测数据，本页作为**路线图占位**。</p> </header> <div class="not-prose rounded-md border border-default bg-page-2 p-4 mb-8"> <div class="font-semibold text-ink-900 dark:text-ink-100">⚠️ 数据缺失声明</div> <p class="text-sm text-ink-700 dark:text-ink-200 mt-1">
-昇腾 950 暂无第三方实测数据。请勿引用本页任何数字作为采购决策依据。
-      本页作为占位，会在 950 商用后按 3500 G3 / 910B4 / 910C 的同等结构补齐。
-</p> </div> <h2 id="overview" class="anchor-offset h2-title">1. 概述</h2> <p class="text-ink-700 dark:text-ink-200">
-昇腾 950 是华为规划的下一代昇腾芯片，定位为 910C 的下一代旗舰。
-    预计将在算力、显存带宽、HBM 容量、互联带宽上全面升级，
-    重点面向千亿/万亿参数 MoE 推理、1M+ 超长上下文、多模态融合推理等场景。
-</p> <h2 id="what-is" class="anchor-offset h2-title">2. 950 是什么</h2> <ul class="text-ink-700 dark:text-ink-200 space-y-1.5"> <li><b>代号</b>：Ascend 950（昇腾 950）</li> <li><b>厂商</b>：华为</li> <li><b>发布预期</b>：2026-2027 (预计)</li> <li><b>定位</b>：910C 的下一代旗舰</li> </ul> <h2 id="expect" class="anchor-offset h2-title">3. 预期规格（待官方披露）</h2> <div class="overflow-x-auto rounded-md border border-default not-prose"> <table class="data-table"> <thead> <tr> <th>项</th> <th>当前 910C</th> <th>预期 950</th> </tr> </thead> <tbody> <tr><td class="align-middle">单卡显存</td><td class="align-middle">128GB HBM3</td><td class="align-middle">更大（具体待披露）</td></tr> <tr><td class="align-middle">单卡 FP16 算力</td><td class="align-middle">≥560 TFLOPS</td><td class="align-middle">显著提升</td></tr> <tr><td class="align-middle">显存带宽</td><td class="align-middle">≥3.2 TB/s</td><td class="align-middle">预计 ≥4-5 TB/s (HBM3e)</td></tr> <tr><td class="align-middle">NPU 互联</td><td class="align-middle">≥780 GB/s</td><td class="align-middle">预计 ≥1 TB/s</td></tr> <tr><td class="align-middle">典型场景</td><td class="align-middle">128K~1M 上下文</td><td class="align-middle">1M+ 常态化</td></tr> </tbody> </table> </div> <p class="text-meta text-sm mt-2">
-以上为基于行业趋势的预期，非官方数据。
-</p> <h2 id="sources" class="anchor-offset h2-title">4. 信源</h2>  <p class="text-meta text-sm">
-一旦 950 商用，本页会按 3500 G3 / 910B4 / 910C 的同等结构补齐。
-</p>  </article> <aside class="hidden xl:block w-48 shrink-0"><nav class="sticky top-20 text-sm"><div class="text-meta uppercase tracking-wider text-xs font-medium mb-2">
+</head> <body> <header class="border-b border-default bg-page sticky top-0 z-40 backdrop-blur supports-[backdrop-filter]:bg-page/80"> <div class="container-shell flex items-center justify-between h-14"> <a href="/" class="flex items-center gap-2.5 group"> <span class="inline-block w-6 h-6 rounded bg-brand text-white text-[11px] font-bold leading-6 text-center">A</span> <span class="font-semibold text-ink-900 dark:text-ink-100 group-hover:text-brand transition-colors">Ascend Notes</span> <span class="hidden md:inline text-meta ml-1">· 昇腾实测档案</span> </a> <nav class="hidden md:flex items-center gap-6 text-sm"> <a href="/" class="nav-link"> 首页 </a><a href="/demos" class="nav-link"> 效果 </a><a href="/chips/3500-g3" class="nav-link"> 3500 G3 </a><a href="/chips/910c" class="nav-link"> 910C </a><a href="/chips/950" class="nav-link text-brand dark:text-brand-dark font-medium"> 950 </a><a href="/models" class="nav-link"> 模型 </a><a href="/benchmarks/extended" class="nav-link"> 性能 </a><a href="/demos/usage" class="nav-link"> 部署 </a><a href="/business/models" class="nav-link"> 业务 </a></nav> <div class="flex items-center gap-3"> <button id="theme-toggle" aria-label="切换主题" class="text-meta hover:text-brand transition-colors p-1.5 rounded" title="切换主题"> <svg class="w-4 h-4 dark:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"> <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path> </svg> <svg class="w-4 h-4 hidden dark:inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"> <circle cx="12" cy="12" r="4"></circle> <path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path> </svg> </button> <button id="mobile-menu-btn" class="md:hidden text-meta p-1.5" aria-label="菜单"> <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"> <path d="M3 12h18M3 6h18M3 18h18"></path> </svg> </button> </div> </div> <div id="mobile-menu" class="md:hidden hidden border-t border-default bg-page-2"> <div class="container-shell py-3 flex flex-col gap-2 text-sm"> <a href="/" class="nav-link py-1.5">首页</a><a href="/demos" class="nav-link py-1.5">效果</a><a href="/chips/3500-g3" class="nav-link py-1.5">3500 G3</a><a href="/chips/910c" class="nav-link py-1.5">910C</a><a href="/chips/950" class="nav-link py-1.5">950</a><a href="/models" class="nav-link py-1.5">模型</a><a href="/benchmarks/extended" class="nav-link py-1.5">性能</a><a href="/demos/usage" class="nav-link py-1.5">部署</a><a href="/business/models" class="nav-link py-1.5">业务</a></div> </div> </header> <script type="module">const e=document.getElementById("mobile-menu-btn"),n=document.getElementById("mobile-menu");e?.addEventListener("click",()=>n?.classList.toggle("hidden"));</script> <main>  <div class="container-shell py-8"> <nav aria-label="Breadcrumb" class="text-meta text-sm mb-4"> <ol class="flex items-center flex-wrap gap-1.5"> <li class="flex items-center gap-1.5"> <a href="/" class="hover:text-brand">首页</a> <span class="text-ink-400">›</span> </li><li class="flex items-center gap-1.5"> <a href="/" class="hover:text-brand">芯片</a> <span class="text-ink-400">›</span> </li><li class="flex items-center gap-1.5"> <span class="text-ink-700 dark:text-ink-200">950</span>  </li> </ol> </nav> <div class="flex gap-8"> <aside class="hidden lg:block w-56 shrink-0"> <nav class="sticky top-20 space-y-6 text-sm"> <div> <div class="text-meta uppercase tracking-wider text-xs font-medium mb-2 px-2"> 芯片 / 服务器 </div> <ul class="space-y-0.5"> <li> <a href="/chips/3500-g3" class="flex items-center justify-between px-2 py-1.5 rounded transition-colors text-ink-700 dark:text-ink-200 hover:bg-page-2"> <span>3500 G3 / 910B4</span>  </a> </li><li> <a href="/chips/910c" class="flex items-center justify-between px-2 py-1.5 rounded transition-colors text-ink-700 dark:text-ink-200 hover:bg-page-2"> <span>910C</span>  </a> </li><li> <a href="/chips/950" class="flex items-center justify-between px-2 py-1.5 rounded transition-colors bg-brand/10 text-brand dark:text-brand-dark font-medium"> <span>950</span> <span class="text-[10px] text-meta">本页</span> </a> </li> </ul> </div><div> <div class="text-meta uppercase tracking-wider text-xs font-medium mb-2 px-2"> 模型与基准 </div> <ul class="space-y-0.5"> <li> <a href="/models" class="flex items-center justify-between px-2 py-1.5 rounded transition-colors text-ink-700 dark:text-ink-200 hover:bg-page-2"> <span>模型适配总表</span>  </a> </li><li> <a href="/benchmarks/ttft" class="flex items-center justify-between px-2 py-1.5 rounded transition-colors text-ink-700 dark:text-ink-200 hover:bg-page-2"> <span>TTFT</span>  </a> </li><li> <a href="/benchmarks/throughput" class="flex items-center justify-between px-2 py-1.5 rounded transition-colors text-ink-700 dark:text-ink-200 hover:bg-page-2"> <span>吞吐</span>  </a> </li><li> <a href="/benchmarks/e2e" class="flex items-center justify-between px-2 py-1.5 rounded transition-colors text-ink-700 dark:text-ink-200 hover:bg-page-2"> <span>E2E</span>  </a> </li> </ul> </div> </nav> </aside> <article class="flex-1 min-w-0 prose-narrow">  <header class="mb-8"> <div class="text-meta text-sm mb-2">下一代旗舰 · 双型号 PR/DT 路线</div> <h1 class="h1-title">昇腾 950 (950PR / 950DT)</h1> <p class="mt-3 text-ink-700 dark:text-ink-200">910C 的下一代旗舰芯片,分为两个型号: <b>950PR</b>(2026 Q1,推理导向)、<b>950DT</b>(2026 Q4,训推一体)。最大亮点是从 HCCS 升级到自研 <b>灵衢 (UB) 互联</b>,支持超节点 Mesh 全互联,显存带宽最高提升至 9.6 TB/s。</p> </header>
+
+<h2 id="roadmap" class="anchor-offset h2-title">1. 代际演进</h2>
+<p class="text-ink-700 dark:text-ink-200 mb-4">昇腾芯片一年一迭代,基于灵衢创新超节点架构,让海量芯片高速互联,像一颗芯片一样工作:</p>
+
+<figure class="my-6 not-prose">
+  <div class="rounded-md border border-default bg-page-2 p-4">
+    <pre class="mermaid">
+flowchart LR
+    B["910B4 / 3500 G3<br/>2023 · 训推一体<br/>414 TFLOPS · HCCS"]:::past
+    C["910C<br/>2025 · 当前主力<br/>800 TFLOPS · 灵衢 1.0"]:::current
+    PR["950PR<br/>2026 Q1 · 推理<br/>2P@FP8 · 灵衢 2.0"]:::next
+    DT["950DT<br/>2026 Q4 · 训推<br/>1P@FP8 · 灵衢 2.0"]:::next
+    SIX["960<br/>2027 · 下一代<br/>1P FLOPS"]:::future
+    SEVEN["970<br/>2028 · 远期<br/>2P FLOPS"]:::future
+    B --> C --> PR --> SIX --> SEVEN
+    C --> DT --> SIX
+    classDef past fill:#f1f5f9,stroke:#64748b,color:#334155
+    classDef current fill:#dbeafe,stroke:#06c,color:#1e3a8a
+    classDef next fill:#fef3c7,stroke:#f59e0b,color:#78350f
+    classDef future fill:#f3e8ff,stroke:#a855f7,color:#581c87
+    </pre>
+  </div>
+  <figcaption class="text-meta text-sm mt-2">昇腾芯片代际演进路线 (2023 → 2028),数据来自华鲲昇腾产品介绍 slide 28</figcaption>
+</figure>
+
+<h2 id="overview" class="anchor-offset h2-title">2. 概述</h2>
+<ul class="text-ink-700 dark:text-ink-200 space-y-1.5">
+  <li><b>代号</b>:Ascend 950 (昇腾 950)</li>
+  <li><b>型号</b>:<b>950PR</b>(推理导向,Q1 2026)+ <b>950DT</b>(训推一体,Q4 2026)</li>
+  <li><b>厂商</b>:华为</li>
+  <li><b>架构</b>:达芬奇 · SIMD / SIMT 混合微架构</li>
+  <li><b>互联</b>:灵衢 (UB) 2.0,2.2 TB/s,超节点 Mesh 全互联</li>
+  <li><b>定位</b>:910C 下一代旗舰,面向万亿参数 MoE 推理、1M+ 超长上下文、多模态融合推理</li>
+</ul>
+
+<h2 id="specs" class="anchor-offset h2-title">3. 硬件规格</h2>
+<figure class="my-6 not-prose">
+  <figcaption class="text-meta text-sm mb-2">昇腾 950 PR / DT 规格表 (slide 27 / 28)</figcaption>
+  <div class="overflow-x-auto rounded-md border border-default">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>型号</th>
+          <th class="text-right">FP8 算力</th>
+          <th class="text-right">FP4 算力</th>
+          <th>显存</th>
+          <th class="text-right">显存带宽</th>
+          <th>数值类型</th>
+          <th class="text-right">NPU 互联</th>
+          <th>微架构</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="align-middle"><b>950PR</b></td>
+          <td class="align-middle text-right num">2 PFLOPs @ FP8</td>
+          <td class="align-middle text-right num">4 PFLOPs @ FP4</td>
+          <td class="align-middle">288 GB HiBL 1.0</td>
+          <td class="align-middle text-right num">9.6 TB/s</td>
+          <td class="align-middle">FP32/HF32/FP16/BF16/FP8<br/>MXFP8/HiF8/MXFP4/HiF4</td>
+          <td class="align-middle text-right num">2.2 TB/s</td>
+          <td class="align-middle">SIMD / SIMT</td>
+        </tr>
+        <tr>
+          <td class="align-middle"><b>950DT</b></td>
+          <td class="align-middle text-right num">1 PFLOP @ FP8</td>
+          <td class="align-middle text-right num">2 PFLOPs @ FP4</td>
+          <td class="align-middle">144 GB HiZQ 2.0</td>
+          <td class="align-middle text-right num">4 TB/s</td>
+          <td class="align-middle">FP32/HF32/FP16/BF16/FP8<br/>MXFP8/HiF8/MXFP4</td>
+          <td class="align-middle text-right num">2 TB/s</td>
+          <td class="align-middle">SIMD / SIMT</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</figure>
+
+<h2 id="lingqu" class="anchor-offset h2-title">4. 灵衢 (UB) 互联架构</h2>
+<p class="text-ink-700 dark:text-ink-200 mb-4">灵衢是华为面向超节点的统一互联协议,1 个协议支持 7 大类计算组件 (CPU / NPU / GPU / MEM / SSU / DPU / Switch),无额外软件开销。</p>
+
+<figure class="my-6 not-prose">
+  <div class="rounded-md border border-default bg-page-2 p-4">
+    <pre class="mermaid">
+flowchart TB
+    subgraph UB["灵衢互联 UB · 2.2 TB/s"]
+        direction LR
+        N1["NPU 1"]:::node
+        N2["NPU 2"]:::node
+        N3["NPU 3"]:::node
+        N4["NPU 4"]:::node
+        N5["NPU 5"]:::node
+        N6["NPU 6"]:::node
+        N7["NPU 7"]:::node
+        N8["NPU 8"]:::node
+        N1 --- N2 & N3 & N4 & N5 & N6 & N7 & N8
+        N2 --- N3 & N4 & N5 & N6 & N7 & N8
+        N3 --- N4 & N5 & N6 & N7 & N8
+        N4 --- N5 & N6 & N7 & N8
+    end
+    M1[("MEM")]:::mem
+    M2[("MEM")]:::mem
+    M1 -.- N1 & N4 & N8
+    M2 -.- N2 & N5 & N6
+    classDef node fill:#dbeafe,stroke:#06c,color:#1e3a8a
+    classDef mem fill:#fef3c7,stroke:#f59e0b,color:#78350f
+    </pre>
+  </div>
+  <figcaption class="text-meta text-sm mt-2">Atlas 950 SuperPoD 超节点示意 — 8 NPU Mesh 全互联 + 分布式内存</figcaption>
+</figure>
+
+<h3 id="lingqu-compare" class="anchor-offset h3-title">4.1 与上一代对比</h3>
+<div class="overflow-x-auto not-prose my-4 rounded-md border border-default">
+  <table class="data-table">
+    <thead><tr><th>代际</th><th>互联协议</th><th class="text-right">互联带宽</th><th>互联架构</th></tr></thead>
+    <tbody>
+      <tr><td class="align-middle">910B4</td><td class="align-middle">HCCS 1.0</td><td class="align-middle text-right num">392 GB/s</td><td class="align-middle">A1: 4 卡 PCIe</td></tr>
+      <tr><td class="align-middle">910C</td><td class="align-middle">灵衢 1.0</td><td class="align-middle text-right num">784 GB/s</td><td class="align-middle">A2: 8 卡 Mesh</td></tr>
+      <tr><td class="align-middle"><b>950PR / DT</b></td><td class="align-middle">灵衢 2.0</td><td class="align-middle text-right num">2 - 2.2 TB/s</td><td class="align-middle">A3: 超节点全对等</td></tr>
+    </tbody>
+  </table>
+</div>
+<p class="text-meta text-sm">910C → 950:芯片间互联带宽提升约 <b>2.8 倍</b>(784 GB/s → 2.2 TB/s),架构从 8 卡 Mesh 演进到超节点全对等。</p>
+
+<h2 id="timeline" class="anchor-offset h2-title">5. 上市时间表</h2>
+<div class="overflow-x-auto not-prose my-4 rounded-md border border-default">
+  <table class="data-table">
+    <thead><tr><th>时间</th><th>事件</th><th>说明</th></tr></thead>
+    <tbody>
+      <tr><td class="align-middle">2026 Q1</td><td class="align-middle"><span class="badge badge-verified">已规划</span></td><td class="align-middle">950PR 上市,首发推理场景</td></tr>
+      <tr><td class="align-middle">2026 Q2</td><td class="align-middle"><span class="badge badge-verified">已规划</span></td><td class="align-middle">Atlas 350 服务器(基于 950)规模出货</td></tr>
+      <tr><td class="align-middle">2026 Q4</td><td class="align-middle"><span class="badge badge-verified">已规划</span></td><td class="align-middle">950DT + Atlas 850 上市,950 国计民生行业铺开</td></tr>
+      <tr><td class="align-middle">2027</td><td class="align-middle"><span class="badge badge-untested">路线图</span></td><td class="align-middle">Ascend 960 (1 PFLOP,288 GB)</td></tr>
+      <tr><td class="align-middle">2028</td><td class="align-middle"><span class="badge badge-untested">路线图</span></td><td class="align-middle">Ascend 970 (2 PFLOPs,带宽 +150%)</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h2 id="products" class="anchor-offset h2-title">6. 整机产品</h2>
+<div class="overflow-x-auto not-prose my-4 rounded-md border border-default">
+  <table class="data-table">
+    <thead><tr><th>整机</th><th>基于</th><th>上市</th><th>定位</th></tr></thead>
+    <tbody>
+      <tr><td class="align-middle">Atlas 350</td><td class="align-middle">950 系列</td><td class="align-middle">2026 Q2</td><td class="align-middle">推理主力机</td></tr>
+      <tr><td class="align-middle">Atlas 850</td><td class="align-middle">950 系列</td><td class="align-middle">2026 Q4</td><td class="align-middle">训推一体旗舰</td></tr>
+      <tr><td class="align-middle">Atlas 900 A3 SuperPoD</td><td class="align-middle">910C</td><td class="align-middle">已商用</td><td class="align-middle">超节点,300+ 套已部署</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h2 id="adoption" class="anchor-offset h2-title">7. 客户与生态</h2>
+<p class="text-ink-700 dark:text-ink-200 mb-3">Atlas 900 A3 SuperPoD(基于 910C)已规模商用,300+ 套超节点、20+ 客户上线,涵盖:</p>
+<ul class="text-ink-700 dark:text-ink-200 space-y-1.5">
+  <li>上海人工智能实验室</li>
+  <li>互联网大厂</li>
+  <li>国家电网</li>
+  <li>美的、青岛港</li>
+</ul>
+
+<h2 id="data-caveat" class="anchor-offset h2-title">8. 数据声明</h2>
+<div class="not-prose rounded-md border border-default bg-page-2 p-4">
+  <div class="font-semibold text-ink-900 dark:text-ink-100">⚠️ 数据来源</div>
+  <p class="text-sm text-ink-700 dark:text-ink-200 mt-1">
+    本页规格基于华鲲昇腾产品介绍 (2026/08/28) slide 27 / 28,与昇腾官方发布对齐。
+    950 实际跑分需待 2026 Q2 起在客户现场验证。一旦拿到一手数据,本页会按 3500 G3 / 910C 的同等结构补齐实测表。
+  </p>
+</div>
+
+</article> <aside class="hidden xl:block w-48 shrink-0"><nav class="sticky top-20 text-sm"><div class="text-meta uppercase tracking-wider text-xs font-medium mb-2">
 本页目录
-</div><ul class="space-y-1.5 border-l border-default pl-3"><li><a href="#overview" class="text-ink-600 dark:text-ink-300 hover:text-brand transition-colors">1. 概述</a></li><li><a href="#what-is" class="text-ink-600 dark:text-ink-300 hover:text-brand transition-colors">2. 950 是什么</a></li><li><a href="#expect" class="text-ink-600 dark:text-ink-300 hover:text-brand transition-colors">3. 预期规格</a></li></ul></nav></aside> </div> </div>  </main> <footer class="border-t border-default mt-20">
+</div><ul class="space-y-1.5 border-l border-default pl-3"><li><a href="#roadmap" class="text-ink-600 dark:text-ink-300 hover:text-brand transition-colors">1. 代际演进</a></li><li><a href="#overview" class="text-ink-600 dark:text-ink-300 hover:text-brand transition-colors">2. 概述</a></li><li><a href="#specs" class="text-ink-600 dark:text-ink-300 hover:text-brand transition-colors">3. 硬件规格</a></li><li><a href="#lingqu" class="text-ink-600 dark:text-ink-300 hover:text-brand transition-colors">4. 灵衢互联</a></li><li class="ml-3"><a href="#lingqu-compare" class="text-ink-600 dark:text-ink-300 hover:text-brand transition-colors">4.1 对比</a></li><li><a href="#timeline" class="text-ink-600 dark:text-ink-300 hover:text-brand transition-colors">5. 上市时间</a></li><li><a href="#products" class="text-ink-600 dark:text-ink-300 hover:text-brand transition-colors">6. 整机产品</a></li><li><a href="#adoption" class="text-ink-600 dark:text-ink-300 hover:text-brand transition-colors">7. 客户与生态</a></li><li><a href="#data-caveat" class="text-ink-600 dark:text-ink-300 hover:text-brand transition-colors">8. 数据声明</a></li></ul></nav></aside> </div> </div></main> <footer class="border-t border-default mt-20">
   <div class="last-updated">Last updated 2026-09-23 · 档号 v2.4 · 自动部署</div> <div class="container-shell py-8 text-meta text-sm flex flex-col md:flex-row md:items-center md:justify-between gap-3"> <div>
 © 2026 Ascend Notes · 昇腾实测档案 ·
           数据可追溯 · 不构成采购建议
