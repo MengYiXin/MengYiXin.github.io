@@ -47,36 +47,33 @@ DS-R1-671B Int8 在不同并发下的TTFT (Time to First Token)：
   
 <figure class="my-6 not-prose">
   <div class="rounded-md border border-default bg-page-2 p-5">
-    <div class="text-meta text-xs uppercase tracking-wider text-center mb-4">一颗芯片 · 两种整机形态</div>
-    <div class="flex flex-col items-center">
-      <div class="rounded-md border-2 border-blue-500 bg-blue-100 dark:bg-blue-900 p-4 text-center" style="width:18rem;">
-        <div class="font-mono font-semibold text-base">昇腾 910_3 芯片</div>
+    <div class="text-meta text-xs uppercase tracking-wider text-center mb-4">同一颗昇腾 910_3 芯片 → 两种整机 SKU</div>
+    <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:1rem;">
+      <div class="rounded-md border-2 border-blue-500 bg-blue-100 dark:bg-blue-900 p-4 text-center" style="flex:0 0 100%;max-width:24rem;box-sizing:border-box;">
+        <div class="font-mono font-semibold text-base">昇腾 910_3 芯片(同一颗)</div>
         <div class="text-meta text-sm mt-1">64GB HBM2e · FP16 320 TFLOPS · HCCS 392 GB/s</div>
       </div>
-      <div class="text-slate-400 text-2xl my-2">↓</div>
-      <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;max-width:48rem;margin-left:auto;margin-right:auto;">
-        <div class="rounded-md border-2 border-green-500 bg-green-50 dark:bg-green-950 p-4">
-          <div class="font-semibold text-base">3500 G3</div>
-          <div class="text-meta text-xs mt-1">16 卡集群 · 满血 671B</div>
-          <ul class="text-meta text-xs mt-2 space-y-0.5">
-            <li>· 整机 FP16: 5120 TFLOPS</li>
-            <li>· 场景: DeepSeek-R1 / V3 长上下文</li>
-            <li>· 客户: 政务 / 国企 / 大模型中心</li>
-          </ul>
-        </div>
-        <div class="rounded-md border-2 border-amber-500 bg-amber-50 dark:bg-amber-950 p-4">
-          <div class="font-semibold text-base">910B4 (Atlas 800I A2)</div>
-          <div class="text-meta text-xs mt-1">8 卡整机 · 中小模型</div>
-          <ul class="text-meta text-xs mt-2 space-y-0.5">
-            <li>· 整机 FP16: 3008 TFLOPS</li>
-            <li>· 场景: Qwen3 全系 / DS-70B / V4 Flash</li>
-            <li>· 客户: 企业知识库 / 行业推理</li>
-          </ul>
-        </div>
+      <div class="rounded-md border-2 border-emerald-500 bg-emerald-50 dark:bg-emerald-950 p-4" style="flex:0 0 calc(50% - 0.5rem);min-width:14rem;box-sizing:border-box;">
+        <div class="font-semibold text-base">3500 G3 / 910B4(同一硬件平台)</div>
+        <div class="text-meta text-xs mt-1">华鲲 AT3500 G3 = 华为 Atlas 800I A2 = 910B4</div>
+        <ul class="text-meta text-xs mt-2 space-y-0.5">
+          <li>· 显存/算力/互联完全一致</li>
+          <li>· 整机 8 卡 = 3008 TFLOPS / 16 卡集群 = 5120 TFLOPS</li>
+          <li>· 选型看模型规模 + 集群预算</li>
+        </ul>
+      </div>
+      <div class="rounded-md border-2 border-slate-400 bg-slate-50 dark:bg-slate-800 p-4" style="flex:0 0 calc(50% - 0.5rem);min-width:14rem;box-sizing:border-box;">
+        <div class="font-semibold text-base">部署形态</div>
+        <div class="text-meta text-xs mt-1">8 卡单机 → 16 卡集群 → 多机 RoCE 互联</div>
+        <ul class="text-meta text-xs mt-2 space-y-0.5">
+          <li>· 8 卡整机:Huawei Atlas 800I A2</li>
+          <li>· 16 卡集群:HuaKun AT3500 G3</li>
+          <li>· 整机代号不同,芯片与板卡一致</li>
+        </ul>
       </div>
     </div>
   </div>
-  <figcaption class="text-meta text-sm mt-2">3500 G3 与 910B4 同源于昇腾 910_3 — 显存/算力/互联完全一致,选型看模型规模</figcaption>
+  <figcaption class="text-meta text-sm mt-2">昇腾 910_3 芯片 = 910B4 = 3500 G3 的板卡核心;Atlas 800I A2(8 卡)和 AT3500 G3(16 卡集群)只是整机形态不同</figcaption>
 </figure>
 
 
@@ -230,5 +227,6 @@ DS-R1-671B Int8 在不同并发下的TTFT (Time to First Token)：
 </script>
 
 <!-- ascend-notes-copy-btn -->
-<!-- cb:1790170469-->
+
+<!-- cb-v4:1790170844-->
 </body> </html>
