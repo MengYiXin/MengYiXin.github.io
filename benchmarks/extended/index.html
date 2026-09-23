@@ -1,5 +1,5 @@
 <!DOCTYPE html><html lang="zh-CN"> <head>
-<!-- 3pages-1790158256-18652 -->
+<!-- 3pages-1790158605-27164 -->
 <!-- clean-1790155744-26912 --><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="昇腾 3500 G3 (含 16 卡 / 8 卡 910B4) / 910C / 950 模型适配、TTFT 与吞吐实测数据"><meta name="generator" content="Astro v5.18.2"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="alternate icon" href="/favicon.svg"><title>模型适配总表 · Ascend Notes</title><link rel="stylesheet" href="/static-astro/3500-g3.ClXRCnKS.css">
 <style>details[data-astro-cid-wmd6b3pc]>summary[data-astro-cid-wmd6b3pc]{list-style:none}details[data-astro-cid-wmd6b3pc]>summary[data-astro-cid-wmd6b3pc]::-webkit-details-marker{display:none}details[data-astro-cid-wmd6b3pc][open]>summary[data-astro-cid-wmd6b3pc] span[data-astro-cid-wmd6b3pc]:first-child{transform:rotate(90deg);display:inline-block;transition:transform .15s}
 </style>
@@ -47,7 +47,6 @@
 <h2 class="h2-title mb-2">1. E2E 吞吐对比 <span class="text-meta text-base font-normal">— 同一集群不同模型</span></h2>
 <p class="text-meta mb-4 text-sm">图 1. AT3500 G3 (64G, 8 × 910B) 在 p=1024/1024、并发=30 下的 E2E 吞吐。柱高为每秒 token 数；右图为同一设置下首 token 时延 (s)。</p>
 <div id="chart-e2e" class="rounded-md border border-default bg-page-2" style="height: 320px;" data-echart-option=""></div>
-<script type="module">import("/static-astro/ChartBlock.astro_astro_type_script_index_0_lang.Ncmk7MHC.js");</script>
 <script type="application/json" id="chart-e2e-data">[{"machine": "AT3500 G3(64G)", "model": "Qwen2.5-72B", "prec": "FP16", "items": [{"io": "1024/1024", "conc": "30", "ttft": "3.31", "tpot": "41.88", "e2e": "657.71"}]}, {"machine": "AT3500 G3(64G)", "model": "DS-70B", "prec": "FP16", "items": [{"io": "1024/1024", "conc": "30", "ttft": "2.48", "tpot": "35.87", "e2e": "781.64"}]}]</script>
 </section>
 <section class="mb-12">
@@ -483,7 +482,7 @@ chart2.setOption(option2);
 
 window.addEventListener('resize', () => { chart1.resize(); chart2.resize(); });
 </script>
-<script src="/static-astro/echarts.min.BKbCRJBE.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
 
 <footer class="border-t border-default mt-20"> <div class="container-shell py-8 text-meta text-sm flex flex-col md:flex-row md:items-center md:justify-between gap-3"> <div>
 © 2026 Ascend Notes · 昇腾实测档案 ·
