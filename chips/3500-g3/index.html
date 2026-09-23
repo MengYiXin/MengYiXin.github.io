@@ -39,6 +39,42 @@ DS-R1-671B Int8 在不同并发下的TTFT (Time to First Token)：
 </p> <figure class="my-6 not-prose"> <figcaption class="text-meta text-sm mb-2">图：TTFT vs 并发（3500 G3 ×16 / DS-R1-671B Int8 / p=2048, o=2048）</figcaption> <div id="ttft-chart" class="rounded-md border border-default bg-page-2" style="height: 280px;" data-echart-option="{&#34;tooltip&#34;:{&#34;trigger&#34;:&#34;axis&#34;},&#34;legend&#34;:{&#34;data&#34;:[&#34;TTFT (ms)&#34;],&#34;top&#34;:0},&#34;grid&#34;:{&#34;left&#34;:60,&#34;right&#34;:20,&#34;top&#34;:40,&#34;bottom&#34;:60},&#34;xAxis&#34;:{&#34;type&#34;:&#34;category&#34;,&#34;data&#34;:[&#34;10&#34;,&#34;30&#34;,&#34;50&#34;,&#34;100&#34;],&#34;name&#34;:&#34;并发&#34;},&#34;yAxis&#34;:{&#34;type&#34;:&#34;value&#34;,&#34;name&#34;:&#34;TTFT (ms)&#34;},&#34;series&#34;:[{&#34;name&#34;:&#34;TTFT (ms)&#34;,&#34;type&#34;:&#34;bar&#34;,&#34;data&#34;:[796.57,1586.94,2302.82,2690.73],&#34;itemStyle&#34;:{&#34;color&#34;:&#34;#06c&#34;}}]}"></div> </figure> <script type="module" src="/static-astro/ChartBlock.astro_astro_type_script_index_0_lang.Ncmk7MHC.js"></script> <h3 id="perf-tps" class="anchor-offset h3-title">4.2 吞吐</h3> <figure class="my-6 not-prose"> <figcaption class="text-meta text-sm mb-2">图：总吞吐 vs 并发（3500 G3 ×16 / DS-R1-671B Int8 / p=2048, o=2048）</figcaption> <div id="tps-chart" class="rounded-md border border-default bg-page-2" style="height: 280px;" data-echart-option="{&#34;tooltip&#34;:{&#34;trigger&#34;:&#34;axis&#34;},&#34;legend&#34;:{&#34;data&#34;:[&#34;吞吐 (tps)&#34;],&#34;top&#34;:0},&#34;grid&#34;:{&#34;left&#34;:60,&#34;right&#34;:20,&#34;top&#34;:40,&#34;bottom&#34;:60},&#34;xAxis&#34;:{&#34;type&#34;:&#34;category&#34;,&#34;data&#34;:[&#34;10&#34;,&#34;30&#34;,&#34;50&#34;,&#34;100&#34;],&#34;name&#34;:&#34;并发&#34;},&#34;yAxis&#34;:{&#34;type&#34;:&#34;value&#34;,&#34;name&#34;:&#34;总吞吐 (tps)&#34;},&#34;series&#34;:[{&#34;name&#34;:&#34;吞吐 (tps)&#34;,&#34;type&#34;:&#34;bar&#34;,&#34;data&#34;:[462.54,1010.78,1323.03,1931.48],&#34;itemStyle&#34;:{&#34;color&#34;:&#34;#0075eb&#34;}}]}"></div> </figure>  <figure class="my-6 not-prose"> <figcaption class="text-meta text-sm mb-2">3500 G3 16 卡集群实测数据明细</figcaption> <div class="overflow-x-auto rounded-md border border-default"> <table class="data-table"> <thead> <tr> <th style> 模型 / 量化 </th><th class="text-right" style="font-family: Source Code Pro, Consolas, monospace;"> 卡数 </th><th style> 配置 (p/o, 并发) </th><th style> 并发 </th><th style> TTFT (ms) </th><th style> TPOT (ms) </th><th class="text-right" style="font-family: Source Code Pro, Consolas, monospace;"> 总吞吐 (tps) </th> </tr> </thead> <tbody> <tr> <td class="align-middle"> DeepSeek-R1-671B / Int8 </td><td class="align-middle text-right num"> 16 </td><td class="align-middle"> p=2048/o=2048, 并发=10 </td><td class="align-middle"> 10, 30, 50, 100 </td><td class="align-middle"> 796.57, 1586.94, 2302.82, 2690.73 </td><td class="align-middle"> 41.6, 56.42, 71.74, 94.78 </td><td class="align-middle text-right num"> 462.54 </td> </tr><tr> <td class="align-middle"> DeepSeek-R1-671B / Int8 </td><td class="align-middle text-right num"> 16 </td><td class="align-middle"> p=4096/o=4096, 并发=10 </td><td class="align-middle"> 10 </td><td class="align-middle"> 1579.37 </td><td class="align-middle"> 40.4 </td><td class="align-middle text-right num"> 461.48 </td> </tr><tr> <td class="align-middle"> DeepSeek-R1-671B / Int8 </td><td class="align-middle text-right num"> 16 </td><td class="align-middle"> p=4096/o=1024, 并发=30 </td><td class="align-middle"> 30 </td><td class="align-middle"> 3211.02 </td><td class="align-middle"> 63.81 </td><td class="align-middle text-right num"> 2080.89 </td> </tr><tr> <td class="align-middle"> DeepSeek-R1-671B / Int8 </td><td class="align-middle text-right num"> 16 </td><td class="align-middle"> p=1024/o=1024, 并发=100 </td><td class="align-middle"> 100 </td><td class="align-middle"> 2690.73 </td><td class="align-middle"> 94.78 </td><td class="align-middle text-right num"> 1931.48 </td> </tr> </tbody> </table> </div> </figure> <h2 id="cases" class="anchor-offset h2-title">5. 部署案例</h2> <ul class="text-ink-700 dark:text-ink-200 space-y-2"> <li>· 满血 671B 长上下文推理 (DeepSeek-R1)</li><li>· 高并发 (50-100) 大输入场景</li><li>· 政企私有化部署</li> </ul> </article> <aside class="hidden xl:block w-48 shrink-0"><nav class="sticky top-20 text-sm"><div class="text-meta uppercase tracking-wider text-xs font-medium mb-2">
 本页目录
 </div><ul class="space-y-1.5 border-l border-default pl-3"><li><a href="#overview" class="text-ink-600 dark:text-ink-300 hover:text-brand transition-colors">1. 概述</a></li><li><a href="#specs" class="text-ink-600 dark:text-ink-300 hover:text-brand transition-colors">2. 硬件规格</a></li><li><a href="#models" class="text-ink-600 dark:text-ink-300 hover:text-brand transition-colors">3. 适配模型</a></li><li><a href="#perf" class="text-ink-600 dark:text-ink-300 hover:text-brand transition-colors">4. 实测性能</a></li><li class="ml-3"><a href="#perf-ttft" class="text-ink-600 dark:text-ink-300 hover:text-brand transition-colors">4.1 TTFT 与并发</a></li><li class="ml-3"><a href="#perf-tps" class="text-ink-600 dark:text-ink-300 hover:text-brand transition-colors">4.2 吞吐</a></li><li><a href="#cases" class="text-ink-600 dark:text-ink-300 hover:text-brand transition-colors">5. 部署案例</a></li></ul></nav></aside> </div> </div>  
+ <section class="mt-16 pt-10 border-t border-default">
+  <h2 id="dual-form" class="h2-title anchor-offset">8. 同芯片双形态:3500 G3 vs 910B4</h2>
+  <p class="text-ink-700 dark:text-ink-200 mb-3">3500 G3 和 910B4 (Atlas 800I A2) <b>基于同一颗昇腾 910_3 芯片</b>,只是整机形态不同。3500 G3 是 16 卡满血集群版,910B4 是 8 卡标准机架版。</p>
+
+  <figure class="my-6 not-prose">
+    <div class="rounded-md border border-default bg-page-2 p-4">
+      <pre class="mermaid">
+flowchart LR
+    CHIP["昇腾 910_3<br/>64GB HBM2e · 320 TFLOPS FP16<br/>HCCS 392 GB/s"]:::chip
+    F1["3500 G3<br/>16 卡集群<br/>满血 671B / V3"]:::sku1
+    F2["910B4<br/>8 卡整机<br/>70B / 32B / V4 Flash"]:::sku2
+    CHIP --> F1
+    CHIP --> F2
+    classDef chip fill:#dbeafe,stroke:#06c,color:#1e3a8a
+    classDef sku1 fill:#dcfce7,stroke:#16a34a,color:#14532d
+    classDef sku2 fill:#fef3c7,stroke:#f59e0b,color:#78350f
+      </pre>
+    </div>
+    <figcaption class="text-meta text-sm mt-2">3500 G3 与 910B4 同源 — 一颗芯片,两种整机形态</figcaption>
+  </figure>
+
+  <h3 id="sku-compare" class="h3-title anchor-offset">8.1 形态对比</h3>
+  <div class="overflow-x-auto not-prose my-4 rounded-md border border-default">
+    <table class="data-table">
+      <thead><tr><th>项</th><th>3500 G3</th><th>910B4 (Atlas 800I A2)</th></tr></thead>
+      <tbody>
+        <tr><td class="align-middle">卡数</td><td class="align-middle">16</td><td class="align-middle">8</td></tr>
+        <tr><td class="align-middle">整机 FP16</td><td class="align-middle">5120 TFLOPS</td><td class="align-middle">3008 TFLOPS</td></tr>
+        <tr><td class="align-middle">典型场景</td><td class="align-middle">满血 671B (DS-R1 / V3)</td><td class="align-middle">Qwen3 全系 / DS-70B / V4 Flash</td></tr>
+        <tr><td class="align-middle">价格定位</td><td class="align-middle">主力推理 / 私有化</td><td class="align-middle">中小模型 / 性价比</td></tr>
+        <tr><td class="align-middle">客户现场</td><td class="align-middle">政务 / 国企 / 大模型中心</td><td class="align-middle">企业知识库 / 行业推理</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="text-meta text-sm">注:两者显存容量、算力、互联完全一致,选型时主要看模型规模与并发需求。</p>
+</section>
 <section class="mt-16 pt-10 border-t border-default">
   <h2 id="atlas-800i-a2" class="h2-title anchor-offset">7. 8 卡 Atlas 800I A2 (910B4) 部署</h2>
   <p class="text-ink-700 dark:text-ink-200 mb-3">
