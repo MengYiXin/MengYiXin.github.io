@@ -1,0 +1,383 @@
+<!DOCTYPE html><html lang="zh-CN"> <head>
+<!-- 3pages-1790158036-1568 -->
+<!-- clean-1790155744-26912 --><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="华鲲推理性能 + DeepSeek V4 基线 + vLLM Ascend 0.11.0 三源深度性能数据汇总"><meta name="generator" content="Astro v5.18.2"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="alternate icon" href="/favicon.svg"><title>深度性能基线 · Ascend Notes</title><link rel="stylesheet" href="/static-astro/3500-g3.ClXRCnKS.css">
+<style>details[data-astro-cid-wmd6b3pc]>summary[data-astro-cid-wmd6b3pc]{list-style:none}details[data-astro-cid-wmd6b3pc]>summary[data-astro-cid-wmd6b3pc]::-webkit-details-marker{display:none}details[data-astro-cid-wmd6b3pc][open]>summary[data-astro-cid-wmd6b3pc] span[data-astro-cid-wmd6b3pc]:first-child{transform:rotate(90deg);display:inline-block;transition:transform .15s}
+</style></head>
+<body class="bg-page">
+<header class="border-b border-default bg-page sticky top-0 z-40 backdrop-blur supports-[backdrop-filter]:bg-page/80"> <div class="container-shell flex items-center justify-between h-14"> <a href="/" class="flex items-center gap-2.5 group"> <span class="inline-block w-6 h-6 rounded bg-brand text-white text-[11px] font-bold leading-6 text-center">A</span> <span class="font-semibold text-ink-900 dark:text-ink-100 group-hover:text-brand transition-colors">Ascend Notes</span> <span class="hidden md:inline text-meta ml-1">· 昇腾实测档案</span> </a> <nav class="hidden md:flex items-center gap-6 text-sm"> <a href="/" class="nav-link"> 首页 </a><a href="/chips/3500-g3" class="nav-link"> 3500 G3 </a><a href="/chips/910c" class="nav-link"> 910C </a><a href="/chips/950" class="nav-link"> 950 </a><a href="/models" class="nav-link"> 模型 </a><a href="/benchmarks/ttft" class="nav-link"> TTFT </a><a href="/benchmarks/throughput" class="nav-link"> 吞吐 </a><a href="/demos" class="nav-link"> 效果 </a><a href="/business/models" class="nav-link"> 模型库 </a><a href="/benchmarks/extended" class="nav-link"> 性能 </a><a href="/demos/usage" class="nav-link"> 部署 </a></nav> <div class="flex items-center gap-3"> <button id="theme-toggle" aria-label="切换主题" class="text-meta hover:text-brand transition-colors p-1.5 rounded" title="切换主题"> <svg class="w-4 h-4 dark:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"> <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path> </svg> <svg class="w-4 h-4 hidden dark:inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"> <circle cx="12" cy="12" r="4"></circle> <path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path> </svg> </button> <button id="mobile-menu-btn" class="md:hidden text-meta p-1.5" aria-label="菜单"> <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"> <path d="M3 12h18M3 6h18M3 18h18"></path> </svg> </button> </div> </div> <div id="mobile-menu" class="md:hidden hidden border-t border-default bg-page-2"> <div class="container-shell py-3 flex flex-col gap-2 text-sm"> <a href="/" class="nav-link py-1.5">首页</a><a href="/chips/3500-g3" class="nav-link py-1.5">3500 G3</a><a href="/chips/910c" class="nav-link py-1.5">910C</a><a href="/chips/950" class="nav-link py-1.5">950</a><a href="/models" class="nav-link py-1.5">模型</a><a href="/benchmarks/ttft" class="nav-link py-1.5">TTFT</a><a href="/benchmarks/throughput" class="nav-link py-1.5">吞吐</a><a href="/demos" class="nav-link py-1.5">效果</a><a href="/business/models" class="nav-link py-1.5">模型库</a><a href="/benchmarks/extended" class="nav-link py-1.5">性能</a><a href="/demos/usage" class="nav-link py-1.5">部署</a></div> </div> </header>
+<main><div class="container-shell py-10">
+<nav aria-label="Breadcrumb" class="text-meta text-sm mb-4 not-prose"><ol class="flex items-center flex-wrap gap-1.5"><li><a href="/" class="hover:text-brand">首页</a></li><li class="text-ink-400">›</li><li><a href="/benchmarks/extended" class="hover:text-brand">性能</a></li><li class="text-ink-400">›</li><li class="text-ink-700 dark:text-ink-200">深度性能基线</li></ol></nav>
+<header class="mb-8 max-w-3xl">
+<h1 class="h1-title">深度性能基线 · 三源汇总</h1>
+<p class="mt-3 text-ink-700 dark:text-ink-200">本页汇总华鲲推理性能 Benchmark、DeepSeek V4 版本基线（vLLM Ascend）和 vLLM Ascend 0.11.0 推理基线（DeepSeek + Qwen）三源数据。涵盖 <b>3500 G3 / 910B4 (Atlas 800I A2)</b> 与 <b>910C (Atlas 800I A3)</b> 多场景对比。</p></header>
+<section class="mb-10">
+<h2 class="h2-title mb-3">1. 华鲲推理性能 Benchmark (鲲鹏 920 SKU)</h2>
+<p class="text-meta mb-3">来源：华鲲振宇 V2 性能表 · vLLM-Ascend 测试集，覆盖 Qwen2.5-72B / DS-70B / DS-32B / DS-14B。</p>
+<div class="overflow-x-auto rounded-md border border-default not-prose">
+<table class="data-table">
+<thead><tr><th>机型</th><th>AI 卡</th><th>模型</th><th>精度</th><th>输入/输出</th><th>并发</th><th class="text-right">首 Token (s)</th><th class="text-right">非首 Token (ms)</th><th class="text-right">非首 token 吞吐 (tok/s)</th><th class="text-right">E2E 吞吐 (tok/s)</th></tr></thead><tbody>
+<tr>
+<td>AT3500 G3(64G)</td>
+<td>8*910B</td>
+<td>Qwen2.5-72B</td>
+<td>FP16</td>
+<td>1024/1024</td>
+<td class="text-right num">30</td>
+<td class="text-right num">3.31</td>
+<td class="text-right num">41.88</td>
+<td class="text-right num">21.92</td>
+<td class="text-right num">657.71</td>
+</tr>
+<tr>
+<td>—</td>
+<td></td>
+<td></td>
+<td></td>
+<td>2048/2048</td>
+<td class="text-right num"></td>
+<td class="text-right num">5.66</td>
+<td class="text-right num">44.86</td>
+<td class="text-right num">20.77</td>
+<td class="text-right num">623.18</td>
+</tr>
+<tr>
+<td>—</td>
+<td></td>
+<td></td>
+<td></td>
+<td>4096/4096</td>
+<td class="text-right num"></td>
+<td class="text-right num">10.99</td>
+<td class="text-right num">51.49</td>
+<td class="text-right num">18.31</td>
+<td class="text-right num">549.16</td>
+</tr>
+<tr>
+<td>AT3500 G3(64G)</td>
+<td>8*910B</td>
+<td>DS-70B</td>
+<td>FP16</td>
+<td>1024/1024</td>
+<td class="text-right num">30</td>
+<td class="text-right num">2.48</td>
+<td class="text-right num">35.87</td>
+<td class="text-right num">26.05</td>
+<td class="text-right num">781.64</td>
+</tr>
+<tr>
+<td>—</td>
+<td></td>
+<td></td>
+<td></td>
+<td>2048/2048</td>
+<td class="text-right num"></td>
+<td class="text-right num">4.12</td>
+<td class="text-right num">38.87</td>
+<td class="text-right num">24.43</td>
+<td class="text-right num">732.76</td>
+</tr>
+<tr>
+<td>—</td>
+<td></td>
+<td></td>
+<td></td>
+<td>4096/4096</td>
+<td class="text-right num"></td>
+<td class="text-right num">7.56</td>
+<td class="text-right num">43.75</td>
+<td class="text-right num">21.9</td>
+<td class="text-right num">657.08</td>
+</tr>
+<tr>
+<td>AT3500 G3(32G)</td>
+<td>8*910B</td>
+<td>DS-70B</td>
+<td>FP16</td>
+<td>1024/1024</td>
+<td class="text-right num">30</td>
+<td class="text-right num">2.55</td>
+<td class="text-right num">49.01</td>
+<td class="text-right num">19.26</td>
+<td class="text-right num">577.8</td>
+</tr>
+<tr>
+<td>—</td>
+<td></td>
+<td></td>
+<td></td>
+<td>2048/2048</td>
+<td class="text-right num"></td>
+<td class="text-right num">4.49</td>
+<td class="text-right num">52.76</td>
+<td class="text-right num">18.03</td>
+<td class="text-right num">540.9</td>
+</tr>
+<tr>
+<td>—</td>
+<td></td>
+<td></td>
+<td></td>
+<td>4096/4096</td>
+<td class="text-right num"></td>
+<td class="text-right num">8.77</td>
+<td class="text-right num">58.43</td>
+<td class="text-right num">16.37</td>
+<td class="text-right num">491.1</td>
+</tr>
+<tr>
+<td>—</td>
+<td></td>
+<td></td>
+<td>FP16</td>
+<td>1024/1024</td>
+<td class="text-right num">50</td>
+<td class="text-right num">3.94</td>
+<td class="text-right num">59.87</td>
+<td class="text-right num">15.55</td>
+<td class="text-right num">777.5</td>
+</tr>
+<tr>
+<td>—</td>
+<td></td>
+<td></td>
+<td></td>
+<td>2048/2048</td>
+<td class="text-right num"></td>
+<td class="text-right num">7.22</td>
+<td class="text-right num">64.42</td>
+<td class="text-right num">14.6</td>
+<td class="text-right num">730</td>
+</tr>
+<tr>
+<td>—</td>
+<td></td>
+<td></td>
+<td></td>
+<td>4096/4096</td>
+<td class="text-right num"></td>
+<td class="text-right num">29.73</td>
+<td class="text-right num">84.93</td>
+<td class="text-right num">11.1</td>
+<td class="text-right num">555</td>
+</tr>
+<tr>
+<td>AT9508 G3</td>
+<td>8*智铠100</td>
+<td>DS-70B</td>
+<td>FP16</td>
+<td>2048/2048</td>
+<td class="text-right num">25</td>
+<td class="text-right num">12.78</td>
+<td class="text-right num">94.95</td>
+<td class="text-right num">10.53</td>
+<td class="text-right num">246.55</td>
+</tr>
+<tr>
+<td>—</td>
+<td></td>
+<td></td>
+<td></td>
+<td>1024/1024</td>
+<td class="text-right num"></td>
+<td class="text-right num">6.35</td>
+<td class="text-right num">88.68</td>
+<td class="text-right num">11.28</td>
+<td class="text-right num">271.75</td>
+</tr>
+<tr>
+<td>—</td>
+<td></td>
+<td></td>
+<td></td>
+<td>2048/2048</td>
+<td class="text-right num"></td>
+<td class="text-right num">17.54</td>
+<td class="text-right num">96.88</td>
+<td class="text-right num">10.32</td>
+<td class="text-right num">236.64</td>
+</tr>
+<tr>
+<td>—</td>
+<td></td>
+<td></td>
+<td></td>
+<td>2048/2048</td>
+<td class="text-right num">30</td>
+<td class="text-right num">15</td>
+<td class="text-right num">100.99</td>
+<td class="text-right num">9.9</td>
+<td class="text-right num">276.36</td>
+</tr>
+<tr>
+<td>—</td>
+<td>4*智铠100</td>
+<td>DS-32B</td>
+<td>BF16</td>
+<td>2048/2048</td>
+<td class="text-right num">40</td>
+<td class="text-right num">14.33</td>
+<td class="text-right num">96.77</td>
+<td class="text-right num">10.33</td>
+<td class="text-right num">384</td>
+</tr>
+<tr>
+<td>—</td>
+<td></td>
+<td></td>
+<td></td>
+<td>1024/1024</td>
+<td class="text-right num">40</td>
+<td class="text-right num">9.11</td>
+<td class="text-right num">86.91</td>
+<td class="text-right num">11.51</td>
+<td class="text-right num">436.67</td>
+</tr>
+<tr>
+<td>—</td>
+<td>4*DUO</td>
+<td>DS-32B</td>
+<td>INT8</td>
+<td>2048/2048</td>
+<td class="text-right num">12</td>
+<td class="text-right num">12.2</td>
+<td class="text-right num">79.43</td>
+<td class="text-right num">12.59</td>
+<td class="text-right num">140.85</td>
+</tr>
+<tr>
+<td>AT600W</td>
+<td>2*DUO</td>
+<td>DS-14B</td>
+<td>FP16</td>
+<td>1024/1024</td>
+<td class="text-right num">20</td>
+<td class="text-right num">8.824</td>
+<td class="text-right num">80.41</td>
+<td class="text-right num">12.4</td>
+<td class="text-right num">248.72</td>
+</tr>
+<tr>
+<td>—</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td class="text-right num">25</td>
+<td class="text-right num">10.87</td>
+<td class="text-right num">83.56</td>
+<td class="text-right num">12</td>
+<td class="text-right num">299.186</td>
+</tr>
+<tr>
+<td>—</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td class="text-right num">30</td>
+<td class="text-right num">13.832</td>
+<td class="text-right num">86.8</td>
+<td class="text-right num">11.5</td>
+<td class="text-right num">345.62</td>
+</tr>
+<tr>
+<td>—</td>
+<td></td>
+<td></td>
+<td></td>
+<td>2048/2048</td>
+<td class="text-right num">10</td>
+<td class="text-right num">9.192</td>
+<td class="text-right num">79.43</td>
+<td class="text-right num">12.6</td>
+<td class="text-right num">125.9</td>
+</tr>
+<tr>
+<td>—</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td class="text-right num">20</td>
+<td class="text-right num">18.579</td>
+<td class="text-right num">93.7</td>
+<td class="text-right num">10.7</td>
+<td class="text-right num">213.44</td>
+</tr>
+</tbody></table></div></section>
+<section class="mb-10">
+<h2 class="h2-title mb-3">2. DeepSeek V4 Flash 性能基线 (vLLM Ascend)</h2>
+<p class="text-meta mb-3">来源：DeepSeek V4 版本基线 · W8A8C16 量化 · 高吞吐 / 低时延两类场景。</p>
+<div class="overflow-x-auto rounded-md border border-default not-prose">
+<table class="data-table">
+<thead><tr><th>产品组合</th><th>场景</th><th>设备</th><th class="text-right">总卡数</th><th>输入/输出</th><th class="text-right">并发</th><th class="text-right">TTFT (ms)</th><th class="text-right">TPOT (ms)</th><th class="text-right">E2E (s)</th><th class="text-right">输出吞吐 (tps)</th><th class="text-right">QPS</th></tr></thead><tbody>
+<tr>
+<td>高吞吐</td>
+<td>Atlas 800I A3 560T</td>
+<td>3*1P + 1*1D(EP16)
+共4机</td>
+<td class="text-right num">W8A8C16</td>
+<td>1K</td>
+<td>0</td>
+<td class="text-right num">10104.9</td>
+<td class="text-right num">45.1</td>
+<td class="text-right num">291.583</td>
+<td class="text-right num">13485.5436</td>
+<td class="text-right num">421.4232375</td>
+<td class="text-right num">790.17</td>
+</tr>
+<tr>
+<td>低时延</td>
+<td>Atlas 800I A3 560T</td>
+<td>3*1P + 1*1D(EP16)
+共4机</td>
+<td class="text-right num">W8A8C16</td>
+<td>1K</td>
+<td>0</td>
+<td class="text-right num">3833.3</td>
+<td class="text-right num">23.9</td>
+<td class="text-right num">117.294</td>
+<td class="text-right num">558.7319</td>
+<td class="text-right num">17.460371875</td>
+<td class="text-right num">32.736</td>
+</tr>
+<tr>
+<td>高吞吐</td>
+<td>Atlas 800I A3 560T</td>
+<td>单机混部EP16</td>
+<td class="text-right num">W8A8C16</td>
+<td>1K</td>
+<td>0</td>
+<td class="text-right num">2932</td>
+<td class="text-right num">46.3</td>
+<td class="text-right num">204.9</td>
+<td class="text-right num">639.57</td>
+<td class="text-right num">79.94625</td>
+<td class="text-right num">37.476</td>
+</tr>
+</tbody></table></div></section>
+<section class="mb-10">
+<h2 class="h2-title mb-3">3. vLLM Ascend 0.11.0 · Qwen 推理基线 (DeepSeek 已合入 notes/benchmarks/ttft)</h2>
+<p class="text-meta mb-3">来源：vLLM Ascend 0.11.0 典型 case 性能基线（2025-11-24 刷新版）。</p>
+<div class="overflow-x-auto rounded-md border border-default not-prose">
+<table class="data-table">
+<thead><tr><th>模型</th><th>设备</th><th>总卡数</th><th>数据格式</th><th>并行策略</th><th>输入</th><th>输出</th></tr></thead><tbody>
+<tr><td>Qwen3-235B</td><td>vLLM ascend B150</td><td class="text-right num">16</td><td>2048</td><td>2048</td><td>1</td><td>1</td></tr>
+<tr><td>Qwen3-235B</td><td>vLLM ascend B150</td><td class="text-right num">16</td><td>2048</td><td>2048</td><td>4</td><td>3.9992</td></tr>
+<tr><td>Qwen3-235B</td><td>vLLM ascend B150</td><td class="text-right num">16</td><td>2048</td><td>2048</td><td>188</td><td>187.863</td></tr>
+<tr><td>Qwen3-235B</td><td>vLLM ascend B150</td><td class="text-right num">16</td><td>3500</td><td>1500</td><td>1</td><td>1</td></tr>
+<tr><td>Qwen3-235B</td><td>vLLM ascend B150</td><td class="text-right num">16</td><td>3500</td><td>1500</td><td>4</td><td>3.9996</td></tr>
+</tbody></table></div></section>
+<aside class="not-prose my-6 text-sm rounded-md border border-default bg-page-2 p-4">
+<div class="text-meta uppercase tracking-wider text-xs font-medium mb-2">数据来源</div>
+<ol class="space-y-1.5 list-decimal list-inside text-ink-700 dark:text-ink-200">
+<li>华鲲振宇 <b>V2-华鲲推理性能Benchmark_鲲鹏920SKU</b> 公开基线表</li>
+<li>DeepSeek <b>V4 版本基线</b>（vLLM Ascend 官方测试）</li>
+<li>vLLM Ascend <b>0.11.0</b> 典型 case 性能基线（2025-11-24 刷新版）</li>
+</ol></aside>
+</div></main>
+<footer class="border-t border-default mt-20"> <div class="container-shell py-8 text-meta text-sm flex flex-col md:flex-row md:items-center md:justify-between gap-3"> <div>
+© 2026 Ascend Notes · 昇腾实测档案 ·
+          数据可追溯 · 不构成采购建议
+</div> <div class="flex gap-5"> <a href="/methodology" class="hover:text-brand">方法论</a>  <a href="/changelog" class="hover:text-brand">更新日志</a> <a href="https://mengyx.com.cn" class="hover:text-brand">主站</a> </div> </div> </footer>
+</body></html>

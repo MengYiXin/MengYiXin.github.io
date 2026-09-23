@@ -1,0 +1,539 @@
+<!DOCTYPE html><html lang="zh-CN"> <head>
+<!-- 3pages-1790158036-1568 -->
+<!-- clean-1790155744-26912 --><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="MaaS 模型清单 · 业内主流大模型名称（用于客户需求收集，不做性能比较）"><meta name="generator" content="Astro v5.18.2"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="alternate icon" href="/favicon.svg"><title>MaaS 模型清单 · Ascend Notes</title><link rel="stylesheet" href="/static-astro/3500-g3.ClXRCnKS.css">
+<style>details[data-astro-cid-wmd6b3pc]>summary[data-astro-cid-wmd6b3pc]{list-style:none}details[data-astro-cid-wmd6b3pc]>summary[data-astro-cid-wmd6b3pc]::-webkit-details-marker{display:none}details[data-astro-cid-wmd6b3pc][open]>summary[data-astro-cid-wmd6b3pc] span[data-astro-cid-wmd6b3pc]:first-child{transform:rotate(90deg);display:inline-block;transition:transform .15s}
+</style></head>
+<body class="bg-page">
+<header class="border-b border-default bg-page sticky top-0 z-40 backdrop-blur supports-[backdrop-filter]:bg-page/80"> <div class="container-shell flex items-center justify-between h-14"> <a href="/" class="flex items-center gap-2.5 group"> <span class="inline-block w-6 h-6 rounded bg-brand text-white text-[11px] font-bold leading-6 text-center">A</span> <span class="font-semibold text-ink-900 dark:text-ink-100 group-hover:text-brand transition-colors">Ascend Notes</span> <span class="hidden md:inline text-meta ml-1">· 昇腾实测档案</span> </a> <nav class="hidden md:flex items-center gap-6 text-sm"> <a href="/" class="nav-link"> 首页 </a><a href="/chips/3500-g3" class="nav-link"> 3500 G3 </a><a href="/chips/910c" class="nav-link"> 910C </a><a href="/chips/950" class="nav-link"> 950 </a><a href="/models" class="nav-link"> 模型 </a><a href="/benchmarks/ttft" class="nav-link"> TTFT </a><a href="/benchmarks/throughput" class="nav-link"> 吞吐 </a><a href="/demos" class="nav-link"> 效果 </a><a href="/business/models" class="nav-link"> 模型库 </a><a href="/benchmarks/extended" class="nav-link"> 性能 </a><a href="/demos/usage" class="nav-link"> 部署 </a></nav> <div class="flex items-center gap-3"> <button id="theme-toggle" aria-label="切换主题" class="text-meta hover:text-brand transition-colors p-1.5 rounded" title="切换主题"> <svg class="w-4 h-4 dark:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"> <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path> </svg> <svg class="w-4 h-4 hidden dark:inline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"> <circle cx="12" cy="12" r="4"></circle> <path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"></path> </svg> </button> <button id="mobile-menu-btn" class="md:hidden text-meta p-1.5" aria-label="菜单"> <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"> <path d="M3 12h18M3 6h18M3 18h18"></path> </svg> </button> </div> </div> <div id="mobile-menu" class="md:hidden hidden border-t border-default bg-page-2"> <div class="container-shell py-3 flex flex-col gap-2 text-sm"> <a href="/" class="nav-link py-1.5">首页</a><a href="/chips/3500-g3" class="nav-link py-1.5">3500 G3</a><a href="/chips/910c" class="nav-link py-1.5">910C</a><a href="/chips/950" class="nav-link py-1.5">950</a><a href="/models" class="nav-link py-1.5">模型</a><a href="/benchmarks/ttft" class="nav-link py-1.5">TTFT</a><a href="/benchmarks/throughput" class="nav-link py-1.5">吞吐</a><a href="/demos" class="nav-link py-1.5">效果</a><a href="/business/models" class="nav-link py-1.5">模型库</a><a href="/benchmarks/extended" class="nav-link py-1.5">性能</a><a href="/demos/usage" class="nav-link py-1.5">部署</a></div> </div> </header>
+<main>
+<div class="container-shell py-10">
+<nav aria-label="Breadcrumb" class="text-meta text-sm mb-4 not-prose"><ol class="flex items-center flex-wrap gap-1.5"><li><a href="/" class="hover:text-brand">首页</a></li><li class="text-ink-400">›</li><li><a href="/business/models" class="hover:text-brand">业务</a></li><li class="text-ink-400">›</li><li class="text-ink-700 dark:text-ink-200">MaaS 模型清单</li></ol></nav>
+<header class="mb-8 max-w-3xl">
+<h1 class="h1-title">MaaS 模型清单 · 客户需求收集</h1>
+<p class="mt-3 text-ink-700 dark:text-ink-200">
+本页只列出业内主流大模型名称，用于与客户交流时收集目标模型。<b>不做机器性能比较</b>。清单涵盖文本、向量、多模态、视频生成等 9 个系列共 <b>107</b> 个模型。
+</p></header>
+<div class="not-prose mb-6 flex flex-wrap items-center gap-3 p-3 rounded-md border border-default bg-page-2">
+<button id="select-all" class="px-3 py-1.5 text-sm rounded bg-brand text-white hover:opacity-90">全选</button>
+<button id="select-none" class="px-3 py-1.5 text-sm rounded border border-default hover:bg-page-2">全不选</button>
+<span class="text-meta text-sm ml-2">已选 <span id="selected-count" class="font-bold text-brand">0</span> 个</span>
+<button id="copy-selected" class="ml-auto px-3 py-1.5 text-sm rounded border border-default hover:bg-page-2">复制为列表</button>
+</div>
+<div class="not-prose mb-4">
+<input id="filter-input" type="text" placeholder="搜索模型..." class="w-full px-3 py-2 rounded-md border border-default bg-page text-sm">
+</div>
+<section class="mb-8 not-prose" data-series="DeepSeek系列">
+<h2 class="h2-title mb-3 flex items-center gap-2"><span class="badge badge-verified">7</span><span>DeepSeek系列</span></h2>
+<ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1.5">
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="DeepSeek-V3.1">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-DeepSeek-V3.1" value="DeepSeek-V3.1">
+<label for="chk-DeepSeek-V3.1" class="text-sm font-mono cursor-pointer select-text break-all">DeepSeek-V3.1</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="DeepSeek-V3.1-Terminus">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-DeepSeek-V3.1-Terminus" value="DeepSeek-V3.1-Terminus">
+<label for="chk-DeepSeek-V3.1-Terminus" class="text-sm font-mono cursor-pointer select-text break-all">DeepSeek-V3.1-Terminus</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="DeepSeek-V3-0324">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-DeepSeek-V3-0324" value="DeepSeek-V3-0324">
+<label for="chk-DeepSeek-V3-0324" class="text-sm font-mono cursor-pointer select-text break-all">DeepSeek-V3-0324</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="DeepSeek-V3.2">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-DeepSeek-V3.2" value="DeepSeek-V3.2">
+<label for="chk-DeepSeek-V3.2" class="text-sm font-mono cursor-pointer select-text break-all">DeepSeek-V3.2</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="DeepSeek-V3.2-Exp">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-DeepSeek-V3.2-Exp" value="DeepSeek-V3.2-Exp">
+<label for="chk-DeepSeek-V3.2-Exp" class="text-sm font-mono cursor-pointer select-text break-all">DeepSeek-V3.2-Exp</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="deepseek-v4-flash">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-deepseek-v4-flash" value="deepseek-v4-flash">
+<label for="chk-deepseek-v4-flash" class="text-sm font-mono cursor-pointer select-text break-all">deepseek-v4-flash</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="deepseek-v4-pro">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-deepseek-v4-pro" value="deepseek-v4-pro">
+<label for="chk-deepseek-v4-pro" class="text-sm font-mono cursor-pointer select-text break-all">deepseek-v4-pro</label>
+</li>
+</ul></section>
+<section class="mb-8 not-prose" data-series="豆包系列">
+<h2 class="h2-title mb-3 flex items-center gap-2"><span class="badge badge-verified">22</span><span>豆包系列</span></h2>
+<ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1.5">
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="Doubao1.5-lite-32k">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-Doubao1.5-lite-32k" value="Doubao1.5-lite-32k">
+<label for="chk-Doubao1.5-lite-32k" class="text-sm font-mono cursor-pointer select-text break-all">Doubao1.5-lite-32k</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="Doubao1.5-pro-32k">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-Doubao1.5-pro-32k" value="Doubao1.5-pro-32k">
+<label for="chk-Doubao1.5-pro-32k" class="text-sm font-mono cursor-pointer select-text break-all">Doubao1.5-pro-32k</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="Doubao-Seed-1.6-0615">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-Doubao-Seed-1.6-0615" value="Doubao-Seed-1.6-0615">
+<label for="chk-Doubao-Seed-1.6-0615" class="text-sm font-mono cursor-pointer select-text break-all">Doubao-Seed-1.6-0615</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="Doubao-Seed-1.6-flash">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-Doubao-Seed-1.6-flash" value="Doubao-Seed-1.6-flash">
+<label for="chk-Doubao-Seed-1.6-flash" class="text-sm font-mono cursor-pointer select-text break-all">Doubao-Seed-1.6-flash</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="Doubao-Seed-1.6-vision">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-Doubao-Seed-1.6-vision" value="Doubao-Seed-1.6-vision">
+<label for="chk-Doubao-Seed-1.6-vision" class="text-sm font-mono cursor-pointer select-text break-all">Doubao-Seed-1.6-vision</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="Doubao-Seed-1.8">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-Doubao-Seed-1.8" value="Doubao-Seed-1.8">
+<label for="chk-Doubao-Seed-1.8" class="text-sm font-mono cursor-pointer select-text break-all">Doubao-Seed-1.8</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="Doubao-Seed-2.0-Code">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-Doubao-Seed-2.0-Code" value="Doubao-Seed-2.0-Code">
+<label for="chk-Doubao-Seed-2.0-Code" class="text-sm font-mono cursor-pointer select-text break-all">Doubao-Seed-2.0-Code</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="Doubao-Seed-2.0-Lite">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-Doubao-Seed-2.0-Lite" value="Doubao-Seed-2.0-Lite">
+<label for="chk-Doubao-Seed-2.0-Lite" class="text-sm font-mono cursor-pointer select-text break-all">Doubao-Seed-2.0-Lite</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="Doubao-Seed-2.0-Mini">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-Doubao-Seed-2.0-Mini" value="Doubao-Seed-2.0-Mini">
+<label for="chk-Doubao-Seed-2.0-Mini" class="text-sm font-mono cursor-pointer select-text break-all">Doubao-Seed-2.0-Mini</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="Doubao-Seed-2.0-Pro">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-Doubao-Seed-2.0-Pro" value="Doubao-Seed-2.0-Pro">
+<label for="chk-Doubao-Seed-2.0-Pro" class="text-sm font-mono cursor-pointer select-text break-all">Doubao-Seed-2.0-Pro</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="doubao-seed-2.1-pro">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-doubao-seed-2.1-pro" value="doubao-seed-2.1-pro">
+<label for="chk-doubao-seed-2.1-pro" class="text-sm font-mono cursor-pointer select-text break-all">doubao-seed-2.1-pro</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="Doubao-Seedance-1.0-pro">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-Doubao-Seedance-1.0-pro" value="Doubao-Seedance-1.0-pro">
+<label for="chk-Doubao-Seedance-1.0-pro" class="text-sm font-mono cursor-pointer select-text break-all">Doubao-Seedance-1.0-pro</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="doubao-seedance-1-0-pro-250528">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-doubao-seedance-1-0-pro-250528" value="doubao-seedance-1-0-pro-250528">
+<label for="chk-doubao-seedance-1-0-pro-250528" class="text-sm font-mono cursor-pointer select-text break-all">doubao-seedance-1-0-pro-250528</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="Doubao-Seedance-1.5-pro-noaudio">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-Doubao-Seedance-1.5-pro-noaudio" value="Doubao-Seedance-1.5-pro-noaudio">
+<label for="chk-Doubao-Seedance-1.5-pro-noaudio" class="text-sm font-mono cursor-pointer select-text break-all">Doubao-Seedance-1.5-pro-noaudio</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="Doubao-Seedance-1.5-pro">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-Doubao-Seedance-1.5-pro" value="Doubao-Seedance-1.5-pro">
+<label for="chk-Doubao-Seedance-1.5-pro" class="text-sm font-mono cursor-pointer select-text break-all">Doubao-Seedance-1.5-pro</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="seedance2.0-fast">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-seedance2.0-fast" value="seedance2.0-fast">
+<label for="chk-seedance2.0-fast" class="text-sm font-mono cursor-pointer select-text break-all">seedance2.0-fast</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="seedance2.0-mini">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-seedance2.0-mini" value="seedance2.0-mini">
+<label for="chk-seedance2.0-mini" class="text-sm font-mono cursor-pointer select-text break-all">seedance2.0-mini</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="seedance2.0">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-seedance2.0" value="seedance2.0">
+<label for="chk-seedance2.0" class="text-sm font-mono cursor-pointer select-text break-all">seedance2.0</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="Doubao-seedream-4.0">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-Doubao-seedream-4.0" value="Doubao-seedream-4.0">
+<label for="chk-Doubao-seedream-4.0" class="text-sm font-mono cursor-pointer select-text break-all">Doubao-seedream-4.0</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="Doubao-seedream-4.5">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-Doubao-seedream-4.5" value="Doubao-seedream-4.5">
+<label for="chk-Doubao-seedream-4.5" class="text-sm font-mono cursor-pointer select-text break-all">Doubao-seedream-4.5</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="Doubao-seedream-5.0-lite">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-Doubao-seedream-5.0-lite" value="Doubao-seedream-5.0-lite">
+<label for="chk-Doubao-seedream-5.0-lite" class="text-sm font-mono cursor-pointer select-text break-all">Doubao-seedream-5.0-lite</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="doubao-seedream-5.0-pro-0724">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-doubao-seedream-5.0-pro-0724" value="doubao-seedream-5.0-pro-0724">
+<label for="chk-doubao-seedream-5.0-pro-0724" class="text-sm font-mono cursor-pointer select-text break-all">doubao-seedream-5.0-pro-0724</label>
+</li>
+</ul></section>
+<section class="mb-8 not-prose" data-series="Kimi系列">
+<h2 class="h2-title mb-3 flex items-center gap-2"><span class="badge badge-verified">7</span><span>Kimi系列</span></h2>
+<ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1.5">
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="kimi-k3">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-kimi-k3" value="kimi-k3">
+<label for="chk-kimi-k3" class="text-sm font-mono cursor-pointer select-text break-all">kimi-k3</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="kimi-k2.7-code">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-kimi-k2.7-code" value="kimi-k2.7-code">
+<label for="chk-kimi-k2.7-code" class="text-sm font-mono cursor-pointer select-text break-all">kimi-k2.7-code</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="kimi-k2.7-code-highspeed">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-kimi-k2.7-code-highspeed" value="kimi-k2.7-code-highspeed">
+<label for="chk-kimi-k2.7-code-highspeed" class="text-sm font-mono cursor-pointer select-text break-all">kimi-k2.7-code-highspeed</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="kimi-k2.6">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-kimi-k2.6" value="kimi-k2.6">
+<label for="chk-kimi-k2.6" class="text-sm font-mono cursor-pointer select-text break-all">kimi-k2.6</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="kimi-k2.6-cache">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-kimi-k2.6-cache" value="kimi-k2.6-cache">
+<label for="chk-kimi-k2.6-cache" class="text-sm font-mono cursor-pointer select-text break-all">kimi-k2.6-cache</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="Kimi-K2.5">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-Kimi-K2.5" value="Kimi-K2.5">
+<label for="chk-Kimi-K2.5" class="text-sm font-mono cursor-pointer select-text break-all">Kimi-K2.5</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="Kimi-K2">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-Kimi-K2" value="Kimi-K2">
+<label for="chk-Kimi-K2" class="text-sm font-mono cursor-pointer select-text break-all">Kimi-K2</label>
+</li>
+</ul></section>
+<section class="mb-8 not-prose" data-series="GLM系列">
+<h2 class="h2-title mb-3 flex items-center gap-2"><span class="badge badge-verified">8</span><span>GLM系列</span></h2>
+<ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1.5">
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="GLM4.6V">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-GLM4.6V" value="GLM4.6V">
+<label for="chk-GLM4.6V" class="text-sm font-mono cursor-pointer select-text break-all">GLM4.6V</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="glm-4.7">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-glm-4.7" value="glm-4.7">
+<label for="chk-glm-4.7" class="text-sm font-mono cursor-pointer select-text break-all">glm-4.7</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="glm-4.7-flashx">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-glm-4.7-flashx" value="glm-4.7-flashx">
+<label for="chk-glm-4.7-flashx" class="text-sm font-mono cursor-pointer select-text break-all">glm-4.7-flashx</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="GLM-5.0">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-GLM-5.0" value="GLM-5.0">
+<label for="chk-GLM-5.0" class="text-sm font-mono cursor-pointer select-text break-all">GLM-5.0</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="glm-5-turbo">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-glm-5-turbo" value="glm-5-turbo">
+<label for="chk-glm-5-turbo" class="text-sm font-mono cursor-pointer select-text break-all">glm-5-turbo</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="glm-5.1">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-glm-5.1" value="glm-5.1">
+<label for="chk-glm-5.1" class="text-sm font-mono cursor-pointer select-text break-all">glm-5.1</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="glm-5.1-an">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-glm-5.1-an" value="glm-5.1-an">
+<label for="chk-glm-5.1-an" class="text-sm font-mono cursor-pointer select-text break-all">glm-5.1-an</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="glm-5.2">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-glm-5.2" value="glm-5.2">
+<label for="chk-glm-5.2" class="text-sm font-mono cursor-pointer select-text break-all">glm-5.2</label>
+</li>
+</ul></section>
+<section class="mb-8 not-prose" data-series="Minimax系列">
+<h2 class="h2-title mb-3 flex items-center gap-2"><span class="badge badge-verified">3</span><span>Minimax系列</span></h2>
+<ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1.5">
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="Minimax-M2.5">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-Minimax-M2.5" value="Minimax-M2.5">
+<label for="chk-Minimax-M2.5" class="text-sm font-mono cursor-pointer select-text break-all">Minimax-M2.5</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="minimax-m2.7">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-minimax-m2.7" value="minimax-m2.7">
+<label for="chk-minimax-m2.7" class="text-sm font-mono cursor-pointer select-text break-all">minimax-m2.7</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="minimax-m3">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-minimax-m3" value="minimax-m3">
+<label for="chk-minimax-m3" class="text-sm font-mono cursor-pointer select-text break-all">minimax-m3</label>
+</li>
+</ul></section>
+<section class="mb-8 not-prose" data-series="Qwen系列">
+<h2 class="h2-title mb-3 flex items-center gap-2"><span class="badge badge-verified">30</span><span>Qwen系列</span></h2>
+<ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1.5">
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="qwen3.7-max（正式版）">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-qwen3.7-max（正式版）" value="qwen3.7-max（正式版）">
+<label for="chk-qwen3.7-max（正式版）" class="text-sm font-mono cursor-pointer select-text break-all">qwen3.7-max（正式版）</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="qwen3.7-plus">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-qwen3.7-plus" value="qwen3.7-plus">
+<label for="chk-qwen3.7-plus" class="text-sm font-mono cursor-pointer select-text break-all">qwen3.7-plus</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="qwen3.6-plus">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-qwen3.6-plus" value="qwen3.6-plus">
+<label for="chk-qwen3.6-plus" class="text-sm font-mono cursor-pointer select-text break-all">qwen3.6-plus</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="qwen3.6-flash">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-qwen3.6-flash" value="qwen3.6-flash">
+<label for="chk-qwen3.6-flash" class="text-sm font-mono cursor-pointer select-text break-all">qwen3.6-flash</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="qwen3.6-27b">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-qwen3.6-27b" value="qwen3.6-27b">
+<label for="chk-qwen3.6-27b" class="text-sm font-mono cursor-pointer select-text break-all">qwen3.6-27b</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="qwen3.6-35b-a3b">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-qwen3.6-35b-a3b" value="qwen3.6-35b-a3b">
+<label for="chk-qwen3.6-35b-a3b" class="text-sm font-mono cursor-pointer select-text break-all">qwen3.6-35b-a3b</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="qwen3.5-omni-flash">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-qwen3.5-omni-flash" value="qwen3.5-omni-flash">
+<label for="chk-qwen3.5-omni-flash" class="text-sm font-mono cursor-pointer select-text break-all">qwen3.5-omni-flash</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="qwen3.5-397b-a17b">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-qwen3.5-397b-a17b" value="qwen3.5-397b-a17b">
+<label for="chk-qwen3.5-397b-a17b" class="text-sm font-mono cursor-pointer select-text break-all">qwen3.5-397b-a17b</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="qwen3.5-122b-a10b">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-qwen3.5-122b-a10b" value="qwen3.5-122b-a10b">
+<label for="chk-qwen3.5-122b-a10b" class="text-sm font-mono cursor-pointer select-text break-all">qwen3.5-122b-a10b</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="qwen3.5-27b">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-qwen3.5-27b" value="qwen3.5-27b">
+<label for="chk-qwen3.5-27b" class="text-sm font-mono cursor-pointer select-text break-all">qwen3.5-27b</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="qwen3.5-35b-a3b">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-qwen3.5-35b-a3b" value="qwen3.5-35b-a3b">
+<label for="chk-qwen3.5-35b-a3b" class="text-sm font-mono cursor-pointer select-text break-all">qwen3.5-35b-a3b</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="qwen3.5-plus">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-qwen3.5-plus" value="qwen3.5-plus">
+<label for="chk-qwen3.5-plus" class="text-sm font-mono cursor-pointer select-text break-all">qwen3.5-plus</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="qwen3.5-flash">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-qwen3.5-flash" value="qwen3.5-flash">
+<label for="chk-qwen3.5-flash" class="text-sm font-mono cursor-pointer select-text break-all">qwen3.5-flash</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="qwen3-coder-plus">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-qwen3-coder-plus" value="qwen3-coder-plus">
+<label for="chk-qwen3-coder-plus" class="text-sm font-mono cursor-pointer select-text break-all">qwen3-coder-plus</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="qwen3-max">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-qwen3-max" value="qwen3-max">
+<label for="chk-qwen3-max" class="text-sm font-mono cursor-pointer select-text break-all">qwen3-max</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="qwen3-max-preview">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-qwen3-max-preview" value="qwen3-max-preview">
+<label for="chk-qwen3-max-preview" class="text-sm font-mono cursor-pointer select-text break-all">qwen3-max-preview</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="Qwen3-Omni-Flash">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-Qwen3-Omni-Flash" value="Qwen3-Omni-Flash">
+<label for="chk-Qwen3-Omni-Flash" class="text-sm font-mono cursor-pointer select-text break-all">Qwen3-Omni-Flash</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="qwen3-vl-30b-a3b-instruct">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-qwen3-vl-30b-a3b-instruct" value="qwen3-vl-30b-a3b-instruct">
+<label for="chk-qwen3-vl-30b-a3b-instruct" class="text-sm font-mono cursor-pointer select-text break-all">qwen3-vl-30b-a3b-instruct</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="qwen3-vl-flash">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-qwen3-vl-flash" value="qwen3-vl-flash">
+<label for="chk-qwen3-vl-flash" class="text-sm font-mono cursor-pointer select-text break-all">qwen3-vl-flash</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="qwen3-vl-plus">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-qwen3-vl-plus" value="qwen3-vl-plus">
+<label for="chk-qwen3-vl-plus" class="text-sm font-mono cursor-pointer select-text break-all">qwen3-vl-plus</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="qwen-long">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-qwen-long" value="qwen-long">
+<label for="chk-qwen-long" class="text-sm font-mono cursor-pointer select-text break-all">qwen-long</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="qwen-vl-plus">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-qwen-vl-plus" value="qwen-vl-plus">
+<label for="chk-qwen-vl-plus" class="text-sm font-mono cursor-pointer select-text break-all">qwen-vl-plus</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="qwen-turbo">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-qwen-turbo" value="qwen-turbo">
+<label for="chk-qwen-turbo" class="text-sm font-mono cursor-pointer select-text break-all">qwen-turbo</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="Qwen-flash">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-Qwen-flash" value="Qwen-flash">
+<label for="chk-Qwen-flash" class="text-sm font-mono cursor-pointer select-text break-all">Qwen-flash</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="Qwen-plus">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-Qwen-plus" value="Qwen-plus">
+<label for="chk-Qwen-plus" class="text-sm font-mono cursor-pointer select-text break-all">Qwen-plus</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="qwen-image-edit-plus">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-qwen-image-edit-plus" value="qwen-image-edit-plus">
+<label for="chk-qwen-image-edit-plus" class="text-sm font-mono cursor-pointer select-text break-all">qwen-image-edit-plus</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="qwen-image-plus">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-qwen-image-plus" value="qwen-image-plus">
+<label for="chk-qwen-image-plus" class="text-sm font-mono cursor-pointer select-text break-all">qwen-image-plus</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="qwen-image-edit">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-qwen-image-edit" value="qwen-image-edit">
+<label for="chk-qwen-image-edit" class="text-sm font-mono cursor-pointer select-text break-all">qwen-image-edit</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="qwen-image-2.0-pro">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-qwen-image-2.0-pro" value="qwen-image-2.0-pro">
+<label for="chk-qwen-image-2.0-pro" class="text-sm font-mono cursor-pointer select-text break-all">qwen-image-2.0-pro</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="qwen-image-edit-max">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-qwen-image-edit-max" value="qwen-image-edit-max">
+<label for="chk-qwen-image-edit-max" class="text-sm font-mono cursor-pointer select-text break-all">qwen-image-edit-max</label>
+</li>
+</ul></section>
+<section class="mb-8 not-prose" data-series="千问向量">
+<h2 class="h2-title mb-3 flex items-center gap-2"><span class="badge badge-verified">5</span><span>千问向量</span></h2>
+<ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1.5">
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="text-embedding-v4">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-text-embedding-v4" value="text-embedding-v4">
+<label for="chk-text-embedding-v4" class="text-sm font-mono cursor-pointer select-text break-all">text-embedding-v4</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="text-embedding-v3">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-text-embedding-v3" value="text-embedding-v3">
+<label for="chk-text-embedding-v3" class="text-sm font-mono cursor-pointer select-text break-all">text-embedding-v3</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="gte-rerank-v2">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-gte-rerank-v2" value="gte-rerank-v2">
+<label for="chk-gte-rerank-v2" class="text-sm font-mono cursor-pointer select-text break-all">gte-rerank-v2</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="qwen3-rerank">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-qwen3-rerank" value="qwen3-rerank">
+<label for="chk-qwen3-rerank" class="text-sm font-mono cursor-pointer select-text break-all">qwen3-rerank</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="qwen3-vl-embedding">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-qwen3-vl-embedding" value="qwen3-vl-embedding">
+<label for="chk-qwen3-vl-embedding" class="text-sm font-mono cursor-pointer select-text break-all">qwen3-vl-embedding</label>
+</li>
+</ul></section>
+<section class="mb-8 not-prose" data-series="HappyHorse">
+<h2 class="h2-title mb-3 flex items-center gap-2"><span class="badge badge-verified">7</span><span>HappyHorse</span></h2>
+<ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1.5">
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="happyhorse-1.1-t2v">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-happyhorse-1.1-t2v" value="happyhorse-1.1-t2v">
+<label for="chk-happyhorse-1.1-t2v" class="text-sm font-mono cursor-pointer select-text break-all">happyhorse-1.1-t2v</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="happyhorse-1.1-i2v">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-happyhorse-1.1-i2v" value="happyhorse-1.1-i2v">
+<label for="chk-happyhorse-1.1-i2v" class="text-sm font-mono cursor-pointer select-text break-all">happyhorse-1.1-i2v</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="happyhorse-1.1-r2v">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-happyhorse-1.1-r2v" value="happyhorse-1.1-r2v">
+<label for="chk-happyhorse-1.1-r2v" class="text-sm font-mono cursor-pointer select-text break-all">happyhorse-1.1-r2v</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="happyhorse-1.0-t2v-20260618">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-happyhorse-1.0-t2v-20260618" value="happyhorse-1.0-t2v-20260618">
+<label for="chk-happyhorse-1.0-t2v-20260618" class="text-sm font-mono cursor-pointer select-text break-all">happyhorse-1.0-t2v-20260618</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="happyhorse-1.0-i2v-20260618">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-happyhorse-1.0-i2v-20260618" value="happyhorse-1.0-i2v-20260618">
+<label for="chk-happyhorse-1.0-i2v-20260618" class="text-sm font-mono cursor-pointer select-text break-all">happyhorse-1.0-i2v-20260618</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="happyhorse-1.0-r2v-20260618">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-happyhorse-1.0-r2v-20260618" value="happyhorse-1.0-r2v-20260618">
+<label for="chk-happyhorse-1.0-r2v-20260618" class="text-sm font-mono cursor-pointer select-text break-all">happyhorse-1.0-r2v-20260618</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="happyhorse-1.0-video-edit-20260618">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-happyhorse-1.0-video-edit-20260618" value="happyhorse-1.0-video-edit-20260618">
+<label for="chk-happyhorse-1.0-video-edit-20260618" class="text-sm font-mono cursor-pointer select-text break-all">happyhorse-1.0-video-edit-20260618</label>
+</li>
+</ul></section>
+<section class="mb-8 not-prose" data-series="Wan系列">
+<h2 class="h2-title mb-3 flex items-center gap-2"><span class="badge badge-verified">18</span><span>Wan系列</span></h2>
+<ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1.5">
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="wan2.7-r2v">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-wan2.7-r2v" value="wan2.7-r2v">
+<label for="chk-wan2.7-r2v" class="text-sm font-mono cursor-pointer select-text break-all">wan2.7-r2v</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="wan2.7-i2v">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-wan2.7-i2v" value="wan2.7-i2v">
+<label for="chk-wan2.7-i2v" class="text-sm font-mono cursor-pointer select-text break-all">wan2.7-i2v</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="wan2.7-t2v">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-wan2.7-t2v" value="wan2.7-t2v">
+<label for="chk-wan2.7-t2v" class="text-sm font-mono cursor-pointer select-text break-all">wan2.7-t2v</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="wan2.6-r2v">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-wan2.6-r2v" value="wan2.6-r2v">
+<label for="chk-wan2.6-r2v" class="text-sm font-mono cursor-pointer select-text break-all">wan2.6-r2v</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="wan2.6-r2v-flash">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-wan2.6-r2v-flash" value="wan2.6-r2v-flash">
+<label for="chk-wan2.6-r2v-flash" class="text-sm font-mono cursor-pointer select-text break-all">wan2.6-r2v-flash</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="wan2.6-i2v">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-wan2.6-i2v" value="wan2.6-i2v">
+<label for="chk-wan2.6-i2v" class="text-sm font-mono cursor-pointer select-text break-all">wan2.6-i2v</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="wan2.6-i2v-flash">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-wan2.6-i2v-flash" value="wan2.6-i2v-flash">
+<label for="chk-wan2.6-i2v-flash" class="text-sm font-mono cursor-pointer select-text break-all">wan2.6-i2v-flash</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="wan2.6-t2v">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-wan2.6-t2v" value="wan2.6-t2v">
+<label for="chk-wan2.6-t2v" class="text-sm font-mono cursor-pointer select-text break-all">wan2.6-t2v</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="wan2.5-i2v-preview">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-wan2.5-i2v-preview" value="wan2.5-i2v-preview">
+<label for="chk-wan2.5-i2v-preview" class="text-sm font-mono cursor-pointer select-text break-all">wan2.5-i2v-preview</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="wan2.5-t2v-preview">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-wan2.5-t2v-preview" value="wan2.5-t2v-preview">
+<label for="chk-wan2.5-t2v-preview" class="text-sm font-mono cursor-pointer select-text break-all">wan2.5-t2v-preview</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="wan2.2-animate-mix">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-wan2.2-animate-mix" value="wan2.2-animate-mix">
+<label for="chk-wan2.2-animate-mix" class="text-sm font-mono cursor-pointer select-text break-all">wan2.2-animate-mix</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="wan2.2-i2v-plus">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-wan2.2-i2v-plus" value="wan2.2-i2v-plus">
+<label for="chk-wan2.2-i2v-plus" class="text-sm font-mono cursor-pointer select-text break-all">wan2.2-i2v-plus</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="wan2.2-i2v-flash">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-wan2.2-i2v-flash" value="wan2.2-i2v-flash">
+<label for="chk-wan2.2-i2v-flash" class="text-sm font-mono cursor-pointer select-text break-all">wan2.2-i2v-flash</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="wan2.2-kf2v-flash">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-wan2.2-kf2v-flash" value="wan2.2-kf2v-flash">
+<label for="chk-wan2.2-kf2v-flash" class="text-sm font-mono cursor-pointer select-text break-all">wan2.2-kf2v-flash</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="wan2.2-t2v-plus">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-wan2.2-t2v-plus" value="wan2.2-t2v-plus">
+<label for="chk-wan2.2-t2v-plus" class="text-sm font-mono cursor-pointer select-text break-all">wan2.2-t2v-plus</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="wan2.7-image-pro">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-wan2.7-image-pro" value="wan2.7-image-pro">
+<label for="chk-wan2.7-image-pro" class="text-sm font-mono cursor-pointer select-text break-all">wan2.7-image-pro</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="wan2.7-image">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-wan2.7-image" value="wan2.7-image">
+<label for="chk-wan2.7-image" class="text-sm font-mono cursor-pointer select-text break-all">wan2.7-image</label>
+</li>
+<li class="model-item flex items-start gap-2 px-2 py-1.5 rounded hover:bg-page-2" data-model="Wan2.6-Image">
+<input type="checkbox" class="model-check mt-0.5 shrink-0" id="chk-Wan2.6-Image" value="Wan2.6-Image">
+<label for="chk-Wan2.6-Image" class="text-sm font-mono cursor-pointer select-text break-all">Wan2.6-Image</label>
+</li>
+</ul></section>
+<section class="mt-10 not-prose">
+<h2 class="h2-title mb-3">已选清单</h2>
+<pre id="selected-list" class="rounded-md border border-default bg-page-2 p-4 text-xs font-mono whitespace-pre-wrap" placeholder="勾选上方模型后此处显示">（还未勾选）</pre>
+</section>
+</div></main>
+<footer class="border-t border-default mt-20"> <div class="container-shell py-8 text-meta text-sm flex flex-col md:flex-row md:items-center md:justify-between gap-3"> <div>
+© 2026 Ascend Notes · 昇腾实测档案 ·
+          数据可追溯 · 不构成采购建议
+</div> <div class="flex gap-5"> <a href="/methodology" class="hover:text-brand">方法论</a>  <a href="/changelog" class="hover:text-brand">更新日志</a> <a href="https://mengyx.com.cn" class="hover:text-brand">主站</a> </div> </div> </footer>
+
+<script type="module">
+const checks = document.querySelectorAll('.model-check');
+const counter = document.getElementById('selected-count');
+const list = document.getElementById('selected-list');
+const filterInput = document.getElementById('filter-input');
+
+function update() {
+  const sel = [...checks].filter(c => c.checked).map(c => c.value);
+  counter.textContent = sel.length;
+  list.textContent = sel.length ? sel.join('\n') : '（还未勾选）';
+}
+checks.forEach(c => c.addEventListener('change', update));
+document.getElementById('select-all').addEventListener('click', () => {
+  checks.forEach(c => { if (c.closest('li').style.display !== 'none') c.checked = true; });
+  update();
+});
+document.getElementById('select-none').addEventListener('click', () => {
+  checks.forEach(c => { if (c.closest('li').style.display !== 'none') c.checked = false; });
+  update();
+});
+document.getElementById('copy-selected').addEventListener('click', async () => {
+  const txt = list.textContent;
+  try { await navigator.clipboard.writeText(txt); alert('已复制 ' + counter.textContent + ' 个模型名'); }
+  catch(e) { alert('复制失败，请手动选择'); }
+});
+filterInput.addEventListener('input', () => {
+  const q = filterInput.value.toLowerCase();
+  document.querySelectorAll('.model-item').forEach(li => {
+    li.style.display = li.dataset.model.toLowerCase().includes(q) ? '' : 'none';
+  });
+});
+</script>
+
+<script type="module">const e=document.getElementById("mobile-menu-btn"),n=document.getElementById("mobile-menu");e?.addEventListener("click",()=>n?.classList.toggle("hidden"));</script> <main>  <div class="container-shell py-10" data-astro-cid-wmd6b3pc> <nav aria-label="Breadcrumb" class="text-meta text-sm mb-4 not-prose" data-astro-cid-wmd6b3pc> <ol class="flex items-center flex-wrap gap-1.5" data-astro-cid-wmd6b3pc> <li data-astro-cid-wmd6b3pc><a href="/" class="hover:text-brand" data-astro-cid-wmd6b3pc>首页</a></li> <li class="text-ink-400" data-astro-cid-wmd6b3pc>›</li> <li class="text-ink-700 dark:text-ink-200" data-astro-cid-wmd6b3pc>模型适配总表</li> </ol> </nav> <header class="mb-8 max-w-3xl" data-astro-cid-wmd6b3pc> <h1 class="h1-title" data-astro-cid-wmd6b3pc>模型适配总表</h1> <p class="mt-3 text-ink-700 dark:text-ink-200" data-astro-cid-wmd6b3pc>
+覆盖 3500 G3（含 16 卡集群 / 8 卡 910B4）和 910C 两款硬件形态的模型适配情况。
+        每条记录注明硬件、CANN/MindIE 版本、prompt/output 长度和来源笔记。
+</p> </header> <!-- 适配矩阵 --> <div class="overflow-x-auto rounded-md border border-default not-prose" data-astro-cid-wmd6b3pc> <table class="data-table" id="matrix-table" data-astro-cid-wmd6b3pc> <thead data-astro-cid-wmd6b3pc> <tr data-astro-cid-wmd6b3pc> <th data-astro-cid-wmd6b3pc>模型</th> <th data-astro-cid-wmd6b3pc>参数量</th> <th data-astro-cid-wmd6b3pc>量化</th> <th class="text-center" data-astro-cid-wmd6b3pc>3500 G3</th>  <th class="text-center" data-astro-cid-wmd6b3pc>910C</th> </tr> </thead> <tbody data-astro-cid-wmd6b3pc> <tr data-verified="true" data-astro-cid-wmd6b3pc> <td data-astro-cid-wmd6b3pc><b data-astro-cid-wmd6b3pc>DeepSeek-R1-671B</b></td> <td class="text-meta" data-astro-cid-wmd6b3pc>671B (MoE)</td> <td data-astro-cid-wmd6b3pc><code class="font-mono text-sm" data-astro-cid-wmd6b3pc>Int8</code></td> <td class="text-center" data-astro-cid-wmd6b3pc> <span class="badge badge-verified"> 已验证 </span> <div class="text-[11px] text-meta mt-1" data-astro-cid-wmd6b3pc> 16卡 · 1931.48tps </div> </td><td class="text-center text-meta" data-astro-cid-wmd6b3pc>—</td> </tr><tr data-verified="true" data-astro-cid-wmd6b3pc> <td data-astro-cid-wmd6b3pc><b data-astro-cid-wmd6b3pc>DeepSeek-V4-Flash</b></td> <td class="text-meta" data-astro-cid-wmd6b3pc>激活 ~4B</td> <td data-astro-cid-wmd6b3pc><code class="font-mono text-sm" data-astro-cid-wmd6b3pc>W8A8</code></td> <td class="text-center text-meta" data-astro-cid-wmd6b3pc><div class="text-[10px] text-meta mt-1 pt-1 border-t border-default/50" data-910b4="1"><span class="font-medium">↳ 8 卡 (910B4)</span><br><span class="badge badge-verified"> 已验证 </span> <div class="text-[11px] text-meta mt-1" data-astro-cid-wmd6b3pc> 8卡 · 775.74tps </div></div></td><td class="text-center" data-astro-cid-wmd6b3pc> <span class="badge badge-verified"> 已验证 </span> <div class="text-[11px] text-meta mt-1" data-astro-cid-wmd6b3pc> 8卡 · 117.294tps </div> </td> </tr><tr data-verified="true" data-astro-cid-wmd6b3pc> <td data-astro-cid-wmd6b3pc><b data-astro-cid-wmd6b3pc>DeepSeek-V4-Pro</b></td> <td class="text-meta" data-astro-cid-wmd6b3pc>激活 ~22B</td> <td data-astro-cid-wmd6b3pc><code class="font-mono text-sm" data-astro-cid-wmd6b3pc>W4A8</code></td> <td class="text-center text-meta" data-astro-cid-wmd6b3pc><div class="text-[10px] text-meta mt-1 pt-1 border-t border-default/50" data-910b4="1"><span class="font-medium">↳ 8 卡 (910B4)</span><br><span class="badge badge-verified"> 已验证 </span> <div class="text-[11px] text-meta mt-1" data-astro-cid-wmd6b3pc> 4卡 · 453.96tps </div></div></td><td class="text-center" data-astro-cid-wmd6b3pc> <span class="badge badge-verified"> 已验证 </span> <div class="text-[11px] text-meta mt-1" data-astro-cid-wmd6b3pc> 16卡 · 1.42tps </div> </td> </tr><tr data-verified="true" data-astro-cid-wmd6b3pc> <td data-astro-cid-wmd6b3pc><b data-astro-cid-wmd6b3pc>GLM5</b></td> <td class="text-meta" data-astro-cid-wmd6b3pc>激活参数未公开</td> <td data-astro-cid-wmd6b3pc><code class="font-mono text-sm" data-astro-cid-wmd6b3pc>W4A8</code></td> <td class="text-center text-meta" data-astro-cid-wmd6b3pc>—</td><td class="text-center" data-astro-cid-wmd6b3pc> <span class="badge badge-verified"> 已验证 </span> <div class="text-[11px] text-meta mt-1" data-astro-cid-wmd6b3pc> 8卡 · 604.63tps </div> </td> </tr><tr data-verified="true" data-astro-cid-wmd6b3pc> <td data-astro-cid-wmd6b3pc><b data-astro-cid-wmd6b3pc>Qwen3-235B-A22B</b></td> <td class="text-meta" data-astro-cid-wmd6b3pc>235B (MoE)</td> <td data-astro-cid-wmd6b3pc><code class="font-mono text-sm" data-astro-cid-wmd6b3pc>FP16</code></td> <td class="text-center text-meta" data-astro-cid-wmd6b3pc><div class="text-[10px] text-meta mt-1 pt-1 border-t border-default/50" data-910b4="1"><span class="font-medium">↳ 8 卡 (910B4)</span><br><span class="badge badge-verified"> 已验证 </span> <div class="text-[11px] text-meta mt-1" data-astro-cid-wmd6b3pc> 8卡 · — </div></div></td><td class="text-center text-meta" data-astro-cid-wmd6b3pc>—</td> </tr><tr data-verified="true" data-astro-cid-wmd6b3pc> <td data-astro-cid-wmd6b3pc><b data-astro-cid-wmd6b3pc>Qwen3-30B-A3B</b></td> <td class="text-meta" data-astro-cid-wmd6b3pc>30B (MoE)</td> <td data-astro-cid-wmd6b3pc><code class="font-mono text-sm" data-astro-cid-wmd6b3pc>W8A8</code></td> <td class="text-center text-meta" data-astro-cid-wmd6b3pc><div class="text-[10px] text-meta mt-1 pt-1 border-t border-default/50" data-910b4="1"><span class="font-medium">↳ 8 卡 (910B4)</span><br><span class="badge badge-verified"> 已验证 </span> <div class="text-[11px] text-meta mt-1" data-astro-cid-wmd6b3pc> 2卡 · 340tps </div></div></td><td class="text-center text-meta" data-astro-cid-wmd6b3pc>—</td> </tr><tr data-verified="true" data-astro-cid-wmd6b3pc> <td data-astro-cid-wmd6b3pc><b data-astro-cid-wmd6b3pc>Qwen3-32B</b></td> <td class="text-meta" data-astro-cid-wmd6b3pc>32B</td> <td data-astro-cid-wmd6b3pc><code class="font-mono text-sm" data-astro-cid-wmd6b3pc>W8A8</code></td> <td class="text-center text-meta" data-astro-cid-wmd6b3pc><div class="text-[10px] text-meta mt-1 pt-1 border-t border-default/50" data-910b4="1"><span class="font-medium">↳ 8 卡 (910B4)</span><br><span class="badge badge-verified"> 已验证 </span> <div class="text-[11px] text-meta mt-1" data-astro-cid-wmd6b3pc> 2卡 · 340tps </div></div></td><td class="text-center text-meta" data-astro-cid-wmd6b3pc>—</td> </tr><tr data-verified="true" data-astro-cid-wmd6b3pc> <td data-astro-cid-wmd6b3pc><b data-astro-cid-wmd6b3pc>DeepSeek-70B</b></td> <td class="text-meta" data-astro-cid-wmd6b3pc>70B</td> <td data-astro-cid-wmd6b3pc><code class="font-mono text-sm" data-astro-cid-wmd6b3pc>W4A16</code></td> <td class="text-center text-meta" data-astro-cid-wmd6b3pc><div class="text-[10px] text-meta mt-1 pt-1 border-t border-default/50" data-910b4="1"><span class="font-medium">↳ 8 卡 (910B4)</span><br><span class="badge badge-verified"> 已验证 </span> <div class="text-[11px] text-meta mt-1" data-astro-cid-wmd6b3pc> 4卡 · — </div></div></td><td class="text-center text-meta" data-astro-cid-wmd6b3pc>—</td> </tr><tr data-verified="true" data-astro-cid-wmd6b3pc> <td data-astro-cid-wmd6b3pc><b data-astro-cid-wmd6b3pc>Qwen3.6-278</b></td> <td class="text-meta" data-astro-cid-wmd6b3pc>278B (MoE)</td> <td data-astro-cid-wmd6b3pc><code class="font-mono text-sm" data-astro-cid-wmd6b3pc>INT4</code></td> <td class="text-center text-meta" data-astro-cid-wmd6b3pc><div class="text-[10px] text-meta mt-1 pt-1 border-t border-default/50" data-910b4="1"><span class="font-medium">↳ 8 卡 (910B4)</span><br><span class="badge badge-verified"> 已验证 </span> <div class="text-[11px] text-meta mt-1" data-astro-cid-wmd6b3pc> 4卡 · 140GB </div></div></td><td class="text-center text-meta" data-astro-cid-wmd6b3pc>—</td> </tr><tr data-verified="true" data-astro-cid-wmd6b3pc> <td data-astro-cid-wmd6b3pc><b data-astro-cid-wmd6b3pc>VL-32B</b></td> <td class="text-meta" data-astro-cid-wmd6b3pc>32B</td> <td data-astro-cid-wmd6b3pc><code class="font-mono text-sm" data-astro-cid-wmd6b3pc>INT8</code></td> <td class="text-center text-meta" data-astro-cid-wmd6b3pc><div class="text-[10px] text-meta mt-1 pt-1 border-t border-default/50" data-910b4="1"><span class="font-medium">↳ 8 卡 (910B4)</span><br><span class="badge badge-verified"> 已验证 </span> <div class="text-[11px] text-meta mt-1" data-astro-cid-wmd6b3pc> 4卡 · 36GB </div></div></td><td class="text-center text-meta" data-astro-cid-wmd6b3pc>—</td> </tr> </tbody> </table> </div> <div class="mt-3 text-meta text-sm not-prose" data-astro-cid-wmd6b3pc> <span class="badge badge-verified mr-2" data-astro-cid-wmd6b3pc>已验证</span> <span class="badge badge-partial mr-2" data-astro-cid-wmd6b3pc>部分验证</span> <span class="badge badge-unsupported mr-2" data-astro-cid-wmd6b3pc>不支持</span> <span data-astro-cid-wmd6b3pc>— 未覆盖</span> </div> <!-- 详细数据 --> <h2 class="h2-title" data-astro-cid-wmd6b3pc>详细性能数据</h2> <p class="text-meta mb-4" data-astro-cid-wmd6b3pc>按模型分组的实测数据。点击展开。</p> <div class="not-prose space-y-3" data-astro-cid-wmd6b3pc> <details class="rounded-md border border-default" open data-astro-cid-wmd6b3pc> <summary class="cursor-pointer p-4 bg-page-2 hover:bg-ink-50 dark:hover:bg-ink-900 font-medium list-none flex items-center gap-2" data-astro-cid-wmd6b3pc> <span class="text-meta text-xs" data-astro-cid-wmd6b3pc>▸</span> <span data-astro-cid-wmd6b3pc>DeepSeek-R1-671B · <code class="font-mono text-sm" data-astro-cid-wmd6b3pc>Int8</code></span> <span class="text-meta ml-auto text-sm" data-astro-cid-wmd6b3pc>1 个适配</span> </summary> <div class="p-4" data-astro-cid-wmd6b3pc> <table class="data-table" data-astro-cid-wmd6b3pc> <thead data-astro-cid-wmd6b3pc> <tr data-astro-cid-wmd6b3pc> <th data-astro-cid-wmd6b3pc>芯片</th> <th data-astro-cid-wmd6b3pc>卡数</th> <th data-astro-cid-wmd6b3pc>框架</th> <th data-astro-cid-wmd6b3pc>状态</th> <th data-astro-cid-wmd6b3pc>配置</th> <th data-astro-cid-wmd6b3pc>TTFT</th> <th data-astro-cid-wmd6b3pc>吞吐</th> <th data-astro-cid-wmd6b3pc>E2E</th> </tr> </thead> <tbody data-astro-cid-wmd6b3pc> <tr data-astro-cid-wmd6b3pc> <td data-astro-cid-wmd6b3pc><a href="/chips/3500-g3" class="text-brand" data-astro-cid-wmd6b3pc>3500 G3</a></td> <td class="num" data-astro-cid-wmd6b3pc>16</td> <td data-astro-cid-wmd6b3pc>vLLM-Ascend</td> <td data-astro-cid-wmd6b3pc><span class="badge badge-verified"> 已验证 </span></td> <td class="text-meta" data-astro-cid-wmd6b3pc>p=1024/o=1024, 并发=100</td> <td class="num" data-astro-cid-wmd6b3pc>2690.73ms</td> <td class="num" data-astro-cid-wmd6b3pc>1931.48</td> <td class="num" data-astro-cid-wmd6b3pc>—</td> </tr> </tbody> </table> </div> </details><details class="rounded-md border border-default" open data-astro-cid-wmd6b3pc> <summary class="cursor-pointer p-4 bg-page-2 hover:bg-ink-50 dark:hover:bg-ink-900 font-medium list-none flex items-center gap-2" data-astro-cid-wmd6b3pc> <span class="text-meta text-xs" data-astro-cid-wmd6b3pc>▸</span> <span data-astro-cid-wmd6b3pc>DeepSeek-V4-Flash · <code class="font-mono text-sm" data-astro-cid-wmd6b3pc>W8A8</code></span> <span class="text-meta ml-auto text-sm" data-astro-cid-wmd6b3pc>2 个适配</span> </summary> <div class="p-4" data-astro-cid-wmd6b3pc> <table class="data-table" data-astro-cid-wmd6b3pc> <thead data-astro-cid-wmd6b3pc> <tr data-astro-cid-wmd6b3pc> <th data-astro-cid-wmd6b3pc>芯片</th> <th data-astro-cid-wmd6b3pc>卡数</th> <th data-astro-cid-wmd6b3pc>框架</th> <th data-astro-cid-wmd6b3pc>状态</th> <th data-astro-cid-wmd6b3pc>配置</th> <th data-astro-cid-wmd6b3pc>TTFT</th> <th data-astro-cid-wmd6b3pc>吞吐</th> <th data-astro-cid-wmd6b3pc>E2E</th> </tr> </thead> <tbody data-astro-cid-wmd6b3pc> <tr data-astro-cid-wmd6b3pc> <td data-astro-cid-wmd6b3pc><a href="/chips/910c" class="text-brand" data-astro-cid-wmd6b3pc>910C</a></td> <td class="num" data-astro-cid-wmd6b3pc>8</td> <td data-astro-cid-wmd6b3pc>vLLM-Ascend</td> <td data-astro-cid-wmd6b3pc><span class="badge badge-verified"> 已验证 </span></td> <td class="text-meta" data-astro-cid-wmd6b3pc>Atlas 800I A3 560T / 32 卡大 EP, p=8k/o=1k</td> <td class="num" data-astro-cid-wmd6b3pc>15.4282ms</td> <td class="num" data-astro-cid-wmd6b3pc>117.294</td> <td class="num" data-astro-cid-wmd6b3pc>23.9s</td> </tr><tr data-astro-cid-wmd6b3pc> <td data-astro-cid-wmd6b3pc><a href="/chips/3500-g3#atlas-800i-a2" class="text-brand" data-astro-cid-wmd6b3pc>3500 G3 (8卡)</a></td> <td class="num" data-astro-cid-wmd6b3pc>8</td> <td data-astro-cid-wmd6b3pc>vLLM-Ascend</td> <td data-astro-cid-wmd6b3pc><span class="badge badge-verified"> 已验证 </span></td> <td class="text-meta" data-astro-cid-wmd6b3pc>单机 910B / p=2k/o=2k, 并发=16</td> <td class="num" data-astro-cid-wmd6b3pc>—</td> <td class="num" data-astro-cid-wmd6b3pc>775.74</td> <td class="num" data-astro-cid-wmd6b3pc>2.1s</td> </tr> </tbody> </table> </div> </details><details class="rounded-md border border-default" open data-astro-cid-wmd6b3pc> <summary class="cursor-pointer p-4 bg-page-2 hover:bg-ink-50 dark:hover:bg-ink-900 font-medium list-none flex items-center gap-2" data-astro-cid-wmd6b3pc> <span class="text-meta text-xs" data-astro-cid-wmd6b3pc>▸</span> <span data-astro-cid-wmd6b3pc>DeepSeek-V4-Pro · <code class="font-mono text-sm" data-astro-cid-wmd6b3pc>W4A8</code></span> <span class="text-meta ml-auto text-sm" data-astro-cid-wmd6b3pc>2 个适配</span> </summary> <div class="p-4" data-astro-cid-wmd6b3pc> <table class="data-table" data-astro-cid-wmd6b3pc> <thead data-astro-cid-wmd6b3pc> <tr data-astro-cid-wmd6b3pc> <th data-astro-cid-wmd6b3pc>芯片</th> <th data-astro-cid-wmd6b3pc>卡数</th> <th data-astro-cid-wmd6b3pc>框架</th> <th data-astro-cid-wmd6b3pc>状态</th> <th data-astro-cid-wmd6b3pc>配置</th> <th data-astro-cid-wmd6b3pc>TTFT</th> <th data-astro-cid-wmd6b3pc>吞吐</th> <th data-astro-cid-wmd6b3pc>E2E</th> </tr> </thead> <tbody data-astro-cid-wmd6b3pc> <tr data-astro-cid-wmd6b3pc> <td data-astro-cid-wmd6b3pc><a href="/chips/910c" class="text-brand" data-astro-cid-wmd6b3pc>910C</a></td> <td class="num" data-astro-cid-wmd6b3pc>16</td> <td data-astro-cid-wmd6b3pc>vLLM-Ascend</td> <td data-astro-cid-wmd6b3pc><span class="badge badge-verified"> 已验证 </span></td> <td class="text-meta" data-astro-cid-wmd6b3pc>双机 910C / p=1M/o=1k, Prefix Cache 99% 但不命中 (待优化)</td> <td class="num" data-astro-cid-wmd6b3pc>666101ms</td> <td class="num" data-astro-cid-wmd6b3pc>1.42</td> <td class="num" data-astro-cid-wmd6b3pc>2877026s</td> </tr><tr data-astro-cid-wmd6b3pc> <td data-astro-cid-wmd6b3pc><a href="/chips/3500-g3#atlas-800i-a2" class="text-brand" data-astro-cid-wmd6b3pc>3500 G3 (8卡)</a></td> <td class="num" data-astro-cid-wmd6b3pc>4</td> <td data-astro-cid-wmd6b3pc>vLLM-Ascend</td> <td data-astro-cid-wmd6b3pc><span class="badge badge-verified"> 已验证 </span></td> <td class="text-meta" data-astro-cid-wmd6b3pc>四卡 910B / p=2k/o=2k, 并发=16</td> <td class="num" data-astro-cid-wmd6b3pc>—</td> <td class="num" data-astro-cid-wmd6b3pc>453.96</td> <td class="num" data-astro-cid-wmd6b3pc>5.4s</td> </tr> </tbody> </table> </div> </details><details class="rounded-md border border-default" open data-astro-cid-wmd6b3pc> <summary class="cursor-pointer p-4 bg-page-2 hover:bg-ink-50 dark:hover:bg-ink-900 font-medium list-none flex items-center gap-2" data-astro-cid-wmd6b3pc> <span class="text-meta text-xs" data-astro-cid-wmd6b3pc>▸</span> <span data-astro-cid-wmd6b3pc>GLM5 · <code class="font-mono text-sm" data-astro-cid-wmd6b3pc>W4A8</code></span> <span class="text-meta ml-auto text-sm" data-astro-cid-wmd6b3pc>1 个适配</span> </summary> <div class="p-4" data-astro-cid-wmd6b3pc> <table class="data-table" data-astro-cid-wmd6b3pc> <thead data-astro-cid-wmd6b3pc> <tr data-astro-cid-wmd6b3pc> <th data-astro-cid-wmd6b3pc>芯片</th> <th data-astro-cid-wmd6b3pc>卡数</th> <th data-astro-cid-wmd6b3pc>框架</th> <th data-astro-cid-wmd6b3pc>状态</th> <th data-astro-cid-wmd6b3pc>配置</th> <th data-astro-cid-wmd6b3pc>TTFT</th> <th data-astro-cid-wmd6b3pc>吞吐</th> <th data-astro-cid-wmd6b3pc>E2E</th> </tr> </thead> <tbody data-astro-cid-wmd6b3pc> <tr data-astro-cid-wmd6b3pc> <td data-astro-cid-wmd6b3pc><a href="/chips/910c" class="text-brand" data-astro-cid-wmd6b3pc>910C</a></td> <td class="num" data-astro-cid-wmd6b3pc>8</td> <td data-astro-cid-wmd6b3pc>vLLM-Ascend</td> <td data-astro-cid-wmd6b3pc><span class="badge badge-verified"> 已验证 </span></td> <td class="text-meta" data-astro-cid-wmd6b3pc>单机 910C / p=2k/o=2k, 并发=16</td> <td class="num" data-astro-cid-wmd6b3pc>3400ms</td> <td class="num" data-astro-cid-wmd6b3pc>604.63</td> <td class="num" data-astro-cid-wmd6b3pc>3.4s</td> </tr> </tbody> </table> </div> </details><details class="rounded-md border border-default" open data-astro-cid-wmd6b3pc> <summary class="cursor-pointer p-4 bg-page-2 hover:bg-ink-50 dark:hover:bg-ink-900 font-medium list-none flex items-center gap-2" data-astro-cid-wmd6b3pc> <span class="text-meta text-xs" data-astro-cid-wmd6b3pc>▸</span> <span data-astro-cid-wmd6b3pc>Qwen3-235B-A22B · <code class="font-mono text-sm" data-astro-cid-wmd6b3pc>FP16</code></span> <span class="text-meta ml-auto text-sm" data-astro-cid-wmd6b3pc>1 个适配</span> </summary> <div class="p-4" data-astro-cid-wmd6b3pc> <table class="data-table" data-astro-cid-wmd6b3pc> <thead data-astro-cid-wmd6b3pc> <tr data-astro-cid-wmd6b3pc> <th data-astro-cid-wmd6b3pc>芯片</th> <th data-astro-cid-wmd6b3pc>卡数</th> <th data-astro-cid-wmd6b3pc>框架</th> <th data-astro-cid-wmd6b3pc>状态</th> <th data-astro-cid-wmd6b3pc>配置</th> <th data-astro-cid-wmd6b3pc>TTFT</th> <th data-astro-cid-wmd6b3pc>吞吐</th> <th data-astro-cid-wmd6b3pc>E2E</th> </tr> </thead> <tbody data-astro-cid-wmd6b3pc> <tr data-astro-cid-wmd6b3pc> <td data-astro-cid-wmd6b3pc><a href="/chips/3500-g3#atlas-800i-a2" class="text-brand" data-astro-cid-wmd6b3pc>3500 G3 (8卡)</a></td> <td class="num" data-astro-cid-wmd6b3pc>8</td> <td data-astro-cid-wmd6b3pc>MindIE</td> <td data-astro-cid-wmd6b3pc><span class="badge badge-verified"> 已验证 </span></td> <td class="text-meta" data-astro-cid-wmd6b3pc>1 台 910B4 整机 / FP16</td> <td class="num" data-astro-cid-wmd6b3pc>—</td> <td class="num" data-astro-cid-wmd6b3pc>—</td> <td class="num" data-astro-cid-wmd6b3pc>—</td> </tr> </tbody> </table> </div> </details><details class="rounded-md border border-default" open data-astro-cid-wmd6b3pc> <summary class="cursor-pointer p-4 bg-page-2 hover:bg-ink-50 dark:hover:bg-ink-900 font-medium list-none flex items-center gap-2" data-astro-cid-wmd6b3pc> <span class="text-meta text-xs" data-astro-cid-wmd6b3pc>▸</span> <span data-astro-cid-wmd6b3pc>Qwen3-30B-A3B · <code class="font-mono text-sm" data-astro-cid-wmd6b3pc>W8A8</code></span> <span class="text-meta ml-auto text-sm" data-astro-cid-wmd6b3pc>1 个适配</span> </summary> <div class="p-4" data-astro-cid-wmd6b3pc> <table class="data-table" data-astro-cid-wmd6b3pc> <thead data-astro-cid-wmd6b3pc> <tr data-astro-cid-wmd6b3pc> <th data-astro-cid-wmd6b3pc>芯片</th> <th data-astro-cid-wmd6b3pc>卡数</th> <th data-astro-cid-wmd6b3pc>框架</th> <th data-astro-cid-wmd6b3pc>状态</th> <th data-astro-cid-wmd6b3pc>配置</th> <th data-astro-cid-wmd6b3pc>TTFT</th> <th data-astro-cid-wmd6b3pc>吞吐</th> <th data-astro-cid-wmd6b3pc>E2E</th> </tr> </thead> <tbody data-astro-cid-wmd6b3pc> <tr data-astro-cid-wmd6b3pc> <td data-astro-cid-wmd6b3pc><a href="/chips/3500-g3#atlas-800i-a2" class="text-brand" data-astro-cid-wmd6b3pc>3500 G3 (8卡)</a></td> <td class="num" data-astro-cid-wmd6b3pc>2</td> <td data-astro-cid-wmd6b3pc>MindIE</td> <td data-astro-cid-wmd6b3pc><span class="badge badge-verified"> 已验证 </span></td> <td class="text-meta" data-astro-cid-wmd6b3pc>1 台 910B4 上用 2 卡</td> <td class="num" data-astro-cid-wmd6b3pc>—</td> <td class="num" data-astro-cid-wmd6b3pc>340</td> <td class="num" data-astro-cid-wmd6b3pc>4s</td> </tr> </tbody> </table> </div> </details><details class="rounded-md border border-default" open data-astro-cid-wmd6b3pc> <summary class="cursor-pointer p-4 bg-page-2 hover:bg-ink-50 dark:hover:bg-ink-900 font-medium list-none flex items-center gap-2" data-astro-cid-wmd6b3pc> <span class="text-meta text-xs" data-astro-cid-wmd6b3pc>▸</span> <span data-astro-cid-wmd6b3pc>Qwen3-32B · <code class="font-mono text-sm" data-astro-cid-wmd6b3pc>W8A8</code></span> <span class="text-meta ml-auto text-sm" data-astro-cid-wmd6b3pc>1 个适配</span> </summary> <div class="p-4" data-astro-cid-wmd6b3pc> <table class="data-table" data-astro-cid-wmd6b3pc> <thead data-astro-cid-wmd6b3pc> <tr data-astro-cid-wmd6b3pc> <th data-astro-cid-wmd6b3pc>芯片</th> <th data-astro-cid-wmd6b3pc>卡数</th> <th data-astro-cid-wmd6b3pc>框架</th> <th data-astro-cid-wmd6b3pc>状态</th> <th data-astro-cid-wmd6b3pc>配置</th> <th data-astro-cid-wmd6b3pc>TTFT</th> <th data-astro-cid-wmd6b3pc>吞吐</th> <th data-astro-cid-wmd6b3pc>E2E</th> </tr> </thead> <tbody data-astro-cid-wmd6b3pc> <tr data-astro-cid-wmd6b3pc> <td data-astro-cid-wmd6b3pc><a href="/chips/3500-g3#atlas-800i-a2" class="text-brand" data-astro-cid-wmd6b3pc>3500 G3 (8卡)</a></td> <td class="num" data-astro-cid-wmd6b3pc>2</td> <td data-astro-cid-wmd6b3pc>MindIE</td> <td data-astro-cid-wmd6b3pc><span class="badge badge-verified"> 已验证 </span></td> <td class="text-meta" data-astro-cid-wmd6b3pc>1 台 910B4 上用 2 卡, p=2k/o=2k, 并发=25</td> <td class="num" data-astro-cid-wmd6b3pc>—</td> <td class="num" data-astro-cid-wmd6b3pc>340</td> <td class="num" data-astro-cid-wmd6b3pc>4s</td> </tr> </tbody> </table> </div> </details><details class="rounded-md border border-default" open data-astro-cid-wmd6b3pc> <summary class="cursor-pointer p-4 bg-page-2 hover:bg-ink-50 dark:hover:bg-ink-900 font-medium list-none flex items-center gap-2" data-astro-cid-wmd6b3pc> <span class="text-meta text-xs" data-astro-cid-wmd6b3pc>▸</span> <span data-astro-cid-wmd6b3pc>DeepSeek-70B · <code class="font-mono text-sm" data-astro-cid-wmd6b3pc>W4A16</code></span> <span class="text-meta ml-auto text-sm" data-astro-cid-wmd6b3pc>1 个适配</span> </summary> <div class="p-4" data-astro-cid-wmd6b3pc> <table class="data-table" data-astro-cid-wmd6b3pc> <thead data-astro-cid-wmd6b3pc> <tr data-astro-cid-wmd6b3pc> <th data-astro-cid-wmd6b3pc>芯片</th> <th data-astro-cid-wmd6b3pc>卡数</th> <th data-astro-cid-wmd6b3pc>框架</th> <th data-astro-cid-wmd6b3pc>状态</th> <th data-astro-cid-wmd6b3pc>配置</th> <th data-astro-cid-wmd6b3pc>TTFT</th> <th data-astro-cid-wmd6b3pc>吞吐</th> <th data-astro-cid-wmd6b3pc>E2E</th> </tr> </thead> <tbody data-astro-cid-wmd6b3pc> <tr data-astro-cid-wmd6b3pc> <td data-astro-cid-wmd6b3pc><a href="/chips/3500-g3#atlas-800i-a2" class="text-brand" data-astro-cid-wmd6b3pc>3500 G3 (8卡)</a></td> <td class="num" data-astro-cid-wmd6b3pc>4</td> <td data-astro-cid-wmd6b3pc>MindIE</td> <td data-astro-cid-wmd6b3pc><span class="badge badge-verified"> 已验证 </span></td> <td class="text-meta" data-astro-cid-wmd6b3pc>1 台 910B4 上用 4 卡</td> <td class="num" data-astro-cid-wmd6b3pc>—</td> <td class="num" data-astro-cid-wmd6b3pc>—</td> <td class="num" data-astro-cid-wmd6b3pc>—</td> </tr> </tbody> </table> </div> </details><details class="rounded-md border border-default" open data-astro-cid-wmd6b3pc> <summary class="cursor-pointer p-4 bg-page-2 hover:bg-ink-50 dark:hover:bg-ink-900 font-medium list-none flex items-center gap-2" data-astro-cid-wmd6b3pc> <span class="text-meta text-xs" data-astro-cid-wmd6b3pc>▸</span> <span data-astro-cid-wmd6b3pc>Qwen3.6-278 · <code class="font-mono text-sm" data-astro-cid-wmd6b3pc>INT4</code></span> <span class="text-meta ml-auto text-sm" data-astro-cid-wmd6b3pc>1 个适配</span> </summary> <div class="p-4" data-astro-cid-wmd6b3pc> <table class="data-table" data-astro-cid-wmd6b3pc> <thead data-astro-cid-wmd6b3pc> <tr data-astro-cid-wmd6b3pc> <th data-astro-cid-wmd6b3pc>芯片</th> <th data-astro-cid-wmd6b3pc>卡数</th> <th data-astro-cid-wmd6b3pc>框架</th> <th data-astro-cid-wmd6b3pc>状态</th> <th data-astro-cid-wmd6b3pc>配置</th> <th data-astro-cid-wmd6b3pc>TTFT</th> <th data-astro-cid-wmd6b3pc>吞吐</th> <th data-astro-cid-wmd6b3pc>E2E</th> </tr> </thead> <tbody data-astro-cid-wmd6b3pc> <tr data-astro-cid-wmd6b3pc> <td data-astro-cid-wmd6b3pc><a href="/chips/3500-g3#atlas-800i-a2" class="text-brand" data-astro-cid-wmd6b3pc>3500 G3 (8卡)</a></td> <td class="num" data-astro-cid-wmd6b3pc>4</td> <td data-astro-cid-wmd6b3pc>vLLM-Ascend</td> <td data-astro-cid-wmd6b3pc><span class="badge badge-verified"> 已验证 </span></td> <td class="text-meta" data-astro-cid-wmd6b3pc>四卡 + KV Cache, 4×64GB 集群可承载</td> <td class="num" data-astro-cid-wmd6b3pc>—</td> <td class="num" data-astro-cid-wmd6b3pc>—</td> <td class="num" data-astro-cid-wmd6b3pc>—</td> </tr> </tbody> </table> </div> </details><details class="rounded-md border border-default" open data-astro-cid-wmd6b3pc> <summary class="cursor-pointer p-4 bg-page-2 hover:bg-ink-50 dark:hover:bg-ink-900 font-medium list-none flex items-center gap-2" data-astro-cid-wmd6b3pc> <span class="text-meta text-xs" data-astro-cid-wmd6b3pc>▸</span> <span data-astro-cid-wmd6b3pc>VL-32B · <code class="font-mono text-sm" data-astro-cid-wmd6b3pc>INT8</code></span> <span class="text-meta ml-auto text-sm" data-astro-cid-wmd6b3pc>1 个适配</span> </summary> <div class="p-4" data-astro-cid-wmd6b3pc> <table class="data-table" data-astro-cid-wmd6b3pc> <thead data-astro-cid-wmd6b3pc> <tr data-astro-cid-wmd6b3pc> <th data-astro-cid-wmd6b3pc>芯片</th> <th data-astro-cid-wmd6b3pc>卡数</th> <th data-astro-cid-wmd6b3pc>框架</th> <th data-astro-cid-wmd6b3pc>状态</th> <th data-astro-cid-wmd6b3pc>配置</th> <th data-astro-cid-wmd6b3pc>TTFT</th> <th data-astro-cid-wmd6b3pc>吞吐</th> <th data-astro-cid-wmd6b3pc>E2E</th> </tr> </thead> <tbody data-astro-cid-wmd6b3pc> <tr data-astro-cid-wmd6b3pc> <td data-astro-cid-wmd6b3pc><a href="/chips/3500-g3#atlas-800i-a2" class="text-brand" data-astro-cid-wmd6b3pc>3500 G3 (8卡)</a></td> <td class="num" data-astro-cid-wmd6b3pc>4</td> <td data-astro-cid-wmd6b3pc>vLLM-Ascend</td> <td data-astro-cid-wmd6b3pc><span class="badge badge-verified"> 已验证 </span></td> <td class="text-meta" data-astro-cid-wmd6b3pc>四卡 910B / 与 Qwen3.6-278 4+4 混合部署</td> <td class="num" data-astro-cid-wmd6b3pc>—</td> <td class="num" data-astro-cid-wmd6b3pc>—</td> <td class="num" data-astro-cid-wmd6b3pc>—</td> </tr> </tbody> </table> </div> </details> </div> </div>  </main> <footer class="border-t border-default mt-20"> <div class="container-shell py-8 text-meta text-sm flex flex-col md:flex-row md:items-center md:justify-between gap-3"> <div>
+© 2026 Ascend Notes · 昇腾实测档案 ·
+          数据可追溯 · 不构成采购建议
+</div> <div class="flex gap-5"> <a href="/methodology" class="hover:text-brand">方法论</a>  <a href="/changelog" class="hover:text-brand">更新日志</a> <a href="https://mengyx.com.cn" class="hover:text-brand">主站</a> </div> </div> </footer> <script type="module">const c="ascend-notes-theme";function o(e){const t=document.documentElement,s=e==="dark"||e==="system"&&window.matchMedia("(prefers-color-scheme: dark)").matches;t.classList.toggle("dark",s),t.style.colorScheme=s?"dark":"light",document.dispatchEvent(new CustomEvent("themechange",{detail:{theme:e,isDark:s}}))}function a(){const e=localStorage.getItem(c)??"system";o(e),window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change",()=>{(localStorage.getItem(c)??"system")==="system"&&o("system")})}a();const n=document.getElementById("theme-toggle");n?.addEventListener("click",()=>{const e=localStorage.getItem("ascend-notes-theme")||"system",t=e==="light"?"dark":e==="dark"?"system":"light";localStorage.setItem("ascend-notes-theme",t),location.reload()});(function(){const e=localStorage.getItem("ascend-notes-theme")||"system";(e==="dark"||e==="system"&&window.matchMedia("(prefers-color-scheme: dark)").matches)&&document.documentElement.classList.add("dark")})();</script> 
+</body></html>
