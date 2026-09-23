@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="zh-CN">
 <head>
-<!-- 3pages-1790160627-6956 -->
+<!-- 3pages-1790160947-26296 -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>登录 · Ascend Notes</title>
@@ -73,5 +73,49 @@ try {
   if (auth && auth.u === EXPECTED_USER) location.replace(NEXT);
 } catch(e) {}
 </script>
+
+<script>
+// pre 代码块加复制按钮
+(function(){
+  function attachCopyBtn(pre){
+    if (pre.dataset.copyAttached) return;
+    pre.dataset.copyAttached = "1";
+    const code = pre.querySelector("code") || pre;
+    const btn = document.createElement("button");
+    btn.className = "copy-btn";
+    btn.type = "button";
+    btn.textContent = "复制";
+    btn.addEventListener("click", async () => {
+      const text = code.innerText.replace(/ /g, " ");
+      try {
+        await navigator.clipboard.writeText(text);
+      } catch(e) {
+        // fallback
+        const ta = document.createElement("textarea");
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand("copy");
+        ta.remove();
+      }
+      btn.textContent = "已复制";
+      btn.classList.add("copied");
+      setTimeout(() => { btn.textContent = "复制"; btn.classList.remove("copied"); }, 1400);
+    });
+    pre.appendChild(btn);
+  }
+  document.querySelectorAll("pre").forEach(attachCopyBtn);
+  // 监听 DOM 变化（页面动态内容）
+  new MutationObserver(muts => {
+    for (const m of muts) m.addedNodes.forEach(n => {
+      if (n.nodeType !== 1) return;
+      if (n.tagName === "PRE") attachCopyBtn(n);
+      n.querySelectorAll && n.querySelectorAll("pre").forEach(attachCopyBtn);
+    });
+  }).observe(document.body, { childList: true, subtree: true });
+})();
+</script>
+
+<!-- ascend-notes-copy-btn -->
 </body>
 </html>

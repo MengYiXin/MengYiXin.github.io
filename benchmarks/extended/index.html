@@ -1,5 +1,5 @@
 <!DOCTYPE html><html lang="zh-CN"> <head>
-<!-- 3pages-1790160627-6956 -->
+<!-- 3pages-1790160947-26296 -->
 <!-- clean-1790155744-26912 --><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="昇腾 3500 G3 (含 16 卡 / 8 卡 910B4) / 910C / 950 模型适配、TTFT 与吞吐实测数据"><meta name="generator" content="Astro v5.18.2"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="alternate icon" href="/favicon.svg"><title>模型适配总表 · Ascend Notes</title><link rel="stylesheet" href="/static-astro/3500-g3.ClXRCnKS.css">
 <style>details[data-astro-cid-wmd6b3pc]>summary[data-astro-cid-wmd6b3pc]{list-style:none}details[data-astro-cid-wmd6b3pc]>summary[data-astro-cid-wmd6b3pc]::-webkit-details-marker{display:none}details[data-astro-cid-wmd6b3pc][open]>summary[data-astro-cid-wmd6b3pc] span[data-astro-cid-wmd6b3pc]:first-child{transform:rotate(90deg);display:inline-block;transition:transform .15s}
 </style>
@@ -478,7 +478,8 @@ window.addEventListener('resize', () => { chart1.resize(); chart2.resize(); });
 </script>
 <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
 
-<footer class="border-t border-default mt-20"> <div class="container-shell py-8 text-meta text-sm flex flex-col md:flex-row md:items-center md:justify-between gap-3"> <div>
+<footer class="border-t border-default mt-20">
+  <div class="last-updated">Last updated 2026-09-23 · 档号 v2.4 · 自动部署</div> <div class="container-shell py-8 text-meta text-sm flex flex-col md:flex-row md:items-center md:justify-between gap-3"> <div>
 © 2026 Ascend Notes · 昇腾实测档案 ·
           数据可追溯 · 不构成采购建议
 </div> <div class="flex gap-5"> <a href="/methodology" class="hover:text-brand">方法论</a>  <a href="/changelog" class="hover:text-brand">更新日志</a> <a href="https://mengyx.com.cn" class="hover:text-brand">主站</a> </div> </div> </footer>
@@ -489,4 +490,48 @@ window.addEventListener('resize', () => { chart1.resize(); chart2.resize(); });
 © 2026 Ascend Notes · 昇腾实测档案 ·
           数据可追溯 · 不构成采购建议
 </div> <div class="flex gap-5"> <a href="/methodology" class="hover:text-brand">方法论</a>  <a href="/changelog" class="hover:text-brand">更新日志</a> <a href="https://mengyx.com.cn" class="hover:text-brand">主站</a> </div> </div> </footer> <script type="module">const c="ascend-notes-theme";function o(e){const t=document.documentElement,s=e==="dark"||e==="system"&&window.matchMedia("(prefers-color-scheme: dark)").matches;t.classList.toggle("dark",s),t.style.colorScheme=s?"dark":"light",document.dispatchEvent(new CustomEvent("themechange",{detail:{theme:e,isDark:s}}))}function a(){const e=localStorage.getItem(c)??"system";o(e),window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change",()=>{(localStorage.getItem(c)??"system")==="system"&&o("system")})}a();const n=document.getElementById("theme-toggle");n?.addEventListener("click",()=>{const e=localStorage.getItem("ascend-notes-theme")||"system",t=e==="light"?"dark":e==="dark"?"system":"light";localStorage.setItem("ascend-notes-theme",t),location.reload()});(function(){const e=localStorage.getItem("ascend-notes-theme")||"system";(e==="dark"||e==="system"&&window.matchMedia("(prefers-color-scheme: dark)").matches)&&document.documentElement.classList.add("dark")})();</script> 
+
+<script>
+// pre 代码块加复制按钮
+(function(){
+  function attachCopyBtn(pre){
+    if (pre.dataset.copyAttached) return;
+    pre.dataset.copyAttached = "1";
+    const code = pre.querySelector("code") || pre;
+    const btn = document.createElement("button");
+    btn.className = "copy-btn";
+    btn.type = "button";
+    btn.textContent = "复制";
+    btn.addEventListener("click", async () => {
+      const text = code.innerText.replace(/ /g, " ");
+      try {
+        await navigator.clipboard.writeText(text);
+      } catch(e) {
+        // fallback
+        const ta = document.createElement("textarea");
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand("copy");
+        ta.remove();
+      }
+      btn.textContent = "已复制";
+      btn.classList.add("copied");
+      setTimeout(() => { btn.textContent = "复制"; btn.classList.remove("copied"); }, 1400);
+    });
+    pre.appendChild(btn);
+  }
+  document.querySelectorAll("pre").forEach(attachCopyBtn);
+  // 监听 DOM 变化（页面动态内容）
+  new MutationObserver(muts => {
+    for (const m of muts) m.addedNodes.forEach(n => {
+      if (n.nodeType !== 1) return;
+      if (n.tagName === "PRE") attachCopyBtn(n);
+      n.querySelectorAll && n.querySelectorAll("pre").forEach(attachCopyBtn);
+    });
+  }).observe(document.body, { childList: true, subtree: true });
+})();
+</script>
+
+<!-- ascend-notes-copy-btn -->
 </body></html>

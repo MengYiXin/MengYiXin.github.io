@@ -1,5 +1,5 @@
 <!DOCTYPE html><html lang="zh-CN"> <head>
-<!-- 3pages-1790160627-6956 --><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="昇腾 3500 G3 / 910B4 / 910C / 950 模型适配、TTFT 与吞吐实测数据"><meta name="generator" content="Astro v5.18.2"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="alternate icon" href="/favicon.svg"><title>Ascend Notes · 昇腾实测档案</title><link rel="stylesheet" href="/static-astro/3500-g3.ClXRCnKS.css">
+<!-- 3pages-1790160947-26296 --><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="昇腾 3500 G3 / 910B4 / 910C / 950 模型适配、TTFT 与吞吐实测数据"><meta name="generator" content="Astro v5.18.2"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="alternate icon" href="/favicon.svg"><title>Ascend Notes · 昇腾实测档案</title><link rel="stylesheet" href="/static-astro/3500-g3.ClXRCnKS.css">
 <script>
 // 简易 auth guard
 (function(){
@@ -60,7 +60,52 @@ Ascend 3500 G3 · 910B4 · 910C · 950
 同一档测试条件下的吞吐对比。注意不同设备的模型与量化方案不同，绝对值仅作参考。
 </p> <figure class="my-6 not-prose"> <figcaption class="text-meta text-sm mb-2">吞吐对比 (tps) — 横轴为 设备 / 模型 组合</figcaption> <div id="home-tps-chart" class="rounded-md border border-default bg-page-2" style="height: 320px;" data-echart-option="{&#34;tooltip&#34;:{&#34;trigger&#34;:&#34;axis&#34;},&#34;grid&#34;:{&#34;left&#34;:60,&#34;right&#34;:20,&#34;top&#34;:30,&#34;bottom&#34;:60},&#34;xAxis&#34;:{&#34;type&#34;:&#34;category&#34;,&#34;data&#34;:[&#34;3500 G3 ×16\nDS-R1-671B Int8&#34;,&#34;910C 单机\nDS-V4-Flash&#34;,&#34;910C 双机\nDS-V4-Pro&#34;,&#34;910B 单机\nDS-V4-Flash&#34;,&#34;910B 四卡\nDS-V4-Pro&#34;],&#34;axisLabel&#34;:{&#34;fontSize&#34;:10}},&#34;yAxis&#34;:{&#34;type&#34;:&#34;value&#34;,&#34;name&#34;:&#34;吞吐 (tps)&#34;},&#34;series&#34;:[{&#34;type&#34;:&#34;bar&#34;,&#34;data&#34;:[1010.78,6694.92,2127.68,775.74,963.4],&#34;itemStyle&#34;:{&#34;color&#34;:&#34;#06c&#34;},&#34;label&#34;:{&#34;show&#34;:true,&#34;position&#34;:&#34;top&#34;,&#34;fontSize&#34;:10}}]}"></div> </figure> <script type="module" src="/static-astro/ChartBlock.astro_astro_type_script_index_0_lang.Ncmk7MHC.js"></script> <figure class="my-6 not-prose"> <figcaption class="text-meta text-sm mb-2">实测数据明细</figcaption> <div class="overflow-x-auto rounded-md border border-default"> <table class="data-table"> <thead> <tr> <th style> 设备 </th><th style> 模型 · 量化 </th><th class="text-right" style="font-family: Source Code Pro, Consolas, monospace;"> 并发 </th><th class="text-right" style="font-family: Source Code Pro, Consolas, monospace;"> TTFT </th><th class="text-right" style="font-family: Source Code Pro, Consolas, monospace;"> TPOT </th><th class="text-right" style="font-family: Source Code Pro, Consolas, monospace;"> 吞吐 </th> </tr> </thead> <tbody> <tr> <td class="align-middle"> 3500 G3 ×16 卡 </td><td class="align-middle"> DeepSeek-R1-671B Int8 </td><td class="align-middle text-right num"> 30 </td><td class="align-middle text-right num"> 1586.94 </td><td class="align-middle text-right num"> 56.42 </td><td class="align-middle text-right num"> 1010.78 tps </td> </tr><tr> <td class="align-middle"> 910C 单机 </td><td class="align-middle"> DeepSeek-V4-Flash W8A8 </td><td class="align-middle text-right num"> 64 </td><td class="align-middle text-right num"> ~11000 </td><td class="align-middle text-right num"> — </td><td class="align-middle text-right num"> 6694.92 tps </td> </tr><tr> <td class="align-middle"> 910C 双机 </td><td class="align-middle"> DeepSeek-V4-Pro W4A8 </td><td class="align-middle text-right num"> 16 </td><td class="align-middle text-right num"> ~5600 </td><td class="align-middle text-right num"> — </td><td class="align-middle text-right num"> 2127.68 tps </td> </tr><tr> <td class="align-middle"> 910B 单机 </td><td class="align-middle"> DeepSeek-V4-Flash W8A8 </td><td class="align-middle text-right num"> 16 </td><td class="align-middle text-right num"> ~2100 </td><td class="align-middle text-right num"> — </td><td class="align-middle text-right num"> 775.74 tps </td> </tr><tr> <td class="align-middle"> 910B 四卡 </td><td class="align-middle"> DeepSeek-V4-Pro W4A8 </td><td class="align-middle text-right num"> 16 </td><td class="align-middle text-right num"> ~6200 </td><td class="align-middle text-right num"> — </td><td class="align-middle text-right num"> 963.4 tps </td> </tr> </tbody> </table> </div> </figure> </div> </section>  <section class="container-shell py-12"> <h2 class="h2-title mt-0">模型适配矩阵</h2> <p class="text-meta mb-4">摘要版。完整筛选见 <a href="/models">/models</a>。</p> <div class="overflow-x-auto rounded-md border border-default not-prose"> <table class="data-table"> <thead> <tr> <th>模型</th> <th>参数量</th> <th class="text-center">3500 G3</th> <th class="text-center">910B4</th> <th class="text-center">910C</th> <th class="text-center">950</th> </tr> </thead> <tbody> <tr><td class="align-middle">DeepSeek-R1-671B</td><td class="align-middle text-meta">671B MoE</td><td class="align-middle text-center">✓ Int8</td><td class="align-middle text-center">—</td><td class="align-middle text-center">—</td><td class="align-middle text-center">—</td></tr> <tr><td class="align-middle">DeepSeek-V4-Flash</td><td class="align-middle text-meta">激活 ~4B</td><td class="align-middle text-center">—</td><td class="align-middle text-center">✓ W8A8</td><td class="align-middle text-center">✓ W8A8</td><td class="align-middle text-center">—</td></tr> <tr><td class="align-middle">DeepSeek-V4-Pro</td><td class="align-middle text-meta">激活 ~22B</td><td class="align-middle text-center">—</td><td class="align-middle text-center">✓ W4A8</td><td class="align-middle text-center">✓ W4A8</td><td class="align-middle text-center">—</td></tr> <tr><td class="align-middle">GLM5</td><td class="align-middle text-meta">—</td><td class="align-middle text-center">—</td><td class="align-middle text-center">—</td><td class="align-middle text-center">✓ W4A8</td><td class="align-middle text-center">—</td></tr> <tr><td class="align-middle">Qwen3-235B-A22B</td><td class="align-middle text-meta">235B MoE</td><td class="align-middle text-center">—</td><td class="align-middle text-center">✓ FP16</td><td class="align-middle text-center">—</td><td class="align-middle text-center">—</td></tr> <tr><td class="align-middle">Qwen3-30B-A3B</td><td class="align-middle text-meta">30B MoE</td><td class="align-middle text-center">—</td><td class="align-middle text-center">✓ W8A8</td><td class="align-middle text-center">—</td><td class="align-middle text-center">—</td></tr> <tr><td class="align-middle">Qwen3-32B</td><td class="align-middle text-meta">32B</td><td class="align-middle text-center">—</td><td class="align-middle text-center">✓ W8A8</td><td class="align-middle text-center">—</td><td class="align-middle text-center">—</td></tr> <tr><td class="align-middle">DeepSeek-70B</td><td class="align-middle text-meta">70B</td><td class="align-middle text-center">—</td><td class="align-middle text-center">✓ W4A16</td><td class="align-middle text-center">—</td><td class="align-middle text-center">—</td></tr> </tbody> </table> </div> <div class="mt-3 text-meta text-sm"> <span class="badge badge-verified mr-2">已验证</span> <span class="badge badge-partial mr-2">部分验证</span> <span class="badge badge-unsupported mr-2">不支持</span> <span>— 未测 / 未覆盖</span> </div> </section>  <section class="container-shell py-12"> <div class="grid md:grid-cols-2 gap-6 not-prose"> <a href="/methodology" class="card card-hover block"> <div class="text-meta text-xs uppercase tracking-wider mb-1">方法论</div> <div class="font-semibold text-lg mb-1">测试方法 · 术语表</div> <div class="text-sm text-ink-600 dark:text-ink-300">
 TTFT / TPOT / E2E 的定义、CANN/MindIE 版本对照、prompt/output 配置
-</div> </a>  <div class="mt-8">  </div> </section>  </main> <footer class="border-t border-default mt-20"> <div class="container-shell py-8 text-meta text-sm flex flex-col md:flex-row md:items-center md:justify-between gap-3"> <div>
+</div> </a>  <div class="mt-8">  </div> </section>  </main> <footer class="border-t border-default mt-20">
+  <div class="last-updated">Last updated 2026-09-23 · 档号 v2.4 · 自动部署</div> <div class="container-shell py-8 text-meta text-sm flex flex-col md:flex-row md:items-center md:justify-between gap-3"> <div>
 © 2026 Ascend Notes · 昇腾实测档案 ·
           数据可追溯 · 不构成采购建议
-</div> <div class="flex gap-5"> <a href="/methodology" class="hover:text-brand">方法论</a>  <a href="/changelog" class="hover:text-brand">更新日志</a> <a href="https://mengyx.com.cn" class="hover:text-brand">主站</a> </div> </div> </footer> <script type="module">const c="ascend-notes-theme";function o(e){const t=document.documentElement,s=e==="dark"||e==="system"&&window.matchMedia("(prefers-color-scheme: dark)").matches;t.classList.toggle("dark",s),t.style.colorScheme=s?"dark":"light",document.dispatchEvent(new CustomEvent("themechange",{detail:{theme:e,isDark:s}}))}function a(){const e=localStorage.getItem(c)??"system";o(e),window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change",()=>{(localStorage.getItem(c)??"system")==="system"&&o("system")})}a();const n=document.getElementById("theme-toggle");n?.addEventListener("click",()=>{const e=localStorage.getItem("ascend-notes-theme")||"system",t=e==="light"?"dark":e==="dark"?"system":"light";localStorage.setItem("ascend-notes-theme",t),location.reload()});(function(){const e=localStorage.getItem("ascend-notes-theme")||"system";(e==="dark"||e==="system"&&window.matchMedia("(prefers-color-scheme: dark)").matches)&&document.documentElement.classList.add("dark")})();</script> </body> </html>
+</div> <div class="flex gap-5"> <a href="/methodology" class="hover:text-brand">方法论</a>  <a href="/changelog" class="hover:text-brand">更新日志</a> <a href="https://mengyx.com.cn" class="hover:text-brand">主站</a> </div> </div> </footer> <script type="module">const c="ascend-notes-theme";function o(e){const t=document.documentElement,s=e==="dark"||e==="system"&&window.matchMedia("(prefers-color-scheme: dark)").matches;t.classList.toggle("dark",s),t.style.colorScheme=s?"dark":"light",document.dispatchEvent(new CustomEvent("themechange",{detail:{theme:e,isDark:s}}))}function a(){const e=localStorage.getItem(c)??"system";o(e),window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change",()=>{(localStorage.getItem(c)??"system")==="system"&&o("system")})}a();const n=document.getElementById("theme-toggle");n?.addEventListener("click",()=>{const e=localStorage.getItem("ascend-notes-theme")||"system",t=e==="light"?"dark":e==="dark"?"system":"light";localStorage.setItem("ascend-notes-theme",t),location.reload()});(function(){const e=localStorage.getItem("ascend-notes-theme")||"system";(e==="dark"||e==="system"&&window.matchMedia("(prefers-color-scheme: dark)").matches)&&document.documentElement.classList.add("dark")})();</script> 
+<script>
+// pre 代码块加复制按钮
+(function(){
+  function attachCopyBtn(pre){
+    if (pre.dataset.copyAttached) return;
+    pre.dataset.copyAttached = "1";
+    const code = pre.querySelector("code") || pre;
+    const btn = document.createElement("button");
+    btn.className = "copy-btn";
+    btn.type = "button";
+    btn.textContent = "复制";
+    btn.addEventListener("click", async () => {
+      const text = code.innerText.replace(/ /g, " ");
+      try {
+        await navigator.clipboard.writeText(text);
+      } catch(e) {
+        // fallback
+        const ta = document.createElement("textarea");
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand("copy");
+        ta.remove();
+      }
+      btn.textContent = "已复制";
+      btn.classList.add("copied");
+      setTimeout(() => { btn.textContent = "复制"; btn.classList.remove("copied"); }, 1400);
+    });
+    pre.appendChild(btn);
+  }
+  document.querySelectorAll("pre").forEach(attachCopyBtn);
+  // 监听 DOM 变化（页面动态内容）
+  new MutationObserver(muts => {
+    for (const m of muts) m.addedNodes.forEach(n => {
+      if (n.nodeType !== 1) return;
+      if (n.tagName === "PRE") attachCopyBtn(n);
+      n.querySelectorAll && n.querySelectorAll("pre").forEach(attachCopyBtn);
+    });
+  }).observe(document.body, { childList: true, subtree: true });
+})();
+</script>
+
+<!-- ascend-notes-copy-btn -->
+</body> </html>

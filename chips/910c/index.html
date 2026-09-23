@@ -1,5 +1,5 @@
 <!DOCTYPE html><html lang="zh-CN"> <head>
-<!-- 3pages-1790160627-6956 --><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Atlas 800I A3 560T (昇腾 910C) 模型适配、TTFT 与吞吐实测"><meta name="generator" content="Astro v5.18.2"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="alternate icon" href="/favicon.svg"><title>910C · Ascend Notes</title><link rel="stylesheet" href="/static-astro/3500-g3.ClXRCnKS.css">
+<!-- 3pages-1790160947-26296 --><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="Atlas 800I A3 560T (昇腾 910C) 模型适配、TTFT 与吞吐实测"><meta name="generator" content="Astro v5.18.2"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="alternate icon" href="/favicon.svg"><title>910C · Ascend Notes</title><link rel="stylesheet" href="/static-astro/3500-g3.ClXRCnKS.css">
 <script>
 // 简易 auth guard
 (function(){
@@ -36,7 +36,52 @@
 双机 910C（DP2+TP16），跑 V4-Pro W4A8 不同上下文长度。注意 1M 上下文下 Prefix Cache 当前不命中，是已知问题。
 </p> <figure class="my-6 not-prose"> <figcaption class="text-meta text-sm mb-2">图：V4-Pro W4A8 在 910C 双机不同上下文下的吞吐（对数轴）</figcaption> <div id="pro-chart" class="rounded-md border border-default bg-page-2" style="height: 280px;" data-echart-option="{&#34;tooltip&#34;:{&#34;trigger&#34;:&#34;axis&#34;},&#34;legend&#34;:{&#34;data&#34;:[&#34;吞吐 (tps)&#34;],&#34;top&#34;:0},&#34;grid&#34;:{&#34;left&#34;:60,&#34;right&#34;:20,&#34;top&#34;:40,&#34;bottom&#34;:60},&#34;xAxis&#34;:{&#34;type&#34;:&#34;category&#34;,&#34;data&#34;:[&#34;低时延 8K&#34;,&#34;高吞吐 32K&#34;,&#34;128K prefix=0.9&#34;,&#34;1M 待优化&#34;],&#34;name&#34;:&#34;场景&#34;},&#34;yAxis&#34;:{&#34;type&#34;:&#34;log&#34;,&#34;name&#34;:&#34;吞吐 (tps, 对数)&#34;},&#34;series&#34;:[{&#34;name&#34;:&#34;吞吐 (tps)&#34;,&#34;type&#34;:&#34;bar&#34;,&#34;data&#34;:[27.5,66.79,103.04,1.42],&#34;itemStyle&#34;:{&#34;color&#34;:&#34;#0075eb&#34;}}]}"></div> </figure>  <figure class="my-6 not-prose"> <figcaption class="text-meta text-sm mb-2">V4-Pro 双机实测</figcaption> <div class="overflow-x-auto rounded-md border border-default"> <table class="data-table"> <thead> <tr> <th style> 配置 </th><th style> TTFT </th><th class="text-right" style="font-family: Source Code Pro, Consolas, monospace;"> 吞吐 </th><th class="text-right" style="font-family: Source Code Pro, Consolas, monospace;"> E2E </th> </tr> </thead> <tbody> <tr> <td class="align-middle"> 双机 910C (DP2+TP16) / p=8k/o=1k, 并发=1 (低时延) </td><td class="align-middle"> 1920.8ms </td><td class="align-middle text-right num"> 27.4957 tps </td><td class="align-middle text-right num"> 37.241s </td> </tr><tr> <td class="align-middle"> 双机 910C / p=32k/o=1k, 并发≈4 (高吞吐) </td><td class="align-middle"> 10573.7ms </td><td class="align-middle text-right num"> 66.7946 tps </td><td class="align-middle text-right num"> 60.783s </td> </tr><tr> <td class="align-middle"> 双机 910C / p=128k/o=1k, Prefix Cache 命中率 0.9, 并发≈6 </td><td class="align-middle"> 11258ms </td><td class="align-middle text-right num"> 103.0374 tps </td><td class="align-middle text-right num"> 59.34s </td> </tr><tr> <td class="align-middle"> 双机 910C / p=1M/o=1k, Prefix Cache 99% 但不命中 (待优化) </td><td class="align-middle"> 666101ms </td><td class="align-middle text-right num"> 1.42 tps </td><td class="align-middle text-right num"> 2877026s </td> </tr> </tbody> </table> </div> </figure> <h3 id="perf-glm5" class="anchor-offset h3-title">4.3 GLM5 单机</h3> <figure class="my-6 not-prose"> <figcaption class="text-meta text-sm mb-2">GLM5 单机实测</figcaption> <div class="overflow-x-auto rounded-md border border-default"> <table class="data-table"> <thead> <tr> <th style> 配置 </th><th style> TTFT </th><th class="text-right" style="font-family: Source Code Pro, Consolas, monospace;"> 吞吐 </th><th class="text-right" style="font-family: Source Code Pro, Consolas, monospace;"> E2E </th> </tr> </thead> <tbody> <tr> <td class="align-middle"> 单机 910C / p=4k/o=1k, 并发=16 </td><td class="align-middle"> 6400ms </td><td class="align-middle text-right num"> 1035.71 tps </td><td class="align-middle text-right num"> 6.4s </td> </tr><tr> <td class="align-middle"> 单机 910C / p=2k/o=2k, 并发=16 </td><td class="align-middle"> 3400ms </td><td class="align-middle text-right num"> 604.63 tps </td><td class="align-middle text-right num"> 3.4s </td> </tr> </tbody> </table> </div> </figure> <h2 id="cases" class="anchor-offset h2-title">5. 部署案例</h2> <ul class="text-ink-700 dark:text-ink-200 space-y-2"> <li>· DeepSeek-V4-Flash / V4-Pro 主力部署（单机 / 双机）</li><li>· GLM5 单机部署</li><li>· 满血 DS-V3 / R1 推理（多机大 EP）</li><li>· 1M 超长上下文、Prefix Cache、Function Call 全功能</li> </ul> </article> <aside class="hidden xl:block w-48 shrink-0"><nav class="sticky top-20 text-sm"><div class="text-meta uppercase tracking-wider text-xs font-medium mb-2">
 本页目录
-</div><ul class="space-y-1.5 border-l border-default pl-3"><li><a href="#overview" class="text-ink-600 dark:text-ink-300 hover:text-brand transition-colors">1. 概述</a></li><li><a href="#specs" class="text-ink-600 dark:text-ink-300 hover:text-brand transition-colors">2. 硬件规格</a></li><li><a href="#models" class="text-ink-600 dark:text-ink-300 hover:text-brand transition-colors">3. 适配模型</a></li><li><a href="#perf" class="text-ink-600 dark:text-ink-300 hover:text-brand transition-colors">4. 实测性能</a></li><li class="ml-3"><a href="#perf-flash" class="text-ink-600 dark:text-ink-300 hover:text-brand transition-colors">4.1 V4 Flash 单机</a></li><li class="ml-3"><a href="#perf-pro" class="text-ink-600 dark:text-ink-300 hover:text-brand transition-colors">4.2 V4 Pro 双机</a></li><li class="ml-3"><a href="#perf-glm5" class="text-ink-600 dark:text-ink-300 hover:text-brand transition-colors">4.3 GLM5 单机</a></li><li><a href="#cases" class="text-ink-600 dark:text-ink-300 hover:text-brand transition-colors">5. 部署案例</a></li></ul></nav></aside> </div> </div>  </main> <footer class="border-t border-default mt-20"> <div class="container-shell py-8 text-meta text-sm flex flex-col md:flex-row md:items-center md:justify-between gap-3"> <div>
+</div><ul class="space-y-1.5 border-l border-default pl-3"><li><a href="#overview" class="text-ink-600 dark:text-ink-300 hover:text-brand transition-colors">1. 概述</a></li><li><a href="#specs" class="text-ink-600 dark:text-ink-300 hover:text-brand transition-colors">2. 硬件规格</a></li><li><a href="#models" class="text-ink-600 dark:text-ink-300 hover:text-brand transition-colors">3. 适配模型</a></li><li><a href="#perf" class="text-ink-600 dark:text-ink-300 hover:text-brand transition-colors">4. 实测性能</a></li><li class="ml-3"><a href="#perf-flash" class="text-ink-600 dark:text-ink-300 hover:text-brand transition-colors">4.1 V4 Flash 单机</a></li><li class="ml-3"><a href="#perf-pro" class="text-ink-600 dark:text-ink-300 hover:text-brand transition-colors">4.2 V4 Pro 双机</a></li><li class="ml-3"><a href="#perf-glm5" class="text-ink-600 dark:text-ink-300 hover:text-brand transition-colors">4.3 GLM5 单机</a></li><li><a href="#cases" class="text-ink-600 dark:text-ink-300 hover:text-brand transition-colors">5. 部署案例</a></li></ul></nav></aside> </div> </div>  </main> <footer class="border-t border-default mt-20">
+  <div class="last-updated">Last updated 2026-09-23 · 档号 v2.4 · 自动部署</div> <div class="container-shell py-8 text-meta text-sm flex flex-col md:flex-row md:items-center md:justify-between gap-3"> <div>
 © 2026 Ascend Notes · 昇腾实测档案 ·
           数据可追溯 · 不构成采购建议
-</div> <div class="flex gap-5"> <a href="/methodology" class="hover:text-brand">方法论</a>  <a href="/changelog" class="hover:text-brand">更新日志</a> <a href="https://mengyx.com.cn" class="hover:text-brand">主站</a> </div> </div> </footer> <script type="module">const c="ascend-notes-theme";function o(e){const t=document.documentElement,s=e==="dark"||e==="system"&&window.matchMedia("(prefers-color-scheme: dark)").matches;t.classList.toggle("dark",s),t.style.colorScheme=s?"dark":"light",document.dispatchEvent(new CustomEvent("themechange",{detail:{theme:e,isDark:s}}))}function a(){const e=localStorage.getItem(c)??"system";o(e),window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change",()=>{(localStorage.getItem(c)??"system")==="system"&&o("system")})}a();const n=document.getElementById("theme-toggle");n?.addEventListener("click",()=>{const e=localStorage.getItem("ascend-notes-theme")||"system",t=e==="light"?"dark":e==="dark"?"system":"light";localStorage.setItem("ascend-notes-theme",t),location.reload()});(function(){const e=localStorage.getItem("ascend-notes-theme")||"system";(e==="dark"||e==="system"&&window.matchMedia("(prefers-color-scheme: dark)").matches)&&document.documentElement.classList.add("dark")})();</script> </body> </html>
+</div> <div class="flex gap-5"> <a href="/methodology" class="hover:text-brand">方法论</a>  <a href="/changelog" class="hover:text-brand">更新日志</a> <a href="https://mengyx.com.cn" class="hover:text-brand">主站</a> </div> </div> </footer> <script type="module">const c="ascend-notes-theme";function o(e){const t=document.documentElement,s=e==="dark"||e==="system"&&window.matchMedia("(prefers-color-scheme: dark)").matches;t.classList.toggle("dark",s),t.style.colorScheme=s?"dark":"light",document.dispatchEvent(new CustomEvent("themechange",{detail:{theme:e,isDark:s}}))}function a(){const e=localStorage.getItem(c)??"system";o(e),window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change",()=>{(localStorage.getItem(c)??"system")==="system"&&o("system")})}a();const n=document.getElementById("theme-toggle");n?.addEventListener("click",()=>{const e=localStorage.getItem("ascend-notes-theme")||"system",t=e==="light"?"dark":e==="dark"?"system":"light";localStorage.setItem("ascend-notes-theme",t),location.reload()});(function(){const e=localStorage.getItem("ascend-notes-theme")||"system";(e==="dark"||e==="system"&&window.matchMedia("(prefers-color-scheme: dark)").matches)&&document.documentElement.classList.add("dark")})();</script> 
+<script>
+// pre 代码块加复制按钮
+(function(){
+  function attachCopyBtn(pre){
+    if (pre.dataset.copyAttached) return;
+    pre.dataset.copyAttached = "1";
+    const code = pre.querySelector("code") || pre;
+    const btn = document.createElement("button");
+    btn.className = "copy-btn";
+    btn.type = "button";
+    btn.textContent = "复制";
+    btn.addEventListener("click", async () => {
+      const text = code.innerText.replace(/ /g, " ");
+      try {
+        await navigator.clipboard.writeText(text);
+      } catch(e) {
+        // fallback
+        const ta = document.createElement("textarea");
+        ta.value = text;
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand("copy");
+        ta.remove();
+      }
+      btn.textContent = "已复制";
+      btn.classList.add("copied");
+      setTimeout(() => { btn.textContent = "复制"; btn.classList.remove("copied"); }, 1400);
+    });
+    pre.appendChild(btn);
+  }
+  document.querySelectorAll("pre").forEach(attachCopyBtn);
+  // 监听 DOM 变化（页面动态内容）
+  new MutationObserver(muts => {
+    for (const m of muts) m.addedNodes.forEach(n => {
+      if (n.nodeType !== 1) return;
+      if (n.tagName === "PRE") attachCopyBtn(n);
+      n.querySelectorAll && n.querySelectorAll("pre").forEach(attachCopyBtn);
+    });
+  }).observe(document.body, { childList: true, subtree: true });
+})();
+</script>
+
+<!-- ascend-notes-copy-btn -->
+</body> </html>
