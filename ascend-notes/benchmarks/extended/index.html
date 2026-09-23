@@ -1,5 +1,5 @@
 <!DOCTYPE html><html lang="zh-CN"> <head>
-<!-- 3pages-1790160947-26296 -->
+<!-- 3pages-1790162595-21996 -->
 <!-- clean-1790155744-26912 --><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="昇腾 3500 G3 (含 16 卡 / 8 卡 910B4) / 910C / 950 模型适配、TTFT 与吞吐实测数据"><meta name="generator" content="Astro v5.18.2"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="alternate icon" href="/favicon.svg"><title>模型适配总表 · Ascend Notes</title><link rel="stylesheet" href="/static-astro/3500-g3.ClXRCnKS.css">
 <style>details[data-astro-cid-wmd6b3pc]>summary[data-astro-cid-wmd6b3pc]{list-style:none}details[data-astro-cid-wmd6b3pc]>summary[data-astro-cid-wmd6b3pc]::-webkit-details-marker{display:none}details[data-astro-cid-wmd6b3pc][open]>summary[data-astro-cid-wmd6b3pc] span[data-astro-cid-wmd6b3pc]:first-child{transform:rotate(90deg);display:inline-block;transition:transform .15s}
 </style>
@@ -42,7 +42,7 @@
 <nav aria-label="Breadcrumb" class="text-meta text-sm mb-4 not-prose"><ol class="flex items-center flex-wrap gap-1.5"><li><a href="/" class="hover:text-brand">首页</a></li><li class="text-ink-400">›</li><li class="text-ink-700 dark:text-ink-200">深度性能基线</li></ol></nav>
 <header class="mb-8 max-w-3xl">
 <h1 class="h1-title">深度性能基线</h1>
-<p class="mt-3 text-ink-700 dark:text-ink-200">华鲲推理性能 Benchmark · DeepSeek V4 基线 · vLLM Ascend 0.11.0 三源汇总。覆盖 <b>3500 G3 / 910B4 (Atlas 800I A2)</b> 与 <b>910C (Atlas 800I A3)</b>。</p></header>
+<p class="mt-3 text-ink-700 dark:text-ink-100 text-base leading-relaxed">华鲲推理性能 Benchmark · DeepSeek V4 基线 · vLLM Ascend 0.11.0 三源汇总。覆盖 <b>3500 G3 / 910B4 (Atlas 800I A2)</b> 与 <b>910C (Atlas 800I A3)</b>。</p></header>
 <section class="mb-12">
 <h2 class="h2-title mb-2">1. E2E 吞吐对比 <span class="text-meta text-base font-normal">— 同一集群不同模型</span></h2>
 <p class="text-meta mb-4 text-sm">图 1. AT3500 G3 (64G, 8 × 910B) 在 p=1024/1024、并发=30 下的 E2E 吞吐。柱高为每秒 token 数；右图为同一设置下TTFT (s)。</p>
@@ -534,4 +534,71 @@ window.addEventListener('resize', () => { chart1.resize(); chart2.resize(); });
 </script>
 
 <!-- ascend-notes-copy-btn -->
+
+<script>
+// === ascend-notes: 图表文字深色模式自适应 ===
+(function(){
+  function isDark(){
+    return document.documentElement.classList.contains('dark') ||
+           document.body.classList.contains('dark') ||
+           (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches && (localStorage.getItem('theme') || 'system') === 'system');
+  }
+  function applyTheme(chart){
+    if (!chart) return;
+    const opt = chart.getOption();
+    if (!opt) return;
+    const dark = isDark();
+    const FG = dark ? '#e5e7eb' : '#222';
+    const FG2 = dark ? '#cbd5e1' : '#444';
+    const GRID = dark ? '#374151' : '#eee';
+    const AXIS_LINE = dark ? '#6b7280' : '#888';
+    const mut = JSON.parse(JSON.stringify(opt));
+    if (mut.textStyle) mut.textStyle.color = FG;
+    if (mut.title && mut.title.textStyle) mut.title.textStyle.color = FG;
+    if (Array.isArray(mut.title)) {
+      mut.title.forEach(t => { if (t.textStyle) t.textStyle.color = FG; });
+    }
+    if (mut.legend) {
+      const l = Array.isArray(mut.legend) ? mut.legend : [mut.legend];
+      l.forEach(x => { if (x.textStyle) x.textStyle.color = FG; });
+    }
+    if (Array.isArray(mut.xAxis)) mut.xAxis.forEach(x => {
+      if (x.axisLabel) x.axisLabel.color = FG2;
+      if (x.axisLine && x.axisLine.lineStyle) x.axisLine.lineStyle.color = AXIS_LINE;
+    });
+    if (!Array.isArray(mut.xAxis) && mut.xAxis) {
+      if (mut.xAxis.axisLabel) mut.xAxis.axisLabel.color = FG2;
+      if (mut.xAxis.axisLine && mut.xAxis.axisLine.lineStyle) mut.xAxis.axisLine.lineStyle.color = AXIS_LINE;
+    }
+    if (Array.isArray(mut.yAxis)) mut.yAxis.forEach(y => {
+      if (y.axisLabel) y.axisLabel.color = FG2;
+      if (y.nameTextStyle) y.nameTextStyle.color = y.axisLabel ? y.axisLabel.color : FG2;
+      if (y.splitLine && y.splitLine.lineStyle) y.splitLine.lineStyle.color = GRID;
+    });
+    if (!Array.isArray(mut.yAxis) && mut.yAxis) {
+      if (mut.yAxis.axisLabel) mut.yAxis.axisLabel.color = FG2;
+      if (mut.yAxis.splitLine && mut.yAxis.splitLine.lineStyle) mut.yAxis.splitLine.lineStyle.color = GRID;
+    }
+    chart.setOption(mut, true);
+  }
+  function bindAll(){
+    const instances = [];
+    if (window.echarts) {
+      document.querySelectorAll('[data-echart-option], div[id^="chart-"]').forEach(el => {
+        if (el.__echart_inst) instances.push(el.__echart_inst);
+      });
+    }
+    instances.forEach(applyTheme);
+  }
+  // 首次加载
+  window.addEventListener('load', () => setTimeout(bindAll, 50));
+  // 主题切换
+  document.addEventListener('themechange', bindAll);
+  new MutationObserver(() => {
+    if (isDark()) setTimeout(bindAll, 30);
+  }).observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+})();
+</script>
+
+<!-- ascend-notes-chart-theme -->
 </body></html>
